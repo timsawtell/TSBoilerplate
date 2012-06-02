@@ -1,3 +1,5 @@
-A submodule to use for new iOS projects.
+A project to be used as the starting point for a new iOS project
 
-Includes MKNetworkKit	
+Includes 
+MKNetworkKit	
+Mogenerator (Arc and NSCoding support for model files)
