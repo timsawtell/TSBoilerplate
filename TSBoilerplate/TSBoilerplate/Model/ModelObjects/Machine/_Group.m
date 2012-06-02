@@ -14,9 +14,6 @@ const struct GroupRelationships GroupRelationships = {
 const struct GroupFetchedProperties GroupFetchedProperties = {
 };
 
-@implementation GroupID
-@end
-
 @implementation _Group
 
 - (id)init
@@ -58,31 +55,6 @@ const struct GroupFetchedProperties GroupFetchedProperties = {
     
 }
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
-	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:moc_];
-}
-
-+ (NSString*)entityName {
-	return @"Group";
-}
-
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
-	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"Group" inManagedObjectContext:moc_];
-}
-
-- (GroupID*)objectID {
-	return (GroupID*)[super objectID];
-}
-
-+ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
-	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
-
-	return keyPaths;
-}
-
 
 
 
@@ -97,11 +69,11 @@ const struct GroupFetchedProperties GroupFetchedProperties = {
 
 	
 - (NSMutableSet*)membersSet {
-	[self willAccessValueForKey:@"members"];
+	//[self willAccessValueForKey:@"members"];
   
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"members"];
   
-	[self didAccessValueForKey:@"members"];
+	//[self didAccessValueForKey:@"members"];
 	return result;
 }
 	

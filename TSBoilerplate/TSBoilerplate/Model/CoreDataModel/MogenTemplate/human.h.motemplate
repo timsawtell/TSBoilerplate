@@ -1,5 +1,5 @@
 #import "_<$managedObjectClassName$>.h"
 
-@interface <$managedObjectClassName$> : _<$managedObjectClassName$> <_<$managedObjectClassName$>, NSCoding>
+@interface <$managedObjectClassName$> : _<$managedObjectClassName$> <NSCoding>
 // Custom logic goes here.
 @end

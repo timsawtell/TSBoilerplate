@@ -14,9 +14,6 @@ const struct MemberRelationships MemberRelationships = {
 const struct MemberFetchedProperties MemberFetchedProperties = {
 };
 
-@implementation MemberID
-@end
-
 @implementation _Member
 
 - (id)init
@@ -56,31 +53,6 @@ const struct MemberFetchedProperties MemberFetchedProperties = {
     
     [aCoder encodeObject: self.group forKey: @"group"];
     
-}
-
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
-	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"Member" inManagedObjectContext:moc_];
-}
-
-+ (NSString*)entityName {
-	return @"Member";
-}
-
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
-	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"Member" inManagedObjectContext:moc_];
-}
-
-- (MemberID*)objectID {
-	return (MemberID*)[super objectID];
-}
-
-+ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
-	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
-
-	return keyPaths;
 }
 
 

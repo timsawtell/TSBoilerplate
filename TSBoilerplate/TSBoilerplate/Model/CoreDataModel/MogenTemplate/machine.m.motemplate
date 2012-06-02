@@ -15,9 +15,6 @@ const struct <$managedObjectClassName$>FetchedProperties <$managedObjectClassNam
 	.<$FetchedProperty.name$> = @"<$FetchedProperty.name$>",<$endforeach do$>
 };
 
-@implementation <$managedObjectClassName$>ID
-@end
-
 @implementation _<$managedObjectClassName$>
 
 - (id)init
@@ -71,36 +68,6 @@ const struct <$managedObjectClassName$>FetchedProperties <$managedObjectClassNam
     <$endforeach do$>
 }
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
-	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"<$name$>" inManagedObjectContext:moc_];
-}
-
-+ (NSString*)entityName {
-	return @"<$name$>";
-}
-
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
-	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"<$name$>" inManagedObjectContext:moc_];
-}
-
-- (<$managedObjectClassName$>ID*)objectID {
-	return (<$managedObjectClassName$>ID*)[super objectID];
-}
-
-+ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
-	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$><$if Attribute.hasScalarAttributeType$>
-	if ([key isEqualToString:@"<$Attribute.name$>Value"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"<$Attribute.name$>"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}<$endif$><$endif$><$endforeach do$>
-
-	return keyPaths;
-}
-
 <$foreach Attribute noninheritedAttributes do$>
 <$if Attribute.hasDefinedAttributeType$>
 
@@ -134,13 +101,13 @@ const struct <$managedObjectClassName$>FetchedProperties <$managedObjectClassNam
 
 	<$if Relationship.isToMany$>
 - (<$Relationship.mutableCollectionClassName$>*)<$Relationship.name$>Set {
-	[self willAccessValueForKey:@"<$Relationship.name$>"];
+	//[self willAccessValueForKey:@"<$Relationship.name$>"];
   <$if Relationship.jr_isOrdered$>
 	<$Relationship.mutableCollectionClassName$> *result = (<$Relationship.mutableCollectionClassName$>*)[self mutableOrderedSetValueForKey:@"<$Relationship.name$>"];
   <$else$>
 	<$Relationship.mutableCollectionClassName$> *result = (<$Relationship.mutableCollectionClassName$>*)[self mutableSetValueForKey:@"<$Relationship.name$>"];
   <$endif$>
-	[self didAccessValueForKey:@"<$Relationship.name$>"];
+	//[self didAccessValueForKey:@"<$Relationship.name$>"];
 	return result;
 }
 	<$endif$>
