@@ -13,5 +13,6 @@
 @interface Model : NSObject
 
 @property (nonatomic, strong) Group *group;
-
++ (Model*) sharedModel;
+- (void)save;
 @end

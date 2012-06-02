@@ -3,17 +3,6 @@
 
 #import "_Group.h"
 
-const struct GroupAttributes GroupAttributes = {
-	.groupName = @"groupName",
-};
-
-const struct GroupRelationships GroupRelationships = {
-	.members = @"members",
-};
-
-const struct GroupFetchedProperties GroupFetchedProperties = {
-};
-
 @implementation _Group
 
 - (id)init
@@ -57,27 +46,12 @@ const struct GroupFetchedProperties GroupFetchedProperties = {
 
 
 
-
-@dynamic groupName;
-
+@synthesize groupName;
 
 
 
 
-
-@dynamic members;
-
-	
-- (NSMutableSet*)membersSet {
-	//[self willAccessValueForKey:@"members"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"members"];
-  
-	//[self didAccessValueForKey:@"members"];
-	return result;
-}
-	
-
+@synthesize members;
 
 
 

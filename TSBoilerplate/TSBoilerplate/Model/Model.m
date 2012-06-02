@@ -15,13 +15,13 @@
 
 #pragma mark - Data
 
-+ (NSString*) savedDataPath
++ (NSString*)savedDataPath
 {
     NSString *appSupport = [[NSFileManager defaultManager] applicationSupportDirectory];
     return [appSupport stringByAppendingPathComponent: kModelSavedDataFileName];
 }
 
-+ (Model*) savedModel
++ (Model*)savedModel
 {
     Model *model = [NSKeyedUnarchiver unarchiveObjectWithFile: [Model savedDataPath]];
     if (!model) {
@@ -30,7 +30,7 @@
     return model;
 }
 
-+ (Model*) sharedModel
++ (Model*)sharedModel
 {
     static Model* sharedModel = nil;
     @synchronized(self) {
@@ -41,7 +41,7 @@
     return sharedModel;
 }
 
-- (void) save
+- (void)save
 {
     @try {
         @synchronized(self)

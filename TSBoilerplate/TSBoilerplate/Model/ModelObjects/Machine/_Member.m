@@ -3,17 +3,6 @@
 
 #import "_Member.h"
 
-const struct MemberAttributes MemberAttributes = {
-	.name = @"name",
-};
-
-const struct MemberRelationships MemberRelationships = {
-	.group = @"group",
-};
-
-const struct MemberFetchedProperties MemberFetchedProperties = {
-};
-
 @implementation _Member
 
 - (id)init
@@ -39,8 +28,6 @@ const struct MemberFetchedProperties MemberFetchedProperties = {
         self.name = [aDecoder decodeObjectForKey: @"name"];
         
         
-        self.group = [aDecoder decodeObjectForKey: @"group"];
-        
     }
     return self;
 }
@@ -51,23 +38,13 @@ const struct MemberFetchedProperties MemberFetchedProperties = {
     
     [aCoder encodeObject: self.name forKey: @"name"];
     
-    [aCoder encodeObject: self.group forKey: @"group"];
-    
 }
 
 
 
-
-@dynamic name;
-
+@synthesize name;
 
 
-
-
-
-@dynamic group;
-
-	
 
 
 

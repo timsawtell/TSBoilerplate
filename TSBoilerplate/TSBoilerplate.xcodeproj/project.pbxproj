@@ -726,6 +726,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSBoilerplate/TSBoilerplate-Prefix.pch";
 				INFOPLIST_FILE = "TSBoilerplate/TSBoilerplate-Info.plist";
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -737,6 +738,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSBoilerplate/TSBoilerplate-Prefix.pch";
 				INFOPLIST_FILE = "TSBoilerplate/TSBoilerplate-Info.plist";
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

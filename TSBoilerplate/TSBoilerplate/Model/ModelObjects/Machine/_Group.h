@@ -4,17 +4,6 @@
 #import "ModelObject.h"
 
 
-extern const struct GroupAttributes {
-	__unsafe_unretained NSString *groupName;
-} GroupAttributes;
-
-extern const struct GroupRelationships {
-	__unsafe_unretained NSString *members;
-} GroupRelationships;
-
-extern const struct GroupFetchedProperties {
-} GroupFetchedProperties;
-
 @class Member;
 
 
@@ -36,7 +25,6 @@ extern const struct GroupFetchedProperties {
 
 @property (nonatomic, strong) NSSet *members;
 
-- (NSMutableSet*)membersSet;
 
 
 

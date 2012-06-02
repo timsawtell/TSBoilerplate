@@ -3,18 +3,6 @@
 
 #import "_<$managedObjectClassName$>.h"
 
-const struct <$managedObjectClassName$>Attributes <$managedObjectClassName$>Attributes = {<$foreach Attribute noninheritedAttributes do$>
-	.<$Attribute.name$> = @"<$Attribute.name$>",<$endforeach do$>
-};
-
-const struct <$managedObjectClassName$>Relationships <$managedObjectClassName$>Relationships = {<$foreach Relationship noninheritedRelationships do$>
-	.<$Relationship.name$> = @"<$Relationship.name$>",<$endforeach do$>
-};
-
-const struct <$managedObjectClassName$>FetchedProperties <$managedObjectClassName$>FetchedProperties = {<$foreach FetchedProperty noninheritedFetchedProperties do$>
-	.<$FetchedProperty.name$> = @"<$FetchedProperty.name$>",<$endforeach do$>
-};
-
 @implementation _<$managedObjectClassName$>
 
 - (id)init
@@ -70,9 +58,7 @@ const struct <$managedObjectClassName$>FetchedProperties <$managedObjectClassNam
 
 <$foreach Attribute noninheritedAttributes do$>
 <$if Attribute.hasDefinedAttributeType$>
-
-@dynamic <$Attribute.name$>;
-
+@synthesize <$Attribute.name$>;
 <$if Attribute.hasScalarAttributeType$>
 
 - (<$Attribute.scalarAttributeType$>)<$Attribute.name$>Value {
@@ -95,26 +81,11 @@ const struct <$managedObjectClassName$>FetchedProperties <$managedObjectClassNam
 <$endif$>
 <$endif$>
 <$endforeach do$>
-
 <$foreach Relationship noninheritedRelationships do$>
-@dynamic <$Relationship.name$>;
-
-	<$if Relationship.isToMany$>
-- (<$Relationship.mutableCollectionClassName$>*)<$Relationship.name$>Set {
-	//[self willAccessValueForKey:@"<$Relationship.name$>"];
-  <$if Relationship.jr_isOrdered$>
-	<$Relationship.mutableCollectionClassName$> *result = (<$Relationship.mutableCollectionClassName$>*)[self mutableOrderedSetValueForKey:@"<$Relationship.name$>"];
-  <$else$>
-	<$Relationship.mutableCollectionClassName$> *result = (<$Relationship.mutableCollectionClassName$>*)[self mutableSetValueForKey:@"<$Relationship.name$>"];
-  <$endif$>
-	//[self didAccessValueForKey:@"<$Relationship.name$>"];
-	return result;
-}
-	<$endif$>
+@synthesize <$Relationship.name$>;
 <$endforeach do$>
-
 <$foreach FetchedProperty noninheritedFetchedProperties do$>
-@dynamic <$FetchedProperty.name$>;
+@synthesize <$FetchedProperty.name$>;
 <$endforeach do$>
 
 <$foreach FetchRequest prettyFetchRequests do$>

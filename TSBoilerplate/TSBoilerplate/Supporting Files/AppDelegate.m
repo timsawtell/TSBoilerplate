@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Model.h"
+#import "Group.h"
+#import "Member.h"
 
 @implementation AppDelegate
 
@@ -18,6 +21,30 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+        
+    if ([Model sharedModel].group == nil) {
+        [Model sharedModel].group = [Group new];
+        [Model sharedModel].group.groupName = @"The Boilerplates";
+    } 
+    BOOL needToSave = NO;
+    if ([[Model sharedModel].group.members count] <= 0) {
+        needToSave = YES;
+        NSMutableSet *set = [NSMutableSet set];
+        for (NSUInteger count = 0; count < 3; count++) {
+            Member *member = [Member new];
+            member.name = [NSString stringWithFormat:@"Member %d", count];
+            [set addObject:member];
+        }
+        [Model sharedModel].group.members = set;
+    }
+    
+    for (Member *member in [Model sharedModel].group.members) {
+        NSLog(@"%@'s group name is: %@", member.name, [Model sharedModel].group.groupName);
+    }
+    
+    if (needToSave)
+        [[Model sharedModel] save];
+    
     return YES;
 }
 
