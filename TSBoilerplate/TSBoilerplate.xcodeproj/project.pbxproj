@@ -59,12 +59,12 @@
 		89097EB41579C5BA00913B9E /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EA81579C5BA00913B9E /* UIColor+Extensions.m */; };
 		89097EB51579C5BA00913B9E /* Appearances.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EAB1579C5BA00913B9E /* Appearances.m */; };
 		89097EB61579C5BA00913B9E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EAD1579C5BA00913B9E /* Constants.m */; };
-		89097EB71579C5BA00913B9E /* ErrorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EB01579C5BA00913B9E /* ErrorFactory.m */; };
 		89097EB81579C5BA00913B9E /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EB21579C5BA00913B9E /* SettingsHelper.m */; };
 		892D00BE1579CCF800C94388 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D00BD1579CCF800C94388 /* ModelObject.m */; };
 		892D00BF1579CE3300C94388 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D00BD1579CCF800C94388 /* ModelObject.m */; };
 		892D00D41579DB4F00C94388 /* StoryboardiPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D31579DB4F00C94388 /* StoryboardiPhone.storyboard */; };
 		892D00D61579DB5C00C94388 /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */; };
+		892D01231579DE4900C94388 /* NSError+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D01221579DE4800C94388 /* NSError+Factory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,8 +147,6 @@
 		89097EAB1579C5BA00913B9E /* Appearances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearances.m; sourceTree = "<group>"; };
 		89097EAC1579C5BA00913B9E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		89097EAD1579C5BA00913B9E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		89097EAF1579C5BA00913B9E /* ErrorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorFactory.h; sourceTree = "<group>"; };
-		89097EB01579C5BA00913B9E /* ErrorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorFactory.m; sourceTree = "<group>"; };
 		89097EB11579C5BA00913B9E /* SettingsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHelper.h; sourceTree = "<group>"; };
 		89097EB21579C5BA00913B9E /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
 		892D00B91579C86D00C94388 /* TSBoilerplate-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "TSBoilerplate-Info.plist"; path = "TSBoilerplate/TSBoilerplate-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -157,6 +155,8 @@
 		892D00BD1579CCF800C94388 /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
 		892D00D31579DB4F00C94388 /* StoryboardiPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPhone.storyboard; sourceTree = "<group>"; };
 		892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPad.storyboard; sourceTree = "<group>"; };
+		892D01211579DE4800C94388 /* NSError+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Factory.h"; sourceTree = "<group>"; };
+		892D01221579DE4800C94388 /* NSError+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Factory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +454,8 @@
 				89097EA61579C5BA00913B9E /* NSFileManager+DirectoryLocations.m */,
 				89097EA71579C5BA00913B9E /* UIColor+Extensions.h */,
 				89097EA81579C5BA00913B9E /* UIColor+Extensions.m */,
+				892D01211579DE4800C94388 /* NSError+Factory.h */,
+				892D01221579DE4800C94388 /* NSError+Factory.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -472,8 +474,6 @@
 		89097EAE1579C5BA00913B9E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				89097EAF1579C5BA00913B9E /* ErrorFactory.h */,
-				89097EB01579C5BA00913B9E /* ErrorFactory.m */,
 				89097EB11579C5BA00913B9E /* SettingsHelper.h */,
 				89097EB21579C5BA00913B9E /* SettingsHelper.m */,
 			);
@@ -653,8 +653,8 @@
 				89097EB41579C5BA00913B9E /* UIColor+Extensions.m in Sources */,
 				89097EB51579C5BA00913B9E /* Appearances.m in Sources */,
 				89097EB61579C5BA00913B9E /* Constants.m in Sources */,
-				89097EB71579C5BA00913B9E /* ErrorFactory.m in Sources */,
 				89097EB81579C5BA00913B9E /* SettingsHelper.m in Sources */,
+				892D01231579DE4900C94388 /* NSError+Factory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

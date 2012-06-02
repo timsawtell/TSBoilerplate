@@ -1,16 +1,16 @@
 //
-//  ErrorFactory.m
-//  SwitchedDig
+//  NSError+Factory.m
+//  TSBoilerplate
 //
-//  Created by Tim Sawtell on 29/11/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Tim Sawtell on 2/06/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ErrorFactory.h"
+#import "NSError+Factory.h"
 
-@implementation ErrorFactory
+@implementation NSError (Factory)
 
-+ (NSError *)makeAnErrorWithDomain:(id)domain withCode:(int)errCode withText:(NSString *)errText
++ (NSError*)errorWithDomain:(id)domain withCode:(int)errCode withText:(NSString *)errText
 {
     NSString *description = NSLocalizedString(errText, @"");
     
@@ -19,7 +19,7 @@
     NSDictionary *eDict = [NSDictionary dictionaryWithObjects:objArray
                                                       forKeys:keyArray];
     
-    return ([[NSError alloc] initWithDomain:domain code:errCode userInfo:eDict]);    
+    return ([[NSError alloc] initWithDomain:domain code:errCode userInfo:eDict]);  
 }
 
 @end
