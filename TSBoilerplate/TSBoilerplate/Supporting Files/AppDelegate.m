@@ -17,11 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-        
+    // Override point for customization after application launch.       
     if ([Model sharedModel].group == nil) {
         [Model sharedModel].group = [Group new];
         [Model sharedModel].group.groupName = @"The Boilerplates";

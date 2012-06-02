@@ -63,6 +63,8 @@
 		89097EB81579C5BA00913B9E /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EB21579C5BA00913B9E /* SettingsHelper.m */; };
 		892D00BE1579CCF800C94388 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D00BD1579CCF800C94388 /* ModelObject.m */; };
 		892D00BF1579CE3300C94388 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D00BD1579CCF800C94388 /* ModelObject.m */; };
+		892D00D41579DB4F00C94388 /* StoryboardiPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D31579DB4F00C94388 /* StoryboardiPhone.storyboard */; };
+		892D00D61579DB5C00C94388 /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +155,8 @@
 		892D00BB1579C88500C94388 /* TSBoilerplate-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TSBoilerplate-Prefix.pch"; path = "TSBoilerplate/TSBoilerplate-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		892D00BC1579CCF800C94388 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
 		892D00BD1579CCF800C94388 /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
+		892D00D31579DB4F00C94388 /* StoryboardiPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPhone.storyboard; sourceTree = "<group>"; };
+		892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +372,7 @@
 		89097CD615799F2C00913B9E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				892D00D21579DB3400C94388 /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -475,6 +480,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		892D00D21579DB3400C94388 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				892D00D31579DB4F00C94388 /* StoryboardiPhone.storyboard */,
+				892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -568,6 +582,8 @@
 				89097D0615799F2C00913B9E /* SampleImage.jpg in Resources */,
 				89097D0715799F2C00913B9E /* basic_auth.php in Resources */,
 				89097D0815799F2C00913B9E /* digest_auth.php in Resources */,
+				892D00D41579DB4F00C94388 /* StoryboardiPhone.storyboard in Resources */,
+				892D00D61579DB5C00C94388 /* StoryboardiPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
