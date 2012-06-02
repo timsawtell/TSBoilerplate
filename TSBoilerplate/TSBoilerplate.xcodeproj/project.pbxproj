@@ -36,6 +36,7 @@
 		89097D1815799F8800913B9E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1715799F8800913B9E /* CFNetwork.framework */; };
 		89097D1A15799F9100913B9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1915799F9100913B9E /* SystemConfiguration.framework */; };
 		89097D1C1579A0F500913B9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1B1579A0F500913B9E /* Security.framework */; };
+		89097E761579A80400913B9E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89097E741579A80400913B9E /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		89097D1715799F8800913B9E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		89097D1915799F9100913B9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89097D1B1579A0F500913B9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		89097E751579A80400913B9E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,8 @@
 		89097CD515799F2C00913B9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				89097E721579A7F400913B9E /* CoreDataModel */,
+				89097E731579A7F400913B9E /* ModelObjects */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,6 +336,21 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		89097E721579A7F400913B9E /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				89097E741579A80400913B9E /* Model.xcdatamodeld */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		89097E731579A7F400913B9E /* ModelObjects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,6 +492,7 @@
 				89097D0115799F2C00913B9E /* MKNetworkEngine.m in Sources */,
 				89097D0215799F2C00913B9E /* MKNetworkOperation.m in Sources */,
 				89097D0315799F2C00913B9E /* Reachability.m in Sources */,
+				89097E761579A80400913B9E /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +671,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		89097E741579A80400913B9E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				89097E751579A80400913B9E /* Model.xcdatamodel */,
+			);
+			currentVersion = 89097E751579A80400913B9E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 89097C3B15799DFF00913B9E /* Project object */;
 }
