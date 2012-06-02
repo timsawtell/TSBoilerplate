@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Generate Data Model.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>TSBoilerplate.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>89097C5E15799DFF00913B9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89097E7B1579AA2B00913B9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

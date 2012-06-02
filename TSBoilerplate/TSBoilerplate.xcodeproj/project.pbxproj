@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		89097E7B1579AA2B00913B9E /* Generate Data Model */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 89097E7C1579AA2B00913B9E /* Build configuration list for PBXAggregateTarget "Generate Data Model" */;
+			buildPhases = (
+				89097E7F1579AA3500913B9E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Generate Data Model";
+			productName = "Generate Data Model";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		89097C4915799DFF00913B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
 		89097C4B15799DFF00913B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
@@ -37,6 +51,10 @@
 		89097D1A15799F9100913B9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1915799F9100913B9E /* SystemConfiguration.framework */; };
 		89097D1C1579A0F500913B9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1B1579A0F500913B9E /* Security.framework */; };
 		89097E761579A80400913B9E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89097E741579A80400913B9E /* Model.xcdatamodeld */; };
+		89097E8A1579B36300913B9E /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097E821579B36300913B9E /* Group.m */; };
+		89097E8B1579B36300913B9E /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097E841579B36300913B9E /* Member.m */; };
+		89097E8C1579B36300913B9E /* _Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097E871579B36300913B9E /* _Group.m */; };
+		89097E8D1579B36300913B9E /* _Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097E891579B36300913B9E /* _Member.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +129,14 @@
 		89097D1915799F9100913B9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89097D1B1579A0F500913B9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		89097E751579A80400913B9E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		89097E811579B36300913B9E /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		89097E821579B36300913B9E /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		89097E831579B36300913B9E /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
+		89097E841579B36300913B9E /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
+		89097E861579B36300913B9E /* _Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Group.h; sourceTree = "<group>"; };
+		89097E871579B36300913B9E /* _Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Group.m; sourceTree = "<group>"; };
+		89097E881579B36300913B9E /* _Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Member.h; sourceTree = "<group>"; };
+		89097E891579B36300913B9E /* _Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Member.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,8 +375,32 @@
 		89097E731579A7F400913B9E /* ModelObjects */ = {
 			isa = PBXGroup;
 			children = (
+				89097E801579B36300913B9E /* Human */,
+				89097E851579B36300913B9E /* Machine */,
 			);
 			path = ModelObjects;
+			sourceTree = "<group>";
+		};
+		89097E801579B36300913B9E /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				89097E811579B36300913B9E /* Group.h */,
+				89097E821579B36300913B9E /* Group.m */,
+				89097E831579B36300913B9E /* Member.h */,
+				89097E841579B36300913B9E /* Member.m */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		89097E851579B36300913B9E /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				89097E861579B36300913B9E /* _Group.h */,
+				89097E871579B36300913B9E /* _Group.m */,
+				89097E881579B36300913B9E /* _Member.h */,
+				89097E891579B36300913B9E /* _Member.m */,
+			);
+			path = Machine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +471,7 @@
 			targets = (
 				89097C4315799DFF00913B9E /* TSBoilerplate */,
 				89097C5E15799DFF00913B9E /* TSBoilerplateTests */,
+				89097E7B1579AA2B00913B9E /* Generate Data Model */,
 			);
 		};
 /* End PBXProject section */
@@ -474,6 +525,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		89097E7F1579AA3500913B9E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd $PROJECT_DIR/TSBoilerplate/Model/CoreDataModel\nmogenerator -m Model.xcdatamodeld/Model.xcdatamodel/ --template-var arc=YES --template-path ./MogenTemplate\nmv _*.m ../ModelObjects/Machine/\nmv _*.h ../ModelObjects/Machine/\nmv *.h ../ModelObjects/Human/\nmv *.m ../ModelObjects/Human/";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -493,6 +557,10 @@
 				89097D0215799F2C00913B9E /* MKNetworkOperation.m in Sources */,
 				89097D0315799F2C00913B9E /* Reachability.m in Sources */,
 				89097E761579A80400913B9E /* Model.xcdatamodeld in Sources */,
+				89097E8A1579B36300913B9E /* Group.m in Sources */,
+				89097E8B1579B36300913B9E /* Member.m in Sources */,
+				89097E8C1579B36300913B9E /* _Group.m in Sources */,
+				89097E8D1579B36300913B9E /* _Member.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +710,20 @@
 			};
 			name = Release;
 		};
+		89097E7D1579AA2B00913B9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		89097E7E1579AA2B00913B9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -667,6 +749,14 @@
 			buildConfigurations = (
 				89097C7515799DFF00913B9E /* Debug */,
 				89097C7615799DFF00913B9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		89097E7C1579AA2B00913B9E /* Build configuration list for PBXAggregateTarget "Generate Data Model" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89097E7D1579AA2B00913B9E /* Debug */,
+				89097E7E1579AA2B00913B9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
