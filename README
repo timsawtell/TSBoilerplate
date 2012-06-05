@@ -14,4 +14,4 @@ You are supposed to modify the human files only! This is for adding custom metho
 An example might be adding an accessor method to your model object that returns and ordered array for that model object's NSSet property. You would add this to the Human/ClassName.h and .m files. your patterns are your own, so this is not necessary. Do what you want!
 
 Networking: 
-So use the networking subsystem - Mugunth Kumar is the man! https://github.com/MugunthKumar/MKNetworkKit
+So use the networking subsystem - Mugunth Kumar is the man! <a href="https://github.com/MugunthKumar/MKNetworkKit">https://github.com/MugunthKumar/MKNetworkKit</a>
