@@ -622,7 +622,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd $PROJECT_DIR/TSBoilerplate/Model/CoreDataModel\nmogenerator -m Model.xcdatamodeld/Model.xcdatamodel/ --template-var arc=YES --template-path ./MogenTemplate\nmv _*.m ../ModelObjects/Machine/\nmv _*.h ../ModelObjects/Machine/\nmv *.h ../ModelObjects/Human/\nmv *.m ../ModelObjects/Human/";
+			shellScript = "cd $PROJECT_DIR/TSBoilerplate/Model/CoreDataModel\nmogenerator -m Model.xcdatamodeld/Model.xcdatamodel/ --template-var arc=YES --template-path ./MogenTemplate -M ../ModelObjects/Machine -H ../ModelObjects/Human";
 		};
 /* End PBXShellScriptBuildPhase section */
 
