@@ -55,3 +55,6 @@ an Asynchronous Webservice command
         }
     };
     [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
+
+## License
+MIT License as per the LICENSE file and http://www.opensource.org/licenses/MIT
