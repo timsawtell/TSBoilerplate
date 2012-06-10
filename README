@@ -23,17 +23,17 @@ Your view controller will get the user's data, for example a name, and set that 
 
 Example usage for Synchronous
 
-	GroupCommand *groupCommand = [GroupCommand new];
-	groupCommand.groupName = kGroupName;
-	groupCommand.saveModel = YES; // at the end of the execute method, save the model.
-	[[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
+    GroupCommand *groupCommand = [GroupCommand new];
+    groupCommand.groupName = kGroupName;
+    groupCommand.saveModel = YES; // at the end of the execute method, save the model.
+    [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
 
 or Asynchronous
 
-	MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
-	memberDisplayCommand.group = [Model sharedModel].group;
-	memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
-	    DLog(@"Your first completion block!");
-	    DLog(@"Erorr says: %@", [error localizedDescription]);
-	};
-	[[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
+    MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
+    memberDisplayCommand.group = [Model sharedModel].group;
+    memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
+        DLog(@"Your first completion block!");
+        DLog(@"Erorr says: %@", [error localizedDescription]);
+    };
+    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
