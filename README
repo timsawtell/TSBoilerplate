@@ -15,3 +15,29 @@ An example might be adding an accessor method to your model object that returns 
 
 Networking: 
 So use the networking subsystem - Mugunth Kumar is the man! https://github.com/MugunthKumar/MKNetworkKit
+
+Commands:
+The commands subsystem is broken up into synchronous and asynchronous command which are exected by TSCommandRunner.
+Commands are the method of having your controllers tell "the system" to do something and don't get bogged down with the business logic. As a general rule, anything can READ from the Model. As a general rule, only COMMANDS can change the model. 
+Your view controller will get the user's data, for example a name, and set that on a command. It will then run a command to update a model object with that data. This allows decoupling of view controllers to model objects.
+
+Example usage for Synchronous
+<code>
+GroupCommand *groupCommand = [GroupCommand new];
+groupCommand.groupName = kGroupName;
+groupCommand.saveModel = YES; // at the end of the execute method, save the model.
+[[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
+</code>
+or Asynchronous
+<code>
+MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
+memberDisplayCommand.group = [Model sharedModel].group;
+memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
+    DLog(@"Your first completion block!");
+    DLog(@"Erorr says: %@", [error localizedDescription]);
+};
+[[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
+</code>        GroupCommand *groupCommand = [GroupCommand new];
+        groupCommand.groupName = kGroupName;
+        groupCommand.saveModel = YES; // at the end of the execute method, save the model.
+        [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
