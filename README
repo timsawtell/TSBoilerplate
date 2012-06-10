@@ -14,7 +14,7 @@ You are supposed to modify the human files only! This is for adding custom metho
 An example might be adding an accessor method to your model object that returns and ordered array for that model object's NSSet property. You would add this to the Human/ClassName.h and .m files. your patterns are your own, so this is not necessary. Do what you want!
 
 Networking: 
-So use the networking subsystem - Mugunth Kumar is the man! https://github.com/MugunthKumar/MKNetworkKit
+To use the networking subsystem - Mugunth Kumar is the man! https://github.com/MugunthKumar/MKNetworkKit
 
 Commands:
 The commands subsystem is broken up into synchronous and asynchronous command which are exected by TSCommandRunner.
@@ -22,14 +22,14 @@ Commands are the method of having your controllers tell "the system" to do somet
 Your view controller will get the user's data, for example a name, and set that on a command. It will then run a command to update a model object with that data. This allows decoupling of view controllers to model objects.
 
 Example usage for Synchronous
-<pre>
+
 	GroupCommand *groupCommand = [GroupCommand new];
 	groupCommand.groupName = kGroupName;
 	groupCommand.saveModel = YES; // at the end of the execute method, save the model.
 	[[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
-</pre>
+
 or Asynchronous
-<pre>
+
 	MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
 	memberDisplayCommand.group = [Model sharedModel].group;
 	memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
@@ -37,4 +37,3 @@ or Asynchronous
 	    DLog(@"Erorr says: %@", [error localizedDescription]);
 	};
 	[[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
-</pre>
