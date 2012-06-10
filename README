@@ -22,14 +22,14 @@ Commands are the method of having your controllers tell "the system" to do somet
 Your view controller will get the user's data, for example a name, and set that on a command. It will then run a command to update a model object with that data. This allows decoupling of view controllers to model objects.
 
 Example usage for Synchronous
-
+<pre>
 	GroupCommand *groupCommand = [GroupCommand new];
 	groupCommand.groupName = kGroupName;
 	groupCommand.saveModel = YES; // at the end of the execute method, save the model.
 	[[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
-
+</pre>
 or Asynchronous
-
+<pre>
 	MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
 	memberDisplayCommand.group = [Model sharedModel].group;
 	memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
@@ -37,3 +37,4 @@ or Asynchronous
 	    DLog(@"Erorr says: %@", [error localizedDescription]);
 	};
 	[[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
+</pre>
