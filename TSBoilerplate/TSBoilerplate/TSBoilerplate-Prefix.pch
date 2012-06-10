@@ -14,4 +14,8 @@
     #import "MKNetworkKit.h"
     #import "Constants.h"
     #import "Appearances.h"
+    #import "Model.h"
+    #import "TSCommandRunner.h"
+    #import "AsynchronousCommand.h"
+    #import "Command.h"
 #endif

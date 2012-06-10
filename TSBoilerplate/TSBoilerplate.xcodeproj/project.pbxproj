@@ -65,6 +65,13 @@
 		892D00D41579DB4F00C94388 /* StoryboardiPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D31579DB4F00C94388 /* StoryboardiPhone.storyboard */; };
 		892D00D61579DB5C00C94388 /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */; };
 		892D01231579DE4900C94388 /* NSError+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D01221579DE4800C94388 /* NSError+Factory.m */; };
+		892D0128158049F200C94388 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0127158049F200C94388 /* Command.m */; };
+		892D012B15804F5C00C94388 /* TSCommandRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D012A15804F5B00C94388 /* TSCommandRunner.m */; };
+		892D012F1580524800C94388 /* GroupEditCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D012E1580524800C94388 /* GroupEditCommand.m */; };
+		892D018815815CFB00C94388 /* AsynchronousCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D018715815CFA00C94388 /* AsynchronousCommand.m */; };
+		892D018B158410F800C94388 /* GroupCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D018A158410F800C94388 /* GroupCommand.m */; };
+		892D018F1584144D00C94388 /* MemberCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D018E1584144D00C94388 /* MemberCommand.m */; };
+		892D0192158415FC00C94388 /* MemberDisplayCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0191158415FC00C94388 /* MemberDisplayCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +164,20 @@
 		892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPad.storyboard; sourceTree = "<group>"; };
 		892D01211579DE4800C94388 /* NSError+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Factory.h"; sourceTree = "<group>"; };
 		892D01221579DE4800C94388 /* NSError+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Factory.m"; sourceTree = "<group>"; };
+		892D0126158049F200C94388 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
+		892D0127158049F200C94388 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
+		892D012915804F5B00C94388 /* TSCommandRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCommandRunner.h; sourceTree = "<group>"; };
+		892D012A15804F5B00C94388 /* TSCommandRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCommandRunner.m; sourceTree = "<group>"; };
+		892D012D1580524800C94388 /* GroupEditCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupEditCommand.h; sourceTree = "<group>"; };
+		892D012E1580524800C94388 /* GroupEditCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupEditCommand.m; sourceTree = "<group>"; };
+		892D018615815CFA00C94388 /* AsynchronousCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynchronousCommand.h; sourceTree = "<group>"; };
+		892D018715815CFA00C94388 /* AsynchronousCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynchronousCommand.m; sourceTree = "<group>"; };
+		892D0189158410F700C94388 /* GroupCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCommand.h; sourceTree = "<group>"; };
+		892D018A158410F800C94388 /* GroupCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCommand.m; sourceTree = "<group>"; };
+		892D018D1584144D00C94388 /* MemberCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberCommand.h; sourceTree = "<group>"; };
+		892D018E1584144D00C94388 /* MemberCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberCommand.m; sourceTree = "<group>"; };
+		892D0190158415FC00C94388 /* MemberDisplayCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberDisplayCommand.h; sourceTree = "<group>"; };
+		892D0191158415FC00C94388 /* MemberDisplayCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberDisplayCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +275,7 @@
 		89097C7715799F2C00913B9E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				892D0124158049D900C94388 /* Application */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -489,6 +511,51 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		892D0124158049D900C94388 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				892D0125158049D900C94388 /* Commands */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		892D0125158049D900C94388 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				892D0126158049F200C94388 /* Command.h */,
+				892D0127158049F200C94388 /* Command.m */,
+				892D018615815CFA00C94388 /* AsynchronousCommand.h */,
+				892D018715815CFA00C94388 /* AsynchronousCommand.m */,
+				892D012915804F5B00C94388 /* TSCommandRunner.h */,
+				892D012A15804F5B00C94388 /* TSCommandRunner.m */,
+				892D018C1584144000C94388 /* Member */,
+				892D012C158051BB00C94388 /* Group */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		892D012C158051BB00C94388 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				892D0189158410F700C94388 /* GroupCommand.h */,
+				892D018A158410F800C94388 /* GroupCommand.m */,
+				892D012D1580524800C94388 /* GroupEditCommand.h */,
+				892D012E1580524800C94388 /* GroupEditCommand.m */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		892D018C1584144000C94388 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				892D018D1584144D00C94388 /* MemberCommand.h */,
+				892D018E1584144D00C94388 /* MemberCommand.m */,
+				892D0190158415FC00C94388 /* MemberDisplayCommand.h */,
+				892D0191158415FC00C94388 /* MemberDisplayCommand.m */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -622,7 +689,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd $PROJECT_DIR/TSBoilerplate/Model/CoreDataModel\nmogenerator -m Model.xcdatamodeld/Model.xcdatamodel/ --template-var arc=YES --template-path ./MogenTemplate\nmv _*.m ../ModelObjects/Machine/\nmv _*.h ../ModelObjects/Machine/\nmv *.h ../ModelObjects/Human/\nmv *.m ../ModelObjects/Human/";
+			shellScript = "cd $PROJECT_DIR/TSBoilerplate/Model/CoreDataModel\nmogenerator -m Model.xcdatamodeld/Model.xcdatamodel/ --template-var arc=YES --template-path ./MogenTemplate -M ../ModelObjects/Machine/ -H ../ModelObjects/Human/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -655,6 +722,13 @@
 				89097EB61579C5BA00913B9E /* Constants.m in Sources */,
 				89097EB81579C5BA00913B9E /* SettingsHelper.m in Sources */,
 				892D01231579DE4900C94388 /* NSError+Factory.m in Sources */,
+				892D0128158049F200C94388 /* Command.m in Sources */,
+				892D012B15804F5C00C94388 /* TSCommandRunner.m in Sources */,
+				892D012F1580524800C94388 /* GroupEditCommand.m in Sources */,
+				892D018815815CFB00C94388 /* AsynchronousCommand.m in Sources */,
+				892D018B158410F800C94388 /* GroupCommand.m in Sources */,
+				892D018F1584144D00C94388 /* MemberCommand.m in Sources */,
+				892D0192158415FC00C94388 /* MemberDisplayCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

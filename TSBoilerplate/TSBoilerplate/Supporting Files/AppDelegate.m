@@ -7,9 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import "Model.h"
 #import "Group.h"
 #import "Member.h"
+#import "GroupCommand.h"
+#import "GroupEditCommand.h"
+#import "MemberCommand.h"
+#import "MemberDisplayCommand.h" // a very trivial asynchronous command
+
+#define kGroupName @"The Boilerplates"
+#define kMemberStartOfName @"Comrade"
 
 @implementation AppDelegate
 
@@ -19,27 +25,33 @@
 {
     // Override point for customization after application launch.       
     if ([Model sharedModel].group == nil) {
-        [Model sharedModel].group = [Group new];
-        [Model sharedModel].group.groupName = @"The Boilerplates";
-    } 
-    BOOL needToSave = NO;
+        // create a new group (kind of like a factory). The group is added to the model.
+        GroupCommand *groupCommand = [GroupCommand new];
+        groupCommand.groupName = kGroupName;
+        groupCommand.saveModel = YES; // at the end of the execute method, save the model.
+        [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
+    }
     if ([[Model sharedModel].group.members count] <= 0) {
-        needToSave = YES;
-        NSMutableSet *set = [NSMutableSet set];
+        // if no members in this group, add 3 of them
         for (NSUInteger count = 0; count < 3; count++) {
-            Member *member = [Member new];
-            member.name = [NSString stringWithFormat:@"Member %d", count];
-            [set addObject:member];
+            // another factory to create member instances and add them to a group
+            // we are using the Model's group, so we save the model in the command
+            MemberCommand *memberCommand = [MemberCommand new];
+            memberCommand.name = [NSString stringWithFormat:@"%@ %d", kMemberStartOfName, count];
+            memberCommand.group = [Model sharedModel].group;
+            memberCommand.saveModel = YES; // trade off to your liking. Save with each command execution or call [[Model sharedModel] save] yourself later.
+            [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:memberCommand];
         }
-        [Model sharedModel].group.members = set;
     }
     
-    for (Member *member in [Model sharedModel].group.members) {
-        NSLog(@"%@'s group name is: %@", member.name, [Model sharedModel].group.groupName);
-    }
-    
-    if (needToSave)
-        [[Model sharedModel] save];
+    // Run a trivial asynchronous command to display the group's members
+    MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
+    memberDisplayCommand.group = [Model sharedModel].group;
+    memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
+        DLog(@"Your first completion block!");
+        DLog(@"Erorr says: %@", [error localizedDescription]);
+    };
+    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
     
     return YES;
 }
