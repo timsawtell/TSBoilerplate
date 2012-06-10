@@ -25,7 +25,7 @@ Example usage for Synchronous
     GroupCommand *groupCommand = [GroupCommand new];
     groupCommand.groupName = kGroupName;
     groupCommand.saveModel = YES; // at the end of the execute method, save the model.
-    [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];`
+    [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
 
 or Asynchronous
 
@@ -35,4 +35,23 @@ or Asynchronous
         DLog(@"Your first completion block!");
         DLog(@"Erorr says: %@", [error localizedDescription]);
     };
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];`
+    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
+
+an Asynchronous Webservice command
+
+    TwitterCommand *twitterCommand = [TwitterCommand new];
+    twitterCommand.screenName = kTwitterScreenName;
+    twitterCommand.includeRetweets = YES;
+    twitterCommand.includeEntities = NO;
+    twitterCommand.tweetCount = kTweetCount;
+    twitterCommand.twitterCommandCompletionBlock = ^ (NSArray *tweets, NSError *error) {
+        if (error != nil) {
+            DLog(@":( Erorr says: %@", [error localizedDescription]);
+        } else {
+            // if we have a list of tweets, show them 
+            for (Tweet *tweet in tweets) {
+                DLog(@"%@ - %@", tweet.user.name, tweet.text);
+            }
+        }
+    };
+    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
