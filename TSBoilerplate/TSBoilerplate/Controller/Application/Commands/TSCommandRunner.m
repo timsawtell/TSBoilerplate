@@ -47,12 +47,15 @@
     assert([asynchronousCommand isKindOfClass:[AsynchronousCommand class]]);
     
     if ([asynchronousCommand isMultiThreaded]) {
-        [[TSCommandRunner sharedOperationQueue] addOperation:asynchronousCommand]; // run on any other thread
+        if (![[[TSCommandRunner sharedOperationQueue] operations] containsObject:asynchronousCommand]) {
+            [[TSCommandRunner sharedOperationQueue] addOperation:asynchronousCommand]; // run on any other thread
+        }
     } else {
-        [[NSOperationQueue mainQueue] addOperation: asynchronousCommand]; // run on thread 0
+        if (![[[NSOperationQueue mainQueue] operations] containsObject:asynchronousCommand]) {
+            [[NSOperationQueue mainQueue] addOperation: asynchronousCommand]; // run on thread 0
+        }
     }
 }
-
 
 - (void)executeSynchronousCommand:(Command *)command
 {
