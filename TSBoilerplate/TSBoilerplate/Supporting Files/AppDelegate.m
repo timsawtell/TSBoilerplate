@@ -13,9 +13,14 @@
 #import "GroupEditCommand.h"
 #import "MemberCommand.h"
 #import "MemberDisplayCommand.h" // a very trivial asynchronous command
+#import "TwitterCommand.h"
+#import "Tweet.h"
+#import "TwitterEntity.h"
 
 #define kGroupName @"The Boilerplates"
 #define kMemberStartOfName @"Comrade"
+#define kTwitterScreenName @"ID_AA_Carmack" // coolest guy in the world
+#define kTweetCount 10
 
 @implementation AppDelegate
 
@@ -48,10 +53,30 @@
     MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
     memberDisplayCommand.group = [Model sharedModel].group;
     memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
-        DLog(@"Your first completion block!");
-        DLog(@"Erorr says: %@", [error localizedDescription]);
+        DLog(@"Your first completion block! I just displayed the members in the group.");
+        if (error != nil) {
+            DLog(@":( Erorr says: %@", [error localizedDescription]);
+        }
     };
     [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
+    
+    // Now run a command that uses MKNetorkKit to get a list of tweets for the chosen screenName
+    TwitterCommand *twitterCommand = [TwitterCommand new];
+    twitterCommand.screenName = kTwitterScreenName;
+    twitterCommand.includeRetweets = YES;
+    twitterCommand.includeEntities = NO;
+    twitterCommand.tweetCount = kTweetCount;
+    twitterCommand.twitterCommandCompletionBlock = ^ (NSArray *tweets, NSError *error) {
+        if (error != nil) {
+            DLog(@":( Erorr says: %@", [error localizedDescription]);
+        } else {
+            // if we have a list of tweets, show them 
+            for (Tweet *tweet in tweets) {
+                DLog(@"%@ - %@", tweet.user.name, tweet.text);
+            }
+        }
+    };
+    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
     
     return YES;
 }

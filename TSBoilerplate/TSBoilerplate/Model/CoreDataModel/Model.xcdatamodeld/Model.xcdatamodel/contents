@@ -7,8 +7,18 @@
     <entity name="Member" representedClassName="Member" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Tweet" representedClassName="Tweet" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterEntity" syncable="YES"/>
+    </entity>
+    <entity name="TwitterEntity" representedClassName="TwitterEntity" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="screen_name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Group" positionX="160" positionY="192" width="128" height="75"/>
         <element name="Member" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Tweet" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="TwitterEntity" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>
