@@ -27,7 +27,8 @@
                                  includedEntities:self.includeEntities 
                                   includeRetweets:self.includeRetweets 
                                        tweetCount:self.tweetCount 
-                                     onCompletion:self.twitterCommandCompletionBlock];
+                                     onCompletion:self.twitterCommandCompletionBlock
+                                      fromCommand:self];
 }
 
 @end

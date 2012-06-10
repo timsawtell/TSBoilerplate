@@ -34,6 +34,7 @@
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
                           onCompletion:(twitterCommandCompletionBlock) completion
+                           fromCommand:(AsynchronousCommand *)command
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             screenName, kTwitterScreenName,
@@ -42,8 +43,8 @@
                             [NSNumber numberWithInteger: tweetCount], kTweetCount, nil];
     [self registerOperationSubclass:[MKNetworkOperation class]];
     MKNetworkOperation *op = [self operationWithURLString:kTwitterTimelineBaseURL 
-                                                    params:params
-                                                httpMethod:@"GET"];
+                                                   params:params
+                                               httpMethod:@"GET"];
     [op onCompletion:^(MKNetworkOperation *completedOperation)
      {
          // loop through the JSON to build up a TwitterEntity object for each Tweet object. Add the Tweet to the array in the completion block
@@ -65,10 +66,11 @@
                  }
              }
          }
-        completion(tmpArray, nil);
-         
+         completion(tmpArray, nil);
+         [command finish];
      }onError:^(NSError* error) {
          completion(nil, error);
+         [command finish];
      }];
     
     [self enqueueOperation:op];
