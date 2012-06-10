@@ -33,7 +33,7 @@
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(twitterCommandCompletionBlock) completion
+                          onCompletion:(twitterCommandCompletionBlock)completion
                            fromCommand:(AsynchronousCommand *)command
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -42,9 +42,11 @@
                             [NSNumber numberWithBool:includeRetweets], kIncludeReTweets, 
                             [NSNumber numberWithInteger: tweetCount], kTweetCount, nil];
     [self registerOperationSubclass:[MKNetworkOperation class]];
+    
     MKNetworkOperation *op = [self operationWithURLString:kTwitterTimelineBaseURL 
                                                    params:params
                                                httpMethod:@"GET"];
+    
     [op onCompletion:^(MKNetworkOperation *completedOperation)
      {
          // loop through the JSON to build up a TwitterEntity object for each Tweet object. Add the Tweet to the array in the completion block
@@ -54,8 +56,8 @@
              id user = [dictionary objectForKey:kTwitterUser];
              if (user != nil) {
                  TwitterEntity *entity = [TwitterEntity new];
-                 entity.screen_name = [user valueForKey:kTwitterScreenName];
-                 entity.name = [user valueForKey:kTwitterName] != nil ? [user valueForKey:kTwitterName] : nil;
+                 entity.screen_name = [user objectForKey:kTwitterScreenName] != nil ? [user valueForKey:kTwitterScreenName] : nil;
+                 entity.name = [user objectForKey:kTwitterName] != nil ? [user valueForKey:kTwitterName] : nil;
                  
                  id text = [dictionary objectForKey:kTweetText];
                  if (text != nil) {

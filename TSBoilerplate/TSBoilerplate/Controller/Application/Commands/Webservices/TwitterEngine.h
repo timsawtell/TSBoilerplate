@@ -22,7 +22,7 @@
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(twitterCommandCompletionBlock) completion
+                          onCompletion:(twitterCommandCompletionBlock)completion
                            fromCommand:(AsynchronousCommand *)command;
 
 @end
