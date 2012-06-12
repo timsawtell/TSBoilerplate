@@ -3,6 +3,7 @@ A project to be used as the starting point for a new iOS project
 Includes 
 MKNetworkKit	
 Mogenerator (Arc and NSCoding support for model files)
+Thanks to [Tyrone](https://github.com/tyrone-sudeium) for his guidance on Commands
 
 ## Data persistance:
 Define your model using core data UI - add entities and properties. (Any properties that you want to persist must have a data type that supports NSCoding).
@@ -13,7 +14,7 @@ You are supposed to modify the human files only! This is for adding custom metho
 An example might be adding an accessor method to your model object that returns and ordered array for that model object's NSSet property. You would add this to the Human/ClassName.h and .m files. your patterns are your own, so this is not necessary. Do what you want!
 
 ## Networking: 
-To use the networking subsystem - Mugunth Kumar is the man! https://github.com/MugunthKumar/MKNetworkKit
+To use the networking subsystem - [Mugunth Kumar](https://github.com/MugunthKumar/MKNetworkKit) is the man! 
 
 ## Commands:
 The commands subsystem is broken up into synchronous and asynchronous command which are exected by TSCommandRunner.
