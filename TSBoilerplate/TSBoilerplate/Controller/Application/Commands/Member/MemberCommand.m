@@ -17,12 +17,13 @@
 
 @implementation MemberCommand
 
-@synthesize name, member, group;
+@synthesize name, member, group, memberId;
 
 - (void)execute
 {
     self.member = [Member new];
     self.member.name = self.name;
+    self.member.memberId = [NSNumber numberWithInteger:self.memberId];
     
     if (self.group != nil) {
         if (self.group.members == nil) {

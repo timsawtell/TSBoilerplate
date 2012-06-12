@@ -50,6 +50,7 @@
             // we are using the Model's group, so we save the model in the command
             MemberCommand *memberCommand = [MemberCommand new];
             memberCommand.name = [NSString stringWithFormat:@"%@ %d", kMemberStartOfName, count];
+            memberCommand.memberId = count;
             memberCommand.group = [Model sharedModel].group;
             memberCommand.saveModel = YES; // trade off to your liking. Save with each command execution or call [[Model sharedModel] save] yourself later.
             [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:memberCommand];

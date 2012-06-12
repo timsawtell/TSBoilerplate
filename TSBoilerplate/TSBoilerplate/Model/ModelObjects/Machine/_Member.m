@@ -11,6 +11,7 @@
 	{
 		
 		
+		
 	}
 	
 	return self;
@@ -25,6 +26,8 @@
     }
     if (self) {
         
+        self.memberId = [aDecoder decodeObjectForKey: @"memberId"];
+        
         self.name = [aDecoder decodeObjectForKey: @"name"];
         
         
@@ -36,9 +39,26 @@
 {
     [super encodeWithCoder: aCoder];
     
+    [aCoder encodeObject: self.memberId forKey: @"memberId"];
+    
     [aCoder encodeObject: self.name forKey: @"name"];
     
 }
+
+
+
+@synthesize memberId;
+
+
+- (int32_t)memberIdValue {
+	NSNumber *result = [self memberId];
+	return [result intValue];
+}
+
+- (void)setMemberIdValue:(int32_t)value_ {
+	[self setMemberId:[NSNumber numberWithInt:value_]];
+}
+
 
 
 

@@ -7,7 +7,21 @@
 
 
 
+
 @interface _Member : ModelObject <NSCoding>
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* memberId;
+
+
+
+@property int32_t memberIdValue;
+- (int32_t)memberIdValue;
+- (void)setMemberIdValue:(int32_t)value_;
+
 
 
 

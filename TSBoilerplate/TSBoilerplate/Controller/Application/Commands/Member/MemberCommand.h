@@ -22,6 +22,7 @@
 @property (nonatomic, strong) Member *member;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, weak) Group *group;
+@property (nonatomic, assign) NSInteger memberId;
 
 @end
 

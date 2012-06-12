@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1480" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" syncable="YES"/>
     </entity>
     <entity name="Member" representedClassName="Member" syncable="YES">
+        <attribute name="memberId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Tweet" representedClassName="Tweet" syncable="YES">
@@ -17,7 +18,7 @@
     </entity>
     <elements>
         <element name="Group" positionX="160" positionY="192" width="128" height="75"/>
-        <element name="Member" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Member" positionX="160" positionY="192" width="128" height="75"/>
         <element name="Tweet" positionX="160" positionY="192" width="128" height="75"/>
         <element name="TwitterEntity" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
