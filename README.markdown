@@ -1,9 +1,9 @@
 A project to be used as the starting point for a new iOS project
 >
 Includes 
-MKNetworkKit	
-Mogenerator (Arc and NSCoding support for model files)
-Thanks to [Tyrone](https://github.com/tyrone-sudeium) for his guidance on Commands
+* MKNetworkKit	
+* Mogenerator (Arc and NSCoding support for model files)
+* Thanks to [Tyrone](https://github.com/tyrone-sudeium) for his guidance on Commands
 
 ## Data persistance:
 Define your model using core data UI - add entities and properties. (Any properties that you want to persist must have a data type that supports NSCoding).
