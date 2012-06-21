@@ -23,12 +23,11 @@
 
 + (TSCommandRunner *)sharedCommandRunner
 {
-    static TSCommandRunner *commandRunner;
-    @synchronized(self) {
-        if (commandRunner == nil) {
+    __strong static TSCommandRunner *commandRunner = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
             commandRunner = [TSCommandRunner new];
-        }
-    }
+    });
     return commandRunner;
 }
 
