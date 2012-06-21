@@ -15,17 +15,31 @@
 
 #import "AsynchronousCommand.h"
 
+@interface AsynchronousCommand()
+{
+    BOOL _finished;
+    BOOL _executing;
+}
+@end
+
 @implementation AsynchronousCommand
-@synthesize commandCompletionBlock, multiThreaded, finished, executing;
+
+@synthesize commandCompletionBlock;
+
+- (id)init
+{
+    self = [super init];
+    if( self )
+    {
+        self.runInBackground = YES;
+    }
+    return self;
+}
 
 - (void) start
 {
     [self setFinished: NO];
-    [self main];
-}
 
-- (void) main
-{
     //set the NSOperation's completionBlock which occurs at the end of main
     self.completionBlock = ^{
         if (self.commandCompletionBlock != NULL) {
@@ -35,15 +49,17 @@
         }
     };
     //subclass should override execute to perform the logic of the command
-    [self execute];
+    _executing = YES;
+    [self prepare];
+
+    // If we are still executing, make sure that any observers have been notified
+    if( self.executing )
+    {
+        [self willChangeValueForKey: @"isExecuting"];
+        [self didChangeValueForKey: @"isExecuting"];
+    }
     
     //subclass MUST call [self finish] at the appropriate time, generally in the commandCompletionBlock
-}
-
-
-- (BOOL)isMultiThreaded
-{
-    return YES;
 }
 
 - (void)cancel
@@ -52,26 +68,59 @@
         [cmd cancel];
     }
     //in subclasses add your logic to cancel the processing in execute.
+    [super cancel];
 }
 
-- (void) setFinished:(BOOL) isFinished
+- (void)prepare
+{
+    NSAssert(FALSE, @"don't call super on prepare");
+    [self markAsFinished];
+}
+
+- (void)markAsFinished
+{
+    [self setFinished:YES];
+}
+
+- (BOOL)isFinished
+{
+    BOOL returnValue;
+    @synchronized(self)
+    {
+        returnValue = _finished;
+    }
+    return returnValue;
+}
+
+- (void) setFinished:(BOOL)isFinished
 {
     [self setExecuting: !isFinished];
     [self willChangeValueForKey: @"isFinished"];
-    finished = isFinished;
+    @synchronized(self)
+    {
+        _finished = isFinished;
+    }
     [self didChangeValueForKey: @"isFinished"];
+}
+
+- (BOOL)isExecuting
+{
+    BOOL returnValue;
+    @synchronized(self)
+    {
+        returnValue = _executing;
+    }
+    return returnValue;
 }
 
 - (void) setExecuting:(BOOL) isExecuting
 {
     [self willChangeValueForKey: @"isExecuting"];
-    executing = isExecuting;
+    @synchronized(self)
+    {
+        _executing = isExecuting;
+    }
     [self didChangeValueForKey: @"isExecuting"];
-}
-
-- (void) finish
-{
-    [self setFinished: YES];
 }
 
 @end

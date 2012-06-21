@@ -41,7 +41,7 @@
         GroupCommand *groupCommand = [GroupCommand new];
         groupCommand.groupName = kGroupName;
         groupCommand.saveModel = YES; // at the end of the execute method, save the model.
-        [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
+        [[TSCommandRunner sharedCommandRunner] executeCommand:groupCommand];
     }
     if ([[Model sharedModel].group.members count] <= 0) {
         // if no members in this group, add 3 of them
@@ -53,7 +53,7 @@
             memberCommand.memberId = count;
             memberCommand.group = [Model sharedModel].group;
             memberCommand.saveModel = YES; // trade off to your liking. Save with each command execution or call [[Model sharedModel] save] yourself later.
-            [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:memberCommand];
+            [[TSCommandRunner sharedCommandRunner] executeCommand:memberCommand];
         }
     }
     
@@ -66,7 +66,7 @@
             DLog(@":( Erorr says: %@", [error localizedDescription]);
         }
     };
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:memberDisplayCommand];
     
     // Now run a command that uses MKNetorkKit to get a list of tweets for the chosen screenName
     TwitterCommand *twitterCommand = [TwitterCommand new];
@@ -84,7 +84,7 @@
             }
         }
     };
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:twitterCommand];
     
     return YES;
 }
