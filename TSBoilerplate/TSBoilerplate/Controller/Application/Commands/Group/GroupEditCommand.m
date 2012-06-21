@@ -37,7 +37,7 @@
         [[Model sharedModel] save];
     }
     
-    [self finish];
+    [self markAsFinished];
 }
 
 @end

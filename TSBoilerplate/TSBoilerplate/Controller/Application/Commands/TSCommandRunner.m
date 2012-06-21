@@ -23,12 +23,11 @@
 
 + (TSCommandRunner *)sharedCommandRunner
 {
-    static TSCommandRunner *commandRunner;
-    @synchronized(self) {
-        if (commandRunner == nil) {
-            commandRunner = [TSCommandRunner new];
-        }
-    }
+    __strong static TSCommandRunner *commandRunner;
+    static dispatch_once_t oneRunnerToken;
+    dispatch_once(&oneRunnerToken, ^{
+        commandRunner = [TSCommandRunner new];
+    });
     return commandRunner;
 }
 
@@ -42,6 +41,8 @@
     return sharedOperationQueue;
 }
 
+/*
+ -- SC: There should not be a difference in running the command
 - (void)executeAsynchronousCommand:(AsynchronousCommand *)asynchronousCommand
 {
     assert([asynchronousCommand isKindOfClass:[AsynchronousCommand class]]);
@@ -59,7 +60,41 @@
 
 - (void)executeSynchronousCommand:(Command *)command
 {
-    [command execute];
+    [command start];
+}
+*/
+
+- (void)executeCommand:(Command *)command
+{
+    if( [command isKindOfClass:[AsynchronousCommand class]] )
+    {
+        // Always run an async command on the background queue
+        [self executeCommand:command
+                     onQueue:[[self class] sharedOperationQueue]];
+    }
+    else
+    {
+        // Decide which queue the command should be running on
+        // Note: Technically if it is to run on the mainQueue, we could have just called [NSOperation start];
+        [self executeCommand:command 
+                     onQueue:(command.runInBackground ? [[self class] sharedOperationQueue] : [NSOperationQueue mainQueue])];
+    }
+}
+
+- (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue
+{
+    assert(nil != queue);
+    if( nil == queue )
+    {
+        [NSException raise:NSInvalidArgumentException format:@"queue"];
+        return;
+    }
+    if( !command.runInBackground && queue != [NSOperationQueue mainQueue] )
+    {
+        // Warn that a background command is running on the main queue
+        DLog(@"a background command is running on the main thread");
+    }
+    [queue addOperation:command];
 }
 
 @end
