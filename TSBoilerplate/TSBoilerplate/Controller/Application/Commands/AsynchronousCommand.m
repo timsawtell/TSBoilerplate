@@ -24,8 +24,6 @@
 
 @implementation AsynchronousCommand
 
-@synthesize commandCompletionBlock;
-
 - (id)init
 {
     self = [super init];
@@ -40,14 +38,6 @@
 {
     [self setFinished: NO];
 
-    //set the NSOperation's completionBlock which occurs at the end of main
-    self.completionBlock = ^{
-        if (self.commandCompletionBlock != NULL) {
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                self.commandCompletionBlock(self.error);
-            });
-        }
-    };
     //subclass should override execute to perform the logic of the command
     _executing = YES;
     [self prepare];
@@ -73,7 +63,7 @@
 
 - (void)prepare
 {
-    NSAssert(FALSE, @"don't call super on prepare");
+    NSAssert(NO, @"don't call super on prepare");
     [self markAsFinished];
 }
 

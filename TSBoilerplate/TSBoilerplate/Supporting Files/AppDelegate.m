@@ -19,7 +19,7 @@
 #import "GroupCommand.h"
 #import "GroupEditCommand.h"
 #import "MemberCommand.h"
-#import "MemberDisplayCommand.h" // a very trivial asynchronous command
+#import "MemberDisplayCommand.h" // a very trivial background command
 #import "TwitterCommand.h"
 #import "Tweet.h"
 #import "TwitterEntity.h"
@@ -57,11 +57,11 @@
         }
     }
     
-    // Run a trivial asynchronous command to display the group's members
+    // Run a trivial background command to display the group's members
     MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
     memberDisplayCommand.group = [Model sharedModel].group;
     memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
-        DLog(@"Your first completion block! I just displayed the members in the group.");
+        DLog(@"Your first completion block! I just displayed the members in the group. [%@]", [NSThread isMainThread] ? @"main" : [[NSThread currentThread] name]);
         if (error != nil) {
             DLog(@":( Erorr says: %@", [error localizedDescription]);
         }
