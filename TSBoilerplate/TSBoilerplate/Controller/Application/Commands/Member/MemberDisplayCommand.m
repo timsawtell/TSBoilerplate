@@ -30,7 +30,7 @@
             DLog(@"%i member is called: %@ in group: %@", member.memberIdValue, member.name, self.group.groupName);
         }
     }
-    [self finish];
+    [self markAsFinished];
 }
 
 @end

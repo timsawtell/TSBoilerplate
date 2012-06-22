@@ -27,8 +27,13 @@
                                  includedEntities:self.includeEntities 
                                   includeRetweets:self.includeRetweets 
                                        tweetCount:self.tweetCount 
-                                     onCompletion:self.twitterCommandCompletionBlock
-                                      fromCommand:self];
+                                     onCompletion:^(NSArray *tweets, NSError *error) {
+                                         if( !self.isCancelled )
+                                         {
+                                             [self twitterCommandCompletionBlock]( tweets, error );
+                                             [self markAsFinished];
+                                         }
+                                     }];
 }
 
 @end
