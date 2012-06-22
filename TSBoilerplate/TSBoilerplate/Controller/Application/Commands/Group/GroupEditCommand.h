@@ -13,10 +13,10 @@
  IN THE SOFTWARE.
  */
 
-#import "AsynchronousCommand.h"
+#import "Command.h"
 #import "Group.h"
 
-@interface GroupEditCommand : AsynchronousCommand
+@interface GroupEditCommand : Command
 
 @property (nonatomic, strong) Group *group;
 

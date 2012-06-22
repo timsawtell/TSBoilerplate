@@ -15,11 +15,8 @@
 
 #import "Command.h"
 
-typedef void(^commandCompletionBlock)(NSError *error);
-
 @interface AsynchronousCommand : Command
 
-@property (nonatomic, copy) commandCompletionBlock commandCompletionBlock;
 // these getters are used to tell NSOperationQueue that the task has actually finished
 @property (assign, getter = isFinished) BOOL finished;
 @property (assign, getter = isExecuting) BOOL executing;
