@@ -68,9 +68,10 @@
 {
     if( [command isKindOfClass:[AsynchronousCommand class]] )
     {
-        // Always run an async command on the background queue
+        // Always start an async command on the main queue
+        // http://www.dribin.org/dave/blog/archives/2009/09/13/snowy_concurrent_operations/
         [self executeCommand:command
-                     onQueue:[[self class] sharedOperationQueue]];
+                     onQueue:[NSOperationQueue mainQueue]];
     }
     else
     {
