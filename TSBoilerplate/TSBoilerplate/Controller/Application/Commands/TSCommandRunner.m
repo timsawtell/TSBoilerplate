@@ -41,6 +41,8 @@
     return sharedOperationQueue;
 }
 
+/*
+ -- SC: There should not be a difference in running the command
 - (void)executeAsynchronousCommand:(AsynchronousCommand *)asynchronousCommand
 {
     assert([asynchronousCommand isKindOfClass:[AsynchronousCommand class]]);
@@ -58,7 +60,42 @@
 
 - (void)executeSynchronousCommand:(Command *)command
 {
-    [command execute];
+    [command start];
+}
+*/
+
+- (void)executeCommand:(Command *)command
+{
+    if( [command isKindOfClass:[AsynchronousCommand class]] )
+    {
+        // Always start an async command on the main queue
+        // http://www.dribin.org/dave/blog/archives/2009/09/13/snowy_concurrent_operations/
+        [self executeCommand:command
+                     onQueue:[NSOperationQueue mainQueue]];
+    }
+    else
+    {
+        // Decide which queue the command should be running on
+        // Note: Technically if it is to run on the mainQueue, we could have just called [NSOperation start];
+        [self executeCommand:command 
+                     onQueue:(command.runInBackground ? [[self class] sharedOperationQueue] : [NSOperationQueue mainQueue])];
+    }
+}
+
+- (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue
+{
+    assert(nil != queue);
+    if( nil == queue )
+    {
+        [NSException raise:NSInvalidArgumentException format:@"queue"];
+        return;
+    }
+    if( !command.runInBackground && queue != [NSOperationQueue mainQueue] )
+    {
+        // Warn that a background command is running on the main queue
+        DLog(@"a background command is running on the main thread");
+    }
+    [queue addOperation:command];
 }
 
 @end

@@ -16,13 +16,14 @@
 #import "MKNetworkEngine.h"
 #import "TwitterCommand.h"
 
+typedef void(^twitterEngineCompletionBlock)(NSArray *tweets, NSError *error);
+
 @interface TwitterEngine : MKNetworkEngine
 
 - (void)getPublicTimelineForScreenName:(NSString *)screenName
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(twitterCommandCompletionBlock)completion
-                           fromCommand:(AsynchronousCommand *)command;
+                          onCompletion:(twitterEngineCompletionBlock)complete;
 
 @end

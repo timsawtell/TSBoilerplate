@@ -17,7 +17,7 @@
 
 @implementation Command
 
-@synthesize subCommands, error, saveModel;
+@synthesize runInBackground, subCommands, error, saveModel;
 
 - (void)execute
 {
