@@ -19,7 +19,16 @@
 
 @synthesize group, groupName;
 
-- (void)execute
+- (id)init
+{
+    self = [super init];
+    if( self ) {
+        self.runInBackground = NO;
+    }
+    return self;
+}
+
+- (NSError *)execute
 {
     self.group = [Group new]; 
     self.group.groupName = self.groupName;
@@ -31,6 +40,7 @@
         [Model sharedModel].group = self.group;
         [[Model sharedModel] save];
     }
+    return nil;
 }
 
 @end

@@ -15,12 +15,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^commandCompletionBlock)(NSError *error);
+
 @interface Command : NSOperation
 
+@property (nonatomic, copy) commandCompletionBlock commandCompletionBlock;
+@property (nonatomic, assign) BOOL completeOnMainThread;
+@property (nonatomic, assign) BOOL runInBackground;
 @property (nonatomic, strong) NSMutableArray *subCommands;
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, assign) BOOL saveModel; //flag to save the model, intended to be used at the end of the execute method. Sublasses set this.
 
-- (void)execute;
+- (NSError *)execute;
 
 @end

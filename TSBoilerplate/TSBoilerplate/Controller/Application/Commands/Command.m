@@ -17,12 +17,43 @@
 
 @implementation Command
 
-@synthesize subCommands, error, saveModel;
+@synthesize runInBackground, subCommands, error, saveModel, commandCompletionBlock = _commandCompletionBlock, completeOnMainThread;
 
-- (void)execute
+- (id)init
 {
-    self.error = nil;
-    //do processing here. Add any commands that you generate to your subCommands property
+    self = [super init];
+    if( self ) {
+        runInBackground = YES;
+        completeOnMainThread = YES;
+    }
+    return self;
+}
+
+- (void)main
+{
+    self.error = [self execute];
+}
+
+- (NSError *)execute
+{
+    return nil;
+}
+
+- (void)setCommandCompletionBlock:(commandCompletionBlock)newCompletionBlock
+{
+    if( newCompletionBlock == _commandCompletionBlock ) return;
+    
+    _commandCompletionBlock = newCompletionBlock;
+    
+    //set the NSOperation's completionBlock which occurs at the end of main
+    self.completionBlock = ^{
+        if (self.commandCompletionBlock != NULL) {
+            dispatch_queue_t queue = self.completeOnMainThread ? dispatch_get_main_queue() : dispatch_get_current_queue();
+            dispatch_sync(queue, ^{
+                self.commandCompletionBlock(self.error);
+            });
+        }
+    };
 }
 
 @end

@@ -19,8 +19,18 @@
 
 @synthesize name, member, group, memberId;
 
-- (void)execute
+- (id)init
 {
+    self = [super init];
+    if( self ) {
+        self.runInBackground = NO;
+    }
+    return self;
+}
+
+- (NSError *)execute
+{
+    DLog( @"MemberCommand: is%@ running on main thread", [NSThread isMainThread] ? @"" : @"n't" );
     self.member = [Member new];
     self.member.name = self.name;
     self.member.memberId = [NSNumber numberWithInteger:self.memberId];
@@ -34,6 +44,7 @@
     if (self.saveModel) {
         [[Model sharedModel] save];
     }
+    return nil;
 }
 
 @end

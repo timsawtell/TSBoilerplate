@@ -37,7 +37,7 @@
         [[Model sharedModel] save];
     }
     
-    [self finish];
+    return nil;
 }
 
 @end
