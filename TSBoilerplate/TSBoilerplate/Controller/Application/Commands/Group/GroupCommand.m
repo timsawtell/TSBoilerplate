@@ -14,19 +14,11 @@
  */
 
 #import "GroupCommand.h"
+#import "Model.h"
 
 @implementation GroupCommand
 
 @synthesize group, groupName;
-
-- (id)init
-{
-    self = [super init];
-    if( self ) {
-        self.runInBackground = NO;
-    }
-    return self;
-}
 
 - (NSError *)execute
 {

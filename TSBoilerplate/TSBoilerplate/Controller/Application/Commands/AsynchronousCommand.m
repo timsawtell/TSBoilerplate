@@ -24,14 +24,9 @@
 
 @implementation AsynchronousCommand
 
-- (id)init
+- (BOOL)runInBackground
 {
-    self = [super init];
-    if( self )
-    {
-        self.runInBackground = YES;
-    }
-    return self;
+    return YES;
 }
 
 - (void) start
@@ -43,8 +38,7 @@
     [self prepare];
 
     // If we are still executing, make sure that any observers have been notified
-    if( self.executing )
-    {
+    if( self.executing ) {
         [self willChangeValueForKey: @"isExecuting"];
         [self didChangeValueForKey: @"isExecuting"];
     }
@@ -75,8 +69,7 @@
 - (BOOL)isFinished
 {
     BOOL returnValue;
-    @synchronized(self)
-    {
+    @synchronized(self) {
         returnValue = _finished;
     }
     return returnValue;
@@ -86,8 +79,7 @@
 {
     [self setExecuting: !isFinished];
     [self willChangeValueForKey: @"isFinished"];
-    @synchronized(self)
-    {
+    @synchronized(self) {
         _finished = isFinished;
     }
     [self didChangeValueForKey: @"isFinished"];
@@ -96,8 +88,7 @@
 - (BOOL)isExecuting
 {
     BOOL returnValue;
-    @synchronized(self)
-    {
+    @synchronized(self) {
         returnValue = _executing;
     }
     return returnValue;
@@ -106,8 +97,7 @@
 - (void) setExecuting:(BOOL) isExecuting
 {
     [self willChangeValueForKey: @"isExecuting"];
-    @synchronized(self)
-    {
+    @synchronized(self) {
         _executing = isExecuting;
     }
     [self didChangeValueForKey: @"isExecuting"];

@@ -23,10 +23,14 @@
 {
     self = [super init];
     if( self ) {
-        runInBackground = YES;
         completeOnMainThread = YES;
     }
     return self;
+}
+
+- (BOOL)runInBackground
+{
+    return NO;  // By default commands will not run in the background (unless told to run on a different NSOperationQueue)
 }
 
 - (void)main

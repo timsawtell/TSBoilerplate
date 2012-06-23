@@ -20,6 +20,8 @@
 @interface TSCommandRunner : NSObject
 
 + (TSCommandRunner *)sharedCommandRunner;
++ (void)executeCommand:(Command *)command;
++ (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue;
 /*
 - (void)executeSynchronousCommand:(Command *)command;
 - (void)executeAsynchronousCommand:(AsynchronousCommand *)asynchornousCommand;
