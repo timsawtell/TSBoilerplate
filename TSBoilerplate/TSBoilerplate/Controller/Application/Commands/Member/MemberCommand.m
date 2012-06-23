@@ -19,15 +19,6 @@
 
 @synthesize name, member, group, memberId;
 
-- (id)init
-{
-    self = [super init];
-    if( self ) {
-        self.runInBackground = NO;
-    }
-    return self;
-}
-
 - (NSError *)execute
 {
     DLog( @"MemberCommand: is%@ running on main thread", [NSThread isMainThread] ? @"" : @"n't" );

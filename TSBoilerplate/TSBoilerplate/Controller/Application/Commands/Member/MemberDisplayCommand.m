@@ -20,6 +20,11 @@
 
 @synthesize group;
 
+- (BOOL)runInBackground
+{
+    return YES;
+}
+
 - (NSError *)execute
 {
     if (self.group != nil) {

@@ -24,10 +24,11 @@
 {
     twitterCommandCompletionBlock completionBlock = ^(NSArray *tweets, NSError *error) {
         if( !self.isCancelled ) {
-            [self twitterCommandCompletionBlock]( tweets, error );
             [self markAsFinished];
+            [self twitterCommandCompletionBlock]( tweets, error );
         }
     };
+    self.completeOnMainThread = YES;
     
     TwitterEngine *twitterEngine = [TwitterEngine new];
     [twitterEngine getPublicTimelineForScreenName:self.screenName 
