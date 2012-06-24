@@ -20,6 +20,11 @@
 
 @synthesize group, groupName;
 
+- (BOOL)runInBackground
+{
+    return YES;
+}
+
 - (NSError *)execute
 {
     self.group = [Group new]; 

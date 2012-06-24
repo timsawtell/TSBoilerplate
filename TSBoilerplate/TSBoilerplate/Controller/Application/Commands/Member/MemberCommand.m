@@ -14,10 +14,17 @@
  */
 
 #import "MemberCommand.h"
+#import "Model.h"
+#import "MKNetworkKit.h"    // DLog definition
 
 @implementation MemberCommand
 
 @synthesize name, member, group, memberId;
+
+- (BOOL)runInBackground
+{
+    return YES;
+}
 
 - (NSError *)execute
 {

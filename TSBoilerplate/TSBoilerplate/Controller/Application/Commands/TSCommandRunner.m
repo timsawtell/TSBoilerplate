@@ -37,7 +37,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedOperationQueue = [NSOperationQueue new];
-        sharedOperationQueue.maxConcurrentOperationCount = 1;   // This will limit to only one operation executing at a time
     });
     return sharedOperationQueue;
 }

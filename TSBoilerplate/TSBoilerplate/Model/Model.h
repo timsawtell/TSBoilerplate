@@ -22,4 +22,5 @@
 @property (nonatomic, strong) Group *group;
 + (Model*) sharedModel;
 - (void)save;
+- (void)reset;
 @end

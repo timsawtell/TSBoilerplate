@@ -38,31 +38,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.       
-    if ([Model sharedModel].group == nil) {
-        // create a new group (kind of like a factory). The group is added to the model.
-        GroupCommand *groupCommand = [GroupCommand new];
-        groupCommand.groupName = kGroupName;
-        groupCommand.saveModel = YES; // at the end of the execute method, save the model.
-        [TSCommandRunner executeCommand:groupCommand];
-    }
-    
-    if ([[Model sharedModel].group.members count] <= 0) {
-        // if no members in this group, add 3 of them
-        for (NSUInteger count = 0; count < 3; count++) {
-            // another factory to create member instances and add them to a group
-            // we are using the Model's group, so we save the model in the command
-            MemberCommand *memberCommand = [MemberCommand new];
-            memberCommand.name = [NSString stringWithFormat:@"%@ %d", kMemberStartOfName, count];
-            memberCommand.memberId = count;
-            memberCommand.group = [Model sharedModel].group;
-            memberCommand.saveModel = YES; // trade off to your liking. Save with each command execution or call [[Model sharedModel] save] yourself later.
-            [TSCommandRunner executeCommand:memberCommand];
-        }
-    }
-    
-    // Run a trivial background command to display the group's members
+
+    [[Model sharedModel] reset];    // Jus tfor testing
+
+    // Setup the display of our member, note: the group is not known at this stage
     MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
-    memberDisplayCommand.group = [Model sharedModel].group;
     memberDisplayCommand.completeOnMainThread = YES;    // Force the completion block on the main thread so that it can do UI updates
     memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
         DLog(@"Your first completion block! I just displayed the members in the group. [%@]", [NSThread isMainThread] ? @"main" : [[NSThread currentThread] name]);
@@ -70,9 +50,47 @@
             DLog(@":( Erorr says: %@", [error localizedDescription]);
         }
     };
-    [TSCommandRunner executeCommand:memberDisplayCommand];
     
-    // Now run a command that uses MKNetorkKit to get a list of tweets for the chosen screenName
+    // Setup the completion block for when the groupCommand finishes
+    commandCompletionBlock groupCommandComplete = ^(NSError *error) {
+        if( error != nil ) return;
+        if( [[Model sharedModel].group.members count] > 0 ) return;
+        
+        // Add 3 members to this group
+        for( NSUInteger count = 0; count < 3; count++ ) {
+            // another factory to create member instances and add them to a group
+            // we are using the Model's group, so we save the model in the command
+            MemberCommand *memberCommand = [MemberCommand new];
+            memberCommand.group = [Model sharedModel].group;
+            memberCommand.name = [NSString stringWithFormat:@"%@ %d", kMemberStartOfName, count];
+            memberCommand.memberId = count;
+            memberCommand.saveModel = YES;
+            // the member display command needs this command to be complete before it can execute
+            [memberDisplayCommand addDependency:memberCommand];
+            // execute the command
+            [TSCommandRunner executeCommand:memberCommand];
+        }
+
+        // The member display needs the group to display
+        memberDisplayCommand.group = [Model sharedModel].group;
+        [TSCommandRunner executeCommand:memberDisplayCommand];
+    };
+
+    if ([Model sharedModel].group == nil) {
+        // create a new group (kind of like a factory). The group is added to the model.
+        GroupCommand *groupCommand = [GroupCommand new];
+        groupCommand.groupName = kGroupName;
+        groupCommand.saveModel = YES; // at the end of the execute method, save the model.
+        groupCommand.commandCompletionBlock = groupCommandComplete;
+        [TSCommandRunner executeCommand:groupCommand];
+    }
+    else {
+        // There is already a group, so just display it
+        memberDisplayCommand.group = [Model sharedModel].group;
+        [TSCommandRunner executeCommand:memberDisplayCommand];
+    }
+    
+    // Now run an async command that uses MKNetorkKit to get a list of tweets for the chosen screenName
     TwitterCommand *twitterCommand = [TwitterCommand new];
     twitterCommand.screenName = kTwitterScreenName;
     twitterCommand.includeRetweets = YES;
