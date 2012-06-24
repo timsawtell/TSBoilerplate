@@ -14,12 +14,13 @@
  */
 
 #import "GroupEditCommand.h"
+#import "Model.h"
 
 @implementation GroupEditCommand
 
 @synthesize group, groupName, members;
 
-- (void)execute
+- (NSError *)execute
 {
     if (self.group == nil) {
         self.group = [Group new];
@@ -37,7 +38,7 @@
         [[Model sharedModel] save];
     }
     
-    [self finish];
+    return nil;
 }
 
 @end

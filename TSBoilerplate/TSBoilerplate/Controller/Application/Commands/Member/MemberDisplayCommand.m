@@ -20,17 +20,21 @@
 
 @synthesize group;
 
-- (void)execute
+- (BOOL)runInBackground
+{
+    return NO;
+}
+
+- (NSError *)execute
 {
     if (self.group != nil) {
-        DLog(@"Your first Asynchronous command!");
         //always take a copy because the assignment is weak and other threads might change the nsset data
         NSSet *members = [self.group.members copy];
         for (Member *member in members) {
             DLog(@"%i member is called: %@ in group: %@", member.memberIdValue, member.name, self.group.groupName);
         }
     }
-    [self finish];
+    return nil;
 }
 
 @end
