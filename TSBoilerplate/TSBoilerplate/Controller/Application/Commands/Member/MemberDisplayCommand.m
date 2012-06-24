@@ -22,7 +22,7 @@
 
 - (BOOL)runInBackground
 {
-    return YES;
+    return NO;
 }
 
 - (NSError *)execute

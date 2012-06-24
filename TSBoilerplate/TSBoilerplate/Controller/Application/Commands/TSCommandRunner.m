@@ -60,11 +60,12 @@
         [self executeCommand:command
                      onQueue:[NSOperationQueue mainQueue]];
     }
+    else if( command.runInBackground == YES ) {
+        [self executeCommand:command
+                     onQueue:[[self class] sharedOperationQueue]];
+    }
     else {
-        // Decide which queue the command should be running on
-        // Note: Technically if it is to run on the mainQueue, we could have just called [NSOperation start];
-        [self executeCommand:command 
-                     onQueue:(command.runInBackground ? [[self class] sharedOperationQueue] : [NSOperationQueue mainQueue])];
+        [command start];
     }
 }
 
