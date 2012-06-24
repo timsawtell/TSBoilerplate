@@ -14,6 +14,7 @@
  */
 
 #import "Command.h"
+#import "Group.h"
 
 @interface GroupCommand : Command
 

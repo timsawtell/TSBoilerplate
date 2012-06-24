@@ -33,8 +33,7 @@
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(twitterCommandCompletionBlock)completion
-                           fromCommand:(AsynchronousCommand *)command
+                          onCompletion:(twitterEngineCompletionBlock)complete
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             screenName, kTwitterScreenName,
@@ -68,11 +67,9 @@
                  }
              }
          }
-         completion(tmpArray, nil);
-         [command finish];
+         complete(tmpArray, nil);
      }onError:^(NSError* error) {
-         completion(nil, error);
-         [command finish];
+         complete(nil, error);
      }];
     
     [self enqueueOperation:op];

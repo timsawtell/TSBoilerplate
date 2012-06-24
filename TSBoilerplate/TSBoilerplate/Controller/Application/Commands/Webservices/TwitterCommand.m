@@ -20,15 +20,22 @@
 
 @synthesize screenName, includeEntities, includeRetweets, tweetCount, twitterCommandCompletionBlock;
 
-- (void)execute
+- (void)prepare
 {
+    twitterCommandCompletionBlock completionBlock = ^(NSArray *tweets, NSError *error) {
+        if( !self.isCancelled ) {
+            [self markAsFinished];
+            [self twitterCommandCompletionBlock]( tweets, error );
+        }
+    };
+    self.completeOnMainThread = YES;
+    
     TwitterEngine *twitterEngine = [TwitterEngine new];
     [twitterEngine getPublicTimelineForScreenName:self.screenName 
                                  includedEntities:self.includeEntities 
                                   includeRetweets:self.includeRetweets 
                                        tweetCount:self.tweetCount 
-                                     onCompletion:self.twitterCommandCompletionBlock
-                                      fromCommand:self];
+                                     onCompletion:completionBlock];
 }
 
 @end

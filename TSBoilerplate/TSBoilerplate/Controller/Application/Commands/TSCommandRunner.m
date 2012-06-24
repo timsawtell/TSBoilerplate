@@ -37,28 +37,50 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedOperationQueue = [NSOperationQueue new];
+        sharedOperationQueue.maxConcurrentOperationCount = 1;   // This will limit to only one operation executing at a time
     });
     return sharedOperationQueue;
 }
 
-- (void)executeAsynchronousCommand:(AsynchronousCommand *)asynchronousCommand
++ (void)executeCommand:(Command *)command
 {
-    assert([asynchronousCommand isKindOfClass:[AsynchronousCommand class]]);
-    
-    if ([asynchronousCommand isMultiThreaded]) {
-        if (![[[TSCommandRunner sharedOperationQueue] operations] containsObject:asynchronousCommand]) {
-            [[TSCommandRunner sharedOperationQueue] addOperation:asynchronousCommand]; // run on any other thread
-        }
-    } else {
-        if (![[[NSOperationQueue mainQueue] operations] containsObject:asynchronousCommand]) {
-            [[NSOperationQueue mainQueue] addOperation: asynchronousCommand]; // run on thread 0
-        }
+    [[[self class] sharedCommandRunner] executeCommand:command];
+}
+
++ (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue
+{
+    [[[self class] sharedCommandRunner] executeCommand:command onQueue:queue];
+}
+
+- (void)executeCommand:(Command *)command
+{
+    if( [command isKindOfClass:[AsynchronousCommand class]] ) {
+        // Always start an async command on the main queue
+        // http://www.dribin.org/dave/blog/archives/2009/09/13/snowy_concurrent_operations/
+        [self executeCommand:command
+                     onQueue:[NSOperationQueue mainQueue]];
+    }
+    else if( command.runInBackground == YES ) {
+        [self executeCommand:command
+                     onQueue:[[self class] sharedOperationQueue]];
+    }
+    else {
+        [command start];
     }
 }
 
-- (void)executeSynchronousCommand:(Command *)command
+- (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue
 {
-    [command execute];
+    assert(nil != queue);
+    if( nil == queue ) {
+        [NSException raise:NSInvalidArgumentException format:@"queue"];
+        return;
+    }
+    if( !command.runInBackground && queue != [NSOperationQueue mainQueue] ) {
+        // Warn that a background command is running on the main queue
+        DLog(@"a background command is running on the main thread");
+    }
+    [queue addOperation:command];
 }
 
 @end
