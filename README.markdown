@@ -5,7 +5,7 @@ First steps after clone (and cd to TSBoilerplate)
 
     git submodule init
     git submodule upate
-    sudo cp TSBoilerplate/TSBoilerplate/Model/CoreDataModel/MogenTemplate/mogenerator /usr/bin
+    sudo cp TSBoilerplate/Model/CoreDataModel/MogenTemplate/mogenerator /usr/bin
 
 Includes 
 * MKNetworkKit    
