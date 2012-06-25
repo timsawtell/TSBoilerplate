@@ -1,6 +1,5 @@
 A project to be used as the starting point for a new iOS project
 
->
 First steps
     git submodule init
     git submodule upate
