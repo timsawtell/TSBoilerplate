@@ -1,14 +1,14 @@
 A project to be used as the starting point for a new iOS project
 
-* First steps
+First steps after clone (and cd to TSBoilerplate)
+
 
     git submodule init
     git submodule upate
     sudo cp TSBoilerplate/TSBoilerplate/Model/CoreDataModel/MogenTemplate/mogenerator /usr/bin
 
->
 Includes 
-* MKNetworkKit	
+* MKNetworkKit    
 * Mogenerator (Arc and NSCoding support for model files)
 * Thanks to [Tyrone](https://github.com/tyrone-sudeium) for his guidance on Commands
 
