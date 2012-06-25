@@ -17,12 +17,60 @@
 
 @implementation Command
 
-@synthesize subCommands, error, saveModel;
+@synthesize runInBackground, subCommands, error, saveModel, commandCompletionBlock = _commandCompletionBlock, completeOnMainThread;
 
-- (void)execute
+- (id)init
 {
-    self.error = nil;
-    //do processing here. Add any commands that you generate to your subCommands property
+    self = [super init];
+    if( self ) {
+        completeOnMainThread = YES;
+    }
+    return self;
+}
+
+- (BOOL)runInBackground
+{
+    return NO;  // By default commands will not run in the background (unless told to run on a different NSOperationQueue)
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    NSString *selectorName = [NSString stringWithFormat:@"set%@:", [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] uppercaseString]]];
+    SEL setValueSelector = NSSelectorFromString(selectorName);
+    if( [self respondsToSelector:setValueSelector] ) {
+        // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:setValueSelector withObject:value];
+#pragma clang diagnostic pop
+    }
+}
+
+- (void)main
+{
+    self.error = [self execute];
+}
+
+- (NSError *)execute
+{
+    return nil;
+}
+
+- (void)setCommandCompletionBlock:(commandCompletionBlock)newCompletionBlock
+{
+    if( newCompletionBlock == _commandCompletionBlock ) return;
+    
+    _commandCompletionBlock = newCompletionBlock;
+    
+    //set the NSOperation's completionBlock which occurs at the end of main
+    self.completionBlock = ^{
+        if (self.commandCompletionBlock != NULL) {
+            dispatch_queue_t queue = self.completeOnMainThread ? dispatch_get_main_queue() : dispatch_get_current_queue();
+            dispatch_sync(queue, ^{
+                self.commandCompletionBlock(self.error);
+            });
+        }
+    };
 }
 
 @end

@@ -16,10 +16,16 @@
 #import "TSCommandRunner.h"
 
 @interface TSCommandRunner()
+
+@property (nonatomic, strong) NSMutableDictionary *registeredCommands;
+
 + (TSCommandRunner *)sharedCommandRunner;
+
 @end
 
 @implementation TSCommandRunner
+
+@synthesize registeredCommands;
 
 + (TSCommandRunner *)sharedCommandRunner
 {
@@ -41,24 +47,112 @@
     return sharedOperationQueue;
 }
 
-- (void)executeAsynchronousCommand:(AsynchronousCommand *)asynchronousCommand
++ (void)registerCommand:(Class)commandClass forKey:(NSString *)key
 {
-    assert([asynchronousCommand isKindOfClass:[AsynchronousCommand class]]);
+    [[[self class] sharedCommandRunner] registerCommand:commandClass forKey:key];
+}
+
++ (Command *)getCommand:(NSString *)key
+{
+    return [[[self class] sharedCommandRunner] getCommand:key];
+}
+
++ (Command *)getCommand:(NSString *)key withObjectsAndKeys:(id)firstObject,...
+{
+    Command *command = [[[self class] sharedCommandRunner] getCommand:key];
+    if( firstObject != nil ) {
+        id eachObject;
+        va_list argumentList;
+
+        id obj = firstObject;
+        va_start(argumentList, firstObject);
+        while( (eachObject = va_arg(argumentList, id)) ) {
+            if( ![eachObject isKindOfClass:[NSString class]] ) {
+                [NSException raise:NSInvalidArgumentException format:@"objectAndKeys must use NSString for the keys"];
+                break;
+            }
+            
+            [command setValue:obj forKey:(NSString *)eachObject];
+            
+            if( !(obj = va_arg(argumentList, id)) ) break;
+        }
+        va_end( argumentList );
+    }
+    return command;
+}
+
++ (void)executeCommand:(Command *)command
+{
+    [[[self class] sharedCommandRunner] executeCommand:command];
+}
+
++ (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue
+{
+    [[[self class] sharedCommandRunner] executeCommand:command onQueue:queue];
+}
+
+- (id)init
+{
+    self = [super init];
+    if( self ) {
+        registeredCommands = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
+- (void)registerCommand:(Class)commandClass forKey:(NSString *)key
+{
+    if( [[registeredCommands allKeys] containsObject:key] ) {
+        [NSException raise:NSInvalidArgumentException format:@"key '%@' already in use", key];
+        return;
+    }
     
-    if ([asynchronousCommand isMultiThreaded]) {
-        if (![[[TSCommandRunner sharedOperationQueue] operations] containsObject:asynchronousCommand]) {
-            [[TSCommandRunner sharedOperationQueue] addOperation:asynchronousCommand]; // run on any other thread
-        }
-    } else {
-        if (![[[NSOperationQueue mainQueue] operations] containsObject:asynchronousCommand]) {
-            [[NSOperationQueue mainQueue] addOperation: asynchronousCommand]; // run on thread 0
-        }
+    if( ![commandClass isSubclassOfClass:[Command class]] ) {
+        [NSException raise:NSInvalidArgumentException format:@"can only register Command classes"];
+        return;
+    }
+    
+    [registeredCommands setValue:commandClass forKey:key];
+}
+
+- (Command *)getCommand:(NSString *)key
+{
+    if( ![[registeredCommands allKeys] containsObject:key] ) {
+        [NSException raise:NSInvalidArgumentException format:@"key '%@' not registered", key];
+        return nil;
+    }
+    Class classType = [registeredCommands valueForKey:key];
+    return [[classType alloc] init];
+}
+
+- (void)executeCommand:(Command *)command
+{
+    if( [command isKindOfClass:[AsynchronousCommand class]] ) {
+        // Always start an async command on the main queue
+        // http://www.dribin.org/dave/blog/archives/2009/09/13/snowy_concurrent_operations/
+        [self executeCommand:command
+                     onQueue:[NSOperationQueue mainQueue]];
+    }
+    else {
+        // Decide which queue the command should be running on
+        // Note: Technically if it is to run on the mainQueue, we could have just called [NSOperation start];
+        [self executeCommand:command 
+                     onQueue:(command.runInBackground ? [[self class] sharedOperationQueue] : [NSOperationQueue mainQueue])];
     }
 }
 
-- (void)executeSynchronousCommand:(Command *)command
+- (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue
 {
-    [command execute];
+    assert(nil != queue);
+    if( nil == queue ) {
+        [NSException raise:NSInvalidArgumentException format:@"queue"];
+        return;
+    }
+    if( !command.runInBackground && queue != [NSOperationQueue mainQueue] ) {
+        // Warn that a background command is running on the main queue
+        DLog(@"a background command is running on the main thread");
+    }
+    [queue addOperation:command];
 }
 
 @end

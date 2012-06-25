@@ -14,23 +14,24 @@
  */
 
 #import "MemberDisplayCommand.h"
+#import "Group.h"
 #import "Member.h"
+#import "Model.h"
 
 @implementation MemberDisplayCommand
 
-@synthesize group;
+@synthesize group, groupName;
 
-- (void)execute
+- (NSError *)execute
 {
-    if (self.group != nil) {
-        DLog(@"Your first Asynchronous command!");
-        //always take a copy because the assignment is weak and other threads might change the nsset data
-        NSSet *members = [self.group.members copy];
-        for (Member *member in members) {
-            DLog(@"%i member is called: %@ in group: %@", member.memberIdValue, member.name, self.group.groupName);
+    Group *theGroup = [Model sharedModel].group;   // really it should fetch by the name
+    DLog(@"displaying %i members in the group: %@", [[theGroup members] count], [theGroup groupName] );
+    if (theGroup != nil) {
+        for (Member *member in theGroup.members) {
+            DLog(@"%i member is called: %@ in group: %@", member.memberIdValue, member.name, theGroup.groupName);
         }
     }
-    [self finish];
+    return nil;
 }
 
 @end

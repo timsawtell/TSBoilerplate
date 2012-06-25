@@ -19,7 +19,8 @@
 
 @interface Model : NSObject
 
-@property (nonatomic, strong) Group *group;
+@property (strong) Group *group;
++ (void) resetModel;
 + (Model*) sharedModel;
 - (void)save;
 @end

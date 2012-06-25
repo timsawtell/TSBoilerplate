@@ -15,6 +15,7 @@
 
 #import "Model.h"
 #import "NSFileManager+DirectoryLocations.h"
+#import "Constants.h"
 
 @implementation Model
 
@@ -46,6 +47,13 @@
         }
     }
     return sharedModel;
+}
+
++ (void)resetModel
+{
+    NSString *path = [[self class] savedDataPath];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    
 }
 
 - (void)save
