@@ -14,12 +14,18 @@
  */
 
 #import "GroupCommand.h"
+#import "Model.h"
 
 @implementation GroupCommand
 
 @synthesize group, groupName;
 
-- (void)execute
+- (BOOL)runInBackground
+{
+    return YES;
+}
+
+- (NSError *)execute
 {
     self.group = [Group new]; 
     self.group.groupName = self.groupName;
@@ -31,6 +37,7 @@
         [Model sharedModel].group = self.group;
         [[Model sharedModel] save];
     }
+    return nil;
 }
 
 @end

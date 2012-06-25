@@ -14,26 +14,41 @@
  */
 
 #import "MemberCommand.h"
+#import "Model.h"
+#import "MKNetworkKit.h"    // DLog definition
 
 @implementation MemberCommand
 
-@synthesize name, member, group, memberId;
+@synthesize name, member, group, memberId, groupName;
 
-- (void)execute
+- (BOOL)runInBackground
 {
+    return YES;
+}
+
+- (NSError *)execute
+{
+    DLog( @"MemberCommand: is%@ running on main thread: adding %@", [NSThread isMainThread] ? @"" : @"n't", self.name );
     self.member = [Member new];
     self.member.name = self.name;
     self.member.memberId = [NSNumber numberWithInteger:self.memberId];
     
-    if (self.group != nil) {
-        if (self.group.members == nil) {
-            self.group.members = [NSSet set];
+    // in reality we should load the group by it's name
+    // DEV NOTE: We need to synchronize the group, so only one thread has access to change it at a time
+    @synchronized( [Model sharedModel].group ) {
+        Group *theGroup = [Model sharedModel].group;
+        
+        if (theGroup != nil) {
+            if (theGroup.members == nil) {
+                theGroup.members = [NSSet set];
+            }
+            theGroup.members = [theGroup.members setByAddingObject:self.member];
         }
-        self.group.members = [self.group.members setByAddingObject:self.member];
     }
     if (self.saveModel) {
         [[Model sharedModel] save];
     }
+    return nil;
 }
 
 @end
