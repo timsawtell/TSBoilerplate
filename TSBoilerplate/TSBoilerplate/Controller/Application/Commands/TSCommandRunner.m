@@ -16,10 +16,16 @@
 #import "TSCommandRunner.h"
 
 @interface TSCommandRunner()
+
+@property (nonatomic, strong) NSMutableDictionary *registeredCommands;
+
 + (TSCommandRunner *)sharedCommandRunner;
+
 @end
 
 @implementation TSCommandRunner
+
+@synthesize registeredCommands;
 
 + (TSCommandRunner *)sharedCommandRunner
 {
@@ -41,6 +47,40 @@
     return sharedOperationQueue;
 }
 
++ (void)registerCommand:(Class)commandClass forKey:(NSString *)key
+{
+    [[[self class] sharedCommandRunner] registerCommand:commandClass forKey:key];
+}
+
++ (Command *)getCommand:(NSString *)key
+{
+    return [[[self class] sharedCommandRunner] getCommand:key];
+}
+
++ (Command *)getCommand:(NSString *)key withObjectsAndKeys:(id)firstObject,...
+{
+    Command *command = [[[self class] sharedCommandRunner] getCommand:key];
+    if( firstObject != nil ) {
+        id eachObject;
+        va_list argumentList;
+
+        id obj = firstObject;
+        va_start(argumentList, firstObject);
+        while( (eachObject = va_arg(argumentList, id)) ) {
+            if( ![eachObject isKindOfClass:[NSString class]] ) {
+                [NSException raise:NSInvalidArgumentException format:@"objectAndKeys must use NSString for the keys"];
+                break;
+            }
+            
+            [command setValue:obj forKey:(NSString *)eachObject];
+            
+            if( !(obj = va_arg(argumentList, id)) ) break;
+        }
+        va_end( argumentList );
+    }
+    return command;
+}
+
 + (void)executeCommand:(Command *)command
 {
     [[[self class] sharedCommandRunner] executeCommand:command];
@@ -49,6 +89,40 @@
 + (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue
 {
     [[[self class] sharedCommandRunner] executeCommand:command onQueue:queue];
+}
+
+- (id)init
+{
+    self = [super init];
+    if( self ) {
+        registeredCommands = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
+- (void)registerCommand:(Class)commandClass forKey:(NSString *)key
+{
+    if( [[registeredCommands allKeys] containsObject:key] ) {
+        [NSException raise:NSInvalidArgumentException format:@"key '%@' already in use", key];
+        return;
+    }
+    
+    if( ![commandClass isSubclassOfClass:[Command class]] ) {
+        [NSException raise:NSInvalidArgumentException format:@"can only register Command classes"];
+        return;
+    }
+    
+    [registeredCommands setValue:commandClass forKey:key];
+}
+
+- (Command *)getCommand:(NSString *)key
+{
+    if( ![[registeredCommands allKeys] containsObject:key] ) {
+        [NSException raise:NSInvalidArgumentException format:@"key '%@' not registered", key];
+        return nil;
+    }
+    Class classType = [registeredCommands valueForKey:key];
+    return [[classType alloc] init];
 }
 
 - (void)executeCommand:(Command *)command

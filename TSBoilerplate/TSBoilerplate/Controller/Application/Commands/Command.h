@@ -26,6 +26,7 @@ typedef void(^commandCompletionBlock)(NSError *error);
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, assign) BOOL saveModel; //flag to save the model, intended to be used at the end of the execute method. Sublasses set this.
 
+- (void)setValue:(id)value forKey:(NSString *)key;
 - (NSError *)execute;
 
 @end

@@ -19,5 +19,6 @@
 @interface MemberDisplayCommand : Command
 
 @property (nonatomic, weak) Group *group;
+@property (nonatomic, copy) NSString *groupName;
 
 @end

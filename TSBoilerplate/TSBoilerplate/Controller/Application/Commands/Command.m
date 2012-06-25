@@ -33,6 +33,19 @@
     return NO;  // By default commands will not run in the background (unless told to run on a different NSOperationQueue)
 }
 
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    NSString *selectorName = [NSString stringWithFormat:@"set%@:", [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] uppercaseString]]];
+    SEL setValueSelector = NSSelectorFromString(selectorName);
+    if( [self respondsToSelector:setValueSelector] ) {
+        // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:setValueSelector withObject:value];
+#pragma clang diagnostic pop
+    }
+}
+
 - (void)main
 {
     self.error = [self execute];

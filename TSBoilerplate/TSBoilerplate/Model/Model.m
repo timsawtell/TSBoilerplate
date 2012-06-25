@@ -49,10 +49,11 @@
     return sharedModel;
 }
 
-- (void)reset
++ (void)resetModel
 {
     NSString *path = [[self class] savedDataPath];
     [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    
 }
 
 - (void)save

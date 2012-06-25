@@ -20,8 +20,18 @@
 @interface TSCommandRunner : NSObject
 
 + (TSCommandRunner *)sharedCommandRunner;
+
++ (void)registerCommand:(Class)commandClass forKey:(NSString *)key;
+
++ (Command *)getCommand:(NSString *)key;
++ (Command *)getCommand:(NSString *)key withObjectsAndKeys:(id)firstObject,... NS_REQUIRES_NIL_TERMINATION;
+
 + (void)executeCommand:(Command *)command;
 + (void)executeCommand:(Command *)command onQueue:(NSOperationQueue *)queue;
+
+- (void)registerCommand:(Class)commandClass forKey:(NSString *)key;
+- (Command *)getCommand:(NSString *)key;
+
 /*
 - (void)executeSynchronousCommand:(Command *)command;
 - (void)executeAsynchronousCommand:(AsynchronousCommand *)asynchornousCommand;
