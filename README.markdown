@@ -1,4 +1,11 @@
 A project to be used as the starting point for a new iOS project
+
+>
+First steps
+    git submodule init
+    git submodule upate
+    sudo cp TSBoilerplate/TSBoilerplate/Model/CoreDataModel/MogenTemplate/mogenerator /usr/bin
+
 >
 Includes 
 * MKNetworkKit	
