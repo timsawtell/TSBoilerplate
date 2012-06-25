@@ -74,12 +74,14 @@
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kTweetCount;
-    twitterCommand.twitterCommandCompletionBlock = ^ (NSArray *tweets, NSError *error) {
+    twitterCommand.twitterCommandCompletionBlock = ^ (NSError *error) {
         if (error != nil) {
             DLog(@":( Erorr says: %@", [error localizedDescription]);
         } else {
-            // if we have a list of tweets, show them 
-            for (Tweet *tweet in tweets) {
+            /* we don't know what's happened, but we trust that the model is updated. 
+            The programmer doesn't need to handle the results, the command has already done that.
+            you would usually call something like [self.tableView reloadData] here */
+            for (Tweet *tweet in [Model sharedModel].tweets) {
                 DLog(@"%@ - %@", tweet.user.name, tweet.text);
             }
         }

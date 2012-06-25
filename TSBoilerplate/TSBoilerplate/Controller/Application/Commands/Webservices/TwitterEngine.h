@@ -22,7 +22,6 @@
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(twitterCommandCompletionBlock)completion
-                           fromCommand:(AsynchronousCommand *)command;
+                          onCompletion:(_twitterCommandCompletionBlock)complete;
 
 @end

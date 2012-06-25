@@ -20,6 +20,7 @@
 @interface Model : NSObject
 
 @property (nonatomic, strong) Group *group;
+@property (nonatomic, strong) NSArray *tweets;
 + (Model*) sharedModel;
 - (void)save;
 @end

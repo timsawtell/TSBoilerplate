@@ -33,48 +33,47 @@
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(twitterCommandCompletionBlock)completion
-                           fromCommand:(AsynchronousCommand *)command
+                          onCompletion:(_twitterCommandCompletionBlock)complete
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            screenName, kTwitterScreenName,
-                            [NSNumber numberWithBool:includeEntities], kIncludeEntities,
-                            [NSNumber numberWithBool:includeRetweets], kIncludeReTweets, 
-                            [NSNumber numberWithInteger: tweetCount], kTweetCount, nil];
+                                   screenName, kTwitterScreenName,
+                                   [NSNumber numberWithBool:includeEntities], kIncludeEntities,
+                                   [NSNumber numberWithBool:includeRetweets], kIncludeReTweets, 
+                                   [NSNumber numberWithInteger: tweetCount], kTweetCount, nil];
     [self registerOperationSubclass:[MKNetworkOperation class]];
     
     MKNetworkOperation *op = [self operationWithURLString:kTwitterTimelineBaseURL 
                                                    params:params
                                                httpMethod:@"GET"];
     
-    [op onCompletion:^(MKNetworkOperation *completedOperation)
-     {
-         // loop through the JSON to build up a TwitterEntity object for each Tweet object. Add the Tweet to the array in the completion block
-         id jsonResponse = [completedOperation responseJSON];
-         NSMutableArray *tmpArray = [NSMutableArray array];
-         for (NSDictionary *dictionary in jsonResponse) {
-             id user = [dictionary objectForKey:kTwitterUser];
-             if (user != nil) {
-                 TwitterEntity *entity = [TwitterEntity new];
-                 entity.screen_name = [user objectForKey:kTwitterScreenName] != nil ? [user valueForKey:kTwitterScreenName] : nil;
-                 entity.name = [user objectForKey:kTwitterName] != nil ? [user valueForKey:kTwitterName] : nil;
-                 
-                 id text = [dictionary objectForKey:kTweetText];
-                 if (text != nil) {
-                     Tweet *tweet = [Tweet new];
-                     tweet.user = entity;
-                     tweet.text = text;
-                     [tmpArray addObject:tweet];
-                 }
-             }
-         }
-         completion(tmpArray, nil);
-         [command finish];
-     }onError:^(NSError* error) {
-         completion(nil, error);
-         [command finish];
-     }];
+    MKNKResponseBlock responseBlock = ^(MKNetworkOperation *completedOperation) {
+        // loop through the JSON to build up a TwitterEntity object for each Tweet object. Add the Tweet to the array in the completion block
+        id jsonResponse = [completedOperation responseJSON];
+        NSMutableArray *tmpArray = [NSMutableArray array];
+        for (NSDictionary *dictionary in jsonResponse) {
+            id user = [dictionary objectForKey:kTwitterUser];
+            if (user != nil) {
+                TwitterEntity *entity = [TwitterEntity new];
+                entity.screen_name = [user objectForKey:kTwitterScreenName] != nil ? [user valueForKey:kTwitterScreenName] : nil;
+                entity.name = [user objectForKey:kTwitterName] != nil ? [user valueForKey:kTwitterName] : nil;
+                
+                id text = [dictionary objectForKey:kTweetText];
+                if (text != nil) {
+                    Tweet *tweet = [Tweet new];
+                    tweet.user = entity;
+                    tweet.text = text;
+                    [tmpArray addObject:tweet];
+                }
+            }
+        }
+        complete(tmpArray, nil); // call the completion block
+    };
     
+    MKNKErrorBlock errorBlock = ^(NSError *error) {
+        complete(nil, error); // call the completion block
+    };
+    
+    [op onCompletion:responseBlock onError:errorBlock];
     [self enqueueOperation:op];
 }
 

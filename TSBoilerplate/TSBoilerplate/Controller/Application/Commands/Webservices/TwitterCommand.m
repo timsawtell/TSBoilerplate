@@ -22,13 +22,24 @@
 
 - (void)execute
 {
+    /* we make a new completion block and add add in things that a programmer wouldn't want to do in the running code.
+     i.e. I think it's rude to ask a programmer to do command level functions like [NSCommand finish] in their day 
+     to day code, so when they type out the completionBlock, it's just business logic. In here though, we need to also 
+     do lower level things. */
+    _twitterCommandCompletionBlock completionBlock = ^(NSArray *tweets, NSError *error) {
+        if(!self.isCancelled) {
+            [Model sharedModel].tweets = tweets; // this is were we update the model
+            [self finish];
+            [self twitterCommandCompletionBlock](error);
+        }
+    };
+        
     TwitterEngine *twitterEngine = [TwitterEngine new];
     [twitterEngine getPublicTimelineForScreenName:self.screenName 
                                  includedEntities:self.includeEntities 
                                   includeRetweets:self.includeRetweets 
                                        tweetCount:self.tweetCount 
-                                     onCompletion:self.twitterCommandCompletionBlock
-                                      fromCommand:self];
+                                     onCompletion:completionBlock];
 }
 
 @end

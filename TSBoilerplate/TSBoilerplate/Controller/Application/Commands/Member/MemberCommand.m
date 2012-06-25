@@ -30,6 +30,7 @@
             self.group.members = [NSSet set];
         }
         self.group.members = [self.group.members setByAddingObject:self.member];
+        DLog(@"I just added member: %@ to group %@", self.member.name, self.group.groupName);
     }
     if (self.saveModel) {
         [[Model sharedModel] save];

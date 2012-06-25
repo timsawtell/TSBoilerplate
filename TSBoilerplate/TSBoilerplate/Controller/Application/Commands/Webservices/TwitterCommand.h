@@ -15,7 +15,8 @@
 
 #import "AsynchronousCommand.h"
 
-typedef void(^twitterCommandCompletionBlock)(NSArray *tweets, NSError *error);
+typedef void(^_twitterCommandCompletionBlock)(NSArray *tweets, NSError *error); // this is for the class to use, not the programmer
+typedef void(^twitterCommandCompletionBlock)(NSError *error); // this is for the programmer to use
 
 @interface TwitterCommand : AsynchronousCommand
 
@@ -24,5 +25,6 @@ typedef void(^twitterCommandCompletionBlock)(NSArray *tweets, NSError *error);
 @property (nonatomic, assign) BOOL includeEntities;
 @property (nonatomic, assign) NSUInteger tweetCount;
 @property (nonatomic, copy) twitterCommandCompletionBlock twitterCommandCompletionBlock;
+
 
 @end

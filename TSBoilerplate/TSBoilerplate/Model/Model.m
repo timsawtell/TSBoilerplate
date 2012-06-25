@@ -18,7 +18,7 @@
 
 @implementation Model
 
-@synthesize group;
+@synthesize group, tweets;
 
 #pragma mark - Data
 

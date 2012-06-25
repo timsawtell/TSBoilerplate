@@ -26,10 +26,11 @@
     
     if (self.saveModel) {
         //add the group to the model. You don't have to do this assignment here. You
-        //could reference the command's group iVar later and use that in another command
+        //could reference the command's group iVar later and use that in another command - up to you
         
         [Model sharedModel].group = self.group;
         [[Model sharedModel] save];
+        DLog(@"I just saved the group to the model");
     }
 }
 
