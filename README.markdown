@@ -1,7 +1,14 @@
 A project to be used as the starting point for a new iOS project
->
+
+First steps after clone (and cd to TSBoilerplate)
+
+
+    git submodule init
+    git submodule upate
+    sudo cp TSBoilerplate/TSBoilerplate/Model/CoreDataModel/MogenTemplate/mogenerator /usr/bin
+
 Includes 
-* MKNetworkKit	
+* MKNetworkKit    
 * Mogenerator (Arc and NSCoding support for model files)
 * Thanks to [Tyrone](https://github.com/tyrone-sudeium) for his guidance on Commands
 
@@ -45,12 +52,14 @@ an Asynchronous Webservice command
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kTweetCount;
-    twitterCommand.twitterCommandCompletionBlock = ^ (NSArray *tweets, NSError *error) {
+    twitterCommand.twitterCommandCompletionBlock = ^ (NSError *error) {
         if (error != nil) {
             DLog(@":( Erorr says: %@", [error localizedDescription]);
         } else {
-            // if we have a list of tweets, show them 
-            for (Tweet *tweet in tweets) {
+            /* we don't know what's happened, but we trust that the model is updated. 
+            The programmer doesn't need to handle the tweet results, the command has already done that.
+            you would usually call something like [self.tableView reloadData] here */
+            for (Tweet *tweet in [Model sharedModel].tweets) {
                 DLog(@"%@ - %@", tweet.user.name, tweet.text);
             }
         }
