@@ -1137,6 +1137,7 @@
 				DDFD86B9159D3CCB00DB0164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

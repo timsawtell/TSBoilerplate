@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'TSBoilerplateTests' target in the 'TSBoilerplate' project
+// Prefix header for all source files of the 'TSBoilerplateIntegrationTests' target in the 'TSBoilerplate' project
 //
 
 #import <Availability.h>
