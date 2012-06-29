@@ -13,16 +13,16 @@
  IN THE SOFTWARE.
  */
 
-#import "TSTwitterTest.h"
+#import "TSTwitterIntegrationTest.h"
 #import "TwitterCommand.h"
 #import "TSCommandRunner.h"
 
 #define kTwitterScreenName @"ID_AA_Carmack" // coolest guy in the world
 #define kTweetCount 1
 
-@implementation TSTwitterTest
+@implementation TSTwitterIntegrationTest
 
-- (void)testTweets
+- (void)testCanGetTweets
 {
     TwitterCommand *twitterCommand = [TwitterCommand new];
     twitterCommand.screenName = kTwitterScreenName;
@@ -34,7 +34,7 @@
         STAssertTrue([[Model sharedModel].tweets count] > 0, @"Oh no, there are no tweets");
         dispatch_semaphore_signal(self.semaphore);
     };
-
+    
     [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
     
     while (dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_NOW)) {
@@ -42,7 +42,7 @@
     }
 }
 
-- (void)testNoTweetCount
+- (void)testNumberOfTweetsCount
 {
     NSUInteger tweetCount = 4;
     TwitterCommand *twitterCommand = [TwitterCommand new];

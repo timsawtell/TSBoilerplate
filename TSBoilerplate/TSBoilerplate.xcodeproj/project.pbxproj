@@ -28,7 +28,6 @@
 		89097C6215799DFF00913B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
 		89097C6315799DFF00913B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
 		89097C6B15799DFF00913B9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89097C6915799DFF00913B9E /* InfoPlist.strings */; };
-		89097C6E15799DFF00913B9E /* TSTwitterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097C6D15799DFF00913B9E /* TSTwitterTest.m */; };
 		89097CE515799F2C00913B9E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 89097C7A15799F2C00913B9E /* .gitignore */; };
 		89097CFB15799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097CB015799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m */; };
 		89097CFC15799F2C00913B9E /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097CB215799F2C00913B9E /* NSData+Base64.m */; };
@@ -80,6 +79,13 @@
 		DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */; };
 		DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05117C159C34D700CDB1F5 /* TSGroupTest.m */; };
 		DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
+		DDFD86AA159D3CCB00DB0164 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C6015799DFF00913B9E /* SenTestingKit.framework */; };
+		DDFD86AB159D3CCB00DB0164 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
+		DDFD86AC159D3CCB00DB0164 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
+		DDFD86B2159D3CCB00DB0164 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDFD86B0159D3CCB00DB0164 /* InfoPlist.strings */; };
+		DDFD86BC159D3E1400DB0164 /* TSTwitterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD86BB159D3E1400DB0164 /* TSTwitterIntegrationTest.m */; };
+		DDFD86C0159D3EE800DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
+		DDFD86C1159D3FCD00DB0164 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +103,13 @@
 			remoteGlobalIDString = ABB5C25C148B3AE00056D3E9;
 			remoteInfo = "MKNetworkKit-iOS";
 		};
+		DDFD86BE159D3EAD00DB0164 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89097C3B15799DFF00913B9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89097C4315799DFF00913B9E;
+			remoteInfo = TSBoilerplate;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -108,8 +121,6 @@
 		89097C6015799DFF00913B9E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		89097C6815799DFF00913B9E /* TSBoilerplateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TSBoilerplateTests-Info.plist"; sourceTree = "<group>"; };
 		89097C6A15799DFF00913B9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		89097C6C15799DFF00913B9E /* TSTwitterTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSTwitterTest.h; sourceTree = "<group>"; };
-		89097C6D15799DFF00913B9E /* TSTwitterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSTwitterTest.m; sourceTree = "<group>"; };
 		89097C7A15799F2C00913B9E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		89097CAF15799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		89097CB015799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
@@ -205,6 +216,12 @@
 		DDFD867F159D203C00DB0164 /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		DDFD8693159D2FF600DB0164 /* Model+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+Test.h"; sourceTree = "<group>"; };
 		DDFD8694159D2FF600DB0164 /* Model+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+Test.m"; sourceTree = "<group>"; };
+		DDFD86A9159D3CCB00DB0164 /* TSBoilerplateIntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSBoilerplateIntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDFD86AF159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TSBoilerplateIntegrationTests-Info.plist"; sourceTree = "<group>"; };
+		DDFD86B1159D3CCB00DB0164 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DDFD86B6159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSBoilerplateIntegrationTests-Prefix.pch"; sourceTree = "<group>"; };
+		DDFD86BA159D3E1400DB0164 /* TSTwitterIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTwitterIntegrationTest.h; sourceTree = "<group>"; };
+		DDFD86BB159D3E1400DB0164 /* TSTwitterIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTwitterIntegrationTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +248,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DDFD86A5159D3CCB00DB0164 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDFD86AA159D3CCB00DB0164 /* SenTestingKit.framework in Frameworks */,
+				DDFD86AB159D3CCB00DB0164 /* UIKit.framework in Frameworks */,
+				DDFD86AC159D3CCB00DB0164 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -240,6 +267,7 @@
 				89097C4E15799DFF00913B9E /* TSBoilerplate */,
 				89097E9B1579C4EB00913B9E /* Supporting Files */,
 				89097C6615799DFF00913B9E /* TSBoilerplateTests */,
+				DDFD86AD159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */,
 				89097C4715799DFF00913B9E /* Frameworks */,
 				89097C4515799DFF00913B9E /* Products */,
 			);
@@ -250,6 +278,7 @@
 			children = (
 				89097C4415799DFF00913B9E /* TSBoilerplate.app */,
 				89097C5F15799DFF00913B9E /* TSBoilerplateTests.octest */,
+				DDFD86A9159D3CCB00DB0164 /* TSBoilerplateIntegrationTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,8 +315,6 @@
 				89097C6715799DFF00913B9E /* Supporting Files */,
 				DD05116E159C2FE200CDB1F5 /* TSAsynchronousOperationTest.h */,
 				DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */,
-				89097C6C15799DFF00913B9E /* TSTwitterTest.h */,
-				89097C6D15799DFF00913B9E /* TSTwitterTest.m */,
 				DD05117B159C34D700CDB1F5 /* TSGroupTest.h */,
 				DD05117C159C34D700CDB1F5 /* TSGroupTest.m */,
 			);
@@ -297,9 +324,9 @@
 		89097C6715799DFF00913B9E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DDFD867F159D203C00DB0164 /* Tests-Prefix.pch */,
 				89097C6815799DFF00913B9E /* TSBoilerplateTests-Info.plist */,
 				89097C6915799DFF00913B9E /* InfoPlist.strings */,
-				DDFD867F159D203C00DB0164 /* Tests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -610,6 +637,26 @@
 			path = Webservices;
 			sourceTree = "<group>";
 		};
+		DDFD86AD159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				DDFD86BA159D3E1400DB0164 /* TSTwitterIntegrationTest.h */,
+				DDFD86BB159D3E1400DB0164 /* TSTwitterIntegrationTest.m */,
+				DDFD86AE159D3CCB00DB0164 /* Supporting Files */,
+			);
+			path = TSBoilerplateIntegrationTests;
+			sourceTree = "<group>";
+		};
+		DDFD86AE159D3CCB00DB0164 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDFD86AF159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Info.plist */,
+				DDFD86B0159D3CCB00DB0164 /* InfoPlist.strings */,
+				DDFD86B6159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -649,6 +696,25 @@
 			productReference = 89097C5F15799DFF00913B9E /* TSBoilerplateTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		DDFD86A8159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDFD86B7159D3CCB00DB0164 /* Build configuration list for PBXNativeTarget "TSBoilerplateIntegrationTests" */;
+			buildPhases = (
+				DDFD86A4159D3CCB00DB0164 /* Sources */,
+				DDFD86A5159D3CCB00DB0164 /* Frameworks */,
+				DDFD86A6159D3CCB00DB0164 /* Resources */,
+				DDFD86A7159D3CCB00DB0164 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DDFD86BF159D3EAD00DB0164 /* PBXTargetDependency */,
+			);
+			name = TSBoilerplateIntegrationTests;
+			productName = TSBoilerplateIntegrationTests;
+			productReference = DDFD86A9159D3CCB00DB0164 /* TSBoilerplateIntegrationTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -677,6 +743,7 @@
 			targets = (
 				89097C4315799DFF00913B9E /* TSBoilerplate */,
 				89097C5E15799DFF00913B9E /* TSBoilerplateTests */,
+				DDFD86A8159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */,
 				89097E7B1579AA2B00913B9E /* Generate Data Model */,
 			);
 		};
@@ -716,6 +783,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DDFD86A6159D3CCB00DB0164 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDFD86B2159D3CCB00DB0164 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -744,6 +819,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "cd $PROJECT_DIR/TSBoilerplate/Model/CoreDataModel\nmogenerator -m Model.xcdatamodeld/Model.xcdatamodel/ --template-var arc=YES --template-path ./MogenTemplate -M ../ModelObjects/Machine -H ../ModelObjects/Human";
+		};
+		DDFD86A7159D3CCB00DB0164 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -796,10 +884,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89097C6E15799DFF00913B9E /* TSTwitterTest.m in Sources */,
 				DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */,
 				DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */,
 				DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDFD86A4159D3CCB00DB0164 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDFD86C1159D3FCD00DB0164 /* TSAsynchronousOperationTest.m in Sources */,
+				DDFD86C0159D3EE800DB0164 /* Model+Test.m in Sources */,
+				DDFD86BC159D3E1400DB0164 /* TSTwitterIntegrationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,6 +908,11 @@
 			target = 89097C4315799DFF00913B9E /* TSBoilerplate */;
 			targetProxy = 89097C6415799DFF00913B9E /* PBXContainerItemProxy */;
 		};
+		DDFD86BF159D3EAD00DB0164 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89097C4315799DFF00913B9E /* TSBoilerplate */;
+			targetProxy = DDFD86BE159D3EAD00DB0164 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -818,6 +920,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				89097C6A15799DFF00913B9E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DDFD86B0159D3CCB00DB0164 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDFD86B1159D3CCB00DB0164 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -947,6 +1057,40 @@
 			};
 			name = Release;
 		};
+		DDFD86B8159D3CCB00DB0164 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSBoilerplate.app/TSBoilerplate";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Prefix.pch";
+				INFOPLIST_FILE = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		DDFD86B9159D3CCB00DB0164 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSBoilerplate.app/TSBoilerplate";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Prefix.pch";
+				INFOPLIST_FILE = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -985,6 +1129,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		DDFD86B7159D3CCB00DB0164 /* Build configuration list for PBXNativeTarget "TSBoilerplateIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDFD86B8159D3CCB00DB0164 /* Debug */,
+				DDFD86B9159D3CCB00DB0164 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
