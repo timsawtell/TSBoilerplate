@@ -13,8 +13,6 @@
  IN THE SOFTWARE.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
-
 @interface TSAsynchronousOperationTest : SenTestCase
 @property (nonatomic, assign) dispatch_semaphore_t semaphore;
 @end

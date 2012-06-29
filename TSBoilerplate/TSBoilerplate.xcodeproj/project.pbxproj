@@ -79,6 +79,7 @@
 		892D01BA1584A48B00C94388 /* _TwitterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D01AE1584A1C700C94388 /* _TwitterEntity.m */; };
 		DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */; };
 		DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05117C159C34D700CDB1F5 /* TSGroupTest.m */; };
+		DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +202,9 @@
 		DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAsynchronousOperationTest.m; sourceTree = "<group>"; };
 		DD05117B159C34D700CDB1F5 /* TSGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGroupTest.h; sourceTree = "<group>"; };
 		DD05117C159C34D700CDB1F5 /* TSGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGroupTest.m; sourceTree = "<group>"; };
+		DDFD867F159D203C00DB0164 /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		DDFD8693159D2FF600DB0164 /* Model+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+Test.h"; sourceTree = "<group>"; };
+		DDFD8694159D2FF600DB0164 /* Model+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+Test.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +299,7 @@
 			children = (
 				89097C6815799DFF00913B9E /* TSBoilerplateTests-Info.plist */,
 				89097C6915799DFF00913B9E /* InfoPlist.strings */,
+				DDFD867F159D203C00DB0164 /* Tests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -513,6 +518,8 @@
 				89097EA81579C5BA00913B9E /* UIColor+Extensions.m */,
 				892D01211579DE4800C94388 /* NSError+Factory.h */,
 				892D01221579DE4800C94388 /* NSError+Factory.m */,
+				DDFD8693159D2FF600DB0164 /* Model+Test.h */,
+				DDFD8694159D2FF600DB0164 /* Model+Test.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -792,6 +799,7 @@
 				89097C6E15799DFF00913B9E /* TSTwitterTest.m in Sources */,
 				DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */,
 				DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */,
+				DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,7 +905,9 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TSBoilerplate/TSBoilerplate-Prefix.pch";
+				GCC_PREFIX_HEADER = "TSBoilerplateTests/Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "TSBoilerplateTests/TSBoilerplateTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -914,7 +924,8 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TSBoilerplate/TSBoilerplate-Prefix.pch";
+				GCC_PREFIX_HEADER = "TSBoilerplateTests/Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "TSBoilerplateTests/TSBoilerplateTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

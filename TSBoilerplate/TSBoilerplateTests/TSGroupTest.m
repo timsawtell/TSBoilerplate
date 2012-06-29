@@ -19,7 +19,6 @@
 #import "GroupCommand.h"
 #import "Member.h"
 #import "MemberCommand.h"
-#import "Model.h"
 #import "GroupEditCommand.h"
 
 #define kGroupName @"TestGroup"
@@ -31,18 +30,15 @@
     [super setUp];
 }
 
-- (void)testGroupAddToModel
+- (void)testAddGroupAddMember
 {
+    // because we can't controll which order the tests are run in (without breaking some good design principles), add the group first, then add a member
     GroupCommand *groupCommand = [GroupCommand new];
     groupCommand.groupName = kGroupName;
     groupCommand.saveModel = YES; // at the end of the execute method, save the model.
     [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
-    STAssertNotNil([Model sharedModel].group, @"oh no, the group is nil on the model");
-}
-
-- (void)testGroupAddMember
-{
     STAssertNotNil([Model sharedModel].group, @"oh no, the group is nil on the model"); // make sure the model is correct first
+    
     MemberCommand *memberCommand = [MemberCommand new];
     memberCommand.name = [NSString stringWithFormat:@"Test Guy"];
     memberCommand.memberId = 1;

@@ -13,6 +13,13 @@
  IN THE SOFTWARE.
  */
 
-@interface TSGroupTest : SenTestCase
+ /* The point of this category is to allow the unit tests to use the same model
+    class and not re-write LOTS of command implementations that reference the model.
+    We simply do not want commands executed during testing to be  writing to our 
+    real model during unit tests. */
+
+#import "Model.h"
+
+@interface Model (Test)
 
 @end

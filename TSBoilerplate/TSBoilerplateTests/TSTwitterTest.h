@@ -13,7 +13,6 @@
  IN THE SOFTWARE.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
 #import "TSAsynchronousOperationTest.h"
 
 @interface TSTwitterTest : TSAsynchronousOperationTest

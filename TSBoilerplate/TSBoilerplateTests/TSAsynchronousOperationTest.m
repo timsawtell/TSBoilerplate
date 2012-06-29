@@ -28,4 +28,12 @@
     self.semaphore = dispatch_semaphore_create(0);
 }
 
+- (void)tearDown
+{
+    if (self.semaphore != nil) {
+        dispatch_release(self.semaphore);
+    }
+    [super tearDown];
+}
+
 @end

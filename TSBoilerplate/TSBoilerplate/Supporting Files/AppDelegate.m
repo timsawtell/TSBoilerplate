@@ -87,7 +87,6 @@
         }
     };
     [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
-    
     return YES;
 }
 

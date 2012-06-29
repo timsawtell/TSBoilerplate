@@ -13,6 +13,29 @@
  IN THE SOFTWARE.
  */
 
-@interface TSGroupTest : SenTestCase
+#import "Model+Test.h"
+
+@implementation Model (Test)
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
+
++ (Model*)sharedModel
+{
+    static Model* sharedModel = nil;
+    @synchronized(self) {
+        if (sharedModel == nil) {
+            sharedModel = [Model new];
+        }
+    }
+    return sharedModel;
+}
+
+- (void)save
+{
+    // do nothing
+}
+
+#pragma clang diagnostic pop
 
 @end
