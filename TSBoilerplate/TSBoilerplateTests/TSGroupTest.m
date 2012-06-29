@@ -10,7 +10,7 @@
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
- IN THE SOFTWARE.
+ IN THE SOFTWARE.¨
  */
 
 #import "TSGroupTest.h"
@@ -30,22 +30,27 @@
     [super setUp];
 }
 
-- (void)testAddGroupAddMember
+- (void)testAddGroupToModel
 {
-    // because we can't controll which order the tests are run in (without breaking some good design principles), add the group first, then add a member
     GroupCommand *groupCommand = [GroupCommand new];
     groupCommand.groupName = kGroupName;
     groupCommand.saveModel = YES; // at the end of the execute method, save the model.
     [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
-    STAssertNotNil([Model sharedModel].group, @"oh no, the group is nil on the model"); // make sure the model is correct first
-    
+    STAssertNotNil([Model sharedModel].group, @"oh no, the group isn't saved to the model");
+    STAssertEquals([Model sharedModel].group.groupName, kGroupName, @"oh no, the group doesn't have a member");
+}
+
+- (void)testAddMember
+{
+    Group *group = [Group new];
+    group.groupName = @"Test group";
     MemberCommand *memberCommand = [MemberCommand new];
     memberCommand.name = [NSString stringWithFormat:@"Test Guy"];
     memberCommand.memberId = 1;
-    memberCommand.group = [Model sharedModel].group;
-    memberCommand.saveModel = YES;
+    memberCommand.group = group;
+    memberCommand.saveModel = NO;
     [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:memberCommand];
-    STAssertTrue([[Model sharedModel].group.members count] > 0, @"oh no, the group doesn't have a member");
+    STAssertEquals((NSInteger)[group.members count], 1, @"oh no, the group doesn't have a member");
 }
 
 @end
