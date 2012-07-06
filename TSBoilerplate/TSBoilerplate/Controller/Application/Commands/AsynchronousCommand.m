@@ -52,6 +52,7 @@
         [cmd cancel];
     }
     //in subclasses add your logic to cancel the processing in execute.
+    [super cancel];
 }
 
 - (void) setFinished:(BOOL) isFinished
