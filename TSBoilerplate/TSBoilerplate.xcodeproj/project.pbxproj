@@ -76,6 +76,7 @@
 		892D01B81584A47500C94388 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D01B21584A1CE00C94388 /* Tweet.m */; };
 		892D01B91584A48100C94388 /* _Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D01AC1584A1C700C94388 /* _Tweet.m */; };
 		892D01BA1584A48B00C94388 /* _TwitterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D01AE1584A1C700C94388 /* _TwitterEntity.m */; };
+		89CC552115B6542B00EA504D /* RoundedRectUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC552015B6542B00EA504D /* RoundedRectUtility.m */; };
 		DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */; };
 		DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05117C159C34D700CDB1F5 /* TSGroupTest.m */; };
 		DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
@@ -209,6 +210,8 @@
 		892D01B21584A1CE00C94388 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		892D01B31584A1CE00C94388 /* TwitterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterEntity.h; sourceTree = "<group>"; };
 		892D01B41584A1CE00C94388 /* TwitterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterEntity.m; sourceTree = "<group>"; };
+		89CC551F15B6542B00EA504D /* RoundedRectUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectUtility.h; sourceTree = "<group>"; };
+		89CC552015B6542B00EA504D /* RoundedRectUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectUtility.m; sourceTree = "<group>"; };
 		DD05116E159C2FE200CDB1F5 /* TSAsynchronousOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAsynchronousOperationTest.h; sourceTree = "<group>"; };
 		DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAsynchronousOperationTest.m; sourceTree = "<group>"; };
 		DD05117B159C34D700CDB1F5 /* TSGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGroupTest.h; sourceTree = "<group>"; };
@@ -565,6 +568,8 @@
 		89097EAE1579C5BA00913B9E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				89CC551F15B6542B00EA504D /* RoundedRectUtility.h */,
+				89CC552015B6542B00EA504D /* RoundedRectUtility.m */,
 				89097EB11579C5BA00913B9E /* SettingsHelper.h */,
 				89097EB21579C5BA00913B9E /* SettingsHelper.m */,
 			);
@@ -877,6 +882,7 @@
 				892D0192158415FC00C94388 /* MemberDisplayCommand.m in Sources */,
 				892D01A01584622C00C94388 /* TwitterEngine.m in Sources */,
 				892D01AA15847F0600C94388 /* TwitterCommand.m in Sources */,
+				89CC552115B6542B00EA504D /* RoundedRectUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
