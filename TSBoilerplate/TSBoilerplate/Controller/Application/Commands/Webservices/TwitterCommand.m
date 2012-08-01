@@ -15,6 +15,7 @@
 
 #import "TwitterCommand.h"
 #import "TwitterEngine.h"
+#import "MemberDisplayCommand.h"
 
 @implementation TwitterCommand
 
@@ -29,8 +30,8 @@
     _twitterCommandCompletionBlock completionBlock = ^(NSArray *tweets, NSError *error) {
         if(!self.isCancelled) {
             [Model sharedModel].tweets = tweets; // this is were we update the model
+            self.commandCompletionBlock = self.twitterCommandCompletionBlock;
             [self finish];
-            [self twitterCommandCompletionBlock](error);
         }
     };
         

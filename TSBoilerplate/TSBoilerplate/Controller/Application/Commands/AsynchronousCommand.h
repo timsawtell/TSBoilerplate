@@ -24,6 +24,7 @@ typedef void(^commandCompletionBlock)(NSError *error);
 // these getters are used to tell NSOperationQueue that the task has actually finished
 @property (nonatomic, assign, getter = isFinished) BOOL finished;
 @property (nonatomic, assign, getter = isExecuting) BOOL executing;
+@property (nonatomic, strong) AsynchronousCommand *parentCommand;
 
 - (void)cancel;
 - (void)finish;

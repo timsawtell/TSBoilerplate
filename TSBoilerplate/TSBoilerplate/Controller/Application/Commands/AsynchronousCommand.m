@@ -72,6 +72,12 @@
 
 - (void) finish
 {
+    if (nil != self.parentCommand) {
+        [self.parentCommand.subCommands removeObject:self];
+        if ([self.parentCommand.subCommands count] == 0) {
+            [self.parentCommand finish];
+        }
+    }
     [self setFinished: YES];
 }
 
