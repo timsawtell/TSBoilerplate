@@ -33,6 +33,7 @@
                 self.commandCompletionBlock(self.error);
             });
         }
+        self.commandCompletionBlock = nil;
     };
     //subclass should override execute to perform the logic of the command
     [self execute];
