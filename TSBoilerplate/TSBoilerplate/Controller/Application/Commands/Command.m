@@ -19,6 +19,14 @@
 
 @synthesize subCommands, error, saveModel;
 
+- (id)init
+{
+    if (self = [super init]) {
+        self.subCommands = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (void)execute
 {
     self.error = nil;

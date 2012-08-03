@@ -76,7 +76,9 @@
     if (nil != self.parentCommand) {
         [self.parentCommand.subCommands removeObject:self];
         if ([self.parentCommand.subCommands count] == 0) {
+            [self setFinished: YES];
             [self.parentCommand finish];
+            return;
         }
     }
     [self setFinished: YES];
