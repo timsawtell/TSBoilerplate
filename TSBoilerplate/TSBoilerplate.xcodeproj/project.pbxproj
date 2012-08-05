@@ -59,6 +59,7 @@
 		89097EB51579C5BA00913B9E /* Appearances.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EAB1579C5BA00913B9E /* Appearances.m */; };
 		89097EB61579C5BA00913B9E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EAD1579C5BA00913B9E /* Constants.m */; };
 		89097EB81579C5BA00913B9E /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097EB21579C5BA00913B9E /* SettingsHelper.m */; };
+		890F5D8F15CE25A400509261 /* UIView+loadFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 890F5D8E15CE25A400509261 /* UIView+loadFromNib.m */; };
 		892D00BF1579CE3300C94388 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D00BD1579CCF800C94388 /* ModelObject.m */; };
 		892D00D41579DB4F00C94388 /* StoryboardiPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D31579DB4F00C94388 /* StoryboardiPhone.storyboard */; };
 		892D00D61579DB5C00C94388 /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 892D00D51579DB5C00C94388 /* StoryboardiPad.storyboard */; };
@@ -176,6 +177,8 @@
 		89097EAD1579C5BA00913B9E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		89097EB11579C5BA00913B9E /* SettingsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHelper.h; sourceTree = "<group>"; };
 		89097EB21579C5BA00913B9E /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
+		890F5D8D15CE25A400509261 /* UIView+loadFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+loadFromNib.h"; sourceTree = "<group>"; };
+		890F5D8E15CE25A400509261 /* UIView+loadFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+loadFromNib.m"; sourceTree = "<group>"; };
 		892D00B91579C86D00C94388 /* TSBoilerplate-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "TSBoilerplate-Info.plist"; path = "TSBoilerplate/TSBoilerplate-Info.plist"; sourceTree = SOURCE_ROOT; };
 		892D00BB1579C88500C94388 /* TSBoilerplate-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TSBoilerplate-Prefix.pch"; path = "TSBoilerplate/TSBoilerplate-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		892D00BC1579CCF800C94388 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 		89097EA41579C5BA00913B9E /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				890F5D8D15CE25A400509261 /* UIView+loadFromNib.h */,
+				890F5D8E15CE25A400509261 /* UIView+loadFromNib.m */,
 				89097EA51579C5BA00913B9E /* NSFileManager+DirectoryLocations.h */,
 				89097EA61579C5BA00913B9E /* NSFileManager+DirectoryLocations.m */,
 				89097EA71579C5BA00913B9E /* UIColor+Extensions.h */,
@@ -883,6 +888,7 @@
 				892D01A01584622C00C94388 /* TwitterEngine.m in Sources */,
 				892D01AA15847F0600C94388 /* TwitterCommand.m in Sources */,
 				89CC552115B6542B00EA504D /* RoundedRectUtility.m in Sources */,
+				890F5D8F15CE25A400509261 /* UIView+loadFromNib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
