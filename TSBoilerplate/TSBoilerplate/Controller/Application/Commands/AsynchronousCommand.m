@@ -16,7 +16,15 @@
 #import "AsynchronousCommand.h"
 
 @implementation AsynchronousCommand
-@synthesize commandCompletionBlock, multiThreaded, finished, executing;
+@synthesize commandCompletionBlock, multiThreaded, finished, executing, subCommands;
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.subCommands = [NSMutableArray array];
+    }
+    return self;
+}
 
 - (void) start
 {
@@ -27,13 +35,15 @@
 - (void) main
 {
     //set the NSOperation's completionBlock which occurs at the end of main
+    __weak AsynchronousCommand *weakSelf = self;
     self.completionBlock = ^{
-        if (self.commandCompletionBlock != NULL) {
+        __strong AsynchronousCommand *strongSelf = weakSelf;
+        if (strongSelf.commandCompletionBlock != NULL && !strongSelf.isCancelled) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.commandCompletionBlock(self.error);
+                strongSelf.commandCompletionBlock(strongSelf.error);
             });
         }
-        self.commandCompletionBlock = nil;
+        strongSelf.commandCompletionBlock = nil;
     };
     //subclass should override execute to perform the logic of the command
     [self execute];

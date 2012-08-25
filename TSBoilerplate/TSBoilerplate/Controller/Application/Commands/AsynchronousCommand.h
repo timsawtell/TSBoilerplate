@@ -25,6 +25,7 @@ typedef void(^commandCompletionBlock)(NSError *error);
 @property (nonatomic, assign, getter = isFinished) BOOL finished;
 @property (nonatomic, assign, getter = isExecuting) BOOL executing;
 @property (nonatomic, strong) AsynchronousCommand *parentCommand;
+@property (nonatomic, strong) NSMutableArray *subCommands;
 
 - (void)cancel;
 - (void)finish;

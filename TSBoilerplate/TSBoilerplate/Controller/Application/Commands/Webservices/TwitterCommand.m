@@ -19,7 +19,7 @@
 
 @implementation TwitterCommand
 
-@synthesize screenName, includeEntities, includeRetweets, tweetCount, twitterCommandCompletionBlock;
+@synthesize screenName, includeEntities, includeRetweets, tweetCount;
 
 - (void)execute
 {
@@ -27,11 +27,12 @@
      i.e. I think it's rude to ask a programmer to do command level functions like [NSCommand finish] in their day 
      to day code, so when they type out the completionBlock, it's just business logic. In here though, we need to also 
      do lower level things. */
+    __weak TwitterCommand *weakSelf = self;
     _twitterCommandCompletionBlock completionBlock = ^(NSArray *tweets, NSError *error) {
-        if(!self.isCancelled) {
+        __strong TwitterCommand *strongSelf = weakSelf;
+        if(!strongSelf.isCancelled) {
             [Model sharedModel].tweets = tweets; // this is were we update the model
-            self.commandCompletionBlock = self.twitterCommandCompletionBlock;
-            [self finish];
+            [strongSelf finish];
         }
     };
         

@@ -74,7 +74,7 @@
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kTweetCount;
-    twitterCommand.twitterCommandCompletionBlock = ^ (NSError *error) {
+    twitterCommand.commandCompletionBlock = ^ (NSError *error) {
         if (error != nil) {
             DLog(@":( Erorr says: %@", [error localizedDescription]);
         } else {

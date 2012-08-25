@@ -17,19 +17,18 @@
 
 @implementation Command
 
-@synthesize subCommands, error, saveModel;
+@synthesize error, saveModel;
 
 - (id)init
 {
     if (self = [super init]) {
-        self.subCommands = [NSMutableArray array];
+        self.error = nil;
     }
     return self;
 }
 
 - (void)execute
 {
-    self.error = nil;
     //do processing here. Add any commands that you generate to your subCommands property
 }
 
