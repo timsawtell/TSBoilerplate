@@ -13,15 +13,15 @@
  IN THE SOFTWARE.
  */
 
-#import "MKNetworkEngine.h"
 #import "TwitterCommand.h"
+#import "MasterEngine.h"
 
-@interface TwitterEngine : MKNetworkEngine
+@interface TwitterEngine : MasterEngine
 
 - (void)getPublicTimelineForScreenName:(NSString *)screenName
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(_twitterCommandCompletionBlock)complete;
+                          onCompletion:(_serviceCompletionBlock)complete;
 
 @end

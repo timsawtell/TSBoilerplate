@@ -27,5 +27,4 @@ CGFloat const kSecondsPerDay = 86400;
 CGFloat const kSecondsPerHour = 3600;
 CGFloat const kPaddingRightOnImportWaitingAnimation = 33.0f;
 
-
 @end

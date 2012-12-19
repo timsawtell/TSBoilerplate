@@ -16,6 +16,10 @@
 #import "TwitterCommand.h"
 #import "TwitterEngine.h"
 #import "MemberDisplayCommand.h"
+#import "Tweet.h"
+#import "TwitterEntity.h"
+#import "TweetBuilder.h"
+#import "TwitterEntityBuilder.h"
 
 @implementation TwitterCommand
 
@@ -28,12 +32,32 @@
      to day code, so when they type out the completionBlock, it's just business logic. In here though, we need to also 
      do lower level things. */
     __weak TwitterCommand *weakSelf = self;
-    _twitterCommandCompletionBlock completionBlock = ^(NSArray *tweets, NSError *error) {
+    _serviceCompletionBlock completionBlock = ^(id results, NSError *error) {
         __strong TwitterCommand *strongSelf = weakSelf;
-        if(!strongSelf.isCancelled) {
-            [Model sharedModel].tweets = tweets; // this is were we update the model
+        if(strongSelf.isCancelled) {
             [strongSelf finish];
         }
+        
+        NSMutableArray *tmpArray = [NSMutableArray array];
+        for (id tweetInstanceJSON in results) {
+            id user = [tweetInstanceJSON objectForKey:kTwitterUser];
+            if (user != nil) {
+                TwitterEntity *tweetsUser = [TwitterEntityBuilder twitterEntityFromJSON:user];
+                
+                Tweet *tweet = [TweetBuilder tweetFromJSON:tweetInstanceJSON];
+                if (nil != tweet) {
+                    tweet.user = tweetsUser;
+                    [tmpArray addObject:tweet];
+                }
+            }
+        }
+        [Model sharedModel].tweets = tmpArray;
+        
+        if (self.saveModel) {
+            [[Model sharedModel] save];
+        }
+        
+        [strongSelf finish];
     };
         
     TwitterEngine *twitterEngine = [TwitterEngine new];

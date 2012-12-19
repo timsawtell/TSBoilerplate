@@ -15,17 +15,6 @@
 
 #import "TwitterEngine.h"
 #import "TwitterCommand.h"
-#import "Tweet.h"
-#import "TwitterEntity.h"
-
-#define kTwitterTimelineBaseURL @"https://api.twitter.com/1/statuses/user_timeline.json"
-#define kIncludeEntities @"include_entities"
-#define kIncludeReTweets @"include_rts"
-#define kTweetCount @"count"
-#define kTwitterScreenName @"screen_name"
-#define kTwitterUser @"user"
-#define kTwitterName @"name"
-#define kTweetText @"text"
 
 @implementation TwitterEngine
 
@@ -33,7 +22,7 @@
                       includedEntities:(BOOL)includeEntities
                        includeRetweets:(BOOL)includeRetweets
                             tweetCount:(NSUInteger)tweetCount
-                          onCompletion:(_twitterCommandCompletionBlock)complete
+                          onCompletion:(_serviceCompletionBlock)complete
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    screenName, kTwitterScreenName,
@@ -46,35 +35,7 @@
                                                    params:params
                                                httpMethod:@"GET"];
     
-    MKNKResponseBlock responseBlock = ^(MKNetworkOperation *completedOperation) {
-        // loop through the JSON to build up a TwitterEntity object for each Tweet object. Add the Tweet to the array in the completion block
-        id jsonResponse = [completedOperation responseJSON];
-        NSMutableArray *tmpArray = [NSMutableArray array];
-        for (NSDictionary *dictionary in jsonResponse) {
-            id user = [dictionary objectForKey:kTwitterUser];
-            if (user != nil) {
-                TwitterEntity *entity = [TwitterEntity new];
-                entity.screen_name = [user objectForKey:kTwitterScreenName] != nil ? [user valueForKey:kTwitterScreenName] : nil;
-                entity.name = [user objectForKey:kTwitterName] != nil ? [user valueForKey:kTwitterName] : nil;
-                
-                id text = [dictionary objectForKey:kTweetText];
-                if (text != nil) {
-                    Tweet *tweet = [Tweet new];
-                    tweet.user = entity;
-                    tweet.text = text;
-                    [tmpArray addObject:tweet];
-                }
-            }
-        }
-        complete(tmpArray, nil); // call the completion block
-    };
-    
-    MKNKErrorBlock errorBlock = ^(NSError *error) {
-        complete(nil, error); // call the completion block
-    };
-    
-    [op onCompletion:responseBlock onError:errorBlock];
-    [self enqueueOperation:op];
+    [self executeOperation:op withCompletion:complete];
 }
 
 @end

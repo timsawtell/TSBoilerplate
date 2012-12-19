@@ -15,7 +15,7 @@
 
 #import "AsynchronousCommand.h"
 
-typedef void(^_twitterCommandCompletionBlock)(NSArray *tweets, NSError *error); // this is for the class to use, not the programmer
+
 
 @interface TwitterCommand : AsynchronousCommand
 

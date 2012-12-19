@@ -17,6 +17,7 @@
 
 @interface Constants : NSObject
 
+#define ASSIGN_NOT_NIL(property, val) ({id __val = (val); if (__val != [NSNull null] && __val != nil) { property = val;}})
 #define _A_CELL_HEIGHT 50
 
 extern NSString * const kLongDateFormat;
@@ -28,5 +29,15 @@ extern NSString * const kModelSavedDataFileName;
 extern CGFloat const kSecondsPerDay;
 extern CGFloat const kSecondsPerHour;
 extern CGFloat const kPaddingRightOnImportWaitingAnimation;
+
+#define kTwitterTimelineBaseURL @"https://api.twitter.com/1/statuses/user_timeline.json"
+#define kIncludeEntities @"include_entities"
+#define kIncludeReTweets @"include_rts"
+#define kTweetCount @"count"
+#define kTwitterScreenName @"screen_name"
+#define kTwitterUser @"user"
+#define kTwitterName @"name"
+#define kTweetText @"text"
+
 
 @end
