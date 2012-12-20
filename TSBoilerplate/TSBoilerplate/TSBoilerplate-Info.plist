@@ -24,6 +24,8 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS</key>
+	<false/>
 	<key>UIMainStoryboardFile</key>
 	<string>StoryboardiPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>

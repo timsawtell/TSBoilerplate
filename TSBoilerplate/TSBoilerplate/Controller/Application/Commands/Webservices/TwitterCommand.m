@@ -46,7 +46,7 @@
                 
                 Tweet *tweet = [TweetBuilder tweetFromJSON:tweetInstanceJSON];
                 if (nil != tweet) {
-                    tweet.user = tweetsUser;
+                    tweet.twitterEntity = tweetsUser;
                     [tmpArray addObject:tweet];
                 }
             }

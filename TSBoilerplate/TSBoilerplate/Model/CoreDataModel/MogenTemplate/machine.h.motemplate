@@ -1,73 +1,63 @@
+//
+//  _<$managedObjectClassName$>.h
+//
+//  $Id$
+//
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to <$managedObjectClassName$>.h instead.
+//
 
+
+#import <Foundation/Foundation.h>
 #import "ModelObject.h"
 <$if hasCustomSuperentity$>#import "<$customSuperentity$>.h"<$endif$>
-
+<$checkNonTransientRelationshipCycles $>
 <$foreach Relationship noninheritedRelationships do$>@class <$Relationship.destinationEntity.managedObjectClassName$>;
 <$endforeach do$>
-<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasTransformableAttributeType$>@class <$Attribute.objectAttributeClassName$>;<$endif$>
-<$endforeach do$>
+@protocol _<$managedObjectClassName$>
+<$foreach Relationship noninheritedRelationshipsInIDKeyPathTopologicalOrder do$><$if ! Relationship.isTransient$><$if Relationship.userInfo.destinationEntityIDKeyPath $>
+- (<$Relationship.destinationEntity.managedObjectClassName$> *)fetch<$Relationship.destinationEntity.name$>ObjectWithIDFor<$Relationship.name.initialCapitalString$>Relationship:(id)objectID;
+<$endif$><$endif$><$endforeach do$>
+@end
+<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
+extern NSString * const kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>;<$endif$><$endforeach do$>
+<$foreach Relationship noninheritedRelationships do$>
+extern NSString * const kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>;<$endforeach do$>
+<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
+extern NSString * const kModelDictionary<$managedObjectClassName$><$Attribute.name.initialCapitalString$>;<$endif$><$endforeach do$>
+<$foreach Relationship noninheritedRelationships do$>
+extern NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.initialCapitalString$>;<$endforeach do$>
+<$if hasCustomSuperentity$>
+@interface _<$managedObjectClassName$> : <$customSuperentity$> <NSCoding>
+<$else$>
 @interface _<$managedObjectClassName$> : ModelObject <NSCoding>
-
-<$foreach Attribute noninheritedAttributes do$>
-<$if Attribute.hasDefinedAttributeType$>
-<$if TemplateVar.arc$>
-<$if Attribute.isReadonly$>
-@property (nonatomic, strong, readonly) <$Attribute.objectAttributeType$> <$Attribute.name$>;
-<$else$>
-@property (nonatomic, strong) <$Attribute.objectAttributeType$> <$Attribute.name$>;
 <$endif$>
-<$else$>
-<$if Attribute.isReadonly$>
-@property (nonatomic, retain, readonly) <$Attribute.objectAttributeType$> <$Attribute.name$>;
-<$else$>
-@property (nonatomic, retain) <$Attribute.objectAttributeType$> <$Attribute.name$>;
-<$endif$>
-<$endif$>
-<$if Attribute.hasScalarAttributeType$>
-@property <$Attribute.scalarAttributeType$> <$Attribute.name$>Value;
-- (<$Attribute.scalarAttributeType$>)<$Attribute.name$>Value;
-- (void)set<$Attribute.name.initialCapitalString$>Value:(<$Attribute.scalarAttributeType$>)value_;
-<$endif$>
+{
+	<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$><$Attribute.objectAttributeType$> <$Attribute.name$>;<$endif$>
+	<$endforeach do$>
+	<$foreach Relationship noninheritedRelationships do$>
+	<$if Relationship.isToMany$>NSSet *<$Relationship.name$>;<$else$><$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$endif$>
+	<$endforeach do$>
+}
+<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$><$if Attribute.isReadonly$>@property (nonatomic, strong, readonly) <$Attribute.objectAttributeType$> <$Attribute.name$>;<$else$>
+@property (nonatomic, strong) <$Attribute.objectAttributeType$> <$Attribute.name$>;<$endif$><$if Attribute.hasScalarAttributeType$>@property <$Attribute.scalarAttributeType$> <$Attribute.name$>Value;<$endif$><$endif$><$endforeach do$><$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany$>@property (nonatomic, strong, readonly) NSSet *<$Relationship.name$>;<$else$>
+<$if Relationship.isTransient $>@property (nonatomic, assign, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$else$>@property (nonatomic, strong, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$endif$>
 <$endif$>
 <$endforeach do$>
 <$foreach Relationship noninheritedRelationships do$>
-<$if Relationship.isToMany$>
-<$if TemplateVar.arc$>
-@property (nonatomic, strong) <$Relationship.immutableCollectionClassName$> *<$Relationship.name$>;
-<$else$>
-@property (nonatomic, retain) <$Relationship.immutableCollectionClassName$> *<$Relationship.name$>;
-<$endif$>
-<$else$>
-<$if TemplateVar.arc$>
-@property (nonatomic, strong) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;
-<$else$>
-@property (nonatomic, retain) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;
-<$endif$>
-<$endif$>
+<$if Relationship.isToMany$>- (<$Relationship.destinationEntity.managedObjectClassName$> *)<$Relationship.name$>ObjectWithUniqueKey:(NSObject *)aKey;
+- (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
+- (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_;
+- (void)removeAll<$Relationship.name.initialCapitalString$>;
+- (void)remove<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
+- (void)remove<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_;
+- (NSArray *)sorted<$Relationship.name.initialCapitalString$>;
+<$endif$><$endforeach do$>
+<$foreach Relationship noninheritedRelationships do$><$if ! Relationship.isToMany$>
+- (void) set<$Relationship.name.initialCapitalString$>: (<$Relationship.destinationEntity.managedObjectClassName$>*) <$Relationship.name$>_ settingInverse: (BOOL) setInverse;
+<$endif$><$endforeach do$>
+<$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany$>- (id) valueForKey:(NSString *)key inSet:(NSSet *)set;
+- (void) refreshLookupCaches;
+- (void) clearCache;<$break$><$endif$>
 <$endforeach do$>
-<$foreach FetchRequest prettyFetchRequests do$>
-<$if FetchRequest.singleResult$>
-+ (id)fetch<$FetchRequest.name.initialCapitalString$>:(NSManagedObjectContext*)moc_ <$foreach Binding FetchRequest.bindings do2$><$Binding.name$>:(<$Binding.type$>)<$Binding.name$>_ <$endforeach do2$>;
-+ (id)fetch<$FetchRequest.name.initialCapitalString$>:(NSManagedObjectContext*)moc_ <$foreach Binding FetchRequest.bindings do2$><$Binding.name$>:(<$Binding.type$>)<$Binding.name$>_ <$endforeach do2$>error:(NSError**)error_;
-<$else$>
-+ (NSArray*)fetch<$FetchRequest.name.initialCapitalString$>:(NSManagedObjectContext*)moc_ <$foreach Binding FetchRequest.bindings do2$><$Binding.name$>:(<$Binding.type$>)<$Binding.name$>_ <$endforeach do2$>;
-+ (NSArray*)fetch<$FetchRequest.name.initialCapitalString$>:(NSManagedObjectContext*)moc_ <$foreach Binding FetchRequest.bindings do2$><$Binding.name$>:(<$Binding.type$>)<$Binding.name$>_ <$endforeach do2$>error:(NSError**)error_;
-<$endif$>
-<$endforeach do$>
-<$foreach FetchedProperty noninheritedFetchedProperties do$>
-@property (nonatomic, readonly) NSArray *<$FetchedProperty.name$>;
-<$endforeach do$>
-<$if TemplateVar.frc$>
-#if TARGET_OS_IPHONE
-<$foreach Relationship noninheritedRelationships do$>
-<$if Relationship.isToMany$>
-- (NSFetchedResultsController*)new<$Relationship.name.initialCapitalString$>FetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
-<$endif$>
-<$endforeach do$>
-#endif
-<$endif$>
-- (id) initWithCoder: (NSCoder*) aDecoder;
-- (void) encodeWithCoder: (NSCoder*) aCoder;
 @end

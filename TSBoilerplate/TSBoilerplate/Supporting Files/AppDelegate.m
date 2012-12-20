@@ -82,7 +82,7 @@
             The programmer doesn't need to handle the results, the command has already done that.
             you would usually call something like [self.tableView reloadData] here */
             for (Tweet *tweet in [Model sharedModel].tweets) {
-                DLog(@"%@ - %@", tweet.user.name, tweet.text);
+                DLog(@"%@ - %@", tweet.twitterEntity.name, tweet.text);
             }
         }
     };

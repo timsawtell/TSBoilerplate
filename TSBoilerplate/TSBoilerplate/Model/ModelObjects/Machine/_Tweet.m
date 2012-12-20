@@ -1,19 +1,49 @@
+//
+//  _Tweet.m
+//
+//  $Id$
+//
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Tweet.m instead.
+// Make changes to Tweet.h instead.
+//
+
 
 #import "_Tweet.h"
 
+NSString * const kModelPropertyTweetText = @"text";
+NSString * const kModelPropertyTweetTwitterEntity = @"twitterEntity";
+NSString * const kModelDictionaryTweetTwitterEntity = @"Tweet.twitterEntity";
+#import "TwitterEntity.h"
+
+@interface _Tweet()
+@end
+
+/** \ingroup DataModel */
+
+NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
+{
+    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual, CFHash};
+    return (__bridge NSMutableSet*) CFSetCreateMutable(0, 0, &callbacks);
+}
+
 @implementation _Tweet
++ (NSSet *)dictionaryRepresentationKeys
+{
+    NSMutableSet *set = [NSMutableSet setWithSet:[super dictionaryRepresentationKeys]];
+    
+	  [set addObject:kModelPropertyTweetText];
+    [set addObject:kModelDictionaryTweetTwitterEntity];
+    
+    return [NSSet setWithSet:set];
+}
 
 - (id)init
 {
-	if((self = [super init]))
-	{
-		
-		
-	}
-	
-	return self;
+    if((self = [super init]))
+    {
+    }
+    
+    return self;
 }
 
 - (id) initWithCoder: (NSCoder*) aDecoder
@@ -24,12 +54,8 @@
         self = [super init];
     }
     if (self) {
-        
-        self.text = [aDecoder decodeObjectForKey: @"text"];
-        
-        
-        self.user = [aDecoder decodeObjectForKey: @"user"];
-        
+        self.text = [aDecoder decodeObjectForKey: kModelPropertyTweetText];
+        self.twitterEntity = [aDecoder decodeObjectForKey: kModelPropertyTweetTwitterEntity];
     }
     return self;
 }
@@ -37,24 +63,55 @@
 - (void) encodeWithCoder: (NSCoder*) aCoder
 {
     [super encodeWithCoder: aCoder];
+    [aCoder encodeObject: self.text forKey: kModelPropertyTweetText];
+    [aCoder encodeObject: self.twitterEntity forKey: kModelPropertyTweetTwitterEntity];
+}
+
+#pragma mark Dictionary representation
+
+- (id)initWithDictionaryRepresentation:(NSDictionary *)dictionary
+{
+    if((self = [super initWithDictionaryRepresentation:dictionary]))
+    {
+        self.text = [dictionary objectForKey:kModelPropertyTweetText];
+    }
     
-    [aCoder encodeObject: self.text forKey: @"text"];
-    
-    [aCoder encodeObject: self.user forKey: @"user"];
-    
+    return self;
+}
+
+- (NSDictionary *)dictionaryRepresentation
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    [dict setObjectIfNotNil:self.text forKey:kModelPropertyTweetText];
+    return dict;
+}
+
+#pragma mark Direct access
+
+- (void) setTwitterEntity: (TwitterEntity*) twitterEntity_ settingInverse: (BOOL) setInverse
+{
+    if (twitterEntity_ == nil && setInverse == YES) {
+        [twitterEntity removeTweetsObject: (Tweet*)self settingInverse: NO];
+    }
+    twitterEntity = twitterEntity_;
+    if (setInverse == YES) {
+        [twitterEntity addTweetsObject: (Tweet*)self settingInverse: NO];
+    }}
+
+- (void) setTwitterEntity: (TwitterEntity*) twitterEntity_
+{
+    [self setTwitterEntity: twitterEntity_ settingInverse: YES];
+}
+
+- (TwitterEntity*) twitterEntity{
+    return twitterEntity;
 }
 
 
+//scalar setter and getter support
+
+#pragma mark Synthesizes
 
 @synthesize text;
-
-
-
-
-@synthesize user;
-
-
-
-
 
 @end

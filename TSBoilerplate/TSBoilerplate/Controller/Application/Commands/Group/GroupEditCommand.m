@@ -14,6 +14,7 @@
  */
 
 #import "GroupEditCommand.h"
+#import "Group.h"
 
 @implementation GroupEditCommand
 
@@ -29,8 +30,8 @@
         self.group.groupName = self.groupName;
     }
     
-    if (self.members != nil) {
-        self.group.members = self.members;
+    for (Member *member in self.members) {
+        [self.group addMembersObject:member];
     }
     
     if (self.saveModel) {

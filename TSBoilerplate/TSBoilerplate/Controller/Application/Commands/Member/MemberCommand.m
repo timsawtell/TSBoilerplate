@@ -26,10 +26,7 @@
     self.member.memberId = [NSNumber numberWithInteger:self.memberId];
     
     if (self.group != nil) {
-        if (self.group.members == nil) {
-            self.group.members = [NSSet set];
-        }
-        self.group.members = [self.group.members setByAddingObject:self.member];
+        [self.group addMembersObject:self.member];
         DLog(@"I just added member: %@ to group %@", self.member.name, self.group.groupName);
     }
     if (self.saveModel) {

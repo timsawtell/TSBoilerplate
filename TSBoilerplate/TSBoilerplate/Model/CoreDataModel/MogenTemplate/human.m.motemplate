@@ -1,12 +1,14 @@
+//
+//  <$managedObjectClassName$>.m
+//  <#ProjectName#>
+//
+//  Created by <#ModelAuthor#> on <#GenerateDate#>.
+//  Copyright (c) <#GenerateYear#> Speedwell eBusiness Solutions Pty Ltd. All rights reserved.
+//
+//  $Id$
+//
+
 #import "<$managedObjectClassName$>.h"
-
-
-@interface <$managedObjectClassName$> ()
-
-// Private interface goes here.
-
-@end
-
 
 @implementation <$managedObjectClassName$>
 
@@ -26,6 +28,16 @@
     [super encodeWithCoder: aCoder];
     // Implement custom saving logic here
 }
+
+#pragma mark Abstract method overrides
+
+<$foreach Relationship noninheritedRelationshipsInIDKeyPathTopologicalOrder do$><$if ! Relationship.isTransient$><$if Relationship.userInfo.destinationEntityIDKeyPath $>
+- (<$Relationship.destinationEntity.managedObjectClassName$> *)fetch<$Relationship.destinationEntity.name$>ObjectWithIDFor<$Relationship.name.initialCapitalString$>Relationship:(id)objectID
+{
+    //! TODO: Return an object of type <$Relationship.destinationEntity.managedObjectClassName$>
+    return nil;
+}
+<$endif$><$endif$><$endforeach do$>
 
 
 // Custom logic goes here.
