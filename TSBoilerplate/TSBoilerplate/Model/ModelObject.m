@@ -38,45 +38,6 @@
     // If we add ivars/properties, here's where we'll save them
 }
 
-+ (id)createModelObjectFromFile:(NSString *)filePath
-{
-	if(![[NSFileManager defaultManager] fileExistsAtPath:filePath])
-	{
-		return nil;
-	}
-	
-	NSError *error = nil;
-	NSData *plistData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingUncached error:&error];
-	if(!plistData)
-	{
-		NSLog(@"Couldn't read '%@' data from '%@': %@.", NSStringFromClass([self class]), filePath, error);
-		return nil;
-	}
-	
-	if([plistData length] == 0)
-	{
-		NSLog(@"Empty '%@' data found from '%@'.", NSStringFromClass([self class]), filePath);
-		return nil;
-	}
-	
-	NSString *errorString = nil;
-	NSDictionary *plist = [NSPropertyListSerialization propertyListFromData:plistData
-														   mutabilityOption:0
-																	 format:NULL
-														   errorDescription:&errorString];
-	if(!plist)
-	{
-		NSLog(@"Couldn't load '%@' data from '%@': %@.", NSStringFromClass([self class]), filePath, errorString);
-		
-		return nil;
-	}
-	
-	id modelObject = [[self alloc] initWithDictionaryRepresentation:plist];
-	[modelObject awakeFromDictionaryRepresentationInit];
-	
-	return modelObject;
-}
-
 + (id)modelObjectWithClass:(Class)aClass FromObject:(ModelObject *)object
 {
     if (object == nil || ![aClass isSubclassOfClass:[ModelObject class]]) {
@@ -93,44 +54,6 @@
     return [self modelObjectWithClass:[self class] FromObject:object];
 }
 
-- (BOOL)writeToFile:(NSString *)filePath
-{
-    if(filePath == nil)
-    {
-        NSLog(@"File path was nil - cannot write to file.");
-        return NO;
-    }
-	
-	// Save this modelObject into plist
-	NSDictionary *dict = [self dictionaryRepresentation];
-	NSString *errorDesc = nil;
-	NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:dict format:NSPropertyListBinaryFormat_v1_0 errorDescription:&errorDesc];
-	if(!plistData)
-	{
-		NSLog(@"Error while serializing model object of class '%@' into plist. Error: '%@'.", NSStringFromClass([self class]), errorDesc);
-		return NO;
-	}
-	
-    BOOL isDir = NO;
-	if(![[NSFileManager defaultManager] fileExistsAtPath:[filePath stringByDeletingLastPathComponent] isDirectory:&isDir] || !isDir)
-	{
-		NSError *error = nil;
-		if(![[NSFileManager defaultManager] createDirectoryAtPath:[filePath stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:&error])
-		{
-			NSLog(@"Couldn't create parent directory of file path '%@' for saving model object of class '%@': %@.", filePath,  NSStringFromClass([self class]), error);
-			return NO;
-		}
-	}
-	
-	if(![plistData writeToFile:filePath atomically:YES])
-	{
-		NSLog(@"Error while saving model object of class '%@' into plist file %@.",  NSStringFromClass([self class]), filePath);
-		return NO;
-		
-	}
-	
-	return YES;
-}
 
 - (id)initWithDictionaryRepresentation:(NSDictionary *)dictionary
 {

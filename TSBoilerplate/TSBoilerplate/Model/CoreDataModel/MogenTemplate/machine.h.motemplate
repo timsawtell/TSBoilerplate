@@ -45,19 +45,14 @@ extern NSString * const kModelDictionary<$managedObjectClassName$><$Relationship
 <$endif$>
 <$endforeach do$>
 <$foreach Relationship noninheritedRelationships do$>
-<$if Relationship.isToMany$>- (<$Relationship.destinationEntity.managedObjectClassName$> *)<$Relationship.name$>ObjectWithUniqueKey:(NSObject *)aKey;
-- (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
+<$if Relationship.isToMany$>- (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
 - (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_;
 - (void)removeAll<$Relationship.name.initialCapitalString$>;
 - (void)remove<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
 - (void)remove<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_;
-- (NSArray *)sorted<$Relationship.name.initialCapitalString$>;
 <$endif$><$endforeach do$>
 <$foreach Relationship noninheritedRelationships do$><$if ! Relationship.isToMany$>
 - (void) set<$Relationship.name.initialCapitalString$>: (<$Relationship.destinationEntity.managedObjectClassName$>*) <$Relationship.name$>_ settingInverse: (BOOL) setInverse;
 <$endif$><$endforeach do$>
-<$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany$>- (id) valueForKey:(NSString *)key inSet:(NSSet *)set;
-- (void) refreshLookupCaches;
-- (void) clearCache;<$break$><$endif$>
-<$endforeach do$>
+
 @end

@@ -43,16 +43,12 @@ extern NSString * const kModelDictionaryTwitterEntityTweets;
 @property (nonatomic, strong) NSString* screen_name;@property (nonatomic, strong, readonly) NSSet *tweets;
 
 
-- (Tweet *)tweetsObjectWithUniqueKey:(NSObject *)aKey;
 - (void)addTweetsObject:(Tweet*)value_ settingInverse: (BOOL) setInverse;
 - (void)addTweetsObject:(Tweet*)value_;
 - (void)removeAllTweets;
 - (void)removeTweetsObject:(Tweet*)value_ settingInverse: (BOOL) setInverse;
 - (void)removeTweetsObject:(Tweet*)value_;
-- (NSArray *)sortedTweets;
 
 
-- (id) valueForKey:(NSString *)key inSet:(NSSet *)set;
-- (void) refreshLookupCaches;
-- (void) clearCache;
+
 @end

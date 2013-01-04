@@ -50,5 +50,4 @@ extern NSString * const kModelDictionaryMemberGroup;
 - (void) setGroup: (Group*) group_ settingInverse: (BOOL) setInverse;
 
 
-
 @end

@@ -21,8 +21,8 @@
 #define _A_CELL_HEIGHT 50
 
 extern NSString * const kLongDateFormat;
-extern NSString *const kTestFlightSDKKey;
-extern NSString *const kDateFormat;
+extern NSString * const kTestFlightSDKKey;
+extern NSString * const kDateFormat;
 extern NSString * const kRegexForEmail;
 extern NSString * const kModelSavedDataFileName;
 
@@ -30,14 +30,13 @@ extern CGFloat const kSecondsPerDay;
 extern CGFloat const kSecondsPerHour;
 extern CGFloat const kPaddingRightOnImportWaitingAnimation;
 
-#define kTwitterTimelineBaseURL @"https://api.twitter.com/1/statuses/user_timeline.json"
-#define kIncludeEntities @"include_entities"
-#define kIncludeReTweets @"include_rts"
-#define kTweetCount @"count"
-#define kTwitterScreenName @"screen_name"
-#define kTwitterUser @"user"
-#define kTwitterName @"name"
-#define kTweetText @"text"
-
+extern NSString * const kTwitterTimelineBaseURL;
+extern NSString * const kIncludeEntities;
+extern NSString * const kIncludeReTweets;
+extern NSString * const kTweetCount;
+extern NSString * const kTwitterScreenName;
+extern NSString * const kTwitterUser;
+extern NSString * const kTwitterName;
+extern NSString * const kTweetText;
 
 @end

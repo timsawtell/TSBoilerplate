@@ -30,7 +30,6 @@
 		89097C6B15799DFF00913B9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89097C6915799DFF00913B9E /* InfoPlist.strings */; };
 		89097CE515799F2C00913B9E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 89097C7A15799F2C00913B9E /* .gitignore */; };
 		89097CFB15799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097CB015799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m */; };
-		89097CFC15799F2C00913B9E /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097CB215799F2C00913B9E /* NSData+Base64.m */; };
 		89097CFD15799F2C00913B9E /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097CB415799F2C00913B9E /* NSDate+RFC1123.m */; };
 		89097CFE15799F2C00913B9E /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097CB615799F2C00913B9E /* NSDictionary+RequestEncoding.m */; };
 		89097CFF15799F2C00913B9E /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097CB815799F2C00913B9E /* NSString+MKNetworkKitAdditions.m */; };
@@ -46,7 +45,6 @@
 		89097D1815799F8800913B9E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1715799F8800913B9E /* CFNetwork.framework */; };
 		89097D1A15799F9100913B9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1915799F9100913B9E /* SystemConfiguration.framework */; };
 		89097D1C1579A0F500913B9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1B1579A0F500913B9E /* Security.framework */; };
-		89097E761579A80400913B9E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89097E741579A80400913B9E /* Model.xcdatamodeld */; };
 		89097E8A1579B36300913B9E /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097E821579B36300913B9E /* Group.m */; };
 		89097E8B1579B36300913B9E /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097E841579B36300913B9E /* Member.m */; };
 		89097E941579C2F500913B9E /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 89097E931579C2F400913B9E /* Model.m */; };
@@ -81,6 +79,7 @@
 		892DC1B61682F0EC00CF6618 /* _Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 892DC1B11682F0EC00CF6618 /* _Tweet.m */; };
 		892DC1B71682F0EC00CF6618 /* _TwitterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 892DC1B31682F0EC00CF6618 /* _TwitterEntity.m */; };
 		89CC552115B6542B00EA504D /* RoundedRectUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC552015B6542B00EA504D /* RoundedRectUtility.m */; };
+		89DA25EA16978E17001273E1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DA25E916978E17001273E1 /* Default-568h@2x.png */; };
 		DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */; };
 		DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05117C159C34D700CDB1F5 /* TSGroupTest.m */; };
 		DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
@@ -129,8 +128,6 @@
 		89097C7A15799F2C00913B9E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		89097CAF15799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		89097CB015799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
-		89097CB115799F2C00913B9E /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		89097CB215799F2C00913B9E /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		89097CB315799F2C00913B9E /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
 		89097CB415799F2C00913B9E /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
 		89097CB515799F2C00913B9E /* NSDictionary+RequestEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RequestEncoding.h"; sourceTree = "<group>"; };
@@ -224,6 +221,7 @@
 		892DC1B31682F0EC00CF6618 /* _TwitterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TwitterEntity.m; sourceTree = "<group>"; };
 		89CC551F15B6542B00EA504D /* RoundedRectUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectUtility.h; sourceTree = "<group>"; };
 		89CC552015B6542B00EA504D /* RoundedRectUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectUtility.m; sourceTree = "<group>"; };
+		89DA25E916978E17001273E1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DD05116E159C2FE200CDB1F5 /* TSAsynchronousOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAsynchronousOperationTest.h; sourceTree = "<group>"; };
 		DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAsynchronousOperationTest.m; sourceTree = "<group>"; };
 		DD05117B159C34D700CDB1F5 /* TSGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGroupTest.h; sourceTree = "<group>"; };
@@ -279,6 +277,7 @@
 		89097C3915799DFF00913B9E = {
 			isa = PBXGroup;
 			children = (
+				89DA25E916978E17001273E1 /* Default-568h@2x.png */,
 				89097C4E15799DFF00913B9E /* TSBoilerplate */,
 				89097E9B1579C4EB00913B9E /* Supporting Files */,
 				89097C6615799DFF00913B9E /* TSBoilerplateTests */,
@@ -396,8 +395,6 @@
 			children = (
 				89097CAF15799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.h */,
 				89097CB015799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m */,
-				89097CB115799F2C00913B9E /* NSData+Base64.h */,
-				89097CB215799F2C00913B9E /* NSData+Base64.m */,
 				89097CB315799F2C00913B9E /* NSDate+RFC1123.h */,
 				89097CB415799F2C00913B9E /* NSDate+RFC1123.m */,
 				89097CB515799F2C00913B9E /* NSDictionary+RequestEncoding.h */,
@@ -813,6 +810,7 @@
 				89097D0815799F2C00913B9E /* digest_auth.php in Resources */,
 				892D00D41579DB4F00C94388 /* StoryboardiPhone.storyboard in Resources */,
 				892D00D61579DB5C00C94388 /* StoryboardiPad.storyboard in Resources */,
+				89DA25EA16978E17001273E1 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,7 +883,6 @@
 				892D01B71584A45A00C94388 /* TwitterEntity.m in Sources */,
 				892D00BF1579CE3300C94388 /* ModelObject.m in Sources */,
 				89097CFB15799F2C00913B9E /* NSAlert+MKNetworkKitAdditions.m in Sources */,
-				89097CFC15799F2C00913B9E /* NSData+Base64.m in Sources */,
 				89097CFD15799F2C00913B9E /* NSDate+RFC1123.m in Sources */,
 				89097CFE15799F2C00913B9E /* NSDictionary+RequestEncoding.m in Sources */,
 				89097CFF15799F2C00913B9E /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -893,7 +890,6 @@
 				89097D0115799F2C00913B9E /* MKNetworkEngine.m in Sources */,
 				89097D0215799F2C00913B9E /* MKNetworkOperation.m in Sources */,
 				89097D0315799F2C00913B9E /* Reachability.m in Sources */,
-				89097E761579A80400913B9E /* Model.xcdatamodeld in Sources */,
 				89097E8A1579B36300913B9E /* Group.m in Sources */,
 				89097E8B1579B36300913B9E /* Member.m in Sources */,
 				89097E941579C2F500913B9E /* Model.m in Sources */,

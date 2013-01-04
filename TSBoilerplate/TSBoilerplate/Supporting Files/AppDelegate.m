@@ -26,8 +26,8 @@
 
 #define kGroupName @"The Boilerplates"
 #define kMemberStartOfName @"Comrade"
-#define kTwitterScreenName @"ID_AA_Carmack" // coolest guy in the world
-#define kTweetCount 10
+#define kScreenName @"devops_borat"
+#define kNumTweets 10
 
 @implementation AppDelegate
 
@@ -70,10 +70,10 @@
     
     // Now run a command that uses MKNetorkKit to get a list of tweets for the chosen screenName
     TwitterCommand *twitterCommand = [TwitterCommand new];
-    twitterCommand.screenName = kTwitterScreenName;
+    twitterCommand.screenName = kScreenName;
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
-    twitterCommand.tweetCount = kTweetCount;
+    twitterCommand.tweetCount = kNumTweets;
     twitterCommand.commandCompletionBlock = ^ (NSError *error) {
         if (error != nil) {
             DLog(@":( Erorr says: %@", [error localizedDescription]);
@@ -82,7 +82,7 @@
             The programmer doesn't need to handle the results, the command has already done that.
             you would usually call something like [self.tableView reloadData] here */
             for (Tweet *tweet in [Model sharedModel].tweets) {
-                DLog(@"%@ - %@", tweet.twitterEntity.name, tweet.text);
+                NSLog(@"%@ - %@", tweet.twitterEntity.name, tweet.text);
             }
         }
     };

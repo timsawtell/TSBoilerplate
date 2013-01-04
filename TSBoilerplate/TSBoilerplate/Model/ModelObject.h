@@ -43,20 +43,8 @@
 @property(nonatomic, retain) NSDictionary *sourceDictionaryRepresentation;
 @property(nonatomic, readonly, assign, getter=isPopulated) BOOL populated;
 
-/**
- Reads and deserializes a ModelObject from plist at given \c filePath
- \return Newly created ModelObject or nil if any of the following occurs: file doesn't exist, file cannot be read, plist cannot be parsed.
-*/
-+ (id)createModelObjectFromFile:(NSString *)filePath;
-
 + (id)modelObjectWithClass:(Class)aClass FromObject:(ModelObject *)object;
 + (id)modelObjectFromObject:(ModelObject *)object;
-
-/**
- Serializes the receiver into binary plist and writes it to given \c filePath. Creates any intermediate directories in the path if necessary.
- \return YES on success, NO on error (binary serialization or I/O error).
-*/
-- (BOOL)writeToFile:(NSString *)filePath;
 
 - (id)initWithDictionaryRepresentation:(NSDictionary *)dictionary;
 - (NSDictionary *)dictionaryRepresentation;

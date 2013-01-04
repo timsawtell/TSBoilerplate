@@ -46,5 +46,4 @@ extern NSString * const kModelDictionaryTweetTwitterEntity;
 - (void) setTwitterEntity: (TwitterEntity*) twitterEntity_ settingInverse: (BOOL) setInverse;
 
 
-
 @end

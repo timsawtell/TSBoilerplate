@@ -18,11 +18,12 @@
         completionBlock(jsonResponse, nil); // call the completion block
     };
     
-    MKNKErrorBlock errorBlock = ^(NSError *error) {
+    MKNKResponseErrorBlock errorBlock = ^(MKNetworkOperation* completedOperation, NSError* error) {
         completionBlock(nil, error); // call the completion block
     };
     
-    [operation onCompletion:responseBlock onError:errorBlock];
+    [operation addCompletionHandler:responseBlock errorHandler:errorBlock];
+    
     [self enqueueOperation:operation];
 }
 
