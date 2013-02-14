@@ -38,6 +38,12 @@
             [strongSelf finish];
         }
         
+        if (nil != error) {
+            self.error = error;
+            [self finish];
+            return;
+        }
+        
         NSMutableArray *tmpArray = [NSMutableArray array];
         for (id tweetInstanceJSON in results) {
             id user = [tweetInstanceJSON objectForKey:kTwitterUser];

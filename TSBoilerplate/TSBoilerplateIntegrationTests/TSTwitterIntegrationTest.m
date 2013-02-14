@@ -29,7 +29,7 @@
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kTweetCount;
-    twitterCommand.twitterCommandCompletionBlock = ^ (NSError *error) {
+    twitterCommand.commandCompletionBlock = ^ (NSError *error) {
         STAssertNil(error, @"The twitter error was: %@", error.localizedDescription);
         STAssertTrue([[Model sharedModel].tweets count] > 0, @"Oh no, there are no tweets");
         dispatch_semaphore_signal(self.semaphore);
@@ -50,7 +50,7 @@
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = tweetCount;
-    twitterCommand.twitterCommandCompletionBlock = ^ (NSError *error) {
+    twitterCommand.commandCompletionBlock = ^ (NSError *error) {
         STAssertTrue([[Model sharedModel].tweets count] == tweetCount, @"Oh no, there are a different number of tweets"); //
         dispatch_semaphore_signal(self.semaphore);
     };
@@ -69,7 +69,7 @@
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kTweetCount;
-    twitterCommand.twitterCommandCompletionBlock = ^ (NSError *error) {
+    twitterCommand.commandCompletionBlock = ^ (NSError *error) {
         STAssertNotNil(error, @"The twitter error was nil when it should have contained something");
         dispatch_semaphore_signal(self.semaphore);
     };
