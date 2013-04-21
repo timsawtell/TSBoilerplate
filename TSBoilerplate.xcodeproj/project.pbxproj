@@ -36,7 +36,6 @@
 		89097C6115799DFF00913B9E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C6015799DFF00913B9E /* SenTestingKit.framework */; };
 		89097C6215799DFF00913B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
 		89097C6315799DFF00913B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
-		89097C6B15799DFF00913B9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89097C6915799DFF00913B9E /* InfoPlist.strings */; };
 		89097D1815799F8800913B9E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1715799F8800913B9E /* CFNetwork.framework */; };
 		89097D1A15799F9100913B9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1915799F9100913B9E /* SystemConfiguration.framework */; };
 		89097D1C1579A0F500913B9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1B1579A0F500913B9E /* Security.framework */; };
@@ -74,17 +73,19 @@
 		892DC1B61682F0EC00CF6618 /* _Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 892DC1B11682F0EC00CF6618 /* _Tweet.m */; };
 		892DC1B71682F0EC00CF6618 /* _TwitterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 892DC1B31682F0EC00CF6618 /* _TwitterEntity.m */; };
 		89CC552115B6542B00EA504D /* RoundedRectUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC552015B6542B00EA504D /* RoundedRectUtility.m */; };
+		89D3C59E1723B5C300704064 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C5961723B5C300704064 /* InfoPlist.strings */; };
+		89D3C5A01723B5C300704064 /* Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C59B1723B5C300704064 /* Tests-Info.plist */; };
+		89D3C5A11723B5C300704064 /* TSGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3C59D1723B5C300704064 /* TSGroupTest.m */; };
+		89D3C5A91723B5D600704064 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C5A31723B5D600704064 /* InfoPlist.strings */; };
+		89D3C5AA1723B5D600704064 /* IntegrationTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C5A51723B5D600704064 /* IntegrationTests-Info.plist */; };
+		89D3C5AB1723B5D600704064 /* TSTwitterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3C5A81723B5D600704064 /* TSTwitterIntegrationTest.m */; };
+		89D3C5AE1723B73500704064 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3C5AD1723B73500704064 /* TSAsynchronousOperationTest.m */; };
 		89DA25EA16978E17001273E1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DA25E916978E17001273E1 /* Default-568h@2x.png */; };
-		DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */; };
-		DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05117C159C34D700CDB1F5 /* TSGroupTest.m */; };
 		DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
 		DDFD86AA159D3CCB00DB0164 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C6015799DFF00913B9E /* SenTestingKit.framework */; };
 		DDFD86AB159D3CCB00DB0164 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
 		DDFD86AC159D3CCB00DB0164 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
-		DDFD86B2159D3CCB00DB0164 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDFD86B0159D3CCB00DB0164 /* InfoPlist.strings */; };
-		DDFD86BC159D3E1400DB0164 /* TSTwitterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD86BB159D3E1400DB0164 /* TSTwitterIntegrationTest.m */; };
 		DDFD86C0159D3EE800DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
-		DDFD86C1159D3FCD00DB0164 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,10 +129,8 @@
 		89097C4815799DFF00913B9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		89097C4A15799DFF00913B9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89097C4C15799DFF00913B9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		89097C5F15799DFF00913B9E /* TSBoilerplateTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSBoilerplateTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		89097C5F15799DFF00913B9E /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89097C6015799DFF00913B9E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		89097C6815799DFF00913B9E /* TSBoilerplateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TSBoilerplateTests-Info.plist"; sourceTree = "<group>"; };
-		89097C6A15799DFF00913B9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89097D1715799F8800913B9E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		89097D1915799F9100913B9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89097D1B1579A0F500913B9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -203,20 +202,22 @@
 		892DC1B31682F0EC00CF6618 /* _TwitterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TwitterEntity.m; sourceTree = "<group>"; };
 		89CC551F15B6542B00EA504D /* RoundedRectUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectUtility.h; sourceTree = "<group>"; };
 		89CC552015B6542B00EA504D /* RoundedRectUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectUtility.m; sourceTree = "<group>"; };
+		89D3C5971723B5C300704064 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89D3C5981723B5C300704064 /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		89D3C59B1723B5C300704064 /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
+		89D3C59C1723B5C300704064 /* TSGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGroupTest.h; sourceTree = "<group>"; };
+		89D3C59D1723B5C300704064 /* TSGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGroupTest.m; sourceTree = "<group>"; };
+		89D3C5A41723B5D600704064 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89D3C5A51723B5D600704064 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IntegrationTests-Info.plist"; sourceTree = "<group>"; };
+		89D3C5A61723B5D600704064 /* IntegrationTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IntegrationTests-Prefix.pch"; sourceTree = "<group>"; };
+		89D3C5A71723B5D600704064 /* TSTwitterIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTwitterIntegrationTest.h; sourceTree = "<group>"; };
+		89D3C5A81723B5D600704064 /* TSTwitterIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTwitterIntegrationTest.m; sourceTree = "<group>"; };
+		89D3C5AC1723B73500704064 /* TSAsynchronousOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAsynchronousOperationTest.h; sourceTree = "<group>"; };
+		89D3C5AD1723B73500704064 /* TSAsynchronousOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAsynchronousOperationTest.m; sourceTree = "<group>"; };
 		89DA25E916978E17001273E1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DD05116E159C2FE200CDB1F5 /* TSAsynchronousOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAsynchronousOperationTest.h; sourceTree = "<group>"; };
-		DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAsynchronousOperationTest.m; sourceTree = "<group>"; };
-		DD05117B159C34D700CDB1F5 /* TSGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGroupTest.h; sourceTree = "<group>"; };
-		DD05117C159C34D700CDB1F5 /* TSGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGroupTest.m; sourceTree = "<group>"; };
-		DDFD867F159D203C00DB0164 /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		DDFD8693159D2FF600DB0164 /* Model+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+Test.h"; sourceTree = "<group>"; };
 		DDFD8694159D2FF600DB0164 /* Model+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+Test.m"; sourceTree = "<group>"; };
-		DDFD86A9159D3CCB00DB0164 /* TSBoilerplateIntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSBoilerplateIntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDFD86AF159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TSBoilerplateIntegrationTests-Info.plist"; sourceTree = "<group>"; };
-		DDFD86B1159D3CCB00DB0164 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DDFD86B6159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSBoilerplateIntegrationTests-Prefix.pch"; sourceTree = "<group>"; };
-		DDFD86BA159D3E1400DB0164 /* TSTwitterIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTwitterIntegrationTest.h; sourceTree = "<group>"; };
-		DDFD86BB159D3E1400DB0164 /* TSTwitterIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTwitterIntegrationTest.m; sourceTree = "<group>"; };
+		DDFD86A9159D3CCB00DB0164 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,10 +315,10 @@
 				89DA25E916978E17001273E1 /* Default-568h@2x.png */,
 				89097C4E15799DFF00913B9E /* TSBoilerplate */,
 				89097E9B1579C4EB00913B9E /* Supporting Files */,
-				89097C6615799DFF00913B9E /* TSBoilerplateTests */,
-				DDFD86AD159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */,
 				89097C4715799DFF00913B9E /* Frameworks */,
 				89097C4515799DFF00913B9E /* Products */,
+				89D3C5951723B5C300704064 /* Tests */,
+				89D3C5A21723B5D600704064 /* IntegrationTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,8 +326,8 @@
 			isa = PBXGroup;
 			children = (
 				89097C4415799DFF00913B9E /* TSBoilerplate.app */,
-				89097C5F15799DFF00913B9E /* TSBoilerplateTests.octest */,
-				DDFD86A9159D3CCB00DB0164 /* TSBoilerplateIntegrationTests.octest */,
+				89097C5F15799DFF00913B9E /* Tests.octest */,
+				DDFD86A9159D3CCB00DB0164 /* IntegrationTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,28 +356,6 @@
 				89097E951579C45F00913B9E /* Resources */,
 			);
 			path = TSBoilerplate;
-			sourceTree = "<group>";
-		};
-		89097C6615799DFF00913B9E /* TSBoilerplateTests */ = {
-			isa = PBXGroup;
-			children = (
-				89097C6715799DFF00913B9E /* Supporting Files */,
-				DD05116E159C2FE200CDB1F5 /* TSAsynchronousOperationTest.h */,
-				DD05116F159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m */,
-				DD05117B159C34D700CDB1F5 /* TSGroupTest.h */,
-				DD05117C159C34D700CDB1F5 /* TSGroupTest.m */,
-			);
-			path = TSBoilerplateTests;
-			sourceTree = "<group>";
-		};
-		89097C6715799DFF00913B9E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DDFD867F159D203C00DB0164 /* Tests-Prefix.pch */,
-				89097C6815799DFF00913B9E /* TSBoilerplateTests-Info.plist */,
-				89097C6915799DFF00913B9E /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		89097C7715799F2C00913B9E /* Controller */ = {
@@ -613,24 +592,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DDFD86AD159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */ = {
+		89D3C5951723B5C300704064 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				DDFD86BA159D3E1400DB0164 /* TSTwitterIntegrationTest.h */,
-				DDFD86BB159D3E1400DB0164 /* TSTwitterIntegrationTest.m */,
-				DDFD86AE159D3CCB00DB0164 /* Supporting Files */,
+				89D3C5961723B5C300704064 /* InfoPlist.strings */,
+				89D3C5981723B5C300704064 /* Tests-Prefix.pch */,
+				89D3C59B1723B5C300704064 /* Tests-Info.plist */,
+				89D3C59C1723B5C300704064 /* TSGroupTest.h */,
+				89D3C59D1723B5C300704064 /* TSGroupTest.m */,
 			);
-			path = TSBoilerplateIntegrationTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		DDFD86AE159D3CCB00DB0164 /* Supporting Files */ = {
+		89D3C5A21723B5D600704064 /* IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
-				DDFD86AF159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Info.plist */,
-				DDFD86B0159D3CCB00DB0164 /* InfoPlist.strings */,
-				DDFD86B6159D3CCB00DB0164 /* TSBoilerplateIntegrationTests-Prefix.pch */,
+				89D3C5A31723B5D600704064 /* InfoPlist.strings */,
+				89D3C5A51723B5D600704064 /* IntegrationTests-Info.plist */,
+				89D3C5A61723B5D600704064 /* IntegrationTests-Prefix.pch */,
+				89D3C5AC1723B73500704064 /* TSAsynchronousOperationTest.h */,
+				89D3C5AD1723B73500704064 /* TSAsynchronousOperationTest.m */,
+				89D3C5A71723B5D600704064 /* TSTwitterIntegrationTest.h */,
+				89D3C5A81723B5D600704064 /* TSTwitterIntegrationTest.m */,
 			);
-			name = "Supporting Files";
+			path = IntegrationTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -653,9 +638,9 @@
 			productReference = 89097C4415799DFF00913B9E /* TSBoilerplate.app */;
 			productType = "com.apple.product-type.application";
 		};
-		89097C5E15799DFF00913B9E /* TSBoilerplateTests */ = {
+		89097C5E15799DFF00913B9E /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 89097C7415799DFF00913B9E /* Build configuration list for PBXNativeTarget "TSBoilerplateTests" */;
+			buildConfigurationList = 89097C7415799DFF00913B9E /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
 				89097C5A15799DFF00913B9E /* Sources */,
 				89097C5B15799DFF00913B9E /* Frameworks */,
@@ -667,14 +652,14 @@
 			dependencies = (
 				89097C6515799DFF00913B9E /* PBXTargetDependency */,
 			);
-			name = TSBoilerplateTests;
+			name = Tests;
 			productName = TSBoilerplateTests;
-			productReference = 89097C5F15799DFF00913B9E /* TSBoilerplateTests.octest */;
+			productReference = 89097C5F15799DFF00913B9E /* Tests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		DDFD86A8159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */ = {
+		DDFD86A8159D3CCB00DB0164 /* IntegrationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DDFD86B7159D3CCB00DB0164 /* Build configuration list for PBXNativeTarget "TSBoilerplateIntegrationTests" */;
+			buildConfigurationList = DDFD86B7159D3CCB00DB0164 /* Build configuration list for PBXNativeTarget "IntegrationTests" */;
 			buildPhases = (
 				DDFD86A4159D3CCB00DB0164 /* Sources */,
 				DDFD86A5159D3CCB00DB0164 /* Frameworks */,
@@ -686,9 +671,9 @@
 			dependencies = (
 				DDFD86BF159D3EAD00DB0164 /* PBXTargetDependency */,
 			);
-			name = TSBoilerplateIntegrationTests;
+			name = IntegrationTests;
 			productName = TSBoilerplateIntegrationTests;
-			productReference = DDFD86A9159D3CCB00DB0164 /* TSBoilerplateIntegrationTests.octest */;
+			productReference = DDFD86A9159D3CCB00DB0164 /* IntegrationTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -712,8 +697,8 @@
 			projectRoot = "";
 			targets = (
 				89097C4315799DFF00913B9E /* TSBoilerplate */,
-				89097C5E15799DFF00913B9E /* TSBoilerplateTests */,
-				DDFD86A8159D3CCB00DB0164 /* TSBoilerplateIntegrationTests */,
+				89097C5E15799DFF00913B9E /* Tests */,
+				DDFD86A8159D3CCB00DB0164 /* IntegrationTests */,
 				89097E7B1579AA2B00913B9E /* Generate Data Model */,
 			);
 		};
@@ -734,7 +719,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89097C6B15799DFF00913B9E /* InfoPlist.strings in Resources */,
+				89D3C59E1723B5C300704064 /* InfoPlist.strings in Resources */,
+				89D3C5A01723B5C300704064 /* Tests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +728,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDFD86B2159D3CCB00DB0164 /* InfoPlist.strings in Resources */,
+				89D3C5A91723B5D600704064 /* InfoPlist.strings in Resources */,
+				89D3C5AA1723B5D600704064 /* IntegrationTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,9 +830,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD051170159C2FE200CDB1F5 /* TSAsynchronousOperationTest.m in Sources */,
-				DD05117D159C34D700CDB1F5 /* TSGroupTest.m in Sources */,
 				DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */,
+				89D3C5A11723B5C300704064 /* TSGroupTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,9 +839,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDFD86C1159D3FCD00DB0164 /* TSAsynchronousOperationTest.m in Sources */,
 				DDFD86C0159D3EE800DB0164 /* Model+Test.m in Sources */,
-				DDFD86BC159D3E1400DB0164 /* TSTwitterIntegrationTest.m in Sources */,
+				89D3C5AB1723B5D600704064 /* TSTwitterIntegrationTest.m in Sources */,
+				89D3C5AE1723B73500704064 /* TSAsynchronousOperationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,18 +861,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		89097C6915799DFF00913B9E /* InfoPlist.strings */ = {
+		89D3C5961723B5C300704064 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				89097C6A15799DFF00913B9E /* en */,
+				89D3C5971723B5C300704064 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DDFD86B0159D3CCB00DB0164 /* InfoPlist.strings */ = {
+		89D3C5A31723B5D600704064 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DDFD86B1159D3CCB00DB0164 /* en */,
+				89D3C5A41723B5D600704064 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -974,10 +960,10 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TSBoilerplateTests/Tests-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
-				INFOPLIST_FILE = "TSBoilerplateTests/TSBoilerplateTests-Info.plist";
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -993,9 +979,9 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TSBoilerplateTests/Tests-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
-				INFOPLIST_FILE = "TSBoilerplateTests/TSBoilerplateTests-Info.plist";
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1025,8 +1011,8 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Prefix.pch";
-				INFOPLIST_FILE = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Info.plist";
+				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
+				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1042,8 +1028,8 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Prefix.pch";
-				INFOPLIST_FILE = "TSBoilerplateIntegrationTests/TSBoilerplateIntegrationTests-Info.plist";
+				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
+				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1071,7 +1057,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		89097C7415799DFF00913B9E /* Build configuration list for PBXNativeTarget "TSBoilerplateTests" */ = {
+		89097C7415799DFF00913B9E /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				89097C7515799DFF00913B9E /* Debug */,
@@ -1089,7 +1075,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DDFD86B7159D3CCB00DB0164 /* Build configuration list for PBXNativeTarget "TSBoilerplateIntegrationTests" */ = {
+		DDFD86B7159D3CCB00DB0164 /* Build configuration list for PBXNativeTarget "IntegrationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DDFD86B8159D3CCB00DB0164 /* Debug */,
