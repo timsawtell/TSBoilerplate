@@ -18,4 +18,5 @@
     #import "TSCommandRunner.h"
     #import "AsynchronousCommand.h"
     #import "Command.h"
+    #import "SBConstants.h"
 #endif

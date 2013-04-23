@@ -20,14 +20,10 @@
 #import "GroupEditCommand.h"
 #import "MemberCommand.h"
 #import "MemberDisplayCommand.h" // a very trivial asynchronous command
-#import "TwitterCommand.h"
-#import "Tweet.h"
-#import "TwitterEntity.h"
 
 #define kGroupName @"The Boilerplates"
 #define kMemberStartOfName @"Comrade"
-#define kScreenName @"devops_borat"
-#define kNumTweets 10
+
 
 @implementation AppDelegate
 
@@ -68,25 +64,6 @@
     };
     [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:memberDisplayCommand];
     
-    // Now run a command that uses MKNetorkKit to get a list of tweets for the chosen screenName
-    TwitterCommand *twitterCommand = [TwitterCommand new];
-    twitterCommand.screenName = kScreenName;
-    twitterCommand.includeRetweets = YES;
-    twitterCommand.includeEntities = NO;
-    twitterCommand.tweetCount = kNumTweets;
-    twitterCommand.commandCompletionBlock = ^ (NSError *error) {
-        if (error != nil) {
-            DLog(@":( Erorr says: %@", [error localizedDescription]);
-        } else {
-            /* we don't know what's happened, but we trust that the model is updated. 
-            The programmer doesn't need to handle the results, the command has already done that.
-            you would usually call something like [self.tableView reloadData] here */
-            for (Tweet *tweet in [Model sharedModel].tweets) {
-                NSLog(@"%@ - %@", tweet.twitterEntity.name, tweet.text);
-            }
-        }
-    };
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
     return YES;
 }
 
