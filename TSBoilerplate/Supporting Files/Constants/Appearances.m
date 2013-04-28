@@ -46,5 +46,10 @@
     return [UIFont fontWithName:@"AmericanTypewriter-Bold" size:17.0f];
 }
 
++ (UIFont *)fontForButtonsOnAlertView
+{
+    return [UIFont boldSystemFontOfSize:15];
+}
+
 
 @end

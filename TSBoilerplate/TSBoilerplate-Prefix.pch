@@ -19,4 +19,6 @@
     #import "AsynchronousCommand.h"
     #import "Command.h"
     #import "SBConstants.h"
+    #import "CGRectHelper.h"
+    #import "AlertViewController.h"
 #endif

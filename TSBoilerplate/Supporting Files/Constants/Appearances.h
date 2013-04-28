@@ -19,4 +19,5 @@
 + (void)globalAppearances;
 + (UIImage *)backgroundImage;
 + (UIFont *)titleBarFont;
++ (UIFont *)fontForButtonsOnAlertView;
 @end

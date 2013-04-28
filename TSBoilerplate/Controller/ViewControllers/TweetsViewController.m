@@ -59,12 +59,17 @@
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kNumTweets;
     twitterCommand.commandCompletionBlock = ^ (NSError *error) {
+        __strong typeof(self) strongSelf = weakSelf;
         if (error != nil) {
-            DLog(@":( Erorr says: %@", [error localizedDescription]);
-        } else {
-            __strong typeof(self) strongSelf = weakSelf;
-            [strongSelf reloadData];
+            AlertViewController *avc = [AlertViewController new];
+            [avc showForViewController:strongSelf
+                             withTitle:@"Erorr"
+                              withBody:[error localizedDescription]
+                         buttonHandler:nil
+                          buttonTitles:@"Damn", nil];
+            return;
         }
+        [strongSelf reloadData];
     };
     [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
 }
