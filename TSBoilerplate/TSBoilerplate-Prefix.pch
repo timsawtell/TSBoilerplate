@@ -15,6 +15,7 @@
     #import "Constants.h"
     #import "Appearances.h"
     #import "Model.h"
+    #import "NSStringHelper.h"
     #import "TSCommandRunner.h"
     #import "AsynchronousCommand.h"
     #import "Command.h"

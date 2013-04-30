@@ -74,16 +74,15 @@
 		892DC1B71682F0EC00CF6618 /* _TwitterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 892DC1B31682F0EC00CF6618 /* _TwitterEntity.m */; };
 		89CC552115B6542B00EA504D /* RoundedRectUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC552015B6542B00EA504D /* RoundedRectUtility.m */; };
 		89D3C59E1723B5C300704064 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C5961723B5C300704064 /* InfoPlist.strings */; };
-		89D3C5A01723B5C300704064 /* Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C59B1723B5C300704064 /* Tests-Info.plist */; };
 		89D3C5A11723B5C300704064 /* TSGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3C59D1723B5C300704064 /* TSGroupTest.m */; };
 		89D3C5A91723B5D600704064 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C5A31723B5D600704064 /* InfoPlist.strings */; };
-		89D3C5AA1723B5D600704064 /* IntegrationTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C5A51723B5D600704064 /* IntegrationTests-Info.plist */; };
 		89D3C5AB1723B5D600704064 /* TSTwitterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3C5A81723B5D600704064 /* TSTwitterIntegrationTest.m */; };
 		89D3C5AE1723B73500704064 /* TSAsynchronousOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3C5AD1723B73500704064 /* TSAsynchronousOperationTest.m */; };
 		89DA25EA16978E17001273E1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DA25E916978E17001273E1 /* Default-568h@2x.png */; };
 		DD1D3955172DCF8A006A6F91 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1D3952172DCF8A006A6F91 /* AlertView.m */; };
 		DD1D3956172DCF8A006A6F91 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1D3954172DCF8A006A6F91 /* AlertViewController.m */; };
 		DD1D3958172DD14F006A6F91 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1D3957172DD14F006A6F91 /* AlertViewController.xib */; };
+		DD6A61D41730785B005735F9 /* NSStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6A61D31730785B005735F9 /* NSStringHelper.m */; };
 		DDBB5F2717264A3500C93A97 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB5F1D17264A3500C93A97 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DDBB5F2817264A3500C93A97 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBB5F1F17264A3500C93A97 /* blackArrow.png */; };
 		DDBB5F2917264A3500C93A97 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBB5F2017264A3500C93A97 /* blackArrow@2x.png */; };
@@ -239,6 +238,8 @@
 		DD1D3953172DCF8A006A6F91 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
 		DD1D3954172DCF8A006A6F91 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		DD1D3957172DD14F006A6F91 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		DD6A61D21730785B005735F9 /* NSStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringHelper.h; sourceTree = "<group>"; };
+		DD6A61D31730785B005735F9 /* NSStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringHelper.m; sourceTree = "<group>"; };
 		DDBB5F1C17264A3500C93A97 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		DDBB5F1D17264A3500C93A97 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		DDBB5F1F17264A3500C93A97 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
@@ -555,6 +556,8 @@
 				89097EB11579C5BA00913B9E /* SettingsHelper.h */,
 				89097EB21579C5BA00913B9E /* SettingsHelper.m */,
 				DD1D3950172DCEE5006A6F91 /* CGRectHelper.h */,
+				DD6A61D21730785B005735F9 /* NSStringHelper.h */,
+				DD6A61D31730785B005735F9 /* NSStringHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -875,7 +878,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				89D3C59E1723B5C300704064 /* InfoPlist.strings in Resources */,
-				89D3C5A01723B5C300704064 /* Tests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,7 +886,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				89D3C5A91723B5D600704064 /* InfoPlist.strings in Resources */,
-				89D3C5AA1723B5D600704064 /* IntegrationTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +987,7 @@
 				DDBB5F5F1726540800C93A97 /* TweetCell.m in Sources */,
 				DD1D3955172DCF8A006A6F91 /* AlertView.m in Sources */,
 				DD1D3956172DCF8A006A6F91 /* AlertViewController.m in Sources */,
+				DD6A61D41730785B005735F9 /* NSStringHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

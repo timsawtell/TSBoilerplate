@@ -17,4 +17,9 @@
 
 @interface TSViewController : UIViewController
 
+- (void) showActivityScreen;
+- (void) showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated;
+- (void) hideActivityScreen;
+- (void) hideActivityScreenAnimated:(BOOL)animated;
+
 @end

@@ -60,6 +60,7 @@
     twitterCommand.tweetCount = kNumTweets;
     twitterCommand.commandCompletionBlock = ^ (NSError *error) {
         __strong typeof(self) strongSelf = weakSelf;
+        [strongSelf hideActivityScreen];
         if (error != nil) {
             AlertViewController *avc = [AlertViewController new];
             [avc showForViewController:strongSelf
@@ -71,6 +72,7 @@
         }
         [strongSelf reloadData];
     };
+    [self showActivityScreen];
     [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
 }
 
