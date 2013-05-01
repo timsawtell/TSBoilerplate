@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self goGetTweets];
+    [self goGetTweets];    
 }
 
 - (void)fetchData

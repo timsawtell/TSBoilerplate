@@ -98,6 +98,7 @@
 		DDBB5F551726530600C93A97 /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB5F541726530600C93A97 /* TweetsViewController.m */; };
 		DDBB5F581726535D00C93A97 /* SBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB5F571726535D00C93A97 /* SBConstants.m */; };
 		DDBB5F5F1726540800C93A97 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB5F5E1726540800C93A97 /* TweetCell.m */; };
+		DDE05DCE1730D9BF0084CC1D /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE05DCD1730D9BF0084CC1D /* XMLDictionary.m */; };
 		DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
 		DDFD86AA159D3CCB00DB0164 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C6015799DFF00913B9E /* SenTestingKit.framework */; };
 		DDFD86AB159D3CCB00DB0164 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
@@ -261,6 +262,8 @@
 		DDBB5F571726535D00C93A97 /* SBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBConstants.m; sourceTree = "<group>"; };
 		DDBB5F5D1726540800C93A97 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		DDBB5F5E1726540800C93A97 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		DDE05DCC1730D9BF0084CC1D /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
+		DDE05DCD1730D9BF0084CC1D /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		DDFD8693159D2FF600DB0164 /* Model+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+Test.h"; sourceTree = "<group>"; };
 		DDFD8694159D2FF600DB0164 /* Model+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+Test.m"; sourceTree = "<group>"; };
 		DDFD86A9159D3CCB00DB0164 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +310,7 @@
 		89005C5C16CCE0E500139CAF /* External */ = {
 			isa = PBXGroup;
 			children = (
+				DDE05DCB1730D9BF0084CC1D /* XMLDictionary */,
 				DDBB5F1917264A3500C93A97 /* EGOTableViewPullRefresh */,
 				89005D1B16CCE44700139CAF /* MKNetworkKit */,
 			);
@@ -767,6 +771,16 @@
 			path = xibs;
 			sourceTree = "<group>";
 		};
+		DDE05DCB1730D9BF0084CC1D /* XMLDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				DDE05DCC1730D9BF0084CC1D /* XMLDictionary.h */,
+				DDE05DCD1730D9BF0084CC1D /* XMLDictionary.m */,
+			);
+			name = XMLDictionary;
+			path = External/XMLDictionary/XMLDictionary;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -988,6 +1002,7 @@
 				DD1D3955172DCF8A006A6F91 /* AlertView.m in Sources */,
 				DD1D3956172DCF8A006A6F91 /* AlertViewController.m in Sources */,
 				DD6A61D41730785B005735F9 /* NSStringHelper.m in Sources */,
+				DDE05DCE1730D9BF0084CC1D /* XMLDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

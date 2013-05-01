@@ -1,3 +1,6 @@
 [submodule "External/MKNetworkKit"]
 	path = External/MKNetworkKit
 	url = git://github.com/timsawtell/MKNetworkKit.git
+[submodule "External/XMLDictionary"]
+	path = External/XMLDictionary
+	url = git@github.com:timsawtell/XMLDictionary.git

@@ -22,4 +22,5 @@
     #import "SBConstants.h"
     #import "CGRectHelper.h"
     #import "AlertViewController.h"
+    #import "XMLDictionary.h"
 #endif

@@ -219,18 +219,7 @@
     NSInteger currentOffset = scrollView.contentOffset.y;
     NSInteger maximumOffset = MAX(scrollView.contentSize.height - scrollView.frame.size.height, 0);
     
-	if (_state == EGOOPullRefreshLoading) {
-		
-		CGFloat offset;
-        if (_forBottomOfView) {
-            offset = maximumOffset + 60;
-        } else {
-            offset = MAX(scrollView.contentOffset.y * -1, 0);
-            offset = MIN(offset, 60);
-        }
-		//scrollView.contentInset = UIEdgeInsetsMake(offset, 0.0f, 0.0f, 0.0f);
-		
-	} else if (scrollView.isDragging) {
+    if (scrollView.isDragging) {
 		
 		BOOL _loading = NO;
 		if ([_delegate respondsToSelector:@selector(egoRefreshTableHeaderDataSourceIsLoading:)]) {
