@@ -35,7 +35,7 @@
         dispatch_semaphore_signal(self.semaphore);
     };
     
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:twitterCommand];
     
     while (dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -55,7 +55,7 @@
         dispatch_semaphore_signal(self.semaphore);
     };
     
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:twitterCommand];
     
     while (dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -73,7 +73,7 @@
         STAssertNotNil(error, @"The twitter error was nil when it should have contained something");
         dispatch_semaphore_signal(self.semaphore);
     };
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:twitterCommand];
     
     while (dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];

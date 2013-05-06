@@ -35,7 +35,7 @@
     GroupCommand *groupCommand = [GroupCommand new];
     groupCommand.groupName = kGroupName;
     groupCommand.saveModel = YES; // at the end of the execute method, save the model.
-    [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:groupCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:groupCommand];
     STAssertNotNil([Model sharedModel].group, @"oh no, the group isn't saved to the model");
     STAssertEquals([Model sharedModel].group.groupName, kGroupName, @"oh no, the group doesn't have a member");
 }
@@ -49,7 +49,7 @@
     memberCommand.memberId = 1;
     memberCommand.group = group;
     memberCommand.saveModel = NO;
-    [[TSCommandRunner sharedCommandRunner] executeSynchronousCommand:memberCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:memberCommand];
     STAssertEquals((NSInteger)[group.members count], 1, @"oh no, the group doesn't have a member");
 }
 

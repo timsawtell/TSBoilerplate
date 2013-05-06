@@ -26,7 +26,7 @@
     __strong static TSCommandRunner *commandRunner = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-            commandRunner = [TSCommandRunner new];
+        commandRunner = [TSCommandRunner new];
     });
     return commandRunner;
 }
@@ -41,24 +41,22 @@
     return sharedOperationQueue;
 }
 
-- (void)executeAsynchronousCommand:(AsynchronousCommand *)asynchronousCommand
+- (void)executeCommand:(Command *)command
 {
-    assert([asynchronousCommand isKindOfClass:[AsynchronousCommand class]]);
-    
-    if ([asynchronousCommand isMultiThreaded]) {
-        if (![[[TSCommandRunner sharedOperationQueue] operations] containsObject:asynchronousCommand]) {
-            [[TSCommandRunner sharedOperationQueue] addOperation:asynchronousCommand]; // run on any other thread
+    if ([command isKindOfClass:[AsynchronousCommand class]]) {
+        AsynchronousCommand *asynchronousCommand = (AsynchronousCommand *)command;
+        if ([asynchronousCommand isMultiThreaded]) {
+            if (![[[TSCommandRunner sharedOperationQueue] operations] containsObject:asynchronousCommand]) {
+                [[TSCommandRunner sharedOperationQueue] addOperation:asynchronousCommand]; // run on any other thread
+            }
+        } else {
+            if (![[[NSOperationQueue mainQueue] operations] containsObject:asynchronousCommand]) {
+                [[NSOperationQueue mainQueue] addOperation: asynchronousCommand]; // run on thread 0
+            }
         }
     } else {
-        if (![[[NSOperationQueue mainQueue] operations] containsObject:asynchronousCommand]) {
-            [[NSOperationQueue mainQueue] addOperation: asynchronousCommand]; // run on thread 0
-        }
+        [command execute];
     }
-}
-
-- (void)executeSynchronousCommand:(Command *)command
-{
-    [command execute];
 }
 
 @end

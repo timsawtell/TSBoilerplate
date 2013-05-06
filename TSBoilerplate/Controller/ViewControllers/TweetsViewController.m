@@ -73,7 +73,7 @@
         [strongSelf reloadData];
     };
     [self showActivityScreen];
-    [[TSCommandRunner sharedCommandRunner] executeAsynchronousCommand:twitterCommand];
+    [[TSCommandRunner sharedCommandRunner] executeCommand:twitterCommand];
 }
 
 #pragma mark - UITableViewDataSource
