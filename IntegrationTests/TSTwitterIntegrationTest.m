@@ -69,6 +69,7 @@
     twitterCommand.includeRetweets = YES;
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kTweetCount;
+    twitterCommand.saveModel = YES;
     twitterCommand.commandCompletionBlock = ^ (NSError *error) {
         STAssertNotNil(error, @"The twitter error was nil when it should have contained something");
         dispatch_semaphore_signal(self.semaphore);

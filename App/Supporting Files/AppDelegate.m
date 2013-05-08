@@ -30,40 +30,7 @@
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.       
-    if ([Model sharedModel].group == nil) {
-        // create a new group (kind of like a factory). The group is added to the model.
-        GroupCommand *groupCommand = [GroupCommand new];
-        groupCommand.groupName = kGroupName;
-        groupCommand.saveModel = YES; // at the end of the execute method, save the model.
-        [[TSCommandRunner sharedCommandRunner] executeCommand:groupCommand];
-    }
-    if ([[Model sharedModel].group.members count] <= 0) {
-        // if no members in this group, add 3 of them
-        for (NSUInteger count = 0; count < 3; count++) {
-            // another factory to create member instances and add them to a group
-            // we are using the Model's group, so we save the model in the command
-            MemberCommand *memberCommand = [MemberCommand new];
-            memberCommand.name = [NSString stringWithFormat:@"%@ %d", kMemberStartOfName, count];
-            memberCommand.memberId = count;
-            memberCommand.group = [Model sharedModel].group;
-            memberCommand.saveModel = YES; // trade off to your liking. Save with each command execution or call [[Model sharedModel] save] yourself later.
-            [[TSCommandRunner sharedCommandRunner] executeCommand:memberCommand];
-        }
-    }
-    
-    // Run a trivial asynchronous command to display the group's members
-    MemberDisplayCommand *memberDisplayCommand = [MemberDisplayCommand new];
-    memberDisplayCommand.group = [Model sharedModel].group;
-    memberDisplayCommand.commandCompletionBlock = ^ (NSError *error) {
-        DLog(@"Your first completion block! I just displayed the members in the group.");
-        if (error != nil) {
-            DLog(@":( Erorr says: %@", [error localizedDescription]);
-        }
-    };
-    [[TSCommandRunner sharedCommandRunner] executeCommand:memberDisplayCommand];
-    
+{    
     return YES;
 }
 

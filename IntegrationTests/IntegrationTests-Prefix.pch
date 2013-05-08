@@ -1,7 +1,7 @@
 //
 // Prefix header for all source files of the 'TSBoilerplateIntegrationTests' target in the 'TSBoilerplate' project
 //
-
+#define TESTING 1
 #import <Availability.h>
 
 #ifndef __IPHONE_3_0
@@ -10,5 +10,5 @@
 
 #ifdef __OBJC__
 #import <SenTestingKit/SenTestingKit.h>
-#import "Model+Test.h"
+#import "Model.h"
 #endif

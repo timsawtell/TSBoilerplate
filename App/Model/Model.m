@@ -13,19 +13,43 @@
  IN THE SOFTWARE.
  */
 
-#import "Model+Test.h"
+#import "Model.h"
+#import "TestModel.h"
+#import "NSFileManager+DirectoryLocations.h"
 
-@implementation Model (Test)
+@implementation Model
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
+@synthesize group, tweets;
+
+#pragma mark - Data
+
++ (NSString*)savedDataPath
+{
+    NSString *appSupport = [[NSFileManager defaultManager] applicationSupportDirectory];
+    return [appSupport stringByAppendingPathComponent: kModelSavedDataFileName];
+}
+
++ (Model*)savedModel
+{
+    Model *model = [NSKeyedUnarchiver unarchiveObjectWithFile: [Model savedDataPath]];
+    if (!model) {
+        return [Model new];
+    }
+    return model;
+}
 
 + (Model*)sharedModel
 {
     static Model* sharedModel = nil;
     @synchronized(self) {
         if (sharedModel == nil) {
-            sharedModel = [Model new];
+#ifdef TESTING
+            sharedModel = [TestModel new];
+            DLog(@"fake model used");
+#else
+            sharedModel = [Model savedModel];
+            DLog(@"real model used");
+#endif
         }
     }
     return sharedModel;
@@ -33,9 +57,29 @@
 
 - (void)save
 {
-    // do nothing
+    @try {
+        @synchronized(self)
+        {
+            [NSKeyedArchiver archiveRootObject: self toFile: [Model savedDataPath]];
+        }
+    } @catch (NSException *exception) {
+    }
 }
 
-#pragma clang diagnostic pop
+#pragma mark - initializing
+
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        self.group = [aDecoder decodeObjectForKey:@"group"];
+    }
+    return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.group forKey:@"group"];
+}
 
 @end
