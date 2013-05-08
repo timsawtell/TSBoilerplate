@@ -99,6 +99,7 @@
 		DDBB5F581726535D00C93A97 /* SBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB5F571726535D00C93A97 /* SBConstants.m */; };
 		DDBB5F5F1726540800C93A97 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB5F5E1726540800C93A97 /* TweetCell.m */; };
 		DDE05DCE1730D9BF0084CC1D /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE05DCD1730D9BF0084CC1D /* XMLDictionary.m */; };
+		DDFD62CA173B089D000323A8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDFD62C9173B089D000323A8 /* ImageIO.framework */; };
 		DDFD8695159D2FF600DB0164 /* Model+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD8694159D2FF600DB0164 /* Model+Test.m */; };
 		DDFD86AA159D3CCB00DB0164 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C6015799DFF00913B9E /* SenTestingKit.framework */; };
 		DDFD86AB159D3CCB00DB0164 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
@@ -264,6 +265,7 @@
 		DDBB5F5E1726540800C93A97 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		DDE05DCC1730D9BF0084CC1D /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		DDE05DCD1730D9BF0084CC1D /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
+		DDFD62C9173B089D000323A8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DDFD8693159D2FF600DB0164 /* Model+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+Test.h"; sourceTree = "<group>"; };
 		DDFD8694159D2FF600DB0164 /* Model+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+Test.m"; sourceTree = "<group>"; };
 		DDFD86A9159D3CCB00DB0164 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,6 +276,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFD62CA173B089D000323A8 /* ImageIO.framework in Frameworks */,
 				DDBB5F511726512D00C93A97 /* QuartzCore.framework in Frameworks */,
 				89097D1C1579A0F500913B9E /* Security.framework in Frameworks */,
 				89097D1A15799F9100913B9E /* SystemConfiguration.framework in Frameworks */,
@@ -387,6 +390,7 @@
 		89097C4715799DFF00913B9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DDFD62C9173B089D000323A8 /* ImageIO.framework */,
 				DDBB5F501726512D00C93A97 /* QuartzCore.framework */,
 				89097D1B1579A0F500913B9E /* Security.framework */,
 				89097D1915799F9100913B9E /* SystemConfiguration.framework */,
