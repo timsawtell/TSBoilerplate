@@ -16,6 +16,7 @@
 #import "Model.h"
 #import "TestModel.h"
 #import "NSFileManager+DirectoryLocations.h"
+// Edit Scheme, Run setting, Arguments tab, environment variables. Preprocessor macros do not work when the main target is built before the test target.
 
 @implementation Model
 
@@ -43,13 +44,11 @@
     static Model* sharedModel = nil;
     @synchronized(self) {
         if (sharedModel == nil) {
-#ifdef TESTING
-            sharedModel = [TestModel new];
-            DLog(@"fake model used");
-#else
-            sharedModel = [Model savedModel];
-            DLog(@"real model used");
-#endif
+            if (TestingModel()) {
+                sharedModel = [TestModel new];
+            } else {
+                sharedModel = [Model savedModel];
+            }
         }
     }
     return sharedModel;

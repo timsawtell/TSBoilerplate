@@ -24,3 +24,9 @@
     #import "AlertViewController.h"
     #import "XMLDictionary.h"
 #endif
+
+static inline bool TestingModel()
+{
+    // Edit Scheme (Test or Integration Test), Run setting, Arguments tab, environment variables. Preprocessor macros do not work when the main target is built before the test target.
+    return (nil != [[[NSProcessInfo processInfo] environment] objectForKey:@"TESTING"]);
+}

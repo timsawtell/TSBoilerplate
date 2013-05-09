@@ -115,23 +115,6 @@
 		DDFD86AC159D3CCB00DB0164 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		89097C6415799DFF00913B9E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 89097C3B15799DFF00913B9E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 89097C4315799DFF00913B9E;
-			remoteInfo = TSBoilerplate;
-		};
-		DDFD86BE159D3EAD00DB0164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 89097C3B15799DFF00913B9E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 89097C4315799DFF00913B9E;
-			remoteInfo = TSBoilerplate;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		89097C4415799DFF00913B9E /* TSBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89097C4815799DFF00913B9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -852,7 +835,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				89097C6515799DFF00913B9E /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = TSBoilerplateTests;
@@ -871,7 +853,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DDFD86BF159D3EAD00DB0164 /* PBXTargetDependency */,
 			);
 			name = IntegrationTests;
 			productName = TSBoilerplateIntegrationTests;
@@ -1074,19 +1055,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		89097C6515799DFF00913B9E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 89097C4315799DFF00913B9E /* TSBoilerplate */;
-			targetProxy = 89097C6415799DFF00913B9E /* PBXContainerItemProxy */;
-		};
-		DDFD86BF159D3EAD00DB0164 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 89097C4315799DFF00913B9E /* TSBoilerplate */;
-			targetProxy = DDFD86BE159D3EAD00DB0164 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		89D3C5961723B5C300704064 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1207,10 +1175,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TESTING=1",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1261,10 +1226,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					DEBUG,
-					"TESTING=1",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1283,6 +1246,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
