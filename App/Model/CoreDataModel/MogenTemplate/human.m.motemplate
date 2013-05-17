@@ -1,13 +1,3 @@
-//
-//  <$managedObjectClassName$>.m
-//  <#ProjectName#>
-//
-//  Created by <#ModelAuthor#> on <#GenerateDate#>.
-//  Copyright (c) <#GenerateYear#> Speedwell eBusiness Solutions Pty Ltd. All rights reserved.
-//
-//  $Id$
-//
-
 #import "<$managedObjectClassName$>.h"
 
 @implementation <$managedObjectClassName$>

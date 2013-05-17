@@ -1,11 +1,6 @@
-//
 //  _Tweet.m
-//
-//  $Id$
-//
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to Tweet.h instead.
-//
 
 
 #import "_Tweet.h"

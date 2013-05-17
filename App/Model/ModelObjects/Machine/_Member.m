@@ -1,11 +1,6 @@
-//
 //  _Member.m
-//
-//  $Id$
-//
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to Member.h instead.
-//
 
 
 #import "_Member.h"

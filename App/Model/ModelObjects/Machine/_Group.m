@@ -1,11 +1,6 @@
-//
 //  _Group.m
-//
-//  $Id$
-//
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to Group.h instead.
-//
 
 
 #import "_Group.h"

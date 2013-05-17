@@ -1,11 +1,6 @@
-//
 //  _TwitterEntity.m
-//
-//  $Id$
-//
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to TwitterEntity.h instead.
-//
 
 
 #import "_TwitterEntity.h"
