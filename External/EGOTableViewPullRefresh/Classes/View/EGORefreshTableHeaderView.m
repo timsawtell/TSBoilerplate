@@ -242,9 +242,11 @@
             }
         }
 		
-		if (scrollView.contentInset.top != 0) {
-			scrollView.contentInset = UIEdgeInsetsZero;
-		}
+		/* removing this so that the loading bar is visible when the app is still fetching data
+         if (scrollView.contentInset.top != 0) {
+         scrollView.contentInset = UIEdgeInsetsZero;
+         }
+         */
 		
 	}
 	
