@@ -16,7 +16,7 @@
 #import "AsynchronousCommand.h"
 
 @interface AsynchronousCommand()
-@property (nonatomic, strong) NSMutableArray *_subCommands;
+@property (nonatomic, weak) NSMutableArray *_subCommands; // a non-retaining array of subcommands for this command
 @end
 
 @implementation AsynchronousCommand
@@ -105,13 +105,10 @@
     [self setFinished: YES];
 }
 
-- (void)addSubCommand:(Command *)command
+- (void)addSubCommand:(AsynchronousCommand *)command
 {
+    command.parentCommand = self;
     [_subCommands addObject:command];
-    if ([command isKindOfClass:[AsynchronousCommand class]]) {
-        __weak AsynchronousCommand *async = (AsynchronousCommand *)command;
-        async.parentCommand = self;
-    }
 }
 
 - (void)removeSubCommand:(Command *)command
