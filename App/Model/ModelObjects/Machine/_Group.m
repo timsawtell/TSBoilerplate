@@ -17,12 +17,6 @@ NSString * const kModelDictionaryGroupMembers = @"Group.members";
 
 /** \ingroup DataModel */
 
-NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
-{
-    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual, CFHash};
-    return (__bridge NSMutableSet*) CFSetCreateMutable(0, 0, &callbacks);
-}
-
 @implementation _Group
 + (NSSet *)dictionaryRepresentationKeys
 {
@@ -83,7 +77,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.groupName forKey:kModelPropertyGroupGroupName];
     if([self.members count] > 0)
     {

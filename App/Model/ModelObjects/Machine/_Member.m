@@ -16,12 +16,6 @@ NSString * const kModelDictionaryMemberGroup = @"Member.group";
 
 /** \ingroup DataModel */
 
-NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
-{
-    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual, CFHash};
-    return (__bridge NSMutableSet*) CFSetCreateMutable(0, 0, &callbacks);
-}
-
 @implementation _Member
 + (NSSet *)dictionaryRepresentationKeys
 {
@@ -81,7 +75,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.memberId forKey:kModelPropertyMemberMemberId];
     [dict setObjectIfNotNil:self.name forKey:kModelPropertyMemberName];
     return dict;
@@ -92,20 +86,16 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 - (void) setGroup: (Group*) group_ settingInverse: (BOOL) setInverse
 {
     if (group_ == nil && setInverse == YES) {
-        [group removeMembersObject: (Member*)self settingInverse: NO];
+        [_group removeMembersObject: (Member*)self settingInverse: NO];
     }
-    group = group_;
+    _group = group_;
     if (setInverse == YES) {
-        [group addMembersObject: (Member*)self settingInverse: NO];
+        [_group addMembersObject: (Member*)self settingInverse: NO];
     }}
 
 - (void) setGroup: (Group*) group_
 {
     [self setGroup: group_ settingInverse: YES];
-}
-
-- (Group*) group{
-    return group;
 }
 
 

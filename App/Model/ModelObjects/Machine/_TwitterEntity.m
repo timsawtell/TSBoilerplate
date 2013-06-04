@@ -18,12 +18,6 @@ NSString * const kModelDictionaryTwitterEntityTweets = @"TwitterEntity.tweets";
 
 /** \ingroup DataModel */
 
-NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
-{
-    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual, CFHash};
-    return (__bridge NSMutableSet*) CFSetCreateMutable(0, 0, &callbacks);
-}
-
 @implementation _TwitterEntity
 + (NSSet *)dictionaryRepresentationKeys
 {
@@ -88,7 +82,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.name forKey:kModelPropertyTwitterEntityName];
     [dict setObjectIfNotNil:self.screen_name forKey:kModelPropertyTwitterEntityScreen_name];
     if([self.tweets count] > 0)

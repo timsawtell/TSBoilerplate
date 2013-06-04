@@ -23,11 +23,7 @@ extern NSString * const kModelDictionaryTwitterEntityScreen_name;
 extern NSString * const kModelDictionaryTwitterEntityTweets;
 
 @interface _TwitterEntity : ModelObject <NSCoding>
-{
-	NSString* name;
-	NSString* screen_name;
-	NSSet *tweets;
-}
+
 
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* screen_name;@property (nonatomic, strong, readonly) NSSet *tweets;

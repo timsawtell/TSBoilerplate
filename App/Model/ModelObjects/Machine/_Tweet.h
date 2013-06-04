@@ -21,14 +21,10 @@ extern NSString * const kModelDictionaryTweetText;
 extern NSString * const kModelDictionaryTweetTwitterEntity;
 
 @interface _Tweet : ModelObject <NSCoding>
-{
-	NSString* text;
-	
-	TwitterEntity *twitterEntity;
-}
+
 
 @property (nonatomic, strong) NSString* text;
-@property (nonatomic, assign, readwrite) TwitterEntity *twitterEntity;
+@property (nonatomic, weak, readwrite) TwitterEntity *twitterEntity;
 
 
 - (void)setTwitterEntity: (TwitterEntity*) twitterEntity_ settingInverse: (BOOL) setInverse;

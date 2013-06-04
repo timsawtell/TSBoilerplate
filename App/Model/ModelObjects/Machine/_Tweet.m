@@ -15,12 +15,6 @@ NSString * const kModelDictionaryTweetTwitterEntity = @"Tweet.twitterEntity";
 
 /** \ingroup DataModel */
 
-NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
-{
-    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual, CFHash};
-    return (__bridge NSMutableSet*) CFSetCreateMutable(0, 0, &callbacks);
-}
-
 @implementation _Tweet
 + (NSSet *)dictionaryRepresentationKeys
 {
@@ -76,7 +70,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.text forKey:kModelPropertyTweetText];
     return dict;
 }
@@ -86,20 +80,16 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 - (void) setTwitterEntity: (TwitterEntity*) twitterEntity_ settingInverse: (BOOL) setInverse
 {
     if (twitterEntity_ == nil && setInverse == YES) {
-        [twitterEntity removeTweetsObject: (Tweet*)self settingInverse: NO];
+        [_twitterEntity removeTweetsObject: (Tweet*)self settingInverse: NO];
     }
-    twitterEntity = twitterEntity_;
+    _twitterEntity = twitterEntity_;
     if (setInverse == YES) {
-        [twitterEntity addTweetsObject: (Tweet*)self settingInverse: NO];
+        [_twitterEntity addTweetsObject: (Tweet*)self settingInverse: NO];
     }}
 
 - (void) setTwitterEntity: (TwitterEntity*) twitterEntity_
 {
     [self setTwitterEntity: twitterEntity_ settingInverse: YES];
-}
-
-- (TwitterEntity*) twitterEntity{
-    return twitterEntity;
 }
 
 

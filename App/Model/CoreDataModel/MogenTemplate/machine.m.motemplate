@@ -29,12 +29,6 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
 
 /** \ingroup DataModel */
 
-NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
-{
-    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual, CFHash};
-    return (__bridge NSMutableSet*) CFSetCreateMutable(0, 0, &callbacks);
-}
-
 @implementation _<$managedObjectClassName$>
 
 + (NSSet *)dictionaryRepresentationKeys
@@ -132,7 +126,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     <$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
     [dict setObjectIfNotNil:self.<$Attribute.name$> forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
     <$endif$><$endforeach do$>
@@ -243,37 +237,32 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 {
     <$if Relationship.inverseRelationship$><$if Relationship.inverseRelationship.isToMany$>
     if (<$Relationship.name$>_ == nil && setInverse == YES) {
-        [<$Relationship.name$> remove<$Relationship.inverseRelationship.name.initialCapitalString$>Object: (<$managedObjectClassName$>*)self settingInverse: NO];
+        [_<$Relationship.name$> remove<$Relationship.inverseRelationship.name.initialCapitalString$>Object: (<$managedObjectClassName$>*)self settingInverse: NO];
     }
     <$else$>
     if (<$Relationship.name$>_ == nil && setInverse == YES) {
-        [<$Relationship.name$> set<$Relationship.inverseRelationship.name.initialCapitalString$>: nil settingInverse: NO];
+        [_<$Relationship.name$> set<$Relationship.inverseRelationship.name.initialCapitalString$>: nil settingInverse: NO];
     }
     <$endif$><$endif$>
     <$if Relationship.isTransient$>
-<$"    "$><$Relationship.name$> = <$Relationship.name$>_;
+<$"    "$>_<$Relationship.name$> = <$Relationship.name$>_;
     <$else$>
-    if (<$Relationship.name$> != <$Relationship.name$>_) {
-<$"        "$><$Relationship.name$> = <$Relationship.name$>_;
+    if (_<$Relationship.name$> != <$Relationship.name$>_) {
+<$"        "$>_<$Relationship.name$> = <$Relationship.name$>_;
     }
     <$endif$>
     <$if Relationship.inverseRelationship$><$if Relationship.inverseRelationship.isToMany$>
     if (setInverse == YES) {
-        [<$Relationship.name$> add<$Relationship.inverseRelationship.name.initialCapitalString$>Object: (<$managedObjectClassName$>*)self settingInverse: NO];
+        [_<$Relationship.name$> add<$Relationship.inverseRelationship.name.initialCapitalString$>Object: (<$managedObjectClassName$>*)self settingInverse: NO];
     }<$else$>
     if (setInverse == YES) {
-        [<$Relationship.name$> set<$Relationship.inverseRelationship.name.initialCapitalString$>: (<$managedObjectClassName$>*)self settingInverse: NO];
+        [_<$Relationship.name$> set<$Relationship.inverseRelationship.name.initialCapitalString$>: (<$managedObjectClassName$>*)self settingInverse: NO];
     }<$endif$><$endif$>
 }
 
 - (void) set<$Relationship.name.initialCapitalString$>: (<$Relationship.destinationEntity.managedObjectClassName$>*) <$Relationship.name$>_
 {
     [self set<$Relationship.name.initialCapitalString$>: <$Relationship.name$>_ settingInverse: YES];
-}
-
-- (<$Relationship.destinationEntity.managedObjectClassName$>*) <$Relationship.name$>
-{
-    return <$Relationship.name$>;
 }
 
 <$endif$><$endforeach do$>

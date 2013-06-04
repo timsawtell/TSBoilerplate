@@ -21,10 +21,7 @@ extern NSString * const kModelDictionaryGroupGroupName;
 extern NSString * const kModelDictionaryGroupMembers;
 
 @interface _Group : ModelObject <NSCoding>
-{
-	NSString* groupName;
-	NSSet *members;
-}
+
 
 @property (nonatomic, strong) NSString* groupName;@property (nonatomic, strong, readonly) NSSet *members;
 

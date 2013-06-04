@@ -23,16 +23,11 @@ extern NSString * const kModelDictionaryMemberName;
 extern NSString * const kModelDictionaryMemberGroup;
 
 @interface _Member : ModelObject <NSCoding>
-{
-	NSNumber* memberId;
-	NSString* name;
-	
-	Group *group;
-}
+
 
 @property (nonatomic, strong) NSNumber* memberId;@property int32_t memberIdValue;
 @property (nonatomic, strong) NSString* name;
-@property (nonatomic, assign, readwrite) Group *group;
+@property (nonatomic, weak, readwrite) Group *group;
 
 
 - (void)setGroup: (Group*) group_ settingInverse: (BOOL) setInverse;

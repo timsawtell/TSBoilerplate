@@ -25,14 +25,10 @@ extern NSString * const kModelDictionary<$managedObjectClassName$><$Relationship
 @interface _<$managedObjectClassName$> : <$customSuperentity$> <NSCoding>
 <$else$>
 @interface _<$managedObjectClassName$> : ModelObject <NSCoding>
-<$endif$>{
-	<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$><$Attribute.objectAttributeType$> <$Attribute.name$>;<$endif$>
-	<$endforeach do$><$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany$>NSSet *<$Relationship.name$>;<$else$>
-	<$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$endif$><$endforeach do$>
-}
+<$endif$>
 <$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$><$if Attribute.isReadonly$>@property (nonatomic, strong, readonly) <$Attribute.objectAttributeType$> <$Attribute.name$>;<$else$>
 @property (nonatomic, strong) <$Attribute.objectAttributeType$> <$Attribute.name$>;<$endif$><$if Attribute.hasScalarAttributeType$>@property <$Attribute.scalarAttributeType$> <$Attribute.name$>Value;<$endif$><$endif$><$endforeach do$><$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany$>@property (nonatomic, strong, readonly) NSSet *<$Relationship.name$>;<$else$>
-<$if Relationship.isTransient $>@property (nonatomic, assign, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$else$>@property (nonatomic, strong, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$endif$>
+<$if Relationship.isTransient $>@property (nonatomic, weak, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$else$>@property (nonatomic, strong, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$endif$>
 <$endif$><$endforeach do$>
 <$foreach Relationship noninheritedRelationships do$>
 <$if Relationship.isToMany$>- (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
