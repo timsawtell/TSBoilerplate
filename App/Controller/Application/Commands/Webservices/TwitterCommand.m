@@ -36,6 +36,7 @@
         __strong TwitterCommand *strongSelf = weakSelf;
         if(strongSelf.isCancelled) {
             [strongSelf finish];
+            return;
         }
         
         if (nil != error) {

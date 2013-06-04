@@ -24,10 +24,63 @@ static CGFloat const kFontSize                  = 16.0f;
 @interface TSViewController ()
 @property (nonatomic, assign) BOOL overrideShowingActivityScreen;
 @property (nonatomic, strong) UIView *activitySuperview;
-- (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+
+- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view;
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view;
+- (void)fetchData;
 @end
 
 @implementation TSViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.scrollViewToResizeOnKeyboardShow.contentInset = UIEdgeInsetsZero;
+    if (self.wantsPullToRefresh) {
+        self.headerView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.scrollViewToResizeOnKeyboardShow.bounds.size.height, self.scrollViewToResizeOnKeyboardShow.bounds.size.width, self.scrollViewToResizeOnKeyboardShow.bounds.size.height) forBottomOfView:NO];
+        self.headerView.delegate = self;
+        [self.scrollViewToResizeOnKeyboardShow addSubview:self.headerView];
+        
+        if (self.wantsPullToRefreshFooter) {
+            self.footerView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, self.scrollViewToResizeOnKeyboardShow.frame.size.height, self.view.frame.size.width, self.scrollViewToResizeOnKeyboardShow.bounds.size.height) forBottomOfView:YES];
+            self.footerView.delegate = self;
+            self.footerView.hidden = YES;
+            [self.scrollViewToResizeOnKeyboardShow addSubview:self.footerView];
+        }
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewDidUnload
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIKeyboardDidShowNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIKeyboardWillHideNotification];
+    [super viewDidUnload];
+}
+
+
+// when the keyboard shows we have to update the scroll position and the content inset for the tableview, such that it's resized to be above the keyboard
+- (void)keyboardDidShow:(NSNotification *)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets;
+    CGFloat distanceOfTableViewFromBottomOfWindow = self.view.frame.size.height - self.scrollViewToResizeOnKeyboardShow.frame.origin.y - (self.scrollViewToResizeOnKeyboardShow.frame.origin.y + self.scrollViewToResizeOnKeyboardShow.frame.size.height);
+    contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height - self.scrollViewToResizeOnKeyboardShow.frame.origin.y - distanceOfTableViewFromBottomOfWindow, 0.0f);
+    
+    self.scrollViewToResizeOnKeyboardShow.contentInset = contentInsets;
+    self.scrollViewToResizeOnKeyboardShow.scrollIndicatorInsets = contentInsets;
+}
+
+- (void)keyboardWillHide:(NSNotification *)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollViewToResizeOnKeyboardShow.contentInset = contentInsets;
+    self.scrollViewToResizeOnKeyboardShow.scrollIndicatorInsets = contentInsets;
+}
 
 - (void) showActivityScreen
 {
@@ -82,7 +135,7 @@ static CGFloat const kFontSize                  = 16.0f;
 		[messageLabel setShadowOffset:CGSizeMake(0, 1)];
 		[messageLabel setTextColor:[UIColor whiteColor]];
 		[messageLabel setBackgroundColor:[UIColor clearColor]];
-		[messageLabel setTextAlignment:UITextAlignmentCenter];
+		[messageLabel setTextAlignment:NSTextAlignmentCenter];
 		messageLabel.text = message;
 		[containerView addSubview:messageLabel];
 	}
@@ -128,6 +181,107 @@ static CGFloat const kFontSize                  = 16.0f;
 		[self.activitySuperview removeFromSuperview];
 		self.activitySuperview = nil;
 	}
+}
+
+#pragma mark - EgoHeaderview
+
+- (void)setupFooterView
+{
+    CGRect frameRect;
+    if (self.scrollViewToResizeOnKeyboardShow.contentSize.height < self.scrollViewToResizeOnKeyboardShow.bounds.size.height) {
+        frameRect = CGRectMake(self.footerView.frame.origin.x, self.scrollViewToResizeOnKeyboardShow.bounds.size.height, self.footerView.frame.size.width, self.footerView.frame.size.height);
+        self.footerView.frame = frameRect;
+    } else {
+        frameRect = CGRectMake(self.footerView.frame.origin.x, self.scrollViewToResizeOnKeyboardShow.contentSize.height, self.footerView.frame.size.width, self.footerView.frame.size.height);
+        self.footerView.frame = frameRect;
+    }
+}
+
+- (BOOL)wantsPullToRefresh
+{
+    return NO; // by default, the VCs you subclass should return YES if needed
+}
+
+- (BOOL)wantsPullToRefreshFooter
+{
+    return NO; // by default, the VCs you subclass should return YES if needed
+}
+
+- (void)fetchData
+{
+    self.fetchingData = YES;
+}
+
+- (void)doneLoadingData
+{
+	//  model should call this when its done loading
+	self.fetchingData = NO;
+    [self.headerView egoRefreshScrollViewDataSourceDidFinishedLoading:self.scrollViewToResizeOnKeyboardShow];
+    [self.footerView egoRefreshScrollViewDataSourceDidFinishedLoading:self.scrollViewToResizeOnKeyboardShow];
+}
+
+- (void)reloadData
+{
+    // any other things that need to be reloaded
+    if (self.wantsPullToRefreshFooter) {
+        self.footerView.hidden = NO;
+        [self setupFooterView];
+    }
+    if ([self wantsPullToRefresh]) {
+        [self performSelector:@selector(doneLoadingData) withObject:nil afterDelay:0.1];
+    }
+}
+
+#pragma mark - EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{
+    [self fetchData];
+}
+
+- (void)egoRefreshTableHeaderDidTriggerLoadMore:(EGORefreshTableHeaderView *)view
+{
+    [self fetchData];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+    return self.fetchingData;
+}
+
+#pragma mark - UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	if (self.wantsPullToRefresh) {
+        // find out if the user is pulling on the top part (to refresh) or the bottom part (to load more)
+        NSInteger currentOffset = scrollView.contentOffset.y;
+        NSInteger maximumOffset = MAX(scrollView.contentSize.height - scrollView.frame.size.height, 0);
+        if (currentOffset < 0) {
+            [self.headerView egoRefreshScrollViewDidScroll:scrollView];
+        } else if (currentOffset > maximumOffset) {
+            [self.footerView egoRefreshScrollViewDidScroll:scrollView];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+	if (self.wantsPullToRefresh) {
+        // find out if the user is pulling on the top part (to refresh) or the bottom part (to load more)
+        NSInteger currentOffset = scrollView.contentOffset.y;
+        NSInteger maximumOffset = MAX(scrollView.contentSize.height - scrollView.frame.size.height, 0);
+        if (currentOffset < 0) {
+            [self.headerView egoRefreshScrollViewDidEndDragging:scrollView];
+        } else if (currentOffset > maximumOffset) {
+            [self.footerView egoRefreshScrollViewDidEndDragging:scrollView];
+        }
+    }
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{	
+	return [NSDate date]; // should return date data source was last changed
 }
 
 @end

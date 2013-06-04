@@ -14,20 +14,9 @@
  */
 
 #import "TSViewController.h"
-#import "EGORefreshTableHeaderView.h"
 
-@interface TSTableViewController : TSViewController <EGORefreshTableHeaderDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface TSTableViewController : TSViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic) BOOL fetchingData;
-@property (nonatomic, strong) EGORefreshTableHeaderView *headerView;
-@property (nonatomic, strong) EGORefreshTableHeaderView *footerView;
-@property (nonatomic) BOOL wantsPullToRefresh;
-@property (nonatomic) BOOL wantsPullToRefreshFooter;
-
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view;
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view;
-- (void)reloadData;
-- (void)fetchData;
 
 @end

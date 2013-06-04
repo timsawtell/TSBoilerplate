@@ -14,12 +14,22 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "EGORefreshTableHeaderView.h"
 
-@interface TSViewController : UIViewController
+@interface TSViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate>
 
-- (void) showActivityScreen;
-- (void) showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated;
-- (void) hideActivityScreen;
-- (void) hideActivityScreenAnimated:(BOOL)animated;
+@property (nonatomic, strong) UIScrollView *scrollViewToResizeOnKeyboardShow;
+@property (nonatomic, strong) EGORefreshTableHeaderView *headerView;
+@property (nonatomic, strong) EGORefreshTableHeaderView *footerView;
+@property (nonatomic) BOOL fetchingData;
+@property (nonatomic) BOOL wantsPullToRefresh;
+@property (nonatomic) BOOL wantsPullToRefreshFooter;
+
+- (void)showActivityScreen;
+- (void)showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated;
+- (void)hideActivityScreen;
+- (void)hideActivityScreenAnimated:(BOOL)animated;
+- (void)reloadData; /** This will stop the pull to refresh (as in, time to show the new data) */
+- (void)fetchData; /** This is called after pull to refresh has detected a request from the user */
 
 @end
