@@ -16,7 +16,7 @@
 #import "AsynchronousCommand.h"
 
 @interface AsynchronousCommand()
-@property (nonatomic, weak) NSMutableArray *_subCommands; // a non-retaining array of subcommands for this command
+@property (nonatomic, strong) NSMutableArray *_subCommands;
 @end
 
 @implementation AsynchronousCommand
@@ -65,8 +65,14 @@
     for (Command *cmd in [self subCommands]) {
         [cmd cancel];
     }
-    //in subclasses add your logic to cancel the processing in execute.
-    [super cancel];
+    self._subCommands = [NSMutableArray array]; // release the subcommands
+    
+    if (executing) {
+        [self setFinished:YES];
+        [self finish];
+    } else {
+        [super cancel];
+    }
 }
 
 - (void) setFinished:(BOOL) isFinished
@@ -99,6 +105,7 @@
         if (!runningSubCommands) {
             [self setFinished: YES]; // have to finish self before the parent, makes sence
             [self.parentCommand finish];
+            self.parentCommand._subCommands = [NSMutableArray array]; // clear the reference to sub commands, allows dealloc
             return;
         }
     }
