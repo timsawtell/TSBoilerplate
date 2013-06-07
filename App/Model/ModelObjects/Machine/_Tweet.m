@@ -70,7 +70,7 @@ NSString * const kModelDictionaryTweetTwitterEntity = @"Tweet.twitterEntity";
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.text forKey:kModelPropertyTweetText];
     return dict;
 }

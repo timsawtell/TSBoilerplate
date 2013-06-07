@@ -82,7 +82,7 @@ NSString * const kModelDictionaryTwitterEntityTweets = @"TwitterEntity.tweets";
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.name forKey:kModelPropertyTwitterEntityName];
     [dict setObjectIfNotNil:self.screen_name forKey:kModelPropertyTwitterEntityScreen_name];
     if([self.tweets count] > 0)

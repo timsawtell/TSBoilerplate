@@ -126,7 +126,7 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     <$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
     [dict setObjectIfNotNil:self.<$Attribute.name$> forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
     <$endif$><$endforeach do$>

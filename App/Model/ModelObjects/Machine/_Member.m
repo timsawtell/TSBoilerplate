@@ -75,7 +75,7 @@ NSString * const kModelDictionaryMemberGroup = @"Member.group";
 
 - (NSDictionary *)dictionaryRepresentation
 {
-    __weak NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.memberId forKey:kModelPropertyMemberMemberId];
     [dict setObjectIfNotNil:self.name forKey:kModelPropertyMemberName];
     return dict;
