@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self goGetTweets];    
+    //[self goGetTweets]; // twitter changed their auth rules with the 1.1 API, and I can't get tweets without authenticating. I don't want to embed credentials in this app, so you'll have to take the commands, builders and engine as an example only (that gives an error when used)
 }
 
 - (void)fetchData
