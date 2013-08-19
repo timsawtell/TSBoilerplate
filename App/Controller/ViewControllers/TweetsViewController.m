@@ -1,3 +1,4 @@
+
 /*
  Copyright (c) 2012 Tim Sawtell
  
@@ -17,6 +18,8 @@
 #import "TwitterCommand.h"
 #import "TweetCell.h"
 #import "Tweet.h"
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 #define kScreenName @"devops_borat"
 #define kNumTweets 10
@@ -37,11 +40,17 @@
     return YES;
 }
 
+- (BOOL)userHasAccessToTwitter
+{
+    return [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self goGetTweets]; // twitter changed their auth rules with the 1.1 API, and I can't get tweets without authenticating. I don't want to embed credentials in this app, so you'll have to take the commands, builders and engine as an example only (that gives an error when used)
+    [self fetchData];
 }
+
 
 - (void)fetchData
 {

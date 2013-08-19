@@ -16,14 +16,15 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 
-@interface TSViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate>
+@interface TSViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic, strong) UIScrollView *scrollViewToResizeOnKeyboardShow;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollViewToResizeOnKeyboardShow;
 @property (nonatomic, strong) EGORefreshTableHeaderView *headerView;
 @property (nonatomic, strong) EGORefreshTableHeaderView *footerView;
 @property (nonatomic) BOOL fetchingData;
 @property (nonatomic) BOOL wantsPullToRefresh;
 @property (nonatomic) BOOL wantsPullToRefreshFooter;
+@property (nonatomic, strong) IBOutletCollection(UIControl) NSArray *inputFields;
 
 - (void)showActivityScreen;
 - (void)showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated;

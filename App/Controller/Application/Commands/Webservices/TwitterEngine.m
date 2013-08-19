@@ -24,18 +24,31 @@
                             tweetCount:(NSUInteger)tweetCount
                           onCompletion:(_serviceCompletionBlock)complete
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+    /*NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    screenName, kTwitterScreenName,
                                    [NSNumber numberWithBool:includeEntities], kIncludeEntities,
                                    [NSNumber numberWithBool:includeRetweets], kIncludeReTweets, 
                                    [NSNumber numberWithInteger: tweetCount], kTweetCount, nil];
     [self registerOperationSubclass:[MKNetworkOperation class]];
     
-    MKNetworkOperation *op = [self operationWithURLString:kTwitterTimelineBaseURL 
+    MKNetworkOperation *op = [self operationWithURLString:kTwitterTimelineBaseURL
                                                    params:params
-                                               httpMethod:@"GET"];
+                                               httpMethod:@"GET"]; */
     
-    [self executeOperation:op withCompletion:complete];
+    //[self executeOperation:op withCompletion:complete];
+    // the twitter API has changed AUTH options, and this app can't get stuff unless I hardcode some secret keys, which I don't want to do.
+    // so, I get some JSON from a file, which is what the API used to give us before the auth model changed.
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"fake_results" ofType:@"json"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if ([fm fileExistsAtPath:path]) {
+        NSError *error;
+        NSDictionary *timelineData =
+        [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path]
+                                        options:NSJSONReadingAllowFragments error:&error];
+        complete(timelineData, error);
+    }
 }
 
 @end

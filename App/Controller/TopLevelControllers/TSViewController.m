@@ -24,11 +24,15 @@ static CGFloat const kFontSize                  = 16.0f;
 @interface TSViewController ()
 @property (nonatomic, assign) BOOL overrideShowingActivityScreen;
 @property (nonatomic, strong) UIView *activitySuperview;
+@property (nonatomic, weak) UIControl *activeControl;
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view;
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view;
 - (void)fetchData;
+- (void)closeKeyboard;
+- (void)prevInput;
+- (void)nextInput;
 @end
 
 @implementation TSViewController
@@ -36,58 +40,186 @@ static CGFloat const kFontSize                  = 16.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.scrollViewToResizeOnKeyboardShow.contentInset = UIEdgeInsetsZero;
-    if (self.wantsPullToRefresh) {
-        self.headerView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.scrollViewToResizeOnKeyboardShow.bounds.size.height, self.scrollViewToResizeOnKeyboardShow.bounds.size.width, self.scrollViewToResizeOnKeyboardShow.bounds.size.height) forBottomOfView:NO];
-        self.headerView.delegate = self;
-        [self.scrollViewToResizeOnKeyboardShow addSubview:self.headerView];
+    
+    if (self.inputFields.count > 0) {
+        self.inputFields = [self.inputFields sortedArrayUsingComparator:^NSComparisonResult(id label1, id label2) {
+            if ([label1 frame].origin.y < [label2 frame].origin.y) return NSOrderedAscending;
+            else if ([label1 frame].origin.y > [label2 frame].origin.y) return NSOrderedDescending;
+            else return NSOrderedSame;
+        }];
         
-        if (self.wantsPullToRefreshFooter) {
-            self.footerView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, self.scrollViewToResizeOnKeyboardShow.frame.size.height, self.view.frame.size.width, self.scrollViewToResizeOnKeyboardShow.bounds.size.height) forBottomOfView:YES];
-            self.footerView.delegate = self;
-            self.footerView.hidden = YES;
-            [self.scrollViewToResizeOnKeyboardShow addSubview:self.footerView];
+        UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+        toolbar.barStyle = UIBarStyleBlackTranslucent;
+        
+        UISegmentedControl *nextPrev = [[UISegmentedControl alloc] initWithItems:@[@"Previous", @"Next"]];
+        nextPrev.segmentedControlStyle = UISegmentedControlStyleBar;
+        nextPrev.momentary = YES;
+        nextPrev.highlighted = YES;
+        [nextPrev addTarget:self action:@selector(nextPrevChanged:) forControlEvents:UIControlEventValueChanged];
+        UIBarButtonItem *nextPrevItem = [[UIBarButtonItem alloc] initWithCustomView:nextPrev];
+        toolbar.items = [NSArray arrayWithObjects:
+                         nextPrevItem,
+                         [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                         [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(closeKeyboard)],
+                         nil];
+        [toolbar sizeToFit];
+        for (UITextField *textfield in self.inputFields) {
+            textfield.inputAccessoryView = toolbar;
         }
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    if (nil != self.scrollViewToResizeOnKeyboardShow) {
+        self.scrollViewToResizeOnKeyboardShow.contentInset = UIEdgeInsetsZero;
+        self.scrollViewToResizeOnKeyboardShow.contentSize = self.scrollViewToResizeOnKeyboardShow.frame.size;
+        if (self.wantsPullToRefresh) {
+            self.headerView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.scrollViewToResizeOnKeyboardShow.bounds.size.height, self.scrollViewToResizeOnKeyboardShow.bounds.size.width, self.scrollViewToResizeOnKeyboardShow.bounds.size.height) forBottomOfView:NO];
+            self.headerView.delegate = self;
+            [self.scrollViewToResizeOnKeyboardShow addSubview:self.headerView];
+            
+            if (self.wantsPullToRefreshFooter) {
+                self.footerView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, self.scrollViewToResizeOnKeyboardShow.frame.size.height, self.view.frame.size.width, self.scrollViewToResizeOnKeyboardShow.bounds.size.height) forBottomOfView:YES];
+                self.footerView.delegate = self;
+                self.footerView.hidden = YES;
+                [self.scrollViewToResizeOnKeyboardShow addSubview:self.footerView];
+            }
+        }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 - (void)viewDidUnload
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIKeyboardDidShowNotification];
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIKeyboardWillHideNotification];
+    if (nil != self.scrollViewToResizeOnKeyboardShow) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIKeyboardDidShowNotification];
+        [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIKeyboardWillHideNotification];
+    }
     [super viewDidUnload];
 }
 
+- (void)nextPrevChanged:(id)sender
+{
+    UISegmentedControl *nextPrev = (UISegmentedControl *)sender;
+    switch (nextPrev.selectedSegmentIndex) {
+        case 0:
+            [self prevInput];
+            break;
+        case 1:
+            [self nextInput];
+            break;
+        default:
+            break;
+    }
+}
 
-// when the keyboard shows we have to update the scroll position and the content inset for the tableview, such that it's resized to be above the keyboard
+// from the inputAccessoryView
+-(void)closeKeyboard
+{
+    [self.activeControl resignFirstResponder];
+}
+
+// from the inputAccessoryView
+- (void)nextInput
+{
+    for (NSInteger i = 0; i < self.inputFields.count; i++) {
+        if ([self.inputFields objectAtIndex:i] == self.activeControl) {
+            UIControl *nextControl;
+            if (i < self.inputFields.count - 1) {
+                nextControl = [self.inputFields objectAtIndex:i+1];
+            } else {
+                nextControl = [self.inputFields objectAtIndex:0];
+            }
+            [UIView animateWithDuration:0.2 animations:^{
+                [self.scrollViewToResizeOnKeyboardShow scrollRectToVisible:nextControl.frame animated:NO];
+                [self.scrollViewToResizeOnKeyboardShow flashScrollIndicators];
+            } completion:^(BOOL finished) {
+                [nextControl becomeFirstResponder];
+            }];
+            break;
+        }
+    }
+}
+
+// from the inputAccessoryView
+- (void)prevInput
+{
+    for (NSInteger i = self.inputFields.count - 1; i >= 0; i--) {
+        if ([self.inputFields objectAtIndex:i] == self.activeControl) {
+            UIControl *nextControl;
+            if (i == 0) {
+                nextControl = [self.inputFields objectAtIndex:self.inputFields.count-1];
+            } else {
+                nextControl = [self.inputFields objectAtIndex:i - 1];
+            }
+            [UIView animateWithDuration:0.2 animations:^{
+                [self.scrollViewToResizeOnKeyboardShow scrollRectToVisible:nextControl.frame animated:NO];
+                [self.scrollViewToResizeOnKeyboardShow flashScrollIndicators];
+            } completion:^(BOOL finished) {
+                [nextControl becomeFirstResponder];
+            }];
+            
+            break;
+        }
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if ([self.inputFields containsObject:textField]) {
+        self.activeControl = textField;
+    } else {
+        self.activeControl = nil;
+    }
+}
+
+// when the keyboard shows we have to update the scroll position and the content inset for the scrollView, such that it's resized to be above the keyboard
 - (void)keyboardDidShow:(NSNotification *)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;    
     UIEdgeInsets contentInsets;
-    CGFloat distanceOfTableViewFromBottomOfWindow = self.view.frame.size.height - self.scrollViewToResizeOnKeyboardShow.frame.origin.y - (self.scrollViewToResizeOnKeyboardShow.frame.origin.y + self.scrollViewToResizeOnKeyboardShow.frame.size.height);
-    contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height - self.scrollViewToResizeOnKeyboardShow.frame.origin.y - distanceOfTableViewFromBottomOfWindow, 0.0f);
+    CGFloat viewHeight = self.view.frame.size.height;
+    // bug with the notification being the wrong size when in landscape
+    if (isLandscape) {
+        CGFloat kbSizeHeight = MIN(kbSize.width, kbSize.height);
+        CGFloat kbSizeWidth = MAX(kbSize.width, kbSize.height);
+        kbSize = CGSizeMake(kbSizeWidth, kbSizeHeight);
+        viewHeight = MIN(self.view.frame.size.height, self.view.frame.size.width);// just querying self.view.frame.size.height won't work as it reports a portrait size with a rotation transform applied to the layer
+    }
+    CGFloat distanceOfScrollViewFromBottomOfWindow = MAX(0, viewHeight - self.scrollViewToResizeOnKeyboardShow.frame.origin.y - (self.scrollViewToResizeOnKeyboardShow.frame.origin.y + self.scrollViewToResizeOnKeyboardShow.frame.size.height));
+
+    CGFloat adjustForTabBar = (nil == self.tabBarController) ? 0 : self.tabBarController.tabBar.frame.size.height;
     
-    self.scrollViewToResizeOnKeyboardShow.contentInset = contentInsets;
+    contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height - self.scrollViewToResizeOnKeyboardShow.frame.origin.y - distanceOfScrollViewFromBottomOfWindow - adjustForTabBar, 0.0f);
+    
     self.scrollViewToResizeOnKeyboardShow.scrollIndicatorInsets = contentInsets;
+    self.scrollViewToResizeOnKeyboardShow.contentInset = contentInsets;
+    
+    if (nil != self.activeControl) {
+        [self.scrollViewToResizeOnKeyboardShow scrollRectToVisible:self.activeControl.frame animated:YES];
+    }
 }
 
 - (void)keyboardWillHide:(NSNotification *)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.scrollViewToResizeOnKeyboardShow.contentInset = contentInsets;
     self.scrollViewToResizeOnKeyboardShow.scrollIndicatorInsets = contentInsets;
+    self.scrollViewToResizeOnKeyboardShow.contentInset = contentInsets;
 }
 
-- (void) showActivityScreen
+- (void)showActivityScreen
 {
     [self showActivityScreenWithMessage:@"Loading..." animated:YES];
 }
 
-- (void) showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated
+- (void)showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated
 {
     if (self.overrideShowingActivityScreen == YES) {
         return;
@@ -128,15 +260,15 @@ static CGFloat const kFontSize                  = 16.0f;
 	if(NSStringIsSane(message) == YES)
 	{
 		UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, spinnerBG.origin.y-50-20, (containerView.bounds.size.width-40), 70)];
+        messageLabel.text = message;
+        messageLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
         [messageLabel setNumberOfLines:2];
-		messageLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
 		[messageLabel setFont:[UIFont fontWithName:kFontToUse size:kFontSize]];
 		[messageLabel setShadowColor:[UIColor blackColor]];
 		[messageLabel setShadowOffset:CGSizeMake(0, 1)];
 		[messageLabel setTextColor:[UIColor whiteColor]];
 		[messageLabel setBackgroundColor:[UIColor clearColor]];
 		[messageLabel setTextAlignment:NSTextAlignmentCenter];
-		messageLabel.text = message;
 		[containerView addSubview:messageLabel];
 	}
 	
@@ -154,12 +286,12 @@ static CGFloat const kFontSize                  = 16.0f;
 	}
 }
 
-- (void) hideActivityScreen
+- (void)hideActivityScreen
 {
     [self hideActivityScreenAnimated:YES];
 }
 
-- (void) hideActivityScreenAnimated:(BOOL)animated
+- (void)hideActivityScreenAnimated:(BOOL)animated
 {
 	if (!animated) {
 		[self.activitySuperview removeFromSuperview];
@@ -175,7 +307,9 @@ static CGFloat const kFontSize                  = 16.0f;
 	[UIView commitAnimations];
 }
 
-- (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+- (void)animationDidStop:(NSString *)animationID
+                finished:(NSNumber *)finished
+                 context:(void *)context
 {
 	if ([animationID isEqualToString:kHideActivitySuperview]) {
 		[self.activitySuperview removeFromSuperview];
@@ -280,7 +414,7 @@ static CGFloat const kFontSize                  = 16.0f;
 }
 
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
-{	
+{
 	return [NSDate date]; // should return date data source was last changed
 }
 
