@@ -21,9 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2B06657817C19A4E00749237 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B06657717C19A4E00749237 /* Accounts.framework */; };
-		2B06657A17C19A6500749237 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B06657917C19A6500749237 /* Twitter.framework */; };
-		2B06657C17C19A7700749237 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B06657B17C19A7700749237 /* Social.framework */; };
 		2B06657E17C19D4000749237 /* fake_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B06657D17C19D4000749237 /* fake_results.json */; };
 		2B15C4F317BDEF5F001C3E75 /* FormExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B15C4F217BDEF5F001C3E75 /* FormExampleViewController.m */; };
 		89097C4915799DFF00913B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
@@ -121,9 +118,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B06657717C19A4E00749237 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		2B06657917C19A6500749237 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		2B06657B17C19A7700749237 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2B06657D17C19D4000749237 /* fake_results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fake_results.json; sourceTree = "<group>"; };
 		2B15C4F117BDEF5F001C3E75 /* FormExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormExampleViewController.h; sourceTree = "<group>"; };
 		2B15C4F217BDEF5F001C3E75 /* FormExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormExampleViewController.m; sourceTree = "<group>"; };
@@ -286,9 +280,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B06657C17C19A7700749237 /* Social.framework in Frameworks */,
-				2B06657A17C19A6500749237 /* Twitter.framework in Frameworks */,
-				2B06657817C19A4E00749237 /* Accounts.framework in Frameworks */,
 				DDFD62CA173B089D000323A8 /* ImageIO.framework in Frameworks */,
 				DDBB5F511726512D00C93A97 /* QuartzCore.framework in Frameworks */,
 				89097D1C1579A0F500913B9E /* Security.framework in Frameworks */,
@@ -349,9 +340,6 @@
 		89097C4715799DFF00913B9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B06657B17C19A7700749237 /* Social.framework */,
-				2B06657917C19A6500749237 /* Twitter.framework */,
-				2B06657717C19A4E00749237 /* Accounts.framework */,
 				DDFD62C9173B089D000323A8 /* ImageIO.framework */,
 				DDBB5F501726512D00C93A97 /* QuartzCore.framework */,
 				89097D1B1579A0F500913B9E /* Security.framework */,

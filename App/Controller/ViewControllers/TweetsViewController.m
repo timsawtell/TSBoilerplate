@@ -18,8 +18,6 @@
 #import "TwitterCommand.h"
 #import "TweetCell.h"
 #import "Tweet.h"
-#import <Accounts/Accounts.h>
-#import <Social/Social.h>
 
 #define kScreenName @"devops_borat"
 #define kNumTweets 10
@@ -38,11 +36,6 @@
 -(BOOL)wantsPullToRefreshFooter
 {
     return YES;
-}
-
-- (BOOL)userHasAccessToTwitter
-{
-    return [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter];
 }
 
 - (void)viewDidLoad
