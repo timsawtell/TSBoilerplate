@@ -15,7 +15,7 @@
     if (![json isKindOfClass:[NSDictionary class]]) {
         return nil;
     }
-    Tweet *tweet = [Tweet new];
+    Tweet *tweet = [Tweet MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     [TweetBuilder updateTweet:tweet fromJSON:json];
     return tweet;
 }

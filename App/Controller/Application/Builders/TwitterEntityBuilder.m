@@ -15,7 +15,7 @@
     if (![json isKindOfClass:[NSDictionary class]]) {
         return nil;
     }
-    TwitterEntity *twitterEntity = [TwitterEntity new];
+    TwitterEntity *twitterEntity = [TwitterEntity MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     [TwitterEntityBuilder updateTwitterEntity:twitterEntity fromJSON:json];
     return twitterEntity;
 }

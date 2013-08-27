@@ -31,6 +31,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
+    [MagicalRecord setupAutoMigratingCoreDataStack];
     return YES;
 }
 

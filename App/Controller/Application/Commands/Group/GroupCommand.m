@@ -21,7 +21,7 @@
 
 - (void)execute
 {
-    self.group = [Group new]; 
+    self.group = [Group MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     self.group.groupName = self.groupName;
     
     if (self.saveModel) {
