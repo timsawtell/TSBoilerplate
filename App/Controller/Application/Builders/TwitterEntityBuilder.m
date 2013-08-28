@@ -15,7 +15,9 @@
     if (![json isKindOfClass:[NSDictionary class]]) {
         return nil;
     }
+    
     TwitterEntity *twitterEntity = [TwitterEntity MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
     [TwitterEntityBuilder updateTwitterEntity:twitterEntity fromJSON:json];
     return twitterEntity;
 }
@@ -26,15 +28,15 @@
         return;
     }
     NSDictionary *jsonDict = (NSDictionary *)json;
-    ASSIGN_NOT_NIL(twitterEntity.screen_name, [jsonDict valueForKey:kTwitterScreenName]);
-    ASSIGN_NOT_NIL(twitterEntity.name, [jsonDict valueForKey:kTwitterName]);
+    ASSIGN_NOT_NIL(twitterEntity.screen_name, [jsonDict valueForKey:TwitterEntityAttributes.screen_name]);
+    ASSIGN_NOT_NIL(twitterEntity.name, [jsonDict valueForKey:TwitterEntityAttributes.name]);
 }
 
 + (NSMutableDictionary *)dictionaryFromTwitterEntity:(TwitterEntity *)twitterEntity
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:twitterEntity.screen_name forKey:kTwitterScreenName];
-    [dict setValue:twitterEntity.name forKey:kTwitterName];
+    [dict setValue:twitterEntity.screen_name forKey:TwitterEntityAttributes.screen_name];
+    [dict setValue:twitterEntity.name forKey:TwitterEntityAttributes.name];
     return dict;
 }
 

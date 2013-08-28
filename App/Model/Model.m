@@ -20,8 +20,6 @@
 
 @implementation Model
 
-@synthesize group, tweets;
-
 #pragma mark - Data
 
 + (Model*)sharedModel
@@ -45,7 +43,16 @@
 
 - (void)save
 {
-    [[self getManagedContext] MR_saveToPersistentStoreAndWait];
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+        
+        
+    } completion:^(BOOL success, NSError *error) {
+        if (error) {
+            DLog(@"Error while saving %@", error);
+        } else {
+            DLog(@"Saving was a success");
+        }
+    }];
 }
 
 @end

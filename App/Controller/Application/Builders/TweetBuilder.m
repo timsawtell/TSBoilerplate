@@ -27,13 +27,13 @@
     }
     
     NSDictionary *jsonDict = (NSDictionary *)json;
-    ASSIGN_NOT_NIL(tweet.text, [jsonDict valueForKey:kTweetText]);
+    ASSIGN_NOT_NIL(tweet.text, [jsonDict valueForKey:TweetAttributes.text]);
 }
 
 + (NSMutableDictionary *)dictionaryFromTweet:(Tweet *)tweet
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:tweet.text forKey:kTweetText];
+    [dict setValue:tweet.text forKey:TweetAttributes.text];
     return dict;
 }
 

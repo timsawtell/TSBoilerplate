@@ -24,6 +24,7 @@
     #import "Constants.h"
     #import "Appearances.h"
     #import "Model.h"
+    #import "ModelAccessor.h"
     #import "ModelObjectHeaders.h"
     #import "NSStringHelper.h"
     #import "TSCommandRunner.h"
