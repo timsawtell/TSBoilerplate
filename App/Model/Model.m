@@ -20,24 +20,7 @@
 
 @implementation Model
 
-@synthesize group, tweets;
-
 #pragma mark - Data
-
-+ (NSString*)savedDataPath
-{
-    NSString *appSupport = [[NSFileManager defaultManager] applicationSupportDirectory];
-    return [appSupport stringByAppendingPathComponent: kModelSavedDataFileName];
-}
-
-+ (Model*)savedModel
-{
-    Model *model = [NSKeyedUnarchiver unarchiveObjectWithFile: [Model savedDataPath]];
-    if (!model) {
-        return [Model new];
-    }
-    return model;
-}
 
 + (Model*)sharedModel
 {
@@ -47,38 +30,29 @@
             if (TestingModel()) {
                 sharedModel = [TestModel new];
             } else {
-                sharedModel = [Model savedModel];
+                sharedModel = [Model new];
             }
         }
     }
     return sharedModel;
 }
 
+- (NSManagedObjectContext *)getManagedContext {
+    return [NSManagedObjectContext MR_contextForCurrentThread];
+}
+
 - (void)save
 {
-    @try {
-        @synchronized(self)
-        {
-            [NSKeyedArchiver archiveRootObject: self toFile: [Model savedDataPath]];
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+        
+        
+    } completion:^(BOOL success, NSError *error) {
+        if (error) {
+            DLog(@"Error while saving %@", error);
+        } else {
+            DLog(@"Saving was a success");
         }
-    } @catch (NSException *exception) {
-    }
-}
-
-#pragma mark - initializing
-
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super init];
-    if (self) {
-        self.group = [aDecoder decodeObjectForKey:@"group"];
-    }
-    return self;
-}
-
-- (void) encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:self.group forKey:@"group"];
+    }];
 }
 
 @end

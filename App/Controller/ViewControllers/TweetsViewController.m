@@ -23,7 +23,7 @@
 #define kNumTweets 10
 
 @interface TweetsViewController ()
-
+@property (nonatomic, strong) NSArray *tweets;
 @end
 
 @implementation TweetsViewController
@@ -48,6 +48,7 @@
 - (void)fetchData
 {
     [super fetchData];
+    self.tweets = [[ModelAccessor sharedModelAccessor] getAllTweets];
     [self goGetTweets];
 }
 
@@ -72,9 +73,11 @@
                           buttonTitles:@"Damn", nil];
             return;
         }
+        strongSelf.tweets = [[ModelAccessor sharedModelAccessor] getAllTweets];
         [strongSelf reloadData];
     };
     [self showActivityScreen];
+    twitterCommand.saveModel = YES;
     [[TSCommandRunner sharedCommandRunner] executeCommand:twitterCommand];
 }
 
@@ -82,7 +85,7 @@
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [Model sharedModel].tweets.count;
+    return [self tweets].count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,13 +100,6 @@
     Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
     cell.tweetTextLabel.text = tweet.text;
     return cell;
-}
-
-#pragma mark - Helpers
-
-- (NSArray *)tweets
-{
-    return [Model sharedModel].tweets;
 }
 
 @end

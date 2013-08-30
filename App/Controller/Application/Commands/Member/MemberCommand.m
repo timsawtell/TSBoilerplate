@@ -21,7 +21,7 @@
 
 - (void)execute
 {
-    self.member = [Member new];
+    self.member = [Member MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     self.member.name = self.name;
     self.member.memberId = [NSNumber numberWithInteger:self.memberId];
     

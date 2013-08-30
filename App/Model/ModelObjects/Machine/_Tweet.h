@@ -1,33 +1,73 @@
-//  _Tweet.h
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to Tweet.h instead.
 
-#import <Foundation/Foundation.h>
-#import "ModelObject.h"
+#import <CoreData/CoreData.h>
 
+
+extern const struct TweetAttributes {
+	__unsafe_unretained NSString *text;
+} TweetAttributes;
+
+extern const struct TweetRelationships {
+	__unsafe_unretained NSString *twitterEntity;
+} TweetRelationships;
+
+extern const struct TweetFetchedProperties {
+} TweetFetchedProperties;
 
 @class TwitterEntity;
 
-@protocol _Tweet
 
+
+@interface TweetID : NSManagedObjectID {}
 @end
 
-extern NSString * const kModelPropertyTweetText;
+@interface _Tweet : NSManagedObject {}
++ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSString*)entityName;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
+- (TweetID*)objectID;
 
-extern NSString * const kModelPropertyTweetTwitterEntity;
 
-extern NSString * const kModelDictionaryTweetText;
 
-extern NSString * const kModelDictionaryTweetTwitterEntity;
-
-@interface _Tweet : ModelObject <NSCoding>
 
 
 @property (nonatomic, strong) NSString* text;
-@property (nonatomic, weak, readwrite) TwitterEntity *twitterEntity;
 
 
-- (void)setTwitterEntity: (TwitterEntity*) twitterEntity_ settingInverse: (BOOL) setInverse;
+
+//- (BOOL)validateText:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) TwitterEntity *twitterEntity;
+
+//- (BOOL)validateTwitterEntity:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@end
+
+@interface _Tweet (CoreDataGeneratedAccessors)
+
+@end
+
+@interface _Tweet (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveText;
+- (void)setPrimitiveText:(NSString*)value;
+
+
+
+
+
+- (TwitterEntity*)primitiveTwitterEntity;
+- (void)setPrimitiveTwitterEntity:(TwitterEntity*)value;
 
 
 @end
