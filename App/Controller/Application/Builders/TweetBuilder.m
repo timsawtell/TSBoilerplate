@@ -15,7 +15,7 @@
     if (![json isKindOfClass:[NSDictionary class]]) {
         return nil;
     }
-    Tweet *tweet = [Tweet new];
+    Tweet *tweet = [Tweet MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     [TweetBuilder updateTweet:tweet fromJSON:json];
     return tweet;
 }
@@ -27,13 +27,13 @@
     }
     
     NSDictionary *jsonDict = (NSDictionary *)json;
-    ASSIGN_NOT_NIL(tweet.text, [jsonDict valueForKey:kTweetText]);
+    ASSIGN_NOT_NIL(tweet.text, [jsonDict valueForKey:TweetAttributes.text]);
 }
 
 + (NSMutableDictionary *)dictionaryFromTweet:(Tweet *)tweet
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:tweet.text forKey:kTweetText];
+    [dict setValue:tweet.text forKey:TweetAttributes.text];
     return dict;
 }
 

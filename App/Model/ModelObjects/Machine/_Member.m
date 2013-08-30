@@ -1,117 +1,98 @@
-//  _Member.m
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Member.h instead.
-
+// Make changes to Member.m instead.
 
 #import "_Member.h"
 
-NSString * const kModelPropertyMemberMemberId = @"memberId";
-NSString * const kModelPropertyMemberName = @"name";
-NSString * const kModelPropertyMemberGroup = @"group";
-NSString * const kModelDictionaryMemberGroup = @"Member.group";
-#import "Group.h"
+const struct MemberAttributes MemberAttributes = {
+	.memberId = @"memberId",
+	.name = @"name",
+};
 
-@interface _Member()
+const struct MemberRelationships MemberRelationships = {
+	.group = @"group",
+};
+
+const struct MemberFetchedProperties MemberFetchedProperties = {
+};
+
+@implementation MemberID
 @end
 
-/** \ingroup DataModel */
-
 @implementation _Member
-+ (NSSet *)dictionaryRepresentationKeys
-{
-    NSMutableSet *set = [NSMutableSet setWithSet:[super dictionaryRepresentationKeys]];
-    
-	  [set addObject:kModelPropertyMemberMemberId];
-	  [set addObject:kModelPropertyMemberName];
-    [set addObject:kModelDictionaryMemberGroup];
-    
-    return [NSSet setWithSet:set];
+
++ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
+	NSParameterAssert(moc_);
+	return [NSEntityDescription insertNewObjectForEntityForName:@"Member" inManagedObjectContext:moc_];
 }
 
-- (id)init
-{
-    if((self = [super init]))
-    {
-    }
-    
-    return self;
++ (NSString*)entityName {
+	return @"Member";
 }
 
-- (id) initWithCoder: (NSCoder*) aDecoder
-{
-    if ([[super class] instancesRespondToSelector: @selector(initWithCoder:)]) {
-        self = [super initWithCoder: aDecoder];
-    } else {
-        self = [super init];
-    }
-    if (self) {
-        self.memberId = [aDecoder decodeObjectForKey: kModelPropertyMemberMemberId];
-        self.name = [aDecoder decodeObjectForKey: kModelPropertyMemberName];
-        self.group = [aDecoder decodeObjectForKey: kModelPropertyMemberGroup];
-    }
-    return self;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
+	NSParameterAssert(moc_);
+	return [NSEntityDescription entityForName:@"Member" inManagedObjectContext:moc_];
 }
 
-- (void) encodeWithCoder: (NSCoder*) aCoder
-{
-    [super encodeWithCoder: aCoder];
-    [aCoder encodeObject: self.memberId forKey: kModelPropertyMemberMemberId];
-    [aCoder encodeObject: self.name forKey: kModelPropertyMemberName];
-    [aCoder encodeObject: self.group forKey: kModelPropertyMemberGroup];
+- (MemberID*)objectID {
+	return (MemberID*)[super objectID];
 }
 
-#pragma mark Dictionary representation
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
+	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+	
+	if ([key isEqualToString:@"memberIdValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"memberId"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
-- (id)initWithDictionaryRepresentation:(NSDictionary *)dictionary
-{
-    if((self = [super initWithDictionaryRepresentation:dictionary]))
-    {
-        self.memberId = [dictionary objectForKey:kModelPropertyMemberMemberId];
-        self.name = [dictionary objectForKey:kModelPropertyMemberName];
-    }
-    
-    return self;
-}
-
-- (NSDictionary *)dictionaryRepresentation
-{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
-    [dict setObjectIfNotNil:self.memberId forKey:kModelPropertyMemberMemberId];
-    [dict setObjectIfNotNil:self.name forKey:kModelPropertyMemberName];
-    return dict;
-}
-
-#pragma mark Direct access
-
-- (void) setGroup: (Group*) group_ settingInverse: (BOOL) setInverse
-{
-    if (group_ == nil && setInverse == YES) {
-        [_group removeMembersObject: (Member*)self settingInverse: NO];
-    }
-    _group = group_;
-    if (setInverse == YES) {
-        [_group addMembersObject: (Member*)self settingInverse: NO];
-    }}
-
-- (void) setGroup: (Group*) group_
-{
-    [self setGroup: group_ settingInverse: YES];
+	return keyPaths;
 }
 
 
-//scalar setter and getter support
+
+
+@dynamic memberId;
+
+
+
 - (int32_t)memberIdValue {
-    NSNumber *result = [self memberId];
-    return [result intValue];
+	NSNumber *result = [self memberId];
+	return [result intValue];
 }
 
 - (void)setMemberIdValue:(int32_t)value_ {
-    [self setMemberId:[NSNumber numberWithInt:value_]];
+	[self setMemberId:[NSNumber numberWithInt:value_]];
 }
 
-#pragma mark Synthesizes
+- (int32_t)primitiveMemberIdValue {
+	NSNumber *result = [self primitiveMemberId];
+	return [result intValue];
+}
 
-@synthesize memberId;
-@synthesize name;
+- (void)setPrimitiveMemberIdValue:(int32_t)value_ {
+	[self setPrimitiveMemberId:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic name;
+
+
+
+
+
+
+@dynamic group;
+
+	
+
+
+
+
+
 
 @end

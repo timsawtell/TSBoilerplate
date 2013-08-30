@@ -27,6 +27,7 @@
 
 - (void)execute
 {
+    
     /* we make a new completion block and add add in things that a programmer wouldn't want to do in the running code.
      i.e. I think it's rude to ask a programmer to do command level functions like [NSCommand finish] in their day 
      to day code, so when they type out the completionBlock, it's just business logic. In here though, we need to also 
@@ -45,7 +46,6 @@
             return;
         }
         
-        NSMutableArray *tmpArray = [NSMutableArray array];
         for (id tweetInstanceJSON in results) {
             id user = [tweetInstanceJSON objectForKey:kTwitterUser];
             if (user != nil) {
@@ -54,11 +54,9 @@
                 Tweet *tweet = [TweetBuilder tweetFromJSON:tweetInstanceJSON];
                 if (nil != tweet) {
                     tweet.twitterEntity = tweetsUser;
-                    [tmpArray addObject:tweet];
                 }
             }
         }
-        [Model sharedModel].tweets = tmpArray;
         
         if (self.saveModel) {
             [[Model sharedModel] save];

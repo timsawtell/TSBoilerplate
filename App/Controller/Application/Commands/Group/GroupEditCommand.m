@@ -23,7 +23,7 @@
 - (void)execute
 {
     if (self.group == nil) {
-        self.group = [Group new];
+        self.group = [Group MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     }
     
     if (self.groupName != nil) {
@@ -31,7 +31,7 @@
     }
     
     for (Member *member in self.members) {
-        [self.group addMembersObject:member];
+        [self.group.membersSet addObject:member];
     }
     
     if (self.saveModel) {

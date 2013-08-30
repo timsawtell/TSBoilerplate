@@ -4,3 +4,6 @@
 [submodule "External/XMLDictionary"]
 	path = External/XMLDictionary
 	url = git@github.com:timsawtell/XMLDictionary.git
+[submodule "External/MagicalRecord"]
+	path = External/MagicalRecord
+	url = https://github.com/magicalpanda/MagicalRecord.git
