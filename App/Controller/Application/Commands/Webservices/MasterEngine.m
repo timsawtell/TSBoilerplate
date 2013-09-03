@@ -19,7 +19,8 @@
     };
     
     MKNKResponseErrorBlock errorBlock = ^(MKNetworkOperation* completedOperation, NSError* error) {
-        completionBlock(nil, error); // call the completion block
+        id jsonResponse = [completedOperation responseJSON];
+        completionBlock(jsonResponse, error); // call the completion block
     };
     
     [operation addCompletionHandler:responseBlock errorHandler:errorBlock];
