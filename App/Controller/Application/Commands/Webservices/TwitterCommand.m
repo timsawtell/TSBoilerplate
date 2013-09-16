@@ -16,7 +16,6 @@
 #import "TwitterCommand.h"
 #import "TwitterEngine.h"
 #import "MemberDisplayCommand.h"
-#import "Tweet.h"
 #import "TwitterEntity.h"
 #import "TweetBuilder.h"
 #import "TwitterEntityBuilder.h"

@@ -17,7 +17,6 @@
 #import "TweetsViewController.h"
 #import "TwitterCommand.h"
 #import "TweetCell.h"
-#import "Tweet.h"
 
 #define kScreenName @"devops_borat"
 #define kNumTweets 10

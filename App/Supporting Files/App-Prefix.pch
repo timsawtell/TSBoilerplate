@@ -30,6 +30,7 @@
     #import "CGRectHelper.h"
     #import "AlertViewController.h"
     #import "XMLDictionary.h"
+    #import "ModelObjectHeaders.h"
 #endif
 
 static inline bool TestingModel()

@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		2B06657E17C19D4000749237 /* fake_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B06657D17C19D4000749237 /* fake_results.json */; };
 		2B15C4F317BDEF5F001C3E75 /* FormExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B15C4F217BDEF5F001C3E75 /* FormExampleViewController.m */; };
+		2BF3E0C117E7C02D00CD0871 /* Human in Resources */ = {isa = PBXBuildFile; fileRef = 2BF3E0BF17E7C02D00CD0871 /* Human */; };
+		2BF3E0C217E7C02D00CD0871 /* Machine in Resources */ = {isa = PBXBuildFile; fileRef = 2BF3E0C017E7C02D00CD0871 /* Machine */; };
 		89097C4915799DFF00913B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
 		89097C4B15799DFF00913B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
 		89097C4D15799DFF00913B9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4C15799DFF00913B9E /* CoreGraphics.framework */; };
@@ -68,14 +70,6 @@
 		DDFD6416173B0A7B000323A8 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63BB173B0A7B000323A8 /* readme.txt */; };
 		DDFD6417173B0A7B000323A8 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63BD173B0A7B000323A8 /* Model.m */; };
 		DDFD6418173B0A7B000323A8 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63BF173B0A7B000323A8 /* ModelObject.m */; };
-		DDFD6419173B0A7B000323A8 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63C3173B0A7B000323A8 /* Group.m */; };
-		DDFD641A173B0A7B000323A8 /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63C5173B0A7B000323A8 /* Member.m */; };
-		DDFD641B173B0A7B000323A8 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63C7173B0A7B000323A8 /* Tweet.m */; };
-		DDFD641C173B0A7B000323A8 /* TwitterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63C9173B0A7B000323A8 /* TwitterEntity.m */; };
-		DDFD641D173B0A7B000323A8 /* _Group.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63CC173B0A7B000323A8 /* _Group.m */; };
-		DDFD641E173B0A7B000323A8 /* _Member.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63CE173B0A7B000323A8 /* _Member.m */; };
-		DDFD641F173B0A7B000323A8 /* _Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63D0173B0A7B000323A8 /* _Tweet.m */; };
-		DDFD6420173B0A7B000323A8 /* _TwitterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63D2173B0A7B000323A8 /* _TwitterEntity.m */; };
 		DDFD6421173B0A7B000323A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63D5173B0A7B000323A8 /* AppDelegate.m */; };
 		DDFD6423173B0A7B000323A8 /* NSError+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63DA173B0A7B000323A8 /* NSError+Factory.m */; };
 		DDFD6424173B0A7B000323A8 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63DC173B0A7B000323A8 /* NSFileManager+DirectoryLocations.m */; };
@@ -121,6 +115,9 @@
 		2B06657D17C19D4000749237 /* fake_results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fake_results.json; sourceTree = "<group>"; };
 		2B15C4F117BDEF5F001C3E75 /* FormExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormExampleViewController.h; sourceTree = "<group>"; };
 		2B15C4F217BDEF5F001C3E75 /* FormExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormExampleViewController.m; sourceTree = "<group>"; };
+		2BF3E0BE17E7BF1500CD0871 /* ModelObjectHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObjectHeaders.h; sourceTree = "<group>"; };
+		2BF3E0BF17E7C02D00CD0871 /* Human */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Human; sourceTree = "<group>"; };
+		2BF3E0C017E7C02D00CD0871 /* Machine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Machine; sourceTree = "<group>"; };
 		89097C4415799DFF00913B9E /* TSBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89097C4815799DFF00913B9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		89097C4A15799DFF00913B9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -194,22 +191,6 @@
 		DDFD63BD173B0A7B000323A8 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		DDFD63BE173B0A7B000323A8 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
 		DDFD63BF173B0A7B000323A8 /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
-		DDFD63C2173B0A7B000323A8 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
-		DDFD63C3173B0A7B000323A8 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
-		DDFD63C4173B0A7B000323A8 /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
-		DDFD63C5173B0A7B000323A8 /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
-		DDFD63C6173B0A7B000323A8 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
-		DDFD63C7173B0A7B000323A8 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
-		DDFD63C8173B0A7B000323A8 /* TwitterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterEntity.h; sourceTree = "<group>"; };
-		DDFD63C9173B0A7B000323A8 /* TwitterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterEntity.m; sourceTree = "<group>"; };
-		DDFD63CB173B0A7B000323A8 /* _Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Group.h; sourceTree = "<group>"; };
-		DDFD63CC173B0A7B000323A8 /* _Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Group.m; sourceTree = "<group>"; };
-		DDFD63CD173B0A7B000323A8 /* _Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Member.h; sourceTree = "<group>"; };
-		DDFD63CE173B0A7B000323A8 /* _Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Member.m; sourceTree = "<group>"; };
-		DDFD63CF173B0A7B000323A8 /* _Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Tweet.h; sourceTree = "<group>"; };
-		DDFD63D0173B0A7B000323A8 /* _Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Tweet.m; sourceTree = "<group>"; };
-		DDFD63D1173B0A7B000323A8 /* _TwitterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TwitterEntity.h; sourceTree = "<group>"; };
-		DDFD63D2173B0A7B000323A8 /* _TwitterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TwitterEntity.m; sourceTree = "<group>"; };
 		DDFD63D4173B0A7B000323A8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DDFD63D5173B0A7B000323A8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DDFD63D9173B0A7B000323A8 /* NSError+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Factory.h"; sourceTree = "<group>"; };
@@ -516,6 +497,7 @@
 				DDFD63BD173B0A7B000323A8 /* Model.m */,
 				DDFD63BE173B0A7B000323A8 /* ModelObject.h */,
 				DDFD63BF173B0A7B000323A8 /* ModelObject.m */,
+				2BF3E0BE17E7BF1500CD0871 /* ModelObjectHeaders.h */,
 				DDF4C843173B0F0E00276A95 /* TestModel.h */,
 				DDF4C844173B0F0E00276A95 /* TestModel.m */,
 			);
@@ -547,40 +529,10 @@
 		DDFD63C0173B0A7B000323A8 /* ModelObjects */ = {
 			isa = PBXGroup;
 			children = (
-				DDFD63C1173B0A7B000323A8 /* Human */,
-				DDFD63CA173B0A7B000323A8 /* Machine */,
+				2BF3E0BF17E7C02D00CD0871 /* Human */,
+				2BF3E0C017E7C02D00CD0871 /* Machine */,
 			);
 			path = ModelObjects;
-			sourceTree = "<group>";
-		};
-		DDFD63C1173B0A7B000323A8 /* Human */ = {
-			isa = PBXGroup;
-			children = (
-				DDFD63C2173B0A7B000323A8 /* Group.h */,
-				DDFD63C3173B0A7B000323A8 /* Group.m */,
-				DDFD63C4173B0A7B000323A8 /* Member.h */,
-				DDFD63C5173B0A7B000323A8 /* Member.m */,
-				DDFD63C6173B0A7B000323A8 /* Tweet.h */,
-				DDFD63C7173B0A7B000323A8 /* Tweet.m */,
-				DDFD63C8173B0A7B000323A8 /* TwitterEntity.h */,
-				DDFD63C9173B0A7B000323A8 /* TwitterEntity.m */,
-			);
-			path = Human;
-			sourceTree = "<group>";
-		};
-		DDFD63CA173B0A7B000323A8 /* Machine */ = {
-			isa = PBXGroup;
-			children = (
-				DDFD63CB173B0A7B000323A8 /* _Group.h */,
-				DDFD63CC173B0A7B000323A8 /* _Group.m */,
-				DDFD63CD173B0A7B000323A8 /* _Member.h */,
-				DDFD63CE173B0A7B000323A8 /* _Member.m */,
-				DDFD63CF173B0A7B000323A8 /* _Tweet.h */,
-				DDFD63D0173B0A7B000323A8 /* _Tweet.m */,
-				DDFD63D1173B0A7B000323A8 /* _TwitterEntity.h */,
-				DDFD63D2173B0A7B000323A8 /* _TwitterEntity.m */,
-			);
-			path = Machine;
 			sourceTree = "<group>";
 		};
 		DDFD63D3173B0A7B000323A8 /* Supporting Files */ = {
@@ -920,6 +872,8 @@
 				DDFD6638173B0C3D000323A8 /* whiteArrow.png in Resources */,
 				DDFD6639173B0C3D000323A8 /* whiteArrow@2x.png in Resources */,
 				2B06657E17C19D4000749237 /* fake_results.json in Resources */,
+				2BF3E0C117E7C02D00CD0871 /* Human in Resources */,
+				2BF3E0C217E7C02D00CD0871 /* Machine in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,7 +920,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd $PROJECT_DIR/App/Model/CoreDataModel\nmogenerator -m Model.xcdatamodeld/Model.xcdatamodel/ --template-var arc=YES --template-path ./MogenTemplate -M ../ModelObjects/Machine -H ../ModelObjects/Human";
+			shellScript = "source \"$PROJECT_DIR/App/Model/CoreDataModel/generateDataModel.sh\"";
 		};
 		DDFD86A7159D3CCB00DB0164 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1008,14 +962,6 @@
 				DDFD6410173B0A7B000323A8 /* Model.xcdatamodeld in Sources */,
 				DDFD6417173B0A7B000323A8 /* Model.m in Sources */,
 				DDFD6418173B0A7B000323A8 /* ModelObject.m in Sources */,
-				DDFD6419173B0A7B000323A8 /* Group.m in Sources */,
-				DDFD641A173B0A7B000323A8 /* Member.m in Sources */,
-				DDFD641B173B0A7B000323A8 /* Tweet.m in Sources */,
-				DDFD641C173B0A7B000323A8 /* TwitterEntity.m in Sources */,
-				DDFD641D173B0A7B000323A8 /* _Group.m in Sources */,
-				DDFD641E173B0A7B000323A8 /* _Member.m in Sources */,
-				DDFD641F173B0A7B000323A8 /* _Tweet.m in Sources */,
-				DDFD6420173B0A7B000323A8 /* _TwitterEntity.m in Sources */,
 				DDFD6421173B0A7B000323A8 /* AppDelegate.m in Sources */,
 				DDFD6423173B0A7B000323A8 /* NSError+Factory.m in Sources */,
 				DDFD6424173B0A7B000323A8 /* NSFileManager+DirectoryLocations.m in Sources */,
