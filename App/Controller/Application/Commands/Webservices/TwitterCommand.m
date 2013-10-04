@@ -39,8 +39,8 @@
         }
         
         if (nil != error) {
-            self.error = error;
-            [self finish];
+            strongSelf.error = error;
+            [strongSelf finish];
             return;
         }
         
@@ -59,7 +59,7 @@
         }
         [Model sharedModel].tweets = tmpArray;
         
-        if (self.saveModel) {
+        if (strongSelf.saveModel) {
             [[Model sharedModel] save];
         }
         

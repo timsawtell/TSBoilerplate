@@ -84,7 +84,7 @@ static const CGFloat kHeightOfButtons           = 35.0f;
 {
     CGSize size = [button.titleLabel.text sizeWithFont:button.titleLabel.font
                                      constrainedToSize:CGSizeMake(CGFLOAT_MAX, button.titleLabel.frame.size.height)
-                                         lineBreakMode:UILineBreakModeWordWrap];
+                                         lineBreakMode:NSLineBreakByWordWrapping];
     return MAX(size.width + 5, 100.0f);
 }
 
@@ -92,14 +92,14 @@ static const CGFloat kHeightOfButtons           = 35.0f;
 {
     return [self.titleLabel.text sizeWithFont:self.titleLabel.font
                             constrainedToSize:CGSizeMake(self.titleLabel.frame.size.width, CGFLOAT_MAX)
-                                lineBreakMode:UILineBreakModeWordWrap];
+                                lineBreakMode:NSLineBreakByWordWrapping];
 }
 
 - (CGSize)desiredContentSize
 {
     return [self.contentLabel.text sizeWithFont:self.contentLabel.font
                               constrainedToSize:CGSizeMake(self.contentLabel.frame.size.width, CGFLOAT_MAX)
-                                  lineBreakMode:UILineBreakModeWordWrap];
+                                  lineBreakMode:NSLineBreakByWordWrapping];
 }
 
 @end
