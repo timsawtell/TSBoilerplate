@@ -60,7 +60,7 @@
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kNumTweets;
     twitterCommand.commandCompletionBlock = ^ (NSError *error) {
-        __strong typeof(self) strongSelf = weakSelf;
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf hideActivityScreen];
         if (error != nil) {
             AlertViewController *avc = [AlertViewController new];
