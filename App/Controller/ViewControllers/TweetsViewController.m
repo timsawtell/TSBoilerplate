@@ -60,6 +60,7 @@
     twitterCommand.includeEntities = NO;
     twitterCommand.tweetCount = kNumTweets;
     twitterCommand.commandCompletionBlock = ^ (NSError *error) {
+        if (nil == weakSelf) return;
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf hideActivityScreen];
         if (error != nil) {
