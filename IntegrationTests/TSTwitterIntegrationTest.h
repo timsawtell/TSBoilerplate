@@ -13,8 +13,8 @@
  IN THE SOFTWARE.
  */
 
-#import "TSAsynchronousOperationTest.h"
+#import "TSAsynchronousTestCase.h"
 
-@interface TSTwitterIntegrationTest : TSAsynchronousOperationTest
+@interface TSTwitterIntegrationTest : TSAsynchronousTestCase
 
 @end
