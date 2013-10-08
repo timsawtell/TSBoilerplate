@@ -1,0 +1,29 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#ifdef __OBJC__
+#define dDeviceOrientation [UIApplication sharedApplication].statusBarOrientation
+#define isPortrait  UIDeviceOrientationIsPortrait(dDeviceOrientation)
+#define isLandscape UIDeviceOrientationIsLandscape(dDeviceOrientation)
+#define isFaceUp    dDeviceOrientation == UIDeviceOrientationFaceUp   ? YES : NO
+#define isFaceDown  dDeviceOrientation == UIDeviceOrientationFaceDown ? YES : NO
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "MKNetworkKit.h"
+#import "Constants.h"
+#import "Appearances.h"
+#import "Model.h"
+#import "NSStringHelper.h"
+#import "TSCommandRunner.h"
+#import "AsynchronousCommand.h"
+#import "Command.h"
+#import "SBConstants.h"
+#import "CGRectHelper.h"
+#import "AlertViewController.h"
+#import "XMLDictionary.h"
+#import "ModelObjectHeaders.h"
+#endif
