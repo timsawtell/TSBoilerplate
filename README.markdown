@@ -5,7 +5,7 @@ First steps after clone (and cd to TSBoilerplate)
 
     git submodule init
     git submodule upate
-    sudo cp TSBoilerplate/TSBoilerplate/Model/CoreDataModel/MogenTemplate/mogenerator /usr/bin
+    sudo cp App/Model/CoreDataModel/MogenTemplate/mogenerator /usr/bin
 
 Includes 
 * MKNetworkKit    
@@ -13,12 +13,9 @@ Includes
 * Thanks to [Tyrone](https://github.com/tyrone-sudeium) for his guidance on Commands
 
 ## Data persistance:
-Define your model using core data UI - add entities and properties. (Any properties that you want to persist must have a data type that supports NSCoding).
-Inverse relationships are not supported at this stage.
-The objects are generated as .h and .m files when you run the Generate Data Model target. 
-You will have to drag newly generated class files into your project from finder. Model files are placed in ./Model/ModelObjects in Human and Machine folders. 
-You are supposed to modify the human files only! This is for adding custom methods to your model objects should you desire them.
-An example might be adding an accessor method to your model object that returns and ordered array for that model object's NSSet property. You would add this to the Human/ClassName.h and .m files. your patterns are your own, so this is not necessary. Do what you want!
+When you want to change the data model, as in, add new entities, or change properties of existing ones, make the change in the Model.xcdatamodel file (like you would for a core data app), change the scheme to "Generate Data Model" and build the project. That will instigate mogenerator to make the change and your data model objects in App/Model/ModelObjects will be updated (or added).
+When you want to add a new entity, make sure you set the data type to that entity's name. I.e.
+![data model](http://i.imgur.com/8seiyZQ.png)
 
 ## Networking: 
 To use the networking subsystem - [Mugunth Kumar](https://github.com/MugunthKumar/MKNetworkKit) is the man! 
