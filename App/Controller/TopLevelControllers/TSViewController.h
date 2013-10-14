@@ -25,9 +25,13 @@
 @property (nonatomic) BOOL wantsPullToRefresh;
 @property (nonatomic) BOOL wantsPullToRefreshFooter;
 @property (nonatomic, strong) IBOutletCollection(UIControl) NSArray *inputFields;
+@property (nonatomic, strong) UIProgressView *activityProgressView;
 
 - (void)showActivityScreen;
 - (void)showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated;
+- (void)showActivityScreenWithMessage:(NSString*)message
+                             animated:(BOOL)animated
+                     withProgressView:(BOOL)showProgressView;
 - (void)hideActivityScreen;
 - (void)hideActivityScreenAnimated:(BOOL)animated;
 - (void)reloadData; /** This will stop the pull to refresh (as in, time to show the new data) */

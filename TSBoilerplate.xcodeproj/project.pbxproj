@@ -34,6 +34,7 @@
 		2BAA0C2D18037D710009050C /* TSTwitterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA0C2B18037D710009050C /* TSTwitterIntegrationTest.m */; };
 		2BAA0C2F18037E460009050C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAA0C2E18037E460009050C /* XCTest.framework */; };
 		2BAA0C3018037E4C0009050C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAA0C2E18037E460009050C /* XCTest.framework */; };
+		2BF0E5E6180CAD9700E53BB2 /* ProgressDemoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0E5E5180CAD9700E53BB2 /* ProgressDemoCommand.m */; };
 		2BF3E0F317E7C31600CD0871 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3E0E317E7C31600CD0871 /* Group.m */; };
 		2BF3E0F417E7C31600CD0871 /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3E0E517E7C31600CD0871 /* Member.m */; };
 		2BF3E0F517E7C31600CD0871 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3E0E717E7C31600CD0871 /* Tweet.m */; };
@@ -155,6 +156,8 @@
 		2BAA0C2A18037D710009050C /* TSTwitterIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTwitterIntegrationTest.h; sourceTree = "<group>"; };
 		2BAA0C2B18037D710009050C /* TSTwitterIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTwitterIntegrationTest.m; sourceTree = "<group>"; };
 		2BAA0C2E18037E460009050C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2BF0E5E4180CAD9700E53BB2 /* ProgressDemoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressDemoCommand.h; sourceTree = "<group>"; };
+		2BF0E5E5180CAD9700E53BB2 /* ProgressDemoCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressDemoCommand.m; sourceTree = "<group>"; };
 		2BF3E0BE17E7BF1500CD0871 /* ModelObjectHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObjectHeaders.h; sourceTree = "<group>"; };
 		2BF3E0E217E7C31600CD0871 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		2BF3E0E317E7C31600CD0871 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
@@ -515,6 +518,8 @@
 				DDFD6399173B0A7B000323A8 /* TSCommandRunner.h */,
 				DDFD639A173B0A7B000323A8 /* TSCommandRunner.m */,
 				DDFD639B173B0A7B000323A8 /* Webservices */,
+				2BF0E5E4180CAD9700E53BB2 /* ProgressDemoCommand.h */,
+				2BF0E5E5180CAD9700E53BB2 /* ProgressDemoCommand.m */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -1073,6 +1078,7 @@
 				DDFD642C173B0A7B000323A8 /* SettingsHelper.m in Sources */,
 				DDFD642D173B0A7B000323A8 /* main.m in Sources */,
 				DDFD642F173B0A7B000323A8 /* TweetCell.m in Sources */,
+				2BF0E5E6180CAD9700E53BB2 /* ProgressDemoCommand.m in Sources */,
 				DDFD6631173B0C3D000323A8 /* EGORefreshTableHeaderView.m in Sources */,
 				DDFD6650173B0C3D000323A8 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				DDFD6651173B0C3D000323A8 /* NSData+MKBase64.m in Sources */,
@@ -1378,6 +1384,7 @@
 				2BAA0C091803799A0009050C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BAA0C2218037C8E0009050C /* Build configuration list for PBXNativeTarget "IntegrationTests" */ = {
 			isa = XCConfigurationList;
@@ -1386,6 +1393,7 @@
 				2BAA0C2418037C8E0009050C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89097C3E15799DFF00913B9E /* Build configuration list for PBXProject "TSBoilerplate" */ = {
 			isa = XCConfigurationList;

@@ -219,7 +219,17 @@ static CGFloat const kFontSize                  = 16.0f;
     [self showActivityScreenWithMessage:@"Loading..." animated:YES];
 }
 
-- (void)showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated
+- (void)showActivityScreenWithMessage:(NSString*)message
+                             animated:(BOOL)animated
+{
+    [self showActivityScreenWithMessage:message
+                               animated:animated
+                       withProgressView:NO];
+}
+
+- (void)showActivityScreenWithMessage:(NSString*)message
+                             animated:(BOOL)animated
+                     withProgressView:(BOOL)showProgressView
 {
     if (self.overrideShowingActivityScreen == YES) {
         return;
@@ -228,10 +238,11 @@ static CGFloat const kFontSize                  = 16.0f;
 		[self.activitySuperview removeFromSuperview];
 		self.activitySuperview = nil;
 	}
+    
 	self.activitySuperview = [[UIView alloc] initWithFrame: self.view.bounds];
 	[self.activitySuperview setAutoresizingMask: UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
 	[self.view addSubview: self.activitySuperview];
-	
+    
 	UIView *dimmerView = [[UIView alloc] initWithFrame: self.activitySuperview.bounds];
 	[dimmerView setAutoresizingMask: UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
 	dimmerView.backgroundColor = [UIColor colorWithWhite: 0.0 alpha: 1.0];
@@ -277,6 +288,22 @@ static CGFloat const kFontSize                  = 16.0f;
 	[activitySpinner setFrame: CGRectMake(37, 37, 37, 37)];
 	[activitySpinner startAnimating];
 	
+    if (showProgressView) {
+        if (self.activityProgressView) {
+            [self.activityProgressView removeFromSuperview];
+            self.activityProgressView = nil;
+        }
+        self.activityProgressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        
+        self.activityProgressView.frame = CGRectMake(spinnerBG.origin.x,
+                                                     activitySpinnerBackground.frame.origin.y + activitySpinnerBackground.frame.size.height + 20,
+                                                     spinnerBG.size.width,
+                                                     self.activityProgressView.frame.size.height);
+        self.activityProgressView.trackTintColor = [UIColor whiteColor];
+        self.activityProgressView.progressTintColor = [UIColor orangeColor];
+        [containerView addSubview:self.activityProgressView];
+    }
+    
 	if (animated) {
 		self.activitySuperview.alpha = 0.0;
 		[UIView beginAnimations: nil context: nil];
