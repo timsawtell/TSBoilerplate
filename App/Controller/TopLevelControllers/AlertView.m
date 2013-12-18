@@ -1,10 +1,17 @@
-//
-//  AlertView.m
-//  BrisbaneAirport
-//
-//  Created by Local Dev User on 17/10/12.
-//  Copyright (c) 2012 Speedwell. All rights reserved.
-//
+/*
+ Copyright (c) 2013 Tim Sawtell
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+ to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ IN THE SOFTWARE.
+ */
 
 #import "AlertView.h"
 
@@ -82,24 +89,21 @@ static const CGFloat kHeightOfButtons           = 35.0f;
 
 - (CGFloat)desiredWidthOfButton:(UIButton *)button
 {
-    CGSize size = [button.titleLabel.text sizeWithFont:button.titleLabel.font
-                                     constrainedToSize:CGSizeMake(CGFLOAT_MAX, button.titleLabel.frame.size.height)
-                                         lineBreakMode:NSLineBreakByWordWrapping];
-    return MAX(size.width + 5, 100.0f);
+    CGSize size = [button.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
+    
+    return MIN(size.width + 10, 200.0f);
 }
 
 - (CGSize)desiredTitleSize
 {
-    return [self.titleLabel.text sizeWithFont:self.titleLabel.font
-                            constrainedToSize:CGSizeMake(self.titleLabel.frame.size.width, CGFLOAT_MAX)
-                                lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: self.titleLabel.font}];
+    return size;
 }
 
 - (CGSize)desiredContentSize
 {
-    return [self.contentLabel.text sizeWithFont:self.contentLabel.font
-                              constrainedToSize:CGSizeMake(self.contentLabel.frame.size.width, CGFLOAT_MAX)
-                                  lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [self.contentLabel.text sizeWithAttributes:@{NSFontAttributeName: self.contentLabel.font}];
+    return size;
 }
 
 @end

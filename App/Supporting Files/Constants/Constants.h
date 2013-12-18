@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012 Tim Sawtell
+ Copyright (c) 2013 Tim Sawtell
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -17,6 +17,9 @@
 
 @interface Constants : NSObject
 
+#ifdef DEBUG
+#define DLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#endif
 #define ASSIGN_NOT_NIL(property, val) ({id __val = (val); if (__val != [NSNull null] && __val != nil) { property = val;}})
 #define _A_CELL_HEIGHT 50
 
@@ -30,7 +33,7 @@ extern CGFloat const kSecondsPerDay;
 extern CGFloat const kSecondsPerHour;
 extern CGFloat const kPaddingRightOnImportWaitingAnimation;
 
-extern NSString * const kTwitterTimelineBaseURL;
+extern NSString * const kTwitterBaseURL;
 extern NSString * const kIncludeEntities;
 extern NSString * const kIncludeReTweets;
 extern NSString * const kTweetCount;
@@ -38,5 +41,7 @@ extern NSString * const kTwitterScreenName;
 extern NSString * const kTwitterUser;
 extern NSString * const kTwitterName;
 extern NSString * const kTweetText;
+
+extern NSString * const kUnableToParseMessageText;
 
 @end

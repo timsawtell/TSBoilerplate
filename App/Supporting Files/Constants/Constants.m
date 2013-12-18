@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012 Tim Sawtell
+ Copyright (c) 2013 Tim Sawtell
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -23,7 +23,7 @@ NSString * const kDateFormat = @"dd-MMM-yyyy";
 NSString * const kRegexForEmail = @"^([a-zA-Z0-9\\+\\_\\-\\.]+)@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";
 NSString * const kModelSavedDataFileName = @"TSBoilerplate.dat";
 
-NSString * const kTwitterTimelineBaseURL = @"https://api.twitter.com/1/statuses/user_timeline.json";
+NSString * const kTwitterBaseURL = @"https://api.twitter.com/";
 NSString * const kIncludeEntities = @"include_entities";
 NSString * const kIncludeReTweets = @"include_rts";
 NSString * const kTweetCount = @"count";
@@ -31,6 +31,8 @@ NSString * const kTwitterScreenName = @"screen_name";
 NSString * const kTwitterUser = @"user";
 NSString * const kTwitterName = @"name";
 NSString * const kTweetText = @"text";
+
+NSString * const kUnableToParseMessageText = @"Unable to parse results";
 
 CGFloat const kSecondsPerDay = 86400;
 CGFloat const kSecondsPerHour = 3600;

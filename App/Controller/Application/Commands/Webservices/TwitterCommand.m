@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012 Tim Sawtell
+ Copyright (c) 2013 Tim Sawtell
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -14,8 +14,6 @@
  */
 
 #import "TwitterCommand.h"
-#import "TwitterEngine.h"
-#import "MemberDisplayCommand.h"
 #import "TwitterEntity.h"
 #import "TweetBuilder.h"
 #import "TwitterEntityBuilder.h"
@@ -26,26 +24,24 @@
 
 - (void)execute
 {
-    /* we make a new completion block and add add in things that a programmer wouldn't want to do in the running code.
-     i.e. I think it's rude to ask a programmer to do command level functions like [NSCommand finish] in their day 
-     to day code, so when they type out the completionBlock, it's just business logic. In here though, we need to also 
-     do lower level things. */
-    __weak TwitterCommand *weakSelf = self;
-    _serviceCompletionBlock completionBlock = ^(id results, NSError *error) {
-        __strong TwitterCommand *strongSelf = weakSelf;
+    __weak typeof(self) weakSelf = self;
+    
+    TSNetworkSuccessBlock successBlock = ^(NSObject *resultObject, NSMutableURLRequest *request, NSURLResponse *response) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        
         if(strongSelf.isCancelled) {
             [strongSelf finish];
             return;
         }
         
-        if (nil != error) {
-            strongSelf.error = error;
+        if (![resultObject isKindOfClass:[NSArray class]]) {
+            strongSelf.error = [NSError errorWithDomain:NSURLErrorDomain withCode:NSURLErrorCannotParseResponse withText:kUnableToParseMessageText];
             [strongSelf finish];
             return;
         }
-        
+        NSArray *resultsArray = (NSArray *)resultObject;
         NSMutableArray *tmpArray = [NSMutableArray array];
-        for (id tweetInstanceJSON in results) {
+        for (id tweetInstanceJSON in resultsArray) {
             id user = [tweetInstanceJSON objectForKey:kTwitterUser];
             if (user != nil) {
                 TwitterEntity *tweetsUser = [TwitterEntityBuilder twitterEntityFromJSON:user];
@@ -65,13 +61,44 @@
         
         [strongSelf finish];
     };
-        
-    TwitterEngine *twitterEngine = [TwitterEngine new];
-    [twitterEngine getPublicTimelineForScreenName:self.screenName 
-                                 includedEntities:self.includeEntities 
-                                  includeRetweets:self.includeRetweets 
-                                       tweetCount:self.tweetCount 
-                                     onCompletion:completionBlock];
+    
+    /*
+    TSNetworkErrorBlock errorBlock = ^(NSObject *resultObject, NSError *error, NSMutableURLRequest *request, NSURLResponse *response) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.error = error;
+        [strongSelf finish];
+        return;
+    };
+    
+    
+    NSDictionary *params = @{kTwitterScreenName: screenName,
+                             kIncludeEntities: [NSNumber numberWithBool:includeEntities],
+                             kIncludeReTweets: [NSNumber numberWithBool:includeRetweets],
+                             kTweetCount: [NSNumber numberWithInteger: tweetCount]};
+    
+    [[TSNetworking sharedSession] setBaseURLString:kTwitterBaseURL];
+    
+    [[TSNetworking sharedSession] performDataTaskWithRelativePath:@"1/statuses/user_timeline.json"
+                                                       withMethod:HTTP_METHOD_GET
+                                                   withParameters:params
+                                             withAddtionalHeaders:@{@"Content-Type":@"application/json", @"Accept":@"application/json"}
+                                                      withSuccess:successBlock
+                                                        withError:errorBlock];
+    */
+    
+    // since twitter changed their security model, I'm just using some hard coded results for this example
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"fake_results" ofType:@"json"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if ([fm fileExistsAtPath:path]) {
+        NSError *error;
+        NSDictionary *timelineData =
+        [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path]
+                                        options:NSJSONReadingAllowFragments error:&error];
+        successBlock(timelineData, nil, nil);
+    }
+    
+    
 }
 
 @end

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012 Tim Sawtell
+ Copyright (c) 2013 Tim Sawtell
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -19,8 +19,6 @@
 // Edit Scheme, Run setting, Arguments tab, environment variables. Preprocessor macros do not work when the main target is built before the test target.
 
 @implementation Model
-
-@synthesize group, tweets;
 
 #pragma mark - Data
 
@@ -71,14 +69,14 @@
 {
     self = [super init];
     if (self) {
-        self.group = [aDecoder decodeObjectForKey:@"group"];
+        //self.group = [aDecoder decodeObjectForKey:@"group"];
     }
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.group forKey:@"group"];
+    //[aCoder encodeObject:self.group forKey:@"group"];
 }
 
 @end

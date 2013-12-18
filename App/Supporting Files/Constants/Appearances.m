@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012 Tim Sawtell
+ Copyright (c) 2013 Tim Sawtell
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -21,9 +21,9 @@
 + (void)globalAppearances
 {
     NSMutableDictionary *navBarTitleAttributes = [NSMutableDictionary dictionary];
-    [navBarTitleAttributes setValue:[Appearances titleBarFont] forKey:UITextAttributeFont];
-    [navBarTitleAttributes setValue:[UIColor blackColor] forKey:UITextAttributeTextColor];
-    [navBarTitleAttributes setValue:[UIColor clearColor] forKey:UITextAttributeTextShadowColor];
+    [navBarTitleAttributes setValue:[Appearances titleBarFont] forKey:NSFontAttributeName];
+    [navBarTitleAttributes setValue:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+    [navBarTitleAttributes setValue:[UIColor clearColor] forKey:NSShadowAttributeName];
     [[UINavigationBar appearance] setTitleTextAttributes:navBarTitleAttributes];
     
     UIColor *color = [UIColor colorWithPatternImage:[UIImage imageNamed:@"black_navigation_bar_button"]];

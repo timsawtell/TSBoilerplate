@@ -17,10 +17,13 @@
 
 @interface AsynchronousCommand()
 @property (nonatomic, strong) NSMutableArray *_subCommands;
+- (void)beginBackgroundUpdateTask;
+- (void)endBackgroundUpdateTask;
 @end
 
 @implementation AsynchronousCommand
-@synthesize _subCommands, commandCompletionBlock, multiThreaded, finished, executing, parentCommand;
+
+@synthesize _subCommands;
 
 - (id)init
 {
@@ -42,17 +45,43 @@
     __weak AsynchronousCommand *weakSelf = self;
     self.completionBlock = ^{
         __strong AsynchronousCommand *strongSelf = weakSelf;
+        
         if (NULL != strongSelf.commandCompletionBlock && !strongSelf.isCancelled) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 strongSelf.commandCompletionBlock(strongSelf.error);
+                [strongSelf endBackgroundUpdateTask];
+                if (strongSelf.saveModel) {
+                    [[Model sharedModel] save];
+                }
             });
+        }
+        if (strongSelf.isBackgroundExecutable) {
+            [strongSelf endBackgroundUpdateTask];
         }
         strongSelf.completionBlock = nil; // needed to do this otherwise retain cycle
     };
     //subclass should override execute to perform the logic of the command
+
+    if (self.isBackgroundExecutable) {
+        self.backgroundUpdateTaskId = [[NSDate date] timeIntervalSince1970];
+        [self beginBackgroundUpdateTask];
+    }
     [self execute];
     
     //subclass MUST call [self finish] at the appropriate time, generally in the commandCompletionBlock
+}
+
+- (void)beginBackgroundUpdateTask
+{
+    self.backgroundUpdateTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [self endBackgroundUpdateTask];
+    }];
+}
+
+- (void)endBackgroundUpdateTask
+{
+    [[UIApplication sharedApplication] endBackgroundTask: self.backgroundUpdateTaskId];
+    self.backgroundUpdateTaskId = UIBackgroundTaskInvalid;
 }
 
 - (BOOL)isMultiThreaded
@@ -67,7 +96,7 @@
     }
     self._subCommands = [NSMutableArray array]; // release the subcommands
     
-    if (executing) {
+    if (self.executing) {
         [self setFinished:YES];
         [self finish];
     } else {
@@ -79,14 +108,14 @@
 {
     [self setExecuting: !isFinished];
     [self willChangeValueForKey: @"isFinished"];
-    finished = isFinished;
+    _finished = isFinished;
     [self didChangeValueForKey: @"isFinished"];
 }
 
 - (void) setExecuting:(BOOL) isExecuting
 {
     [self willChangeValueForKey: @"isExecuting"];
-    executing = isExecuting;
+    _executing = isExecuting;
     [self didChangeValueForKey: @"isExecuting"];
 }
 
@@ -105,7 +134,7 @@
         if (!runningSubCommands) {
             [self setFinished: YES]; // have to finish self before the parent, makes sence
             [self.parentCommand finish];
-            self.parentCommand._subCommands = [NSMutableArray array]; // clear the reference to sub commands, allows dealloc
+            [self.parentCommand clearSubCommands]; // clear the reference to sub commands, allows dealloc
             return;
         }
     }
@@ -123,6 +152,11 @@
     if ([_subCommands containsObject:command]) {
         [_subCommands removeObject:command];
     }
+}
+
+- (void)clearSubCommands
+{
+    _subCommands = [NSMutableArray array];
 }
 
 - (NSArray *)subCommands

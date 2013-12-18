@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012 Tim Sawtell
+ Copyright (c) 2013 Tim Sawtell
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -14,16 +14,6 @@
 */
 
 #import "AppDelegate.h"
-#import "Group.h"
-#import "Member.h"
-#import "GroupCommand.h"
-#import "GroupEditCommand.h"
-#import "MemberCommand.h"
-#import "MemberDisplayCommand.h" // a very trivial asynchronous command
-
-#define kGroupName @"The Boilerplates"
-#define kMemberStartOfName @"Comrade"
-
 
 @implementation AppDelegate
 

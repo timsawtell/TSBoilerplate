@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012 Tim Sawtell
+ Copyright (c) 2013 Tim Sawtell
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -37,6 +37,12 @@ typedef void(^commandCompletionBlock)(NSError *error);
 
 /** these getters are used to tell NSOperationQueue that the task is executing */
 @property (nonatomic, assign, getter = isExecuting) BOOL executing;
+
+/** the task id for when this is backgrounded **/
+@property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTaskId;
+
+/** allows the command to run for up to 10 while the app is in the background */
+@property (nonatomic) BOOL isBackgroundExecutable;
 
 /** Add a command as a subcommand
  * @param Command command - the command to add as a subcommand
