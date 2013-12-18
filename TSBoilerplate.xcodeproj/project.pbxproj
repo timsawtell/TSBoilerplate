@@ -160,7 +160,6 @@
 		89097D1B1579A0F500913B9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		89D3C5A71723B5D600704064 /* TSTwitterIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTwitterIntegrationTest.h; sourceTree = "<group>"; };
 		89D3C5A81723B5D600704064 /* TSTwitterIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTwitterIntegrationTest.m; sourceTree = "<group>"; };
-		89DA25E916978E17001273E1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		DDBB5F501726512D00C93A97 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DDC1DF19173B1762000E0C66 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
 		DDF4C843173B0F0E00276A95 /* TestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
@@ -559,7 +558,6 @@
 		DDFD63D3173B0A7B000323A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				89DA25E916978E17001273E1 /* Default-568h@2x.png */,
 				DDC1DF19173B1762000E0C66 /* App-Prefix.pch */,
 				DDFD63D4173B0A7B000323A8 /* AppDelegate.h */,
 				DDFD63D5173B0A7B000323A8 /* AppDelegate.m */,
