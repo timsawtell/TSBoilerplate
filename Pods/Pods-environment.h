@@ -9,6 +9,6 @@
 // TSNetworking
 #define COCOAPODS_POD_AVAILABLE_TSNetworking
 #define COCOAPODS_VERSION_MAJOR_TSNetworking 0
-#define COCOAPODS_VERSION_MINOR_TSNetworking 1
+#define COCOAPODS_VERSION_MINOR_TSNetworking 2
 #define COCOAPODS_VERSION_PATCH_TSNetworking 0
 

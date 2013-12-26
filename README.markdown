@@ -1,4 +1,6 @@
-A project to be used as the starting point for a new iOS project
+A project to be used as the starting point for a new iOS project.
+
+This project uses Cocoapods.
 
 ## First steps
     cd to TSBoilerplate

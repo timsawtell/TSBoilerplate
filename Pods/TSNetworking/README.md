@@ -5,17 +5,24 @@ Because I wanted to see how NSURLSession worked.
 
 ## Using cocoapods?
 
+    platform :ios, '7.0'
     pod 'TSNetworking'
+
+
+## AppDelegate.m
+
+Be sure to add this to your app delegate. It will ensure that your uploads/downloads that finish when the app has been suspended run their completion blocks.
+
+
+    #import "TSNetworking.h"
     
-Warning: the success and error blocks are executed on whatever thread apple decides.
-I suggest if you're doing UI changes in these blocks that you dispatch_async and get the main queue.
-Warning for young players: never reference self inside a block, use this style to avoid retain cycles
-    
-    __weak typeof(self) weakSelf = self;
-    TSNetworkSuccessBlock successBlock = ^(NSObject *resultObject, NSMutableURLRequest *request, NSURLResponse *response) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf sendAMessage];
-    };
+    - (void)application:(UIApplication *)application
+    handleEventsForBackgroundURLSession:(NSString *)identifier
+    completionHandler:(void (^)())completionHandler
+    {
+      [TSNetworking backgroundSession].sessionCompletionHandler = completionHandler;
+    }
+
 
 ## Initialising:
 
@@ -29,9 +36,22 @@ These settings last for the app's run lifetime
     [[TSNetworking sharedSession] removeAllSessionHeaders];
 
 ## Which one to use?
-    [TSNetworking sharedSession] /* for all your regular GETs, POSTs. Given an NSObject as the result */
+    [TSNetworking sharedSession] /* for all your regular GETs, POSTs. You are given an NSObject as the result. 
+    OR for uploading NSData in the foreground.  */
     - OR -
-    [TSNetworking backgroundSession] /* for all your uploads and downloads. Uses funky new NSURLSession features to run while your apps if minimized, no need to pause and serialise your downloads on applicationDidEnterBackground */
+    [TSNetworking backgroundSession] /* for all your background downloads and (local NSURL) uploads. Uses funky new NSURLSession features to run while your apps if minimized, no need to pause and serialise your downloads on applicationDidEnterBackground */
+
+## Warning
+
+The success and error blocks are executed on whatever thread apple decides.
+I suggest if you're doing UI changes in these blocks that you dispatch_async and get the main queue.
+Warning for young players: never reference self inside a block, use this style to avoid retain cycles
+    
+    __weak typeof(self) weakSelf = self;
+    TSNetworkSuccessBlock successBlock = ^(NSObject *resultObject, NSMutableURLRequest *request, NSURLResponse *response) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf sendAMessage];
+    };
 
 ## Get:
 
@@ -111,9 +131,21 @@ These settings last for the app's run lifetime
         NSLog(@"uploaded: %lld, total written: %lld, total expected: %lld", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     };
     
-    NSURLSessionUploadTask *uploadTask = [[TSNetworking backgroundSession] uploadFromFullPath:sourcePath
-                                                                                       toPath:kMultipartUpload
-                                                                         withAddtionalHeaders:nil
-                                                                            withProgressBlock:progressBlock
-                                                                                  withSuccess:successBlock
-                                                                                    withError:errorBlock];
+    NSURLSessionUploadTask *uploadTask = [[TSNetworking backgroundSession] uploadInBackgroundFromLocalPath:sourcePath
+                                                                                                    toPath:kMultipartUpload
+                                                                                      withAddtionalHeaders:nil
+                                                                                         withProgressBlock:progressBlock
+                                                                                               withSuccess:successBlock
+                                                                                                 withError:errorBlock];
+
+    // or
+
+    NSFileManager *fm = [NSFileManager new];
+    NSData *data = [fm contentsAtPath:sourcePath];
+    
+    [[TSNetworking sharedSession] uploadInForegroundData:data
+                                                  toPath:kMultipartUpload
+                                    withAddtionalHeaders:nil
+                                       withProgressBlock:progressBlock
+                                             withSuccess:successBlock
+                                               withError:errorBlock];

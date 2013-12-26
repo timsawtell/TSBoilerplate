@@ -1,10 +1,10 @@
 PODS:
-  - TSNetworking (0.1)
+  - TSNetworking (0.2)
 
 DEPENDENCIES:
   - TSNetworking
 
 SPEC CHECKSUMS:
-  TSNetworking: 10cda6f498c01106de82ad3dcaf31531a6ebd974
+  TSNetworking: 6f3525d6dbaa3f9d34289c4bceae8274e7f8a399
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.29.0

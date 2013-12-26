@@ -34,9 +34,13 @@ typedef enum {
 } HTTP_METHOD;
 
 
-@interface TSNetworking : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate>
+@interface TSNetworking : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate, NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) AFSecurityPolicy *securityPolicy; //The security policy used by created request operations to evaluate server trust for secure connections.
+
+@property (nonatomic, strong) NSURLSession *sharedURLSession;
+
+@property (copy) void (^sessionCompletionHandler)(); // For your AppDelegate to run when it gets notified of application:handleEventsForBackgroundURLSession:completionHandler
 
 + (TSNetworking*)sharedSession; // for regular get / post requests 
 
@@ -50,6 +54,8 @@ typedef enum {
 - (void)addSessionHeaders:(NSDictionary *)headers;
 
 - (void)removeAllSessionHeaders;
+
+- (NSUInteger)resumePausedDownloads; // returns the number of downloads that were resumed
 
 /*
  * Perform a HTTP task, i.e. POST, GET, DELETE.
@@ -82,12 +88,24 @@ typedef enum {
  * ergo, the successblock passed here will be called inside another block we have to create
  * in this method. see: https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSessionConfiguration_class/Reference/Reference.html#//apple_ref/occ/clm/NSURLSessionConfiguration/backgroundSessionConfiguration:
  */
-- (NSURLSessionUploadTask *)uploadFromFullPath:(NSString *)sourcePath
-                                        toPath:(NSString *)destinationPath
-                          withAddtionalHeaders:(NSDictionary *)headers
-                             withProgressBlock:(id)progressBlock
-                                   withSuccess:(TSNetworkSuccessBlock)successBlock
-                                     withError:(TSNetworkErrorBlock)errorBlock;
+- (NSURLSessionUploadTask *)uploadInBackgroundFromLocalPath:(NSString *)sourcePath
+                                                     toPath:(NSString *)destinationPath
+                                       withAddtionalHeaders:(NSDictionary *)headers
+                                          withProgressBlock:(id)progressBlock
+                                                withSuccess:(TSNetworkSuccessBlock)successBlock
+                                                  withError:(TSNetworkErrorBlock)errorBlock;
+
+/*
+ * Upload NSData to a URL. This is NOT a background task. If you want to upload
+ * as a background task, please use the uploadFromFullPath:... method, as that 
+ * will guarantee a background upload
+ */
+- (NSURLSessionUploadTask *)uploadInForegroundData:(NSData *)data
+                                            toPath:(NSString *)destinationPath
+                              withAddtionalHeaders:(NSDictionary *)headers
+                                 withProgressBlock:(id)progressBlock
+                                       withSuccess:(TSNetworkSuccessBlock)successBlock
+                                         withError:(TSNetworkErrorBlock)errorBlock;
 
 @end
 
