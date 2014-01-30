@@ -1,10 +1,16 @@
 PODS:
-  - TSNetworking (0.1)
+  - AFNetworking/Security (2.1.0)
+  - Reachability (3.1.1)
+  - TSNetworking (0.3):
+    - AFNetworking/Security
+    - Reachability
 
 DEPENDENCIES:
   - TSNetworking
 
 SPEC CHECKSUMS:
-  TSNetworking: 10cda6f498c01106de82ad3dcaf31531a6ebd974
+  AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
+  TSNetworking: b1e0e35eb1577a94b603cbf426b7cdf179738e06
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.29.0

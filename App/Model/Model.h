@@ -14,10 +14,11 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "Book.h"
 
 @interface Model : NSObject
 
-@property (nonatomic, strong) NSArray *tweets;
+@property (nonatomic, strong) Book *book;
 + (Model*) sharedModel;
 - (void)save;
 @end

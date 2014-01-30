@@ -18,9 +18,13 @@
 @implementation SBConstants
 
 #pragma mark - ViewControllers
-NSString * const kTweetsViewController = @"tweetsViewController";
+NSString * const kiTunesResultsViewController = @"iTunesResultsViewController";
+NSString * const kFormExampleViewController = @"formExampleViewController";
 
 #pragma mark - Cells
-NSString * const kTweetCell = @"tweetCell";
+NSString * const kBookCell = @"bookCell";
+
+#pragma mark - Segue
+NSString * const kFormToiTunesSegue = @"formToiTunesSegue";
 
 @end

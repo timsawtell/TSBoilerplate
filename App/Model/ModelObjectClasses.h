@@ -1,2 +1,1 @@
-@class Tweet;
-@class TwitterEntity;
+@class Book;

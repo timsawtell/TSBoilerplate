@@ -18,9 +18,13 @@
 @interface SBConstants : NSObject
 
 #pragma mark - ViewControllers
-extern NSString * const kTweetsViewController;
+extern NSString * const kiTunesResultsViewController;
+extern NSString * const kFormExampleViewController;
 
 #pragma mark - Cells
-extern NSString * const kTweetCell;
+extern NSString * const kBookCell;
+
+#pragma mark - Segue
+extern NSString * const kFormToiTunesSegue;
 
 @end

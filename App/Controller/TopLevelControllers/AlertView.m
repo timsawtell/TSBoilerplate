@@ -91,7 +91,7 @@ static const CGFloat kHeightOfButtons           = 35.0f;
 {
     CGSize size = [button.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
     
-    return MIN(size.width + 10, 200.0f);
+    return MAX(size.width + 10, 100.0f);
 }
 
 - (CGSize)desiredTitleSize

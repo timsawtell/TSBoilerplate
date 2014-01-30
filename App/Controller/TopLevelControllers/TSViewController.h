@@ -16,7 +16,7 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 
-@interface TSViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate, UITextFieldDelegate>
+@interface TSViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollViewToResizeOnKeyboardShow;
 @property (nonatomic, strong) EGORefreshTableHeaderView *headerView;

@@ -25,7 +25,6 @@
     #import "NSStringHelper.h"
     #import "TSCommandRunner.h"
     #import "AsynchronousCommand.h"
-    #import "Command.h"
     #import "SBConstants.h"
     #import "CGRectHelper.h"
     #import "AlertViewController.h"

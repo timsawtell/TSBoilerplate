@@ -20,7 +20,14 @@
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
+{
+    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *versionNum = [infoDict objectForKey:@"CFBundleVersion"];
+    NSString *appName = [infoDict objectForKey:@"CFBundleDisplayName"];
+    NSString *userAgent = [NSString stringWithFormat:@"%@/%@", appName, versionNum];
+    [[TSNetworking sharedSession] addSessionHeaders:@{@"Content-Type": @"application/json; charset=utf-8",
+                                                      @"Accept": @"application/json; charset=utf-8",
+                                                      @"User-Agent": userAgent}];
     return YES;
 }
 

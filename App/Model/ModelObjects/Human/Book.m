@@ -1,14 +1,6 @@
-#import "Tweet.h"
+#import "Book.h"
 
-
-@interface Tweet ()
-
-// Private interface goes here.
-
-@end
-
-
-@implementation Tweet
+@implementation Book
 
 #pragma mark - NSCoding
 
@@ -26,6 +18,10 @@
     [super encodeWithCoder: aCoder];
     // Implement custom saving logic here
 }
+
+#pragma mark Abstract method overrides
+
+
 
 
 // Custom logic goes here.

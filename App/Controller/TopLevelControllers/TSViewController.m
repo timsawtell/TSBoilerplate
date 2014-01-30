@@ -24,7 +24,7 @@ static CGFloat const kFontSize                  = 16.0f;
 @interface TSViewController ()
 @property (nonatomic, assign) BOOL overrideShowingActivityScreen;
 @property (nonatomic, strong) UIView *activitySuperview;
-@property (nonatomic, weak) UIControl *activeControl;
+@property (nonatomic, weak) UIResponder *activeControl;
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view;
@@ -40,6 +40,7 @@ static CGFloat const kFontSize                  = 16.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     if (self.inputFields.count > 0) {
         self.inputFields = [self.inputFields sortedArrayUsingComparator:^NSComparisonResult(id label1, id label2) {
@@ -62,8 +63,14 @@ static CGFloat const kFontSize                  = 16.0f;
                          [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(closeKeyboard)],
                          nil];
         [toolbar sizeToFit];
-        for (UITextField *textfield in self.inputFields) {
-            textfield.inputAccessoryView = toolbar;
+        for (UIResponder *control in self.inputFields) {
+            if ([control isKindOfClass:[UITextView class]]) {
+                UITextView *tv = (UITextView *)control;
+                tv.inputAccessoryView = toolbar;
+            } else if ([control isKindOfClass:[UITextField class]]) {
+                UITextField *tf = (UITextField *)control;
+                tf.inputAccessoryView = toolbar;
+            }
         }
     }
     
@@ -95,6 +102,23 @@ static CGFloat const kFontSize                  = 16.0f;
         [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIKeyboardWillHideNotification];
     }
     [super viewDidUnload];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    if ([self respondsToSelector:@selector(specialLayout)]) {
+        [self performSelector:@selector(specialLayout) withObject:nil afterDelay:0.1];
+    }
+}
+
+/* any layout code that needs to be run after view did layout subviews. This is needed for scrollviews (contentsize) because
+ * of autolayout insanity. */
+- (void)specialLayout
+{
+    if (self.scrollViewToResizeOnKeyboardShow.contentSize.height < self.scrollViewToResizeOnKeyboardShow.bounds.size.height) {
+        self.scrollViewToResizeOnKeyboardShow.contentSize = self.scrollViewToResizeOnKeyboardShow.bounds.size;
+    }
 }
 
 - (void)nextPrevChanged:(id)sender
@@ -178,6 +202,15 @@ static CGFloat const kFontSize                  = 16.0f;
     }
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([self.inputFields containsObject:textView]) {
+        self.activeControl = textView;
+    } else {
+        self.activeControl = nil;
+    }
+}
+
 // when the keyboard shows we have to update the scroll position and the content inset for the scrollView, such that it's resized to be above the keyboard
 - (void)keyboardDidShow:(NSNotification *)aNotification
 {
@@ -202,7 +235,15 @@ static CGFloat const kFontSize                  = 16.0f;
     self.scrollViewToResizeOnKeyboardShow.contentInset = contentInsets;
     
     if (nil != self.activeControl) {
-        [self.scrollViewToResizeOnKeyboardShow scrollRectToVisible:self.activeControl.frame animated:YES];
+        UIView *view = (UIView *)self.activeControl;
+        if (nil != self.activeControl) {
+            CGRect rect = view.frame;
+            if (! [self.scrollViewToResizeOnKeyboardShow.subviews containsObject:self.activeControl]) {
+                CGPoint p = [view convertPoint:view.frame.origin toView:self.scrollViewToResizeOnKeyboardShow];
+                rect = CGRectMake(1, p.y + view.frame.size.height, 1, 1);
+            }
+            [self.scrollViewToResizeOnKeyboardShow scrollRectToVisible:rect animated:YES];
+        }
     }
 }
 
