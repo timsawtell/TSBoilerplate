@@ -16,7 +16,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Appearances : NSObject
-+ (void)globalAppearances;
 + (UIImage *)backgroundImage;
 + (UIFont *)titleBarFont;
 + (UIFont *)fontForButtonsOnAlertView;

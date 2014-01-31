@@ -23,15 +23,6 @@ NSString * const kDateFormat = @"dd-MMM-yyyy";
 NSString * const kRegexForEmail = @"^([a-zA-Z0-9\\+\\_\\-\\.]+)@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";
 NSString * const kModelSavedDataFileName = @"TSBoilerplate.dat";
 
-NSString * const kTwitterBaseURL = @"https://api.twitter.com/";
-NSString * const kIncludeEntities = @"include_entities";
-NSString * const kIncludeReTweets = @"include_rts";
-NSString * const kTweetCount = @"count";
-NSString * const kTwitterScreenName = @"screen_name";
-NSString * const kTwitterUser = @"user";
-NSString * const kTwitterName = @"name";
-NSString * const kTweetText = @"text";
-
 NSString * const kUnableToParseMessageText = @"Unable to parse results";
 
 CGFloat const kSecondsPerDay = 86400;

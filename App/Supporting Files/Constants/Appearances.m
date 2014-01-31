@@ -18,19 +18,6 @@
 
 @implementation Appearances
 
-+ (void)globalAppearances
-{
-    NSMutableDictionary *navBarTitleAttributes = [NSMutableDictionary dictionary];
-    [navBarTitleAttributes setValue:[Appearances titleBarFont] forKey:NSFontAttributeName];
-    [navBarTitleAttributes setValue:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
-    [navBarTitleAttributes setValue:[UIColor clearColor] forKey:NSShadowAttributeName];
-    [[UINavigationBar appearance] setTitleTextAttributes:navBarTitleAttributes];
-    
-    UIColor *color = [UIColor colorWithPatternImage:[UIImage imageNamed:@"black_navigation_bar_button"]];
-    [[UIBarButtonItem appearance] setTintColor:color];
-    
-}
-
 + (UIColor *)navButtonColor 
 {
     return [UIColor colorWithPatternImage:[UIImage imageNamed:@"black_navigation_bar_button"]];

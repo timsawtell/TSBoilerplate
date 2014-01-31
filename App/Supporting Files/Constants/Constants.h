@@ -33,15 +33,6 @@ extern CGFloat const kSecondsPerDay;
 extern CGFloat const kSecondsPerHour;
 extern CGFloat const kPaddingRightOnImportWaitingAnimation;
 
-extern NSString * const kTwitterBaseURL;
-extern NSString * const kIncludeEntities;
-extern NSString * const kIncludeReTweets;
-extern NSString * const kTweetCount;
-extern NSString * const kTwitterScreenName;
-extern NSString * const kTwitterUser;
-extern NSString * const kTwitterName;
-extern NSString * const kTweetText;
-
 extern NSString * const kUnableToParseMessageText;
 
 @end
