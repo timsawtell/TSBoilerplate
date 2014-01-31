@@ -145,6 +145,7 @@ static CGFloat const kFontSize                  = 16.0f;
 // from the inputAccessoryView
 - (void)nextInput
 {
+    if (self.inputFields.count < 2) return;
     for (NSInteger i = 0; i < self.inputFields.count; i++) {
         if ([self.inputFields objectAtIndex:i] == self.activeControl) {
             UIControl *nextControl;
@@ -167,6 +168,7 @@ static CGFloat const kFontSize                  = 16.0f;
 // from the inputAccessoryView
 - (void)prevInput
 {
+    if (self.inputFields.count < 2) return;
     for (NSInteger i = self.inputFields.count - 1; i >= 0; i--) {
         if ([self.inputFields objectAtIndex:i] == self.activeControl) {
             UIControl *nextControl;
