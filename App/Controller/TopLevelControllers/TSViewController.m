@@ -50,7 +50,9 @@ static CGFloat const kFontSize                  = 16.0f;
         }];
         
         UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-        toolbar.barStyle = UIBarStyleBlackTranslucent;
+        toolbar.barStyle = UIBarStyleDefault;
+        toolbar.opaque = NO;
+        toolbar.translucent = YES;
         
         UISegmentedControl *nextPrev = [[UISegmentedControl alloc] initWithItems:@[@"Previous", @"Next"]];
         nextPrev.momentary = YES;
