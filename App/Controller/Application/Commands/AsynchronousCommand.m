@@ -37,14 +37,13 @@
 {
     [self setFinished: NO];
     if ([self isCancelled]) {
-        [self setExecuting:NO];
-        [self setFinished:YES];
+        [self finish];
         return;
     }
     [self main];
 }
 
-- (void) main
+- (void)main
 {
     //set the NSOperation's completionBlock which occurs at the end of main
     __weak AsynchronousCommand *weakSelf = self;
@@ -101,25 +100,27 @@
     [super cancel];
     [self didChangeValueForKey: @"isCancelled"];
     if (self.isExecuting) {
-        [self setFinished:YES];
+        [self finish];
     }
 }
 
-- (void) setFinished:(BOOL) isFinished
+- (void)setFinished:(BOOL) isFinished
 {
+    if (_finished == isFinished) return;
     [self willChangeValueForKey: @"isFinished"];
     _finished = isFinished;
     [self didChangeValueForKey: @"isFinished"];
 }
 
-- (void) setExecuting:(BOOL) isExecuting
+- (void)setExecuting:(BOOL) isExecuting
 {
+    if (_executing == isExecuting) return;
     [self willChangeValueForKey: @"isExecuting"];
     _executing = isExecuting;
     [self didChangeValueForKey: @"isExecuting"];
 }
 
-- (void) finish
+- (void)finish
 {
     if (nil != self.error) {
         [self stopAllSubCommandsAndDependants];
@@ -135,23 +136,16 @@
             }
         }
         if (!runningSubCommands) {
-            if (self.isExecuting) {
-                [self setExecuting: NO];
-                [self setFinished: YES];
-            } else {
-                [self setExecuting: NO];
-            } // have to finish self before the parent, makes sence
+            [self setExecuting: NO];
+            [self setFinished: YES];
             [self.parentCommand finish];
             [self.parentCommand clearSubCommands]; // clear the reference to sub commands, allows dealloc
             return;
         }
     }
-    if (self.isExecuting) {
-        [self setExecuting: NO];
-        [self setFinished: YES];
-    } else {
-        [self setExecuting: NO];
-    }
+    
+    [self setExecuting: NO];
+    [self setFinished: YES];
 }
 
 - (void)stopAllSubCommandsAndDependants
