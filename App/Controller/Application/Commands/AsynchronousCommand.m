@@ -54,18 +54,18 @@
                     [[Model sharedModel] save];
                 }
             });
-        }
-        if (strongSelf.isBackgroundExecutable) {
+        } else {
             [strongSelf endBackgroundUpdateTask];
         }
         strongSelf.completionBlock = nil; // needed to do this otherwise retain cycle
     };
     //subclass should override execute to perform the logic of the command
-
+    
     if (self.isBackgroundExecutable) {
         self.backgroundUpdateTaskId = [[NSDate date] timeIntervalSince1970];
         [self beginBackgroundUpdateTask];
     }
+    [self setExecuting:YES];
     [self execute];
     
     //subclass MUST call [self finish] at the appropriate time, generally in the commandCompletionBlock
@@ -91,22 +91,17 @@
 
 - (void)cancel
 {
-    for (Command *cmd in [self subCommands]) {
-        [cmd cancel];
-    }
-    self._subCommands = [NSMutableArray array]; // release the subcommands
-    
-    if (self.executing) {
+    [self stopAllSubCommandsAndDependants];
+    [self willChangeValueForKey: @"isCancelled"];
+    [super cancel];
+    [self didChangeValueForKey: @"isCancelled"];
+    if (self.isExecuting) {
         [self setFinished:YES];
-        [self finish];
-    } else {
-        [super cancel];
     }
 }
 
 - (void) setFinished:(BOOL) isFinished
 {
-    [self setExecuting: !isFinished];
     [self willChangeValueForKey: @"isFinished"];
     _finished = isFinished;
     [self didChangeValueForKey: @"isFinished"];
@@ -121,6 +116,9 @@
 
 - (void) finish
 {
+    if (nil != self.error) {
+        [self stopAllSubCommandsAndDependants];
+    }
     // if I am a subcommand (I am if I have a parentCommand) then check if my parent has no other sub commands running. If so, then finish the parent as well
     if (nil != self.parentCommand) {
         BOOL runningSubCommands = NO;
@@ -132,13 +130,37 @@
             }
         }
         if (!runningSubCommands) {
-            [self setFinished: YES]; // have to finish self before the parent, makes sence
+            if (self.isExecuting) {
+                [self setExecuting: NO];
+                [self setFinished: YES];
+            } else {
+                [self setExecuting: NO];
+            } // have to finish self before the parent, makes sence
             [self.parentCommand finish];
             [self.parentCommand clearSubCommands]; // clear the reference to sub commands, allows dealloc
             return;
         }
     }
-    [self setFinished: YES];
+    if (self.isExecuting) {
+        [self setExecuting: NO];
+        [self setFinished: YES];
+    } else {
+        [self setExecuting: NO];
+    }
+}
+
+- (void)stopAllSubCommandsAndDependants
+{
+    for (Command *cmd in [self subCommands]) {
+        [cmd cancel];
+    }
+    [self clearSubCommands];
+    
+    for (NSOperation *op in [TSCommandRunner sharedOperationQueue].operations) {
+        if ([op.dependencies containsObject:self]) {
+            [op cancel];
+        }
+    }
 }
 
 - (void)addSubCommand:(AsynchronousCommand *)command
