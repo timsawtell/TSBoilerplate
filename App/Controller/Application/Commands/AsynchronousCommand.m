@@ -33,9 +33,14 @@
     return self;
 }
 
-- (void) start
+- (void)start
 {
     [self setFinished: NO];
+    if ([self isCancelled]) {
+        [self setExecuting:NO];
+        [self setFinished:YES];
+        return;
+    }
     [self main];
 }
 
