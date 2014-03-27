@@ -38,6 +38,14 @@
     iTunesSearchCommand *searchCmd = [iTunesSearchCommand new];
     searchCmd.commandCompletionBlock = completionBlock;
     [[TSCommandRunner sharedCommandRunner] executeCommand:searchCmd];
-    
 }
+
+- (CGSize)scrollViewContentSize
+{
+    if (IDIOM == IPAD) {
+        return CGSizeMake(self.view.frame.size.width, 960);
+    }
+    return CGSizeMake(self.view.frame.size.width, 460);
+}
+
 @end

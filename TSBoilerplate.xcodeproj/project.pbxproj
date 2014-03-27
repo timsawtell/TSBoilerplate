@@ -41,6 +41,8 @@
 		2BE04FB0189B0FD300B829C1 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FAF189B0FD300B829C1 /* Book.m */; };
 		2BE04FB3189B0FD900B829C1 /* _Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FB2189B0FD900B829C1 /* _Book.m */; };
 		2BE04FB8189B175600B829C1 /* BookAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FB7189B175600B829C1 /* BookAttributeCell.m */; };
+		6D9357297CD143C0BFC54985 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2458DE0D2A1541AB90E2C06B /* libPods.a */; };
+		795A9926D6654C94A3258437 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2458DE0D2A1541AB90E2C06B /* libPods.a */; };
 		89097C4915799DFF00913B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
 		89097C4B15799DFF00913B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
 		89097C4D15799DFF00913B9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4C15799DFF00913B9E /* CoreGraphics.framework */; };
@@ -234,6 +236,7 @@
 				2BAA0C3018037E4C0009050C /* XCTest.framework in Frameworks */,
 				2BAA0BFB1803799A0009050C /* UIKit.framework in Frameworks */,
 				2BAA0BFA1803799A0009050C /* Foundation.framework in Frameworks */,
+				6D9357297CD143C0BFC54985 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +247,7 @@
 				2BAA0C2F18037E460009050C /* XCTest.framework in Frameworks */,
 				2BAA0C1618037C8E0009050C /* UIKit.framework in Frameworks */,
 				2BAA0C1518037C8E0009050C /* Foundation.framework in Frameworks */,
+				795A9926D6654C94A3258437 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,9 +691,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BAA0C071803799A0009050C /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
+				DB74DA85D52245369429742F /* Check Pods Manifest.lock */,
 				2BAA0BF31803799A0009050C /* Sources */,
 				2BAA0BF41803799A0009050C /* Frameworks */,
 				2BAA0BF51803799A0009050C /* Resources */,
+				05ADFB8FA54B4307A315006C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -705,9 +711,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BAA0C2218037C8E0009050C /* Build configuration list for PBXNativeTarget "IntegrationTests" */;
 			buildPhases = (
+				61126E1EC4BF464BB11070CF /* Check Pods Manifest.lock */,
 				2BAA0C0F18037C8E0009050C /* Sources */,
 				2BAA0C1018037C8E0009050C /* Frameworks */,
 				2BAA0C1118037C8E0009050C /* Resources */,
+				5C876795F20F4EB48106F3EB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -744,7 +752,7 @@
 		89097C3B15799DFF00913B9E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					2BAA0BF61803799A0009050C = {
 						TestTargetID = 89097C4315799DFF00913B9E;
@@ -836,6 +844,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		05ADFB8FA54B4307A315006C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		34BC861A6E934D1D874F9211 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -851,6 +874,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5C876795F20F4EB48106F3EB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61126E1EC4BF464BB11070CF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		89097E7F1579AA3500913B9E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -863,6 +916,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "source \"$PROJECT_DIR/App/Model/CoreDataModel/generateDataModel.sh\"";
+		};
+		DB74DA85D52245369429742F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -967,8 +1035,8 @@
 /* Begin XCBuildConfiguration section */
 		2BAA0C081803799A0009050C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AD62C8B4E1A4218B4081F5D /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSBoilerplate.app/TSBoilerplate";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -998,8 +1066,8 @@
 		};
 		2BAA0C091803799A0009050C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AD62C8B4E1A4218B4081F5D /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSBoilerplate.app/TSBoilerplate";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1026,8 +1094,8 @@
 		};
 		2BAA0C2318037C8E0009050C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AD62C8B4E1A4218B4081F5D /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSBoilerplate.app/TSBoilerplate";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1057,8 +1125,8 @@
 		};
 		2BAA0C2418037C8E0009050C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AD62C8B4E1A4218B4081F5D /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSBoilerplate.app/TSBoilerplate";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

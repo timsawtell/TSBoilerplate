@@ -14,11 +14,12 @@
  */
 
 #import "TSViewController.h"
+#import "FFCircularProgressView.h"
+#import "UIColor+Extensions.h"
 
 static NSString * const kHideActivitySuperview  = @"hideActivitySuperview";
 static NSString * const kFontToUse              = @"Helvetica-Bold";
 
-static CGFloat const kCornerRadius              = 10.0f;
 static CGFloat const kFontSize                  = 16.0f;
 
 @interface TSViewController ()
@@ -26,7 +27,6 @@ static CGFloat const kFontSize                  = 16.0f;
 @property (nonatomic, strong) UIView *activitySuperview;
 @property (nonatomic, weak) UIResponder *activeControl;
 
-- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view;
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view;
 - (void)fetchData;
@@ -119,8 +119,13 @@ static CGFloat const kFontSize                  = 16.0f;
 - (void)specialLayout
 {
     if (self.scrollViewToResizeOnKeyboardShow.contentSize.height < self.scrollViewToResizeOnKeyboardShow.bounds.size.height) {
-        self.scrollViewToResizeOnKeyboardShow.contentSize = self.scrollViewToResizeOnKeyboardShow.bounds.size;
+        self.scrollViewToResizeOnKeyboardShow.contentSize = [self scrollViewContentSize];
     }
+}
+
+- (CGSize)scrollViewContentSize
+{
+    return self.scrollViewToResizeOnKeyboardShow.bounds.size;
 }
 
 - (void)nextPrevChanged:(id)sender
@@ -260,24 +265,15 @@ static CGFloat const kFontSize                  = 16.0f;
 
 - (void)showActivityScreen
 {
-    [self showActivityScreenWithMessage:@"Loading..." animated:YES];
+    [self showActivityScreenWithMessage:@"Loading"];
 }
 
 - (void)showActivityScreenWithMessage:(NSString*)message
-                             animated:(BOOL)animated
-{
-    [self showActivityScreenWithMessage:message
-                               animated:animated
-                       withProgressView:NO];
-}
-
-- (void)showActivityScreenWithMessage:(NSString*)message
-                             animated:(BOOL)animated
-                     withProgressView:(BOOL)showProgressView
 {
     if (self.overrideShowingActivityScreen == YES) {
         return;
     }
+    
 	if (self.activitySuperview) {
 		[self.activitySuperview removeFromSuperview];
 		self.activitySuperview = nil;
@@ -301,23 +297,19 @@ static CGFloat const kFontSize                  = 16.0f;
 	[containerView setBackgroundColor:[UIColor clearColor]];
 	[self.activitySuperview addSubview:containerView];
     
-	CGRect spinnerBG = CGRectRoundToInt(CGRectMake((containerBG.size.width / 2) - (111.0 / 2),
-                                                   (containerBG.size.height / 2) - (111.0 / 2), 111.0, 111.0));
+	CGRect spinnerBG = CGRectRoundToInt(CGRectMake((containerBG.size.width / 2) - (90.0 / 2),
+                                                   (containerBG.size.height / 2) - (90.0 / 2), 90.0, 90.0));
 	UIView *activitySpinnerBackground = [[UIView alloc] initWithFrame: spinnerBG];
-	activitySpinnerBackground.backgroundColor = [UIColor colorWithWhite: 0.0 alpha: 0.6];
+	activitySpinnerBackground.backgroundColor = [UIColor colorWithHexString:@"5266A4"];
 	activitySpinnerBackground.opaque = NO;
-	activitySpinnerBackground.alpha = 1.0;
-	activitySpinnerBackground.layer.cornerRadius = kCornerRadius;
-	activitySpinnerBackground.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+	activitySpinnerBackground.layer.cornerRadius = 45;
 	
 	[containerView addSubview: activitySpinnerBackground];
 	
-	if(NSStringIsSane(message) == YES)
-	{
-		UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, spinnerBG.origin.y-50-20, (containerView.bounds.size.width-40), 70)];
+	if(NSStringIsSane(message) == YES) {
+		UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, spinnerBG.origin.y-50, (containerView.bounds.size.width-40), 70)];
         messageLabel.text = message;
-        messageLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-        [messageLabel setNumberOfLines:2];
+        [messageLabel setNumberOfLines:1];
 		[messageLabel setFont:[UIFont fontWithName:kFontToUse size:kFontSize]];
 		[messageLabel setShadowColor:[UIColor blackColor]];
 		[messageLabel setShadowOffset:CGSizeMake(0, 1)];
@@ -327,65 +319,36 @@ static CGFloat const kFontSize                  = 16.0f;
 		[containerView addSubview:messageLabel];
 	}
 	
-	UIActivityIndicatorView *activitySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
-	[activitySpinnerBackground addSubview: activitySpinner];
-	[activitySpinner setFrame: CGRectMake(37, 37, 37, 37)];
-	[activitySpinner startAnimating];
-	
-    if (showProgressView) {
-        if (self.activityProgressView) {
-            [self.activityProgressView removeFromSuperview];
-            self.activityProgressView = nil;
-        }
-        self.activityProgressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        
-        self.activityProgressView.frame = CGRectMake(spinnerBG.origin.x,
-                                                     activitySpinnerBackground.frame.origin.y + activitySpinnerBackground.frame.size.height + 20,
-                                                     spinnerBG.size.width,
-                                                     self.activityProgressView.frame.size.height);
-        self.activityProgressView.trackTintColor = [UIColor whiteColor];
-        self.activityProgressView.progressTintColor = [UIColor orangeColor];
-        [containerView addSubview:self.activityProgressView];
-    }
+    CGRect progressFrame = CGRectMake(spinnerBG.size.width / 2 - 25, spinnerBG.size.height / 2 - 25, 50, 50);
+	FFCircularProgressView *progressView = [[FFCircularProgressView alloc] initWithFrame:progressFrame];
+    progressView.iconLayer.hidden = YES;
+    [progressView setTintColor:[UIColor whiteColor]];
+    [activitySpinnerBackground addSubview:progressView];
+    [progressView startSpinProgressBackgroundLayer];
     
-	if (animated) {
-		self.activitySuperview.alpha = 0.0;
-		[UIView beginAnimations: nil context: nil];
-		[UIView setAnimationDuration: 0.3];
-		self.activitySuperview.alpha = 1.0;
-		[UIView commitAnimations];
-	}
+    [UIView beginAnimations:@"fadeglow" context:NULL];
+    [UIView setAnimationDuration:1.5];
+    [UIView setAnimationRepeatAutoreverses:YES];
+    [UIView setAnimationRepeatCount:HUGE_VAL];
+    activitySpinnerBackground.alpha = 0.8;
+    [UIView commitAnimations];
+    
+    self.activitySuperview.alpha = 0.0;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.activitySuperview.alpha = 1.0;
+    }];
 }
 
 - (void)hideActivityScreen
 {
-    [self hideActivityScreenAnimated:YES];
-}
-
-- (void)hideActivityScreenAnimated:(BOOL)animated
-{
-	if (!animated) {
-		[self.activitySuperview removeFromSuperview];
-		self.activitySuperview = nil;
-		return;
-	}
 	self.activitySuperview.alpha = 1.0;
-	[UIView beginAnimations:kHideActivitySuperview context: nil];
-	[UIView setAnimationDuration: 0.5];
-	[UIView setAnimationDelegate: self];
-	[UIView setAnimationDidStopSelector: @selector(animationDidStop:finished:context:)];
-	self.activitySuperview.alpha = 0.0;
-	[UIView commitAnimations];
-}
-
-- (void)animationDidStop:(NSString *)animationID
-                finished:(NSNumber *)finished
-                 context:(void *)context
-{
-	if ([animationID isEqualToString:kHideActivitySuperview]) {
-		[self.activitySuperview removeFromSuperview];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.activitySuperview.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.activitySuperview removeFromSuperview];
 		self.activitySuperview = nil;
-	}
+    }];
 }
 
 #pragma mark - EgoHeaderview

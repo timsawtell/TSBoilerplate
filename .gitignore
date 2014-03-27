@@ -10,4 +10,4 @@
 project.xcworkspace/
 xcuserdata/
 Pods/*
-
+Podfile.lock

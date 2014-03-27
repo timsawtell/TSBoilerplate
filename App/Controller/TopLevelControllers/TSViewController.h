@@ -16,6 +16,9 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
+
 @interface TSViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollViewToResizeOnKeyboardShow;
@@ -28,13 +31,9 @@
 @property (nonatomic, strong) UIProgressView *activityProgressView;
 
 - (void)showActivityScreen;
-- (void)showActivityScreenWithMessage:(NSString*)message animated:(BOOL)animated;
-- (void)showActivityScreenWithMessage:(NSString*)message
-                             animated:(BOOL)animated
-                     withProgressView:(BOOL)showProgressView;
+- (void)showActivityScreenWithMessage:(NSString*)message;
 - (void)hideActivityScreen;
-- (void)hideActivityScreenAnimated:(BOOL)animated;
 - (void)reloadData; /** This will stop the pull to refresh (as in, time to show the new data) */
 - (void)fetchData; /** This is called after pull to refresh has detected a request from the user */
-
+- (CGSize)scrollViewContentSize; /* for when your scrollview is taller than your frame bounds and you need autolayout to not fuck it up */
 @end
