@@ -61,14 +61,13 @@
          [strongSelf finish];
          return;
      };
-    [[TSNetworking sharedSession] setBaseURLString:@"https://itunes.apple.com"];
-    [[TSNetworking sharedSession] performDataTaskWithRelativePath:@"/lookup"
-                                                       withMethod:HTTP_METHOD_GET
-                                                   withParameters:@{@"isbn" : @"055389692X"}
-                                             withAddtionalHeaders:nil
-                                                      withSuccess:successBlock
-                                                        withError:errorBlock];
-    
+    [[TSNetworking foregroundSession] setBaseURLString:@"https://itunes.apple.com"];
+    [[TSNetworking foregroundSession] performDataTaskWithRelativePath:@"/lookup"
+                                                           withMethod:HTTP_METHOD_GET
+                                                       withParameters:@{@"isbn" : @"055389692X"}
+                                                 withAddtionalHeaders:nil
+                                                          withSuccess:successBlock
+                                                            withError:errorBlock];
 }
 
 @end

@@ -25,7 +25,7 @@
     NSString *versionNum = [infoDict objectForKey:@"CFBundleVersion"];
     NSString *appName = [infoDict objectForKey:@"CFBundleDisplayName"];
     NSString *userAgent = [NSString stringWithFormat:@"%@/%@", appName, versionNum];
-    [[TSNetworking sharedSession] addSessionHeaders:@{@"Content-Type": @"application/json; charset=utf-8",
+    [[TSNetworking foregroundSession] addSessionHeaders:@{@"Content-Type": @"application/json; charset=utf-8",
                                                       @"Accept": @"application/json; charset=utf-8",
                                                       @"User-Agent": userAgent}];
     return YES;
