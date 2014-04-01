@@ -132,8 +132,10 @@ typedef void(^URLSessionDownloadTaskCompletion)(NSURL *location, NSError *error)
 {
     __weak typeof(self)weakSelf = self;
     URLSessionTaskCompletion completionBlock = ^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (nil == weakRequest) return;
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         NSString *contentType;
-        weakSelf.activeTasks = MAX(weakSelf.activeTasks - 1, 0);
+        strongSelf.activeTasks = MAX(strongSelf.activeTasks - 1, 0);
         if ([TSNetworking foregroundSession].activeTasks == 0 && [TSNetworking backgroundSession].activeTasks == 0) {
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         }
@@ -162,12 +164,12 @@ typedef void(^URLSessionDownloadTaskCompletion)(NSURL *location, NSError *error)
         if (nil != error && (nil == data || data.length <= 0)) {
             parsedObject = error.localizedDescription;
         } else {
-            parsedObject = [weakSelf resultBasedOnContentType:contentType
+            parsedObject = [strongSelf resultBasedOnContentType:contentType
                                                  withEncoding:stringEncoding 
                                                      fromData:data];
         }
         
-        [weakSelf validateResponse:(NSHTTPURLResponse *)response error:&error];
+        [strongSelf validateResponse:(NSHTTPURLResponse *)response error:&error];
         if (nil != error) {
             if (NULL != errorBlock) {
                 errorBlock(parsedObject, error, weakRequest, response);
@@ -198,15 +200,15 @@ typedef void(^URLSessionDownloadTaskCompletion)(NSURL *location, NSError *error)
     NSRange indexOfSlash = [contentType rangeOfString:@"/"];
     NSString *firstComponent, *secondComponent;
     if (indexOfSlash.location != NSNotFound) {
-        firstComponent = [contentType substringToIndex:indexOfSlash.location];
-        secondComponent = [contentType substringFromIndex:indexOfSlash.location + 1];
+        firstComponent = [[contentType substringToIndex:indexOfSlash.location] lowercaseString];
+        secondComponent = [[contentType substringFromIndex:indexOfSlash.location + 1] lowercaseString];
     } else {
-        firstComponent = contentType;
+        firstComponent = [contentType lowercaseString];
     }
     
     NSError *parseError = nil;
     if ([firstComponent isEqualToString:@"application"]) {
-        if ([secondComponent isEqualToString:@"json"]) {
+        if ([secondComponent hasPrefix:@"json"]) {
             id parsedJson = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
             return parsedJson;
         }
@@ -421,7 +423,9 @@ typedef void(^URLSessionDownloadTaskCompletion)(NSURL *location, NSError *error)
     __weak typeof(self) weakSelf = self;
     // download completion blocks are different from data type completion blocks
     URLSessionDownloadTaskCompletion completionBlock = ^(NSURL *location, NSError *error) {
-        weakSelf.activeTasks = MAX(weakSelf.activeTasks - 1, 0);
+        if (nil == weakRequest) return;
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.activeTasks = MAX(strongSelf.activeTasks - 1, 0);
         if ([TSNetworking foregroundSession].activeTasks == 0 && [TSNetworking backgroundSession].activeTasks == 0) {
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         }
