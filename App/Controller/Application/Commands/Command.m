@@ -17,19 +17,9 @@
 
 @implementation Command
 
-@synthesize error, saveModel;
-
-- (id)init
-{
-    if (self = [super init]) {
-        self.error = nil;
-    }
-    return self;
-}
-
 - (void)execute
 {
-    //do processing here. Add any commands that you generate to your subCommands property
+    //do processing here.
 }
 
 @end
