@@ -62,12 +62,6 @@
 		DDFD640D173B0A7B000323A8 /* TSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63AA173B0A7B000323A8 /* TSViewController.m */; };
 		DDFD640F173B0A7B000323A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63AF173B0A7B000323A8 /* InfoPlist.strings */; };
 		DDFD6410173B0A7B000323A8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63B3173B0A7B000323A8 /* Model.xcdatamodeld */; };
-		DDFD6411173B0A7B000323A8 /* human.h.motemplate in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63B6173B0A7B000323A8 /* human.h.motemplate */; };
-		DDFD6412173B0A7B000323A8 /* human.m.motemplate in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63B7173B0A7B000323A8 /* human.m.motemplate */; };
-		DDFD6413173B0A7B000323A8 /* machine.h.motemplate in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63B8173B0A7B000323A8 /* machine.h.motemplate */; };
-		DDFD6414173B0A7B000323A8 /* machine.m.motemplate in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63B9173B0A7B000323A8 /* machine.m.motemplate */; };
-		DDFD6415173B0A7B000323A8 /* mogenerator in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63BA173B0A7B000323A8 /* mogenerator */; };
-		DDFD6416173B0A7B000323A8 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDFD63BB173B0A7B000323A8 /* readme.txt */; };
 		DDFD6417173B0A7B000323A8 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63BD173B0A7B000323A8 /* Model.m */; };
 		DDFD6418173B0A7B000323A8 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63BF173B0A7B000323A8 /* ModelObject.m */; };
 		DDFD6421173B0A7B000323A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD63D5173B0A7B000323A8 /* AppDelegate.m */; };
@@ -179,12 +173,6 @@
 		DDFD63AA173B0A7B000323A8 /* TSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSViewController.m; sourceTree = "<group>"; };
 		DDFD63B0173B0A7B000323A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDFD63B4173B0A7B000323A8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		DDFD63B6173B0A7B000323A8 /* human.h.motemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = human.h.motemplate; sourceTree = "<group>"; };
-		DDFD63B7173B0A7B000323A8 /* human.m.motemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = human.m.motemplate; sourceTree = "<group>"; };
-		DDFD63B8173B0A7B000323A8 /* machine.h.motemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = machine.h.motemplate; sourceTree = "<group>"; };
-		DDFD63B9173B0A7B000323A8 /* machine.m.motemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = machine.m.motemplate; sourceTree = "<group>"; };
-		DDFD63BA173B0A7B000323A8 /* mogenerator */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mogenerator; sourceTree = "<group>"; };
-		DDFD63BB173B0A7B000323A8 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		DDFD63BC173B0A7B000323A8 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		DDFD63BD173B0A7B000323A8 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		DDFD63BE173B0A7B000323A8 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
@@ -525,22 +513,8 @@
 			isa = PBXGroup;
 			children = (
 				DDFD63B3173B0A7B000323A8 /* Model.xcdatamodeld */,
-				DDFD63B5173B0A7B000323A8 /* MogenTemplate */,
 			);
 			path = CoreDataModel;
-			sourceTree = "<group>";
-		};
-		DDFD63B5173B0A7B000323A8 /* MogenTemplate */ = {
-			isa = PBXGroup;
-			children = (
-				DDFD63B6173B0A7B000323A8 /* human.h.motemplate */,
-				DDFD63B7173B0A7B000323A8 /* human.m.motemplate */,
-				DDFD63B8173B0A7B000323A8 /* machine.h.motemplate */,
-				DDFD63B9173B0A7B000323A8 /* machine.m.motemplate */,
-				DDFD63BA173B0A7B000323A8 /* mogenerator */,
-				DDFD63BB173B0A7B000323A8 /* readme.txt */,
-			);
-			path = MogenTemplate;
 			sourceTree = "<group>";
 		};
 		DDFD63C0173B0A7B000323A8 /* ModelObjects */ = {
@@ -804,12 +778,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFD640F173B0A7B000323A8 /* InfoPlist.strings in Resources */,
-				DDFD6411173B0A7B000323A8 /* human.h.motemplate in Resources */,
-				DDFD6412173B0A7B000323A8 /* human.m.motemplate in Resources */,
-				DDFD6413173B0A7B000323A8 /* machine.h.motemplate in Resources */,
-				DDFD6414173B0A7B000323A8 /* machine.m.motemplate in Resources */,
-				DDFD6415173B0A7B000323A8 /* mogenerator in Resources */,
-				DDFD6416173B0A7B000323A8 /* readme.txt in Resources */,
 				DDFD6430173B0A7B000323A8 /* StoryboardiPad.storyboard in Resources */,
 				2B856C6718616039001F1B44 /* Images.xcassets in Resources */,
 				DDFD6431173B0A7B000323A8 /* StoryboardiPhone.storyboard in Resources */,
