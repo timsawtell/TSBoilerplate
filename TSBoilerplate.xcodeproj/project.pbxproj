@@ -22,9 +22,10 @@
 
 /* Begin PBXBuildFile section */
 		2B06657E17C19D4000749237 /* fake_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B06657D17C19D4000749237 /* fake_results.json */; };
-		2B856C6018615E2C001F1B44 /* FormExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B856C5F18615E2C001F1B44 /* FormExampleViewController.m */; };
 		2B856C6718616039001F1B44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B856C6618616039001F1B44 /* Images.xcassets */; };
 		2B856C6A186164FF001F1B44 /* SubcommandsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B856C69186164FF001F1B44 /* SubcommandsTest.m */; };
+		2B8E28AB191AEF7B007648FC /* FormExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E28A8191AEF7B007648FC /* FormExampleViewController.m */; };
+		2B8E28AC191AEF7B007648FC /* iTunesResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E28AA191AEF7B007648FC /* iTunesResultsViewController.m */; };
 		2B9A015018628DA800E1412F /* iTunesSearchCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A014F18628DA800E1412F /* iTunesSearchCommand.m */; };
 		2BAA0BFA1803799A0009050C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4A15799DFF00913B9E /* Foundation.framework */; };
 		2BAA0BFB1803799A0009050C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097C4815799DFF00913B9E /* UIKit.framework */; };
@@ -36,7 +37,6 @@
 		2BAA0C2C18037D710009050C /* TSAsynchronousTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA0C2918037D710009050C /* TSAsynchronousTestCase.m */; };
 		2BAA0C2F18037E460009050C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAA0C2E18037E460009050C /* XCTest.framework */; };
 		2BAA0C3018037E4C0009050C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAA0C2E18037E460009050C /* XCTest.framework */; };
-		2BE04FAA189B0ECA00B829C1 /* iTunesResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FA9189B0ECA00B829C1 /* iTunesResultsViewController.m */; };
 		2BE04FAD189B0F6200B829C1 /* BookBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FAC189B0F6200B829C1 /* BookBuilder.m */; };
 		2BE04FB0189B0FD300B829C1 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FAF189B0FD300B829C1 /* Book.m */; };
 		2BE04FB3189B0FD900B829C1 /* _Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FB2189B0FD900B829C1 /* _Book.m */; };
@@ -110,11 +110,13 @@
 /* Begin PBXFileReference section */
 		2458DE0D2A1541AB90E2C06B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B06657D17C19D4000749237 /* fake_results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fake_results.json; sourceTree = "<group>"; };
-		2B856C5E18615E2C001F1B44 /* FormExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormExampleViewController.h; sourceTree = "<group>"; };
-		2B856C5F18615E2C001F1B44 /* FormExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormExampleViewController.m; sourceTree = "<group>"; };
 		2B856C6618616039001F1B44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2B856C68186164FF001F1B44 /* SubcommandsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubcommandsTest.h; sourceTree = "<group>"; };
 		2B856C69186164FF001F1B44 /* SubcommandsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubcommandsTest.m; sourceTree = "<group>"; };
+		2B8E28A7191AEF7B007648FC /* FormExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormExampleViewController.h; sourceTree = "<group>"; };
+		2B8E28A8191AEF7B007648FC /* FormExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormExampleViewController.m; sourceTree = "<group>"; };
+		2B8E28A9191AEF7B007648FC /* iTunesResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesResultsViewController.h; sourceTree = "<group>"; };
+		2B8E28AA191AEF7B007648FC /* iTunesResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesResultsViewController.m; sourceTree = "<group>"; };
 		2B9A014E18628DA800E1412F /* iTunesSearchCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesSearchCommand.h; sourceTree = "<group>"; };
 		2B9A014F18628DA800E1412F /* iTunesSearchCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesSearchCommand.m; sourceTree = "<group>"; };
 		2BAA0BF71803799A0009050C /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,8 +134,6 @@
 		2BAA0C2818037D710009050C /* TSAsynchronousTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAsynchronousTestCase.h; sourceTree = "<group>"; };
 		2BAA0C2918037D710009050C /* TSAsynchronousTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAsynchronousTestCase.m; sourceTree = "<group>"; };
 		2BAA0C2E18037E460009050C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2BE04FA8189B0ECA00B829C1 /* iTunesResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesResultsViewController.h; sourceTree = "<group>"; };
-		2BE04FA9189B0ECA00B829C1 /* iTunesResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesResultsViewController.m; sourceTree = "<group>"; };
 		2BE04FAB189B0F6200B829C1 /* BookBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookBuilder.h; sourceTree = "<group>"; };
 		2BE04FAC189B0F6200B829C1 /* BookBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookBuilder.m; sourceTree = "<group>"; };
 		2BE04FAE189B0FD300B829C1 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -264,6 +264,17 @@
 				2B856C6618616039001F1B44 /* Images.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2B8E28A6191AEF7B007648FC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B8E28A7191AEF7B007648FC /* FormExampleViewController.h */,
+				2B8E28A8191AEF7B007648FC /* FormExampleViewController.m */,
+				2B8E28A9191AEF7B007648FC /* iTunesResultsViewController.h */,
+				2B8E28AA191AEF7B007648FC /* iTunesResultsViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		2BAA0BFC1803799A0009050C /* UnitTests */ = {
@@ -412,7 +423,7 @@
 			children = (
 				DDFD6384173B0A7B000323A8 /* Application */,
 				DDFD63A2173B0A7B000323A8 /* TopLevelControllers */,
-				DDFD63AB173B0A7B000323A8 /* ViewControllers */,
+				2B8E28A6191AEF7B007648FC /* ViewControllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -472,17 +483,6 @@
 				DDFD63AA173B0A7B000323A8 /* TSViewController.m */,
 			);
 			path = TopLevelControllers;
-			sourceTree = "<group>";
-		};
-		DDFD63AB173B0A7B000323A8 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				2B856C5E18615E2C001F1B44 /* FormExampleViewController.h */,
-				2B856C5F18615E2C001F1B44 /* FormExampleViewController.m */,
-				2BE04FA8189B0ECA00B829C1 /* iTunesResultsViewController.h */,
-				2BE04FA9189B0ECA00B829C1 /* iTunesResultsViewController.m */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		DDFD63AE173B0A7B000323A8 /* Locale */ = {
@@ -929,6 +929,7 @@
 				DDFD6401173B0A7B000323A8 /* Command.m in Sources */,
 				DDFD6406173B0A7B000323A8 /* TSCommandRunner.m in Sources */,
 				DDFD640A173B0A7B000323A8 /* AlertView.m in Sources */,
+				2B8E28AB191AEF7B007648FC /* FormExampleViewController.m in Sources */,
 				DDFD640B173B0A7B000323A8 /* AlertViewController.m in Sources */,
 				DDFD640C173B0A7B000323A8 /* TSTableViewController.m in Sources */,
 				DDFD640D173B0A7B000323A8 /* TSViewController.m in Sources */,
@@ -937,7 +938,6 @@
 				2BE04FB0189B0FD300B829C1 /* Book.m in Sources */,
 				DDFD6418173B0A7B000323A8 /* ModelObject.m in Sources */,
 				DDFD6421173B0A7B000323A8 /* AppDelegate.m in Sources */,
-				2B856C6018615E2C001F1B44 /* FormExampleViewController.m in Sources */,
 				2BE04FAD189B0F6200B829C1 /* BookBuilder.m in Sources */,
 				DDFD6423173B0A7B000323A8 /* NSError+Factory.m in Sources */,
 				2BE04FB3189B0FD900B829C1 /* _Book.m in Sources */,
@@ -945,6 +945,7 @@
 				2BE04FB8189B175600B829C1 /* BookAttributeCell.m in Sources */,
 				DDFD6425173B0A7B000323A8 /* UIColor+Extensions.m in Sources */,
 				DDFD6426173B0A7B000323A8 /* UIView+loadFromNib.m in Sources */,
+				2B8E28AC191AEF7B007648FC /* iTunesResultsViewController.m in Sources */,
 				DDFD6427173B0A7B000323A8 /* Appearances.m in Sources */,
 				DDFD6428173B0A7B000323A8 /* Constants.m in Sources */,
 				DDFD6429173B0A7B000323A8 /* SBConstants.m in Sources */,
@@ -954,7 +955,6 @@
 				DDFD642D173B0A7B000323A8 /* main.m in Sources */,
 				DDFD6631173B0C3D000323A8 /* EGORefreshTableHeaderView.m in Sources */,
 				DDF4C845173B0F0E00276A95 /* TestModel.m in Sources */,
-				2BE04FAA189B0ECA00B829C1 /* iTunesResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
