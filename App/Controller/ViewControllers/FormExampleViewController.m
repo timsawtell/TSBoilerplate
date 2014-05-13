@@ -19,6 +19,7 @@
 {
     __weak typeof(self) weakSelf = self;
     commandCompletionBlock completionBlock = ^(NSError *error) {
+        if (nil == weakSelf) return;
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf hideActivityScreen];
         if (nil != error) {
