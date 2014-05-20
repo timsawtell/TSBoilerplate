@@ -1,5 +1,5 @@
 PODS:
-  - AFNetworking/Security (2.2.3)
+  - AFNetworking/Security (2.2.4)
   - FFCircularProgressView (0.3)
   - Reachability (3.1.1)
   - TSNetworking (0.5):
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/timsawtell/FFCircularProgressView
 
 SPEC CHECKSUMS:
-  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  AFNetworking: 01aa7c3aa9a200b94943e54072a4373f14b3d219
   FFCircularProgressView: 972f8c316f6a612a9ca55d7800ade41b51efedf2
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   TSNetworking: 6ab2ef04cf15389732c5483d01d462c5fa89d2de

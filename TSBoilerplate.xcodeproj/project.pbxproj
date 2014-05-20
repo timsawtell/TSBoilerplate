@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		2B06657E17C19D4000749237 /* fake_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B06657D17C19D4000749237 /* fake_results.json */; };
+		2B1420D1192AED3400770EC5 /* CommandCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1420D0192AED3400770EC5 /* CommandCenter.m */; };
 		2B856C6718616039001F1B44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B856C6618616039001F1B44 /* Images.xcassets */; };
 		2B856C6A186164FF001F1B44 /* SubcommandsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B856C69186164FF001F1B44 /* SubcommandsTest.m */; };
 		2B8E28AB191AEF7B007648FC /* FormExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E28A8191AEF7B007648FC /* FormExampleViewController.m */; };
@@ -110,6 +111,8 @@
 /* Begin PBXFileReference section */
 		2458DE0D2A1541AB90E2C06B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B06657D17C19D4000749237 /* fake_results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fake_results.json; sourceTree = "<group>"; };
+		2B1420CF192AED3400770EC5 /* CommandCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandCenter.h; sourceTree = "<group>"; };
+		2B1420D0192AED3400770EC5 /* CommandCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandCenter.m; sourceTree = "<group>"; };
 		2B856C6618616039001F1B44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2B856C68186164FF001F1B44 /* SubcommandsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubcommandsTest.h; sourceTree = "<group>"; };
 		2B856C69186164FF001F1B44 /* SubcommandsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubcommandsTest.m; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 				DDFD638E173B0A7B000323A8 /* Command.m */,
 				DDFD6399173B0A7B000323A8 /* TSCommandRunner.h */,
 				DDFD639A173B0A7B000323A8 /* TSCommandRunner.m */,
+				2B1420CF192AED3400770EC5 /* CommandCenter.h */,
+				2B1420D0192AED3400770EC5 /* CommandCenter.m */,
 				DDFD639B173B0A7B000323A8 /* Webservices */,
 			);
 			path = Commands;
@@ -934,6 +939,7 @@
 				DDFD640C173B0A7B000323A8 /* TSTableViewController.m in Sources */,
 				DDFD640D173B0A7B000323A8 /* TSViewController.m in Sources */,
 				DDFD6410173B0A7B000323A8 /* Model.xcdatamodeld in Sources */,
+				2B1420D1192AED3400770EC5 /* CommandCenter.m in Sources */,
 				DDFD6417173B0A7B000323A8 /* Model.m in Sources */,
 				2BE04FB0189B0FD300B829C1 /* Book.m in Sources */,
 				DDFD6418173B0A7B000323A8 /* ModelObject.m in Sources */,
