@@ -292,4 +292,9 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
 @synthesize <$Relationship.name$>;
 <$endif$><$endforeach do$>
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 @end

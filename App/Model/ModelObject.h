@@ -35,7 +35,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ModelObject : NSObject <NSCopying, NSCoding>
+@interface ModelObject : NSObject <NSCopying, NSSecureCoding>
 {
 	NSDictionary *sourceDictionaryRepresentation;
 }
@@ -52,7 +52,7 @@
 + (NSSet *)dictionaryRepresentationKeys;
 
 - (void)awakeFromDictionaryRepresentationInit;
-
++ (BOOL)supportsSecureCoding;
 @end
 
 

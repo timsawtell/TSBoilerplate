@@ -99,4 +99,9 @@ NSString * const kModelPropertyBookTitle = @"title";
 @synthesize price;
 @synthesize title;
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 @end

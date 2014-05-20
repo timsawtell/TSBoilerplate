@@ -57,7 +57,7 @@
     @try {
         @synchronized(self)
         {
-            [NSKeyedArchiver archiveRootObject: self toFile: [Model savedDataPath]];
+            [NSKeyedArchiver archiveRootObject:self toFile:[Model savedDataPath]];
         }
     } @catch (NSException *exception) {
     }
@@ -69,14 +69,14 @@
 {
     self = [super init];
     if (self) {
-        //self.group = [aDecoder decodeObjectForKey:@"group"];
+        self.book = [aDecoder decodeObjectOfClass:[Book class] forKey:@"book"];
     }
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    //[aCoder encodeObject:self.group forKey:@"group"];
+    [aCoder encodeObject:self.book forKey:@"book"];
 }
 
 @end

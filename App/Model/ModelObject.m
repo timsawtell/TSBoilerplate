@@ -98,6 +98,11 @@
 
 @synthesize sourceDictionaryRepresentation;
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 @end
 
 
