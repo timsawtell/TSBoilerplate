@@ -16,6 +16,7 @@
     __weak typeof(self) weakSelf = self;
     
     TSNetworkSuccessBlock successBlock = ^(NSObject *resultObject, NSMutableURLRequest *request, NSURLResponse *response) {
+        if (nil == weakSelf) return;
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         if(strongSelf.isCancelled) {
@@ -56,6 +57,7 @@
     };
     
      TSNetworkErrorBlock errorBlock = ^(NSObject *resultObject, NSError *error, NSMutableURLRequest *request, NSURLResponse *response) {
+        if (nil == weakSelf) return;
          __strong typeof(weakSelf) strongSelf = weakSelf;
          strongSelf.error = error;
          [strongSelf finish];

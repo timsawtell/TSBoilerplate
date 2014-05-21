@@ -10,7 +10,7 @@
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_Security
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_Security 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_Security 2
-#define COCOAPODS_VERSION_PATCH_AFNetworking_Security 1
+#define COCOAPODS_VERSION_PATCH_AFNetworking_Security 4
 
 // FFCircularProgressView
 #define COCOAPODS_POD_AVAILABLE_FFCircularProgressView
@@ -27,6 +27,6 @@
 // TSNetworking
 #define COCOAPODS_POD_AVAILABLE_TSNetworking
 #define COCOAPODS_VERSION_MAJOR_TSNetworking 0
-#define COCOAPODS_VERSION_MINOR_TSNetworking 4
+#define COCOAPODS_VERSION_MINOR_TSNetworking 5
 #define COCOAPODS_VERSION_PATCH_TSNetworking 0
 
