@@ -70,7 +70,7 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
     }
     if (self) {
         <$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
-        self.<$Attribute.name$> = [aDecoder decodeObjectForKey: kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
+        self.<$Attribute.name$> = [aDecoder decodeObjectOfClass:[NSObject class] forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
         <$endif$><$endforeach do$>
         <$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany && Relationship.isTransient$>
         {
@@ -80,7 +80,7 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
             self.<$Relationship.name$> = nonretainingSet;
         }
         <$else$>
-        self.<$Relationship.name$> = [aDecoder decodeObjectForKey: kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>];
+        self.<$Relationship.name$> = [aDecoder decodeObjectOfClass:[NSObject class] forKey: kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>];
         <$endif$><$endforeach do$>
     }
     return self;
@@ -291,5 +291,10 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
 <$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany$>
 @synthesize <$Relationship.name$>;
 <$endif$><$endforeach do$>
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
 
 @end
