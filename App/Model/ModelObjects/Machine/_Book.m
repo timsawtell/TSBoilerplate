@@ -45,10 +45,10 @@ NSString * const kModelPropertyBookTitle = @"title";
         self = [super init];
     }
     if (self) {
-        self.author = [aDecoder decodeObjectForKey: kModelPropertyBookAuthor];
-        self.blurb = [aDecoder decodeObjectForKey: kModelPropertyBookBlurb];
-        self.price = [aDecoder decodeObjectForKey: kModelPropertyBookPrice];
-        self.title = [aDecoder decodeObjectForKey: kModelPropertyBookTitle];
+        self.author = [aDecoder decodeObjectOfClass:[NSString class] forKey:kModelPropertyBookAuthor];
+        self.blurb = [aDecoder decodeObjectOfClass:[NSString class] forKey:kModelPropertyBookBlurb];
+        self.price = [aDecoder decodeObjectOfClass:[NSString class] forKey:kModelPropertyBookPrice];
+        self.title = [aDecoder decodeObjectOfClass:[NSString class] forKey:kModelPropertyBookTitle];
     }
     return self;
 }

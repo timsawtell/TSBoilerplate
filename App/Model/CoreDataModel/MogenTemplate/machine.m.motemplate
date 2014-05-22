@@ -70,7 +70,7 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
     }
     if (self) {
         <$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
-        self.<$Attribute.name$> = [aDecoder decodeObjectOfClass:[NSObject class] forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
+        self.<$Attribute.name$> = [aDecoder decodeObjectOfClass:[<$Attribute.objectAttributeClassName$> class] forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
         <$endif$><$endforeach do$>
         <$foreach Relationship noninheritedRelationships do$><$if Relationship.isToMany && Relationship.isTransient$>
         {
@@ -79,8 +79,10 @@ NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.i
             [nonretainingSet unionSet: set];
             self.<$Relationship.name$> = nonretainingSet;
         }
+        <$elseif Relationship.isToMany$>
+        self.<$Relationship.name$> = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[<$Relationship.destinationEntity.managedObjectClassName$> class], [NSSet class], nil] forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>];
         <$else$>
-        self.<$Relationship.name$> = [aDecoder decodeObjectOfClass:[NSObject class] forKey: kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>];
+        self.<$Relationship.name$> = [aDecoder decodeObjectOfClass:[<$Relationship.destinationEntity.managedObjectClassName$> class] forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>];
         <$endif$><$endforeach do$>
     }
     return self;
