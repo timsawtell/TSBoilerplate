@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		2B06657E17C19D4000749237 /* fake_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B06657D17C19D4000749237 /* fake_results.json */; };
 		2B1420D1192AED3400770EC5 /* CommandCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1420D0192AED3400770EC5 /* CommandCenter.m */; };
+		2B1BA302192EC97400B039D8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1BA2FE192EC97400B039D8 /* Book.m */; };
+		2B1BA303192EC97400B039D8 /* _Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1BA301192EC97400B039D8 /* _Book.m */; };
 		2B856C6718616039001F1B44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B856C6618616039001F1B44 /* Images.xcassets */; };
 		2B856C6A186164FF001F1B44 /* SubcommandsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B856C69186164FF001F1B44 /* SubcommandsTest.m */; };
 		2B8E28AB191AEF7B007648FC /* FormExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E28A8191AEF7B007648FC /* FormExampleViewController.m */; };
@@ -39,8 +41,6 @@
 		2BAA0C2F18037E460009050C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAA0C2E18037E460009050C /* XCTest.framework */; };
 		2BAA0C3018037E4C0009050C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAA0C2E18037E460009050C /* XCTest.framework */; };
 		2BE04FAD189B0F6200B829C1 /* BookBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FAC189B0F6200B829C1 /* BookBuilder.m */; };
-		2BE04FB0189B0FD300B829C1 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FAF189B0FD300B829C1 /* Book.m */; };
-		2BE04FB3189B0FD900B829C1 /* _Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FB2189B0FD900B829C1 /* _Book.m */; };
 		2BE04FB8189B175600B829C1 /* BookAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04FB7189B175600B829C1 /* BookAttributeCell.m */; };
 		6D9357297CD143C0BFC54985 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2458DE0D2A1541AB90E2C06B /* libPods.a */; };
 		795A9926D6654C94A3258437 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2458DE0D2A1541AB90E2C06B /* libPods.a */; };
@@ -113,6 +113,10 @@
 		2B06657D17C19D4000749237 /* fake_results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fake_results.json; sourceTree = "<group>"; };
 		2B1420CF192AED3400770EC5 /* CommandCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandCenter.h; sourceTree = "<group>"; };
 		2B1420D0192AED3400770EC5 /* CommandCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandCenter.m; sourceTree = "<group>"; };
+		2B1BA2FD192EC97400B039D8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		2B1BA2FE192EC97400B039D8 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		2B1BA300192EC97400B039D8 /* _Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Book.h; sourceTree = "<group>"; };
+		2B1BA301192EC97400B039D8 /* _Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Book.m; sourceTree = "<group>"; };
 		2B856C6618616039001F1B44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2B856C68186164FF001F1B44 /* SubcommandsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubcommandsTest.h; sourceTree = "<group>"; };
 		2B856C69186164FF001F1B44 /* SubcommandsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubcommandsTest.m; sourceTree = "<group>"; };
@@ -139,10 +143,6 @@
 		2BAA0C2E18037E460009050C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2BE04FAB189B0F6200B829C1 /* BookBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookBuilder.h; sourceTree = "<group>"; };
 		2BE04FAC189B0F6200B829C1 /* BookBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookBuilder.m; sourceTree = "<group>"; };
-		2BE04FAE189B0FD300B829C1 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
-		2BE04FAF189B0FD300B829C1 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
-		2BE04FB1189B0FD900B829C1 /* _Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Book.h; sourceTree = "<group>"; };
-		2BE04FB2189B0FD900B829C1 /* _Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Book.m; sourceTree = "<group>"; };
 		2BE04FB6189B175600B829C1 /* BookAttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookAttributeCell.h; sourceTree = "<group>"; };
 		2BE04FB7189B175600B829C1 /* BookAttributeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookAttributeCell.m; sourceTree = "<group>"; };
 		2BF3E0BE17E7BF1500CD0871 /* ModelObjectHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObjectHeaders.h; sourceTree = "<group>"; };
@@ -261,6 +261,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B1BA2FC192EC97400B039D8 /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				2B1BA2FD192EC97400B039D8 /* Book.h */,
+				2B1BA2FE192EC97400B039D8 /* Book.m */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		2B1BA2FF192EC97400B039D8 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				2B1BA300192EC97400B039D8 /* _Book.h */,
+				2B1BA301192EC97400B039D8 /* _Book.m */,
+			);
+			path = Machine;
+			sourceTree = "<group>";
+		};
 		2B856C6118615FAB001F1B44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,24 +354,6 @@
 				2BE04FB7189B175600B829C1 /* BookAttributeCell.m */,
 			);
 			path = cells;
-			sourceTree = "<group>";
-		};
-		2BF3E0E117E7C31600CD0871 /* Human */ = {
-			isa = PBXGroup;
-			children = (
-				2BE04FAE189B0FD300B829C1 /* Book.h */,
-				2BE04FAF189B0FD300B829C1 /* Book.m */,
-			);
-			path = Human;
-			sourceTree = "<group>";
-		};
-		2BF3E0EA17E7C31600CD0871 /* Machine */ = {
-			isa = PBXGroup;
-			children = (
-				2BE04FB1189B0FD900B829C1 /* _Book.h */,
-				2BE04FB2189B0FD900B829C1 /* _Book.m */,
-			);
-			path = Machine;
 			sourceTree = "<group>";
 		};
 		89097C3915799DFF00913B9E = {
@@ -525,8 +525,8 @@
 		DDFD63C0173B0A7B000323A8 /* ModelObjects */ = {
 			isa = PBXGroup;
 			children = (
-				2BF3E0E117E7C31600CD0871 /* Human */,
-				2BF3E0EA17E7C31600CD0871 /* Machine */,
+				2B1BA2FC192EC97400B039D8 /* Human */,
+				2B1BA2FF192EC97400B039D8 /* Machine */,
 			);
 			path = ModelObjects;
 			sourceTree = "<group>";
@@ -937,16 +937,16 @@
 				2B8E28AB191AEF7B007648FC /* FormExampleViewController.m in Sources */,
 				DDFD640B173B0A7B000323A8 /* AlertViewController.m in Sources */,
 				DDFD640C173B0A7B000323A8 /* TSTableViewController.m in Sources */,
+				2B1BA302192EC97400B039D8 /* Book.m in Sources */,
 				DDFD640D173B0A7B000323A8 /* TSViewController.m in Sources */,
 				DDFD6410173B0A7B000323A8 /* Model.xcdatamodeld in Sources */,
 				2B1420D1192AED3400770EC5 /* CommandCenter.m in Sources */,
+				2B1BA303192EC97400B039D8 /* _Book.m in Sources */,
 				DDFD6417173B0A7B000323A8 /* Model.m in Sources */,
-				2BE04FB0189B0FD300B829C1 /* Book.m in Sources */,
 				DDFD6418173B0A7B000323A8 /* ModelObject.m in Sources */,
 				DDFD6421173B0A7B000323A8 /* AppDelegate.m in Sources */,
 				2BE04FAD189B0F6200B829C1 /* BookBuilder.m in Sources */,
 				DDFD6423173B0A7B000323A8 /* NSError+Factory.m in Sources */,
-				2BE04FB3189B0FD900B829C1 /* _Book.m in Sources */,
 				DDFD6424173B0A7B000323A8 /* NSFileManager+DirectoryLocations.m in Sources */,
 				2BE04FB8189B175600B829C1 /* BookAttributeCell.m in Sources */,
 				DDFD6425173B0A7B000323A8 /* UIColor+Extensions.m in Sources */,

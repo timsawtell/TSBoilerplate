@@ -19,6 +19,11 @@
     // Implement custom saving logic here
 }
 
++ (BOOL)supportsSecureCoding
+{
+	return YES;
+}
+
 #pragma mark Abstract method overrides
 
 <$foreach Relationship noninheritedRelationshipsInIDKeyPathTopologicalOrder do$><$if ! Relationship.isTransient$><$if Relationship.userInfo.destinationEntityIDKeyPath $>

@@ -14,11 +14,13 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Book.h"
 
-@interface Model : NSObject
+@interface Model : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) Book *book;
+
 + (Model*) sharedModel;
++ (BOOL)supportsSecureCoding;
 - (void)save;
+
 @end

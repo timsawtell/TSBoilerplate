@@ -17,4 +17,10 @@
 
 @interface CommandCenter : NSObject
 
++ (NSData *)securelyArchiveRootObject:(id)object withKey:(NSString *)key;
+
++ (id)securelyUnarchiveData:(NSData *)data
+                  withClass:(Class)class
+                    withKey:(NSString *)key;
+
 @end

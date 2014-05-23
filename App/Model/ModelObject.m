@@ -38,6 +38,11 @@
     // If we add ivars/properties, here's where we'll save them
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 + (id)modelObjectWithClass:(Class)aClass FromObject:(ModelObject *)object
 {
     if (object == nil || ![aClass isSubclassOfClass:[ModelObject class]]) {
@@ -97,11 +102,6 @@
 }
 
 @synthesize sourceDictionaryRepresentation;
-
-+ (BOOL)supportsSecureCoding
-{
-    return YES;
-}
 
 @end
 

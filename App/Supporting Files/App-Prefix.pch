@@ -18,9 +18,11 @@
 
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "ModelObjectHeaders.h"
     #import "TSNetworking.h"
     #import "Constants.h"
     #import "Appearances.h"
+    #import "CommandCenter.h"
     #import "Model.h"
     #import "NSStringHelper.h"
     #import "TSCommandRunner.h"

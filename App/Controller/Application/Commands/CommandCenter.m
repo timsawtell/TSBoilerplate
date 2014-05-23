@@ -17,4 +17,43 @@
 
 @implementation CommandCenter
 
++ (NSData *)securelyArchiveRootObject:(id)object withKey:(NSString *)key
+{
+    //Use secure encoding because files could be transfered from anywhere by anyone
+    NSMutableData *data = [NSMutableData data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    
+    //Ensure that secure encoding is used
+    [archiver setRequiresSecureCoding:YES];
+    @try {
+        [archiver encodeObject:object forKey:key];
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    } @finally {
+        [archiver finishEncoding];
+    }
+    
+    return data;
+}
+
++ (id)securelyUnarchiveData:(NSData *)data
+                  withClass:(Class)class
+                    withKey:(NSString *)key
+{
+    id returnObject = nil;
+    if (nil == data) return nil;
+    @try {
+        //Use secure encoding because files could be transfered from anywhere by anyone
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        //Ensure that secure encoding is used
+        [unarchiver setRequiresSecureCoding:YES];
+        returnObject = [unarchiver decodeObjectOfClass:class forKey:key];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@ failed to unarchive PicketList: %@", NSStringFromSelector(_cmd), exception);
+    }
+    
+    return returnObject;
+}
+
 @end

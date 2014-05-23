@@ -17,6 +17,7 @@
 #import "TestModel.h"
 #import "NSFileManager+DirectoryLocations.h"
 // Edit Scheme, Run setting, Arguments tab, environment variables. Preprocessor macros do not work when the main target is built before the test target.
+NSString * const kModelKey = @"model";
 
 @implementation Model
 
@@ -30,7 +31,8 @@
 
 + (Model*)savedModel
 {
-    Model *model = [NSKeyedUnarchiver unarchiveObjectWithFile: [Model savedDataPath]];
+    NSData *savedData = [NSData dataWithContentsOfFile:[Model savedDataPath]];
+    Model *model = [CommandCenter securelyUnarchiveData:savedData withClass:[Model class] withKey:kModelKey];
     if (!model) {
         return [Model new];
     }
@@ -57,11 +59,16 @@
     @try {
         @synchronized(self)
         {
-            [NSKeyedArchiver archiveRootObject:self toFile:[Model savedDataPath]];
+            NSData *data = [CommandCenter securelyArchiveRootObject:self withKey:kModelKey];
+            if (![data writeToFile:[Model savedDataPath] atomically:YES]) {
+                [NSException raise:@"Model did not save" format:@"The data model did not save"];
+            }
         }
     } @catch (NSException *exception) {
+        DLog(@"Exeption in save method: %@", exception);
     }
 }
+
 
 #pragma mark - initializing
 
@@ -70,6 +77,9 @@
     self = [super init];
     if (self) {
         self.book = [aDecoder decodeObjectOfClass:[Book class] forKey:@"book"];
+        // if you have a collection of model objects as a property on this class, you must decode like this
+        // assume you have an array of books
+        // self.books = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [Book class], nil] forKey:@"books"];
     }
     return self;
 }
@@ -78,5 +88,11 @@
 {
     [aCoder encodeObject:self.book forKey:@"book"];
 }
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 
 @end

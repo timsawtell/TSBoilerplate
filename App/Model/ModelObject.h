@@ -52,7 +52,7 @@
 + (NSSet *)dictionaryRepresentationKeys;
 
 - (void)awakeFromDictionaryRepresentationInit;
-+ (BOOL)supportsSecureCoding;
+
 @end
 
 
