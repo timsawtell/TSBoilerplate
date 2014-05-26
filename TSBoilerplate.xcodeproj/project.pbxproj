@@ -145,6 +145,7 @@
 		2BE04FAC189B0F6200B829C1 /* BookBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookBuilder.m; sourceTree = "<group>"; };
 		2BE04FB6189B175600B829C1 /* BookAttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookAttributeCell.h; sourceTree = "<group>"; };
 		2BE04FB7189B175600B829C1 /* BookAttributeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookAttributeCell.m; sourceTree = "<group>"; };
+		2BF33D451932D68A002EEA55 /* HTTPStatusCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStatusCodes.h; sourceTree = "<group>"; };
 		2BF3E0BE17E7BF1500CD0871 /* ModelObjectHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObjectHeaders.h; sourceTree = "<group>"; };
 		3AD62C8B4E1A4218B4081F5D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		89097C4415799DFF00913B9E /* TSBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -567,6 +568,7 @@
 				DDFD63E3173B0A7B000323A8 /* Appearances.m */,
 				DDFD63E4173B0A7B000323A8 /* Constants.h */,
 				DDFD63E5173B0A7B000323A8 /* Constants.m */,
+				2BF33D451932D68A002EEA55 /* HTTPStatusCodes.h */,
 				DDFD63E6173B0A7B000323A8 /* SBConstants.h */,
 				DDFD63E7173B0A7B000323A8 /* SBConstants.m */,
 			);
