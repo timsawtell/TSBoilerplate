@@ -65,7 +65,7 @@ NSString * const kModelKey = @"model";
             }
         }
     } @catch (NSException *exception) {
-        DLog(@"Exeption in save method: %@", exception);
+        NSLog(@"Exeption in save method: %@", exception);
     }
 }
 

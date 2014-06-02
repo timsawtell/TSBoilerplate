@@ -375,9 +375,19 @@ static CGFloat const kFontSize                  = 16.0f;
     return NO; // by default, the VCs you subclass should return YES if needed
 }
 
-- (void)fetchData
+- (void)fetchData // to be overriden in subclasses
 {
     self.fetchingData = YES;
+}
+
+- (void)pullUpAction
+{
+    [self fetchData];
+}
+
+- (void)pullDownAction
+{
+    [self fetchData];
 }
 
 - (void)doneLoadingData
@@ -404,12 +414,12 @@ static CGFloat const kFontSize                  = 16.0f;
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
-    [self fetchData];
+    [self pullDownAction];
 }
 
 - (void)egoRefreshTableHeaderDidTriggerLoadMore:(EGORefreshTableHeaderView *)view
 {
-    [self fetchData];
+    [self pullUpAction];
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
@@ -421,13 +431,15 @@ static CGFloat const kFontSize                  = 16.0f;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-	if (self.wantsPullToRefresh) {
-        // find out if the user is pulling on the top part (to refresh) or the bottom part (to load more)
-        NSInteger currentOffset = scrollView.contentOffset.y;
-        NSInteger maximumOffset = MAX(scrollView.contentSize.height - scrollView.frame.size.height, 0);
-        if (currentOffset < 0) {
+    // find out if the user is pulling on the top part (to refresh) or the bottom part (to load more)
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = MAX(scrollView.contentSize.height - scrollView.frame.size.height, 0);
+    if (currentOffset < 0) {
+        if (self.wantsPullToRefresh) {
             [self.headerView egoRefreshScrollViewDidScroll:scrollView];
-        } else if (currentOffset > maximumOffset) {
+        }
+    } else if (currentOffset > maximumOffset) {
+        if (self.wantsPullToRefreshFooter) {
             [self.footerView egoRefreshScrollViewDidScroll:scrollView];
         }
     }
@@ -435,13 +447,15 @@ static CGFloat const kFontSize                  = 16.0f;
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-	if (self.wantsPullToRefresh) {
-        // find out if the user is pulling on the top part (to refresh) or the bottom part (to load more)
-        NSInteger currentOffset = scrollView.contentOffset.y;
-        NSInteger maximumOffset = MAX(scrollView.contentSize.height - scrollView.frame.size.height, 0);
-        if (currentOffset < 0) {
+    // find out if the user is pulling on the top part (to refresh) or the bottom part (to load more)
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = MAX(scrollView.contentSize.height - scrollView.frame.size.height, 0);
+    if (currentOffset < 0) {
+        if (self.wantsPullToRefresh) {
             [self.headerView egoRefreshScrollViewDidEndDragging:scrollView];
-        } else if (currentOffset > maximumOffset) {
+        }
+    } else if (currentOffset > maximumOffset) {
+        if (self.wantsPullToRefreshFooter) {
             [self.footerView egoRefreshScrollViewDidEndDragging:scrollView];
         }
     }

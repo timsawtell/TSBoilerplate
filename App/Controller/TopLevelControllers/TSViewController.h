@@ -36,4 +36,7 @@
 - (void)reloadData; /** This will stop the pull to refresh (as in, time to show the new data) */
 - (void)fetchData; /** This is called after pull to refresh has detected a request from the user */
 - (CGSize)scrollViewContentSize; /* for when your scrollview is taller than your frame bounds and you need autolayout to not fuck it up */
+- (void)doneLoadingData; /* to hide the pull to refresh views */
+- (void)pullUpAction;
+- (void)pullDownAction;
 @end
